@@ -5,7 +5,7 @@
       La actual situación de aislamiento obligatorio dificulta el acceso a los
       comercios de cercanía y la adquisición de diversos productos de consumo
       frecuente. Adicionalmente, los comercios de cercanía suelen ser pequeños y
-      no cuentan con infraestructura para realizar envios o gestionar
+      no cuentan con infraestructura para realizar envíos o gestionar
       adecuadamente pedidos en línea. Teniendo en cuenta esta razones, se nos
       encarga la construcción de una aplicación que le permita a los pequeños
       negocios barriales crear su perfil y publicar sus productos de modo tal
