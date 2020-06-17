@@ -2,7 +2,7 @@ name: CI
 
 on:
   push:
-    branches: 
+    branches:
     - master
 
 jobs:
@@ -16,6 +16,7 @@ jobs:
         env:
           PUBLIC_PATH: /frontend/
           VUE_APP_GOOGLE_MAPS_API_KEY: ${{ secrets.VUE_APP_GOOGLE_MAPS_API_KEY }}
+          VUE_APP_API_URL: https://dapp-grupob-2020-c1-backend.herokuapp.com/api/
         run: |
           npm install
           npm run build
@@ -24,6 +25,6 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@releases/v3
         with:
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-          BRANCH: gh-pages 
+          BRANCH: gh-pages
           FOLDER: dist
           CLEAN: true
