@@ -38,8 +38,7 @@ export default {
   components: {},
   methods: {
     async getResults() {
-      console.log("search");
-      this.results = await getSearch();
+      this.results = await getSearch(this.query);
     }
   }
 };
