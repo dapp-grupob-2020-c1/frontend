@@ -1,14 +1,16 @@
-async function getSearch(query) {
-  const api_url = process.env.VUE_API_URL || "http://localhost:8080/api/";
-  const requestUrl = new URL("/api/search", api_url);
+async function getSearch(searchQuery) {
+  const apiBaseUrl = process.env.VUE_APP_API_URL;
+  const requestUrl = new URL("/api/search", apiBaseUrl);
 
+  // adds searchQuery parameters
   requestUrl.searchParams.set("locationId", "1");
-  if (query) {
-    requestUrl.searchParams.set("keyword", query);
+  if (searchQuery) {
+    requestUrl.searchParams.set("keyword", searchQuery);
   }
+
+  // makes requests, wait response, return data
   let response = await fetch(requestUrl.toString());
   let data = await response.json();
-  console.log(data);
   return data;
 }
 
