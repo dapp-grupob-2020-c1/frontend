@@ -1,7 +1,7 @@
 <template>
-  <b-container class="bv-example-row">
+  <b-container>
     <b-row align-h="center" align-v="center" class="my-5">
-      <b-col cols="8">
+      <b-col cols="6">
         <h1>Iniciar Sesión</h1>
         <b-card>
           <b-form-group
@@ -28,8 +28,14 @@
               required
             ></b-form-input>
           </b-form-group>
-          <b-button block variant="primary">Iniciar Sesión</b-button>
+          <b-button block variant="primary">
+            Iniciar Sesión
+          </b-button>
         </b-card>
+        <p>
+          No tenés cuenta?
+          <router-link to="/register">Registrar nuevo usuario</router-link>.
+        </p>
       </b-col>
     </b-row>
   </b-container>
