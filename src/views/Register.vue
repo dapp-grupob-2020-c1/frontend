@@ -1,7 +1,7 @@
 <template>
   <b-container class="my-5">
     <b-row align-h="center" align-v="center">
-      <b-col cols="6">
+      <b-col cols="12" md="8" lg="6">
         <h1>Registrar Nuevo Usuario</h1>
         <b-card no-body v-if="!done">
           <b-tabs card content-class="mt-3">
