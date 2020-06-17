@@ -10,7 +10,6 @@
       <b-navbar-nav>
         <b-nav-item to="/search">Buscar</b-nav-item>
         <b-nav-item to="/map">Mapa</b-nav-item>
-        <b-nav-item to="/about">Acerca De</b-nav-item>
       </b-navbar-nav>
 
       <!-- Right aligned nav items -->
