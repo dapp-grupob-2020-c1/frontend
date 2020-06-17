@@ -1,9 +1,9 @@
 <template>
-  <b-container class="bv-example-row">
-    <b-row align-h="center" align-v="center" class="my-5">
+  <b-container class="my-5">
+    <b-row align-h="center" align-v="center">
       <b-col cols="6">
         <h1>Registrar Nuevo Usuario</h1>
-        <b-card no-body>
+        <b-card no-body v-if="!done">
           <b-tabs card content-class="mt-3">
             <b-tab title="Comprador" active>
               <b-alert show variant="danger" v-if="error">
@@ -60,6 +60,9 @@
             </b-tab>
           </b-tabs>
         </b-card>
+        <b-alert show variant="success" align="center" v-else>
+          Registro completado
+        </b-alert>
         <p>
           Ya tenés cuenta?
           <router-link to="/login">Iniciar Sesión</router-link>.
@@ -77,6 +80,7 @@ export default {
     return {
       loading: false,
       error: false,
+      done: false,
       customer: {
         name: null,
         password: null,
@@ -105,6 +109,7 @@ export default {
       } else {
         // handle response data
         console.log("response data", responseData);
+        this.done = true;
       }
 
       this.loading = false;

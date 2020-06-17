@@ -1,6 +1,6 @@
 <template>
-  <b-container>
-    <b-row align-h="center" align-v="center" class="my-5">
+  <b-container class="my-5">
+    <b-row align-h="center" align-v="center">
       <b-col cols="6">
         <h1>Iniciar Sesión</h1>
         <b-card>
