@@ -4,33 +4,39 @@
       <b-col cols="6">
         <h1>Iniciar Sesión</h1>
         <b-card>
-          <b-form-group
-            id="input-group-username"
-            label="Usuario"
-            label-for="username"
-          >
-            <b-form-input
-              id="username"
-              type="text"
-              name="username"
-              required
-            ></b-form-input>
-          </b-form-group>
-          <b-form-group
-            id="input-group-password"
-            label="Contraseña"
-            label-for="password"
-          >
-            <b-form-input
-              id="password"
-              type="password"
-              name="password"
-              required
-            ></b-form-input>
-          </b-form-group>
-          <b-button block variant="primary">
-            Iniciar Sesión
-          </b-button>
+          <form @submit.prevent="handleLogin">
+            <b-form-group
+              id="input-group-username"
+              label="Usuario"
+              label-for="username"
+            >
+              <b-form-input
+                id="username"
+                type="text"
+                name="username"
+                autocomplete="username"
+                required
+                v-model="username"
+              ></b-form-input>
+            </b-form-group>
+            <b-form-group
+              id="input-group-password"
+              label="Contraseña"
+              label-for="password"
+            >
+              <b-form-input
+                id="password"
+                type="password"
+                name="password"
+                autocomplete="current-password"
+                required
+                v-model="password"
+              ></b-form-input>
+            </b-form-group>
+            <b-button block variant="primary" type="submit">
+              Iniciar Sesión
+            </b-button>
+          </form>
         </b-card>
         <p>
           No tenés cuenta?
@@ -44,6 +50,16 @@
 <script>
 export default {
   name: "Login",
-  components: {}
+  data() {
+    return {
+      username: null,
+      password: null
+    };
+  },
+  methods: {
+    handleLogin(e) {
+      console.log("enviando login!", e);
+    }
+  }
 };
 </script>
