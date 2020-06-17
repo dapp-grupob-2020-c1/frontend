@@ -6,6 +6,9 @@
         <b-card no-body>
           <b-tabs card content-class="mt-3">
             <b-tab title="Comprador" active>
+              <b-alert show variant="danger" v-if="error">
+                Hubo un error.
+              </b-alert>
               <form id="customer-form" @submit.prevent="handleCustomerForm">
                 <b-form-group
                   id="label-customer-name"
@@ -46,7 +49,7 @@
                   ></b-form-input>
                 </b-form-group>
                 <p class="text-right m-0">
-                  <b-button type="submit" variant="primary">
+                  <b-button type="submit" variant="primary" :disabled="loading">
                     Registrar Comprador
                   </b-button>
                 </p>
@@ -72,6 +75,8 @@ export default {
   name: "Login",
   data() {
     return {
+      loading: false,
+      error: false,
       customer: {
         name: null,
         password: null,
@@ -86,9 +91,23 @@ export default {
   },
   methods: {
     async handleCustomerForm() {
-      console.log("customer registration");
+      console.log("handle customer registration");
+      this.loading = true;
+      this.error = false;
+
       const response = await registerCustomer(this.customer);
-      console.log(response);
+      const responseData = await response.json();
+
+      if (response.status < 200 || response.status >= 300) {
+        // handle errors
+        this.error = true;
+        console.log("error en request", responseData, response.statusText);
+      } else {
+        // handle response data
+        console.log("response data", responseData);
+      }
+
+      this.loading = false;
     },
     handleSellerForm() {}
   },

@@ -1,6 +1,4 @@
 async function registerCustomer(customerData) {
-  console.log("RegisterCustomer request", customerData);
-
   const requestUrl = new URL(
     "/api/customer",
     process.env.VUE_APP_API_URL
@@ -16,8 +14,8 @@ async function registerCustomer(customerData) {
     method: "POST",
     body: requestData
   });
-  let data = await response.json();
-  return data;
+
+  return response;
 }
 
 export { registerCustomer };
