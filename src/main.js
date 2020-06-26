@@ -13,11 +13,11 @@ Vue.config.productionTip = false;
 import VueAuthenticate from "vue-authenticate";
 Vue.use(VueAxios, axios);
 Vue.use(VueAuthenticate, {
-  baseUrl: "http://localhost:3000", // Your API domain
+  baseUrl: process.env.VUE_APP_API_URL,
   providers: {
-    github: {
-      clientId: "",
-      redirectUri: "http://localhost:8080/auth/callback" // Your client app URL
+    google: {
+      clientId: process.env.VUE_APP_OAUTH2_GOOGLE_CLIENT_ID,
+      redirectUri: process.env.VUE_APP_REDIRECT_URL
     }
   }
 });
