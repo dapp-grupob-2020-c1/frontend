@@ -1,8 +1,16 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
+import store from "../store/index";
 
 Vue.use(VueRouter);
+
+const requiresAuth = (to, from, next) => {
+  if (store.state.isAuthenticated) {
+    next();
+  }
+  next("/login");
+};
 
 const routes = [
   {
@@ -27,6 +35,13 @@ const routes = [
     name: "Search",
     component: () =>
       import(/* webpackChunkName: "search" */ "../views/Search.vue")
+  },
+  {
+    path: "/dashboard",
+    name: "Dashboard",
+    beforeEnter: requiresAuth,
+    component: () =>
+      import(/* webpackChunkName: "dashboard" */ "../views/Dashboard.vue")
   },
   {
     path: "/map",

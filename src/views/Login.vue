@@ -33,9 +33,21 @@
                 v-model="password"
               ></b-form-input>
             </b-form-group>
-            <b-button block variant="primary" type="submit">
-              Iniciar Sesión
-            </b-button>
+            <!--            <b-button block variant="primary" type="submit">-->
+            <!--              Iniciar Sesión-->
+            <!--            </b-button>-->
+            <b-form-row>
+              <b-col>
+                <b-button block variant="primary" @click="handleSellerLogin">
+                  Iniciar Sesión (Seller)
+                </b-button>
+              </b-col>
+              <b-col>
+                <b-button block variant="primary" @click="handleBuyerLogin">
+                  Iniciar Sesión (Buyer)
+                </b-button>
+              </b-col>
+            </b-form-row>
           </form>
         </b-card>
         <p>
@@ -59,6 +71,24 @@ export default {
   methods: {
     handleLogin(e) {
       console.log("enviando login!", e);
+    },
+    handleSellerLogin() {
+      console.log("Seller Login");
+      this.$store.commit("setAuth", true);
+      this.$store.commit("setUser", {
+        name: "Juan Seller",
+        type: "seller"
+      });
+      this.$router.push("/dashboard");
+    },
+    handleBuyerLogin() {
+      console.log("Buyer Login");
+      this.$store.commit("setAuth", true);
+      this.$store.commit("setUser", {
+        name: "Roberto Buyer",
+        type: "buyer"
+      });
+      this.$router.push("/dashboard");
     }
   }
 };

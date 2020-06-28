@@ -4,8 +4,25 @@ import Vuex from "vuex";
 Vue.use(Vuex);
 
 export default new Vuex.Store({
-  state: {},
-  mutations: {},
+  state: {
+    isAuthenticated: false,
+    user: {
+      name: null,
+      type: null
+    },
+    customer: {
+      locations: []
+    },
+    seller: {}
+  },
+  mutations: {
+    setUser(state, newUser) {
+      state.user = newUser;
+    },
+    setAuth(state, authState) {
+      state.isAuthenticated = authState;
+    }
+  },
   actions: {},
   modules: {}
 });
