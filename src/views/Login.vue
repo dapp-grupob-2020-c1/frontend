@@ -73,7 +73,6 @@ export default {
       console.log("enviando login!", e);
     },
     handleSellerLogin() {
-      console.log("Seller Login");
       this.$store.commit("setAuth", true);
       this.$store.commit("setUser", {
         name: "Juan Seller",
@@ -82,7 +81,6 @@ export default {
       this.$router.push("/dashboard");
     },
     handleBuyerLogin() {
-      console.log("Buyer Login");
       this.$store.commit("setAuth", true);
       this.$store.commit("setUser", {
         name: "Roberto Buyer",
