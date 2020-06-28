@@ -8,8 +8,9 @@ Vue.use(VueRouter);
 const requiresAuth = (to, from, next) => {
   if (store.state.isAuthenticated) {
     next();
+  } else {
+    next("/login");
   }
-  next("/login");
 };
 
 const routes = [

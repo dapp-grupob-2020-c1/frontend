@@ -23,6 +23,12 @@ export default new Vuex.Store({
       state.isAuthenticated = authState;
     }
   },
-  actions: {},
+  actions: {
+    login() {},
+    logout({ commit }) {
+      commit("setAuth", false);
+      commit("setUser", {});
+    }
+  },
   modules: {}
 });
