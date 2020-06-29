@@ -45,6 +45,13 @@ const routes = [
       import(/* webpackChunkName: "dashboard" */ "../views/Dashboard.vue")
   },
   {
+    path: "/cart",
+    name: "Cart",
+    beforeEnter: requiresAuth,
+    component: () =>
+      import(/* webpackChunkName: "cart" */ "../views/ShoppingCart.vue")
+  },
+  {
     path: "/map",
     name: "Map",
     component: () => import(/* webpackChunkName: "about" */ "../views/Map.vue")
