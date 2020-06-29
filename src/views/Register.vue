@@ -56,7 +56,7 @@
               </form>
             </b-tab>
             <b-tab title="Vendedor">
-              <p>wip</p>
+              <RegisterShopForm />
             </b-tab>
           </b-tabs>
         </b-card>
@@ -74,6 +74,7 @@
 
 <script>
 import { registerCustomer } from "../api/register";
+import RegisterShopForm from "../components/RegisterShopForm";
 export default {
   name: "Login",
   data() {
@@ -116,6 +117,8 @@ export default {
     },
     handleSellerForm() {}
   },
-  components: {}
+  components: {
+    RegisterShopForm
+  }
 };
 </script>
