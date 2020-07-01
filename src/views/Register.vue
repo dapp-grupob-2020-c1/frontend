@@ -23,9 +23,8 @@
 </template>
 
 <script>
-import { registerCustomer } from "../api/register";
-import RegisterShopForm from "../components/RegisterShopForm";
 import RegisterBuyerForm from "../components/RegisterBuyerForm";
+import RegisterShopForm from "../components/RegisterShopForm";
 export default {
   name: "Login",
   components: {
