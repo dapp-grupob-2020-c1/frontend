@@ -1,15 +1,12 @@
 import Vue from "vue";
 import Vuex from "vuex";
 
+// Modules
+import auth from "./auth";
 Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    isAuthenticated: true,
-    user: {
-      name: "Buyer",
-      type: "buyer"
-    },
     customer: {
       locations: [
         {
@@ -39,20 +36,9 @@ export default new Vuex.Store({
     ],
     availablePaymentMethods: ["CASH", "MERCADOPAGO", "DEBIT", "CREDIT"]
   },
-  mutations: {
-    setUser(state, newUser) {
-      state.user = newUser;
-    },
-    setAuth(state, authState) {
-      state.isAuthenticated = authState;
-    }
-  },
-  actions: {
-    login() {},
-    logout({ commit }) {
-      commit("setAuth", false);
-      commit("setUser", {});
-    }
-  },
-  modules: {}
+  mutations: {},
+  actions: {},
+  modules: {
+    auth,
+  }
 });

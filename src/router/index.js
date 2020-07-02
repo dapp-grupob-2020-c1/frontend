@@ -6,7 +6,7 @@ import store from "../store/index";
 Vue.use(VueRouter);
 
 const requiresAuth = (to, from, next) => {
-  if (store.state.isAuthenticated) {
+  if (store.getters["auth/isAuthenticated"]) {
     next();
   } else {
     next("/login");

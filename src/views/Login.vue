@@ -73,20 +73,18 @@ export default {
       console.log("enviando login!", e);
     },
     handleSellerLogin() {
-      this.$store.commit("setAuth", true);
-      this.$store.commit("setUser", {
+      const sellerInfo = {
         name: "Juan Seller",
         type: "seller"
-      });
-      this.$router.push("/dashboard");
+      };
+      this.$store.dispatch("auth/login", sellerInfo);
     },
     handleBuyerLogin() {
-      this.$store.commit("setAuth", true);
-      this.$store.commit("setUser", {
+      const buyerInfo = {
         name: "Roberto Buyer",
         type: "buyer"
-      });
-      this.$router.push("/dashboard");
+      };
+      this.$store.dispatch("auth/login", buyerInfo);
     }
   }
 };

@@ -22,7 +22,7 @@
         </b-button>
         <b-nav-item-dropdown
           v-if="isAuthenticated"
-          :text="$store.state.user.name"
+          :text="$store.state.auth.name"
           right
         >
           <b-dropdown-item to="/dashboard">Dashboard</b-dropdown-item>
@@ -39,13 +39,12 @@ export default {
   name: "Navbar",
   computed: {
     isAuthenticated() {
-      return this.$store.state.isAuthenticated;
+      return this.$store.getters["auth/isAuthenticated"];
     }
   },
   methods: {
     handleLogout() {
-      this.$store.dispatch("logout");
-      this.$router.replace("/");
+      this.$store.dispatch("auth/logout");
     }
   }
 };
