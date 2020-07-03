@@ -1,5 +1,6 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
+import multiguard from "vue-router-multiguard";
 import Home from "../views/Home.vue";
 import store from "../store/index";
 
@@ -9,6 +10,15 @@ const requiresAuth = (to, from, next) => {
   if (store.getters["auth/isAuthenticated"]) {
     next();
   } else {
+    next("/login");
+  }
+};
+
+const onlyBuyer = (to, from, next) => {
+  if (store.state.auth.type === "buyer") {
+    next();
+  } else {
+    console.log("ruta sólo disponible para buyer");
     next("/login");
   }
 };
@@ -47,14 +57,9 @@ const routes = [
   {
     path: "/cart",
     name: "Cart",
-    beforeEnter: requiresAuth,
+    beforeEnter: multiguard([requiresAuth, onlyBuyer]),
     component: () =>
       import(/* webpackChunkName: "cart" */ "../views/ShoppingCart.vue")
-  },
-  {
-    path: "/map",
-    name: "Map",
-    component: () => import(/* webpackChunkName: "about" */ "../views/Map.vue")
   }
 ];
 
