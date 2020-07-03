@@ -4,7 +4,7 @@ export default {
   namespaced: true,
   state: {
     name: null,
-    type: null // null, buyer, seller
+    type: "" // null, buyer, seller
   },
   mutations: {
     setLogin(state, { name, type }) {
@@ -13,7 +13,7 @@ export default {
     },
     setLogout(state) {
       state.name = null;
-      state.type = null;
+      state.type = "";
     }
   },
   actions: {
