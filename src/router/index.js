@@ -42,17 +42,18 @@ const routes = [
       import(/* webpackChunkName: "register" */ "../views/Register.vue")
   },
   {
-    path: "/search",
-    name: "Search",
-    component: () =>
-      import(/* webpackChunkName: "search" */ "../views/Search.vue")
-  },
-  {
     path: "/dashboard",
     name: "Dashboard",
     beforeEnter: requiresAuth,
     component: () =>
       import(/* webpackChunkName: "dashboard" */ "../views/Dashboard.vue")
+  },
+  {
+    path: "/search",
+    name: "Search",
+    beforeEnter: multiguard([requiresAuth, onlyBuyer]),
+    component: () =>
+      import(/* webpackChunkName: "search" */ "../views/Search.vue")
   },
   {
     path: "/cart",
