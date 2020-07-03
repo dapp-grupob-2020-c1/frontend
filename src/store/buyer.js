@@ -13,9 +13,38 @@ export default {
         long: -58.3122063
       }
     ],
-    operations: []
+    operations: [],
+    searchResults: []
   },
-  mutations: {},
-  actions: {},
+  mutations: {
+    setSearchResults(state, newSearchResults) {
+      state.searchResults = newSearchResults;
+    }
+  },
+  actions: {
+    beginSearch({ commit }, payload) {
+      console.log("search action", payload);
+      setTimeout(() => {
+        const mockedSearchResults = [
+          {
+            id: 1,
+            name: "lala",
+            price: 123
+          },
+          {
+            id: 2,
+            name: "lele",
+            price: 234
+          },
+          {
+            id: 3,
+            name: "lili",
+            price: 345
+          }
+        ];
+        commit("setSearchResults", mockedSearchResults);
+      }, 500);
+    }
+  },
   getters: {}
 };

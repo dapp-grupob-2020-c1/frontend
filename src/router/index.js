@@ -1,7 +1,8 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import multiguard from "vue-router-multiguard";
 import Home from "../views/Home.vue";
+
+import multiguard from "vue-router-multiguard";
 import store from "../store/index";
 
 Vue.use(VueRouter);
@@ -53,7 +54,7 @@ const routes = [
     name: "Search",
     beforeEnter: multiguard([requiresAuth, onlyBuyer]),
     component: () =>
-      import(/* webpackChunkName: "search" */ "../views/Search.vue")
+      import(/* webpackChunkName: "search" */ "../views/buyer/Search.vue")
   },
   {
     path: "/cart",
