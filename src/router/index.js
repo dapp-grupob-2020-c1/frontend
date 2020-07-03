@@ -2,7 +2,27 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
 
+import multiguard from "vue-router-multiguard";
+import store from "../store/index";
+
 Vue.use(VueRouter);
+
+const requiresAuth = (to, from, next) => {
+  if (store.getters["auth/isAuthenticated"]) {
+    next();
+  } else {
+    next("/login");
+  }
+};
+
+const onlyBuyer = (to, from, next) => {
+  if (store.state.auth.type === "buyer") {
+    next();
+  } else {
+    console.log("ruta sólo disponible para buyer");
+    next("/login");
+  }
+};
 
 const routes = [
   {
@@ -23,15 +43,25 @@ const routes = [
       import(/* webpackChunkName: "register" */ "../views/Register.vue")
   },
   {
-    path: "/search",
-    name: "Search",
+    path: "/dashboard",
+    name: "Dashboard",
+    beforeEnter: requiresAuth,
     component: () =>
-      import(/* webpackChunkName: "search" */ "../views/Search.vue")
+      import(/* webpackChunkName: "dashboard" */ "../views/Dashboard.vue")
   },
   {
-    path: "/map",
-    name: "Map",
-    component: () => import(/* webpackChunkName: "about" */ "../views/Map.vue")
+    path: "/search",
+    name: "Search",
+    beforeEnter: multiguard([requiresAuth, onlyBuyer]),
+    component: () =>
+      import(/* webpackChunkName: "search" */ "../views/buyer/Search.vue")
+  },
+  {
+    path: "/cart",
+    name: "Cart",
+    beforeEnter: multiguard([requiresAuth, onlyBuyer]),
+    component: () =>
+      import(/* webpackChunkName: "cart" */ "../views/ShoppingCart.vue")
   }
 ];
 

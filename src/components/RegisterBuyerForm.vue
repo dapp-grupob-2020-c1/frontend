@@ -1,0 +1,35 @@
+<template>
+  <form id="register-buyer-form">
+    <b-form-group
+      id="label-buyer-name"
+      label="Nombre Completo"
+      label-for="buyer-name"
+    >
+      <b-form-input id="buyer-name" type="text" required></b-form-input>
+    </b-form-group>
+    <b-form-group id="label-buyer-email" label="Email" label-for="buyer-email">
+      <b-form-input id="buyer-email" type="email" required></b-form-input>
+    </b-form-group>
+    <b-form-group
+      id="label-buyer-password"
+      label="Password"
+      label-for="buyer-password"
+    >
+      <b-form-input id="buyer-password" type="password" required></b-form-input>
+    </b-form-group>
+
+    <b-button type="submit" variant="primary">
+      Registrar Comprador
+    </b-button>
+  </form>
+</template>
+
+<script>
+export default {
+  name: "RegisterBuyerForm",
+  data() {
+    return {};
+  },
+  computed: {}
+};
+</script>

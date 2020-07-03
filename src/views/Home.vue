@@ -9,7 +9,7 @@
     </b-jumbotron>
     <b-container class="my-5">
       <b-row class="justify-content-center">
-        <b-col cols="8">
+        <b-col md="10" lg="8">
           <div class="about">
             <h1>Comprando en casa...</h1>
             <p>
