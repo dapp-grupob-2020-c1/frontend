@@ -10,7 +10,7 @@
     <!-- Productos -->
     <div class="my-4">
       <h2 class="h3">Listado de Productos</h2>
-      <p>WIP: Muestro el listado de productos agregados al carrito</p>
+      {{ $store.state.buyer.shoppingCartItems }}
     </div>
 
     <!-- Envio -->

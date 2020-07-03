@@ -3,7 +3,9 @@
     <pre>
     {{ product }}
     </pre>
-    <b-button variant="primary">Agregar al Carrito</b-button>
+    <b-button variant="primary" @click="handleAddToCart">
+      Agregar al Carrito
+    </b-button>
   </b-card>
 </template>
 
@@ -15,6 +17,20 @@ export default {
       required: true
     }
   },
-  computed: {}
+  data() {
+    return {
+      quantity: 1
+    };
+  },
+  computed: {},
+  methods: {
+    handleAddToCart() {
+      const cartItem = {
+        product: this.product.name,
+        quantity: this.quantity
+      };
+      this.$store.dispatch("buyer/addItemToCart", cartItem);
+    }
+  }
 };
 </script>

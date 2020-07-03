@@ -20,6 +20,10 @@
         <b-button to="/login" variant="outline-primary" v-if="!isAuthenticated">
           Iniciar Sesión
         </b-button>
+
+        <b-nav-item to="/cart" v-if="$store.state.auth.type === 'buyer'">
+          Carrito ({{ cart.length }})
+        </b-nav-item>
         <b-nav-item-dropdown
           v-if="isAuthenticated"
           :text="$store.state.auth.name"
@@ -40,6 +44,9 @@ export default {
   computed: {
     isAuthenticated() {
       return this.$store.getters["auth/isAuthenticated"];
+    },
+    cart() {
+      return this.$store.state.buyer.shoppingCartItems;
     }
   },
   methods: {

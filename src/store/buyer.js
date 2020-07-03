@@ -14,11 +14,15 @@ export default {
       }
     ],
     operations: [],
-    searchResults: []
+    searchResults: [],
+    shoppingCartItems: []
   },
   mutations: {
     setSearchResults(state, newSearchResults) {
       state.searchResults = newSearchResults;
+    },
+    addItemToCart(state, cartItem) {
+      state.shoppingCartItems.push(cartItem);
     }
   },
   actions: {
@@ -44,6 +48,10 @@ export default {
         ];
         commit("setSearchResults", mockedSearchResults);
       }, 500);
+    },
+    addItemToCart({ commit }, cartItem) {
+      console.log("adding item to cart", cartItem);
+      commit("addItemToCart", cartItem);
     }
   },
   getters: {}
