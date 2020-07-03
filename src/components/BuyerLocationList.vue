@@ -10,6 +10,7 @@
         v-for="(location, index) in locationsList"
         :key="index"
       >
+        <p>Ubicación {{ index + 1 }}</p>
         <pre>{{ location }}</pre>
       </b-list-group-item>
     </b-list-group>
@@ -26,7 +27,7 @@ export default {
   name: "BuyerLocationList",
   computed: {
     locationsList() {
-      return this.$store.state.customer.locations;
+      return this.$store.state.buyer.locations;
     }
   }
 };

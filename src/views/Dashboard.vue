@@ -19,7 +19,7 @@ export default {
   components: { BuyerDashboard, SellerDashboard },
   computed: {
     userType() {
-      return this.$store.state.user.type;
+      return this.$store.state.auth.type;
     }
   }
 };

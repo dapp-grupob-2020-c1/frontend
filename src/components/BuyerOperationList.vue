@@ -15,8 +15,8 @@
         <b-button variant="text">Ver Detalles</b-button>
       </b-list-group-item>
     </b-list-group>
-    <b-alert variant="info" show v-else>
-      No hay ninguna operación registrada. Comprar.
+    <b-alert show v-else>
+      No hay ninguna operación registrada hasta el momento
     </b-alert>
   </div>
 </template>
@@ -25,12 +25,7 @@ export default {
   name: "BuyerOperationList",
   computed: {
     operationsList() {
-      return [
-        {
-          uuid: "15c506b2-ea51-4686-86a4-6b2d9ea83b74",
-          date: "2020-06-28T23:40:03.358Z"
-        }
-      ];
+      return this.$store.state.buyer.operations;
     }
   }
 };

@@ -1,5 +1,9 @@
 <template>
   <div id="buyer-dashboard">
+    <!-- Datos -->
+    <h2 class="h3">Perfil de Comprador</h2>
+    <p>Nombre</p>
+
     <!-- Locations -->
     <BuyerLocationList class="my-4" />
 

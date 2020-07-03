@@ -1,29 +1,33 @@
 <template>
   <div id="seller-dashboard">
+    <!-- Datos -->
+    <div class="mb-5">
+      <h2 class="h3">Datos del Negocio</h2>
+      <p class="text-muted">WIP</p>
+      <p>Nombre</p>
+      <p>Ubicación</p>
+      <p>Horarios de Atención</p>
+      <p>Distancia de Envío</p>
+    </div>
+
     <!-- Productos -->
-    <div>
-      <h2 class="h3">Productos Cargados</h2>
-      <p>
-        Podés llevar un registro de todas las operaciones registradas en el
-        sistema
-      </p>
-      <b-list-group>
-        <b-list-group-item>
-          <pre>producto</pre>
-          <b-button variant="text">Ver Detalles</b-button>
-        </b-list-group-item>
-      </b-list-group>
-      <b-alert variant="info" show>
-        No hay ninguna producto registrado.
-      </b-alert>
-      <p>
-        <b-button>Cargar Producto</b-button>
-      </p>
+    <SellerProductList class="mb-5" />
+
+    <!-- Operaciones -->
+    <SellerOperationList class="mb-5" />
+
+    <!-- Descuento -->
+    <div class="mb-5">
+      <h2 class="h3">Descuentos</h2>
+      <p class="text-muted">WIP</p>
     </div>
   </div>
 </template>
 <script>
+import SellerOperationList from "./SellerOperationList";
+import SellerProductList from "./SellerProductList";
 export default {
-  name: "SellerDashboard"
+  name: "SellerDashboard",
+  components: { SellerProductList, SellerOperationList }
 };
 </script>
