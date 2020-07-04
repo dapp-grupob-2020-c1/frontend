@@ -14,7 +14,12 @@
       No hay ningún producto cargado hasta el momento.
     </b-alert>
     <p>
-      <b-button variant="primary" to="/createProduct">Cargar Producto</b-button>
+      <b-button class="mr-2" variant="primary" to="/createProduct">
+        Cargar Producto
+      </b-button>
+      <b-button class="mr-2" variant="outline-primary" to="/uploadProducts">
+        Cargar .CSV
+      </b-button>
     </p>
   </div>
 </template>
