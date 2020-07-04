@@ -1,7 +1,11 @@
 <template>
   <b-navbar toggleable="md" type="dark" variant="dark">
     <b-navbar-brand to="/">
-      <img alt="logo" src="../assets/logo.png" style="max-height:60px;" />
+      <img
+        :alt="`Logo ${$t('app.app_name')}`"
+        src="../assets/logo.png"
+        style="max-height:60px;"
+      />
     </b-navbar-brand>
 
     <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
