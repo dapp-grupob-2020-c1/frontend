@@ -29,7 +29,6 @@
           right
         >
           <b-dropdown-item to="/dashboard">Dashboard</b-dropdown-item>
-          <b-dropdown-item to="/cart">Shopping Cart</b-dropdown-item>
           <b-dropdown-item @click="handleLogout">Cerrar Sesión</b-dropdown-item>
         </b-nav-item-dropdown>
       </b-navbar-nav>
