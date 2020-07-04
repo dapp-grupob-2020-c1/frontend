@@ -115,5 +115,10 @@
   "product": {
     "addToCart": "Agregar al Carrito",
     "addedToCart": "agregado al carrito."
+  },
+  "search": {
+    "searchProducts": "Buscar Productos",
+    "searchResults": "Resultados",
+    "beginSearch": "Iniciar Búsqueda"
   }
 }
