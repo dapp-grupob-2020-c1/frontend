@@ -1,26 +1,25 @@
 <template>
   <div id="seller-dashboard">
-    <!-- Datos -->
-    <div class="mb-5">
-      <h2 class="h3">Datos del Negocio</h2>
-      <p class="text-muted">WIP</p>
-      <p>Nombre</p>
-      <p>Ubicación</p>
-      <p>Horarios de Atención</p>
-      <p>Distancia de Envío</p>
-    </div>
-
-    <!-- Productos -->
-    <SellerProductList class="mb-5" />
-
-    <!-- Operaciones -->
-    <SellerOperationList class="mb-5" />
-
-    <!-- Descuento -->
-    <div class="mb-5">
-      <h2 class="h3">Descuentos</h2>
-      <p class="text-muted">WIP</p>
-    </div>
+    <b-card no-body>
+      <b-tabs pills card fill>
+        <b-tab title="Perfil del Negocio" active>
+          <p class="text-muted">WIP</p>
+          <p>Nombre</p>
+          <p>Ubicación</p>
+          <p>Horarios de Atención</p>
+          <p>Distancia de Envío</p>
+        </b-tab>
+        <b-tab title="Productos">
+          <SellerProductList />
+        </b-tab>
+        <b-tab title="Operaciones">
+          <SellerOperationList />
+        </b-tab>
+        <b-tab title="Descuentos">
+          <p class="text-muted">WIP</p>
+        </b-tab>
+      </b-tabs>
+    </b-card>
   </div>
 </template>
 <script>

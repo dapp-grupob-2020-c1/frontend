@@ -1,6 +1,5 @@
 <template>
   <div>
-    <h2 class="h3">Compras Anteriores</h2>
     <p>
       Podés llevar un registro de todas las operaciones registradas en el
       sistema

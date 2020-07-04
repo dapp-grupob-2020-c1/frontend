@@ -1,6 +1,5 @@
 <template>
   <div>
-    <h2 class="h3">Operaciones</h2>
     <p>
       Listado de las ventas registradas en el sistema.
     </p>
