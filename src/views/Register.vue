@@ -2,7 +2,7 @@
   <b-container class="my-5">
     <b-row align-h="center" align-v="center">
       <b-col cols="12" md="8" lg="6">
-        <h1>{{ $t("register.register_new_user") }}</h1>
+        <h1>{{ $t("register.registerNewUser") }}</h1>
         <b-card no-body>
           <b-tabs card content-class="mt-3">
             <b-tab :title="$t('register.buyer')" active>
@@ -14,7 +14,7 @@
           </b-tabs>
         </b-card>
         <p>
-          {{ $t("register.already_have_account") }}
+          {{ $t("register.alreadyHAveAccount") }}
           <router-link to="/login">{{ $t("register.login") }}</router-link
           >.
         </p>

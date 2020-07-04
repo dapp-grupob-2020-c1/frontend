@@ -1,25 +1,25 @@
 {
   "app": {
     "appName": "Comprando En Casa",
-    "group_name": "Grupo B",
+    "groupName": "Grupo B",
     "repositories": "Repositorios"
   },
   "home": {
     "welcome": "Bienvenido",
-    "intro_buyer_seller": "Podés registrarte como comprador o vendedor.",
-    "intro_login": "Si ya estás registrado, podes iniciar sesión",
-    "see_more": "Ver Más",
-    "see_less": "Ver Menos"
+    "introRolesSuggestion": "Podés registrarte como comprador o vendedor.",
+    "introLoginSuggestion": "Si ya estás registrado, podes iniciar sesión",
+    "seeMore": "Ver Más",
+    "seeLess": "Ver Menos"
   },
   "cart": {
     "cart": "Carrito de Compras",
-    "products_list": "Listado de Productos",
+    "productsList": "Listado de Productos",
     "alerts": "Alertas",
-    "alerts_description": "WIP: muestro las alertas de la compra.",
-    "shipping_options": "Opciones de Envío",
-    "shipping_options_description": "WIP: muestro distintas opciones de envío.",
-    "payment_methods": "Medios de Pago",
-    "payment_methods_description": "WIP: muestro los distintos medios de pago.",
+    "alertsDescription": "WIP: muestro las alertas de la compra.",
+    "shippingOptions": "Opciones de Envío",
+    "shippingOptionsDescription": "WIP: muestro distintas opciones de envío.",
+    "paymentMethods": "Medios de Pago",
+    "paymentMethodsDescription": "WIP: muestro los distintos medios de pago.",
     "checkout": "Finalizar Compra"
   },
   "navbar": {
@@ -28,14 +28,13 @@
     "register": "Registrarse",
     "login": "Iniciar Sesión",
     "logout": "Cerrar Sesión",
-    "dashboard": "Dashboard",
-    "shopping_cart": "Carrito de Compras"
+    "dashboard": "Dashboard"
   },
   "register": {
-    "register_new_user": "Registrar Nuevo Usuario",
+    "registerNewUser": "Registrar Nuevo Usuario",
     "buyer": "Comprador",
     "seller": "Vendedor",
-    "already_have_account": "Ya tenés cuenta?",
+    "alreadyHAveAccount": "Ya tenés cuenta?",
     "login": "Iniciar Sesión",
     "registerSeller": {
       "managerInformation": "Datos del Manager",
@@ -62,11 +61,11 @@
     "login": "Iniciar Sesión",
     "username": "Nombre",
     "password": "Contraseña",
-    "login_buyer": "Iniciar Sesión (Comprador)",
-    "login_seller": "Iniciar Sesión (Vendedor)",
-    "dont_have_account": "No tenés una cuenta?",
+    "loginBuyer": "Iniciar Sesión (Comprador)",
+    "loginSeller": "Iniciar Sesión (Vendedor)",
+    "dontHaveAccount": "No tenés una cuenta?",
     "register": "Registrar Nuevo Usuario",
-    "login_success": "Sesión Iniciada Correctamente"
+    "loginSuccess": "Sesión Iniciada Correctamente"
   },
   "dashboard": {
     "dashboard": "Dashboard",
@@ -80,7 +79,7 @@
     "buyerLocations": {
       "description": "Las direcciones cargadas por el cliente son usadas para calcular los envíos de productos.",
       "empty": "No hay ninguna ubicación registrada.",
-      "add_location": "Agregar Ubicación."
+      "addLocation": "Agregar Ubicación."
     },
     "buyerOperations": {
       "description": "Podés llevar un registro de todas las operaciones registradas en el sistema.",

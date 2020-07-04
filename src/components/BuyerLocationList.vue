@@ -15,7 +15,7 @@
     </b-alert>
     <div class="actions my-2">
       <b-button variant="outline-primary">
-        {{ $t("dashboard.buyerLocations.add_location") }}
+        {{ $t("dashboard.buyerLocations.addLocation") }}
       </b-button>
     </div>
   </div>

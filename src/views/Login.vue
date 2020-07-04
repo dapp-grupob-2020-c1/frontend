@@ -39,19 +39,19 @@
             <b-form-row>
               <b-col>
                 <b-button block variant="primary" @click="handleSellerLogin">
-                  {{ $t("login.login_seller") }}
+                  {{ $t("login.loginSeller") }}
                 </b-button>
               </b-col>
               <b-col>
                 <b-button block variant="primary" @click="handleBuyerLogin">
-                  {{ $t("login.login_buyer") }}
+                  {{ $t("login.loginBuyer") }}
                 </b-button>
               </b-col>
             </b-form-row>
           </form>
         </b-card>
         <p>
-          {{ $t("login.dont_have_account") }}
+          {{ $t("login.dontHaveAccount") }}
           <router-link to="/register">{{ $t("login.register") }}</router-link
           >.
         </p>
@@ -72,7 +72,7 @@ export default {
   methods: {
     handleLogin(userInfo) {
       this.$store.dispatch("auth/login", userInfo);
-      this.$root.$bvToast.toast(this.$t("login.login_success"), {
+      this.$root.$bvToast.toast(this.$t("login.loginSuccess"), {
         variant: "success",
         toaster: "b-toaster-top-right",
         noCloseButton: true,

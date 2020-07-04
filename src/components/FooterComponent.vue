@@ -1,6 +1,6 @@
 <template>
   <div class="bg-light text-dark py-5 mt-5 text-center">
-    <p>{{ $t("app.appName") }} <em> | </em> {{ $t("app.group_name") }}</p>
+    <p>{{ $t("app.appName") }} <em> | </em> {{ $t("app.groupName") }}</p>
     <p>Nahuel Moscatelli <em> | </em> Tehuel Torres Baldi</p>
     <p>
       {{ $t("app.repositories") }}:

@@ -1,8 +1,8 @@
 <template>
   <div>
     <b-jumbotron :header="$t('home.welcome')">
-      <p>{{ $t("home.intro_buyer_seller") }}</p>
-      <p>{{ $t("home.intro_login") }}</p>
+      <p>{{ $t("home.introRolesSuggestion") }}</p>
+      <p>{{ $t("home.introLoginSuggestion") }}</p>
     </b-jumbotron>
     <b-container class="my-5">
       <b-row class="justify-content-center">
@@ -104,8 +104,8 @@
               </p>
             </b-collapse>
             <b-button v-b-toggle.description-collapse variant="text">
-              <span class="when-closed">{{ $t("home.see_more") }}</span>
-              <span class="when-open">{{ $t("home.see_less") }}</span>
+              <span class="when-closed">{{ $t("home.seeMore") }}</span>
+              <span class="when-open">{{ $t("home.seeLess") }}</span>
             </b-button>
           </div>
         </b-col>
