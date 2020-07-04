@@ -1,21 +1,20 @@
 <template>
   <div>
-    <p>
-      Podés llevar un registro de todas las operaciones registradas en el
-      sistema
-    </p>
+    <p>{{ $t("dashboard.buyerOperations.description") }}</p>
     <b-list-group v-if="operationsList.length">
       <b-list-group-item
-        v-for="(location, index) in operationsList"
+        v-for="(operation, index) in operationsList"
         :key="index"
       >
-        <p>Compra #{{ index }}</p>
-        <pre>{{ location }}</pre>
-        <b-button variant="text">Ver Detalles</b-button>
+        <p>#{{ index }}</p>
+        <pre>{{ operation }}</pre>
+        <b-button variant="text">
+          {{ $t("dashboard.buyerOperations.showDetails") }}
+        </b-button>
       </b-list-group-item>
     </b-list-group>
     <b-alert show v-else>
-      No hay ninguna operación registrada hasta el momento
+      {{ $t("dashboard.buyerOperations.empty") }}
     </b-alert>
   </div>
 </template>

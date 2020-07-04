@@ -60,6 +60,11 @@
       "description": "Las direcciones cargadas por el cliente son usadas para calcular los envíos de productos.",
       "empty": "No hay ninguna ubicación registrada.",
       "add_location": "Agregar Ubicación."
+    },
+    "buyerOperations": {
+      "description": "Podés llevar un registro de todas las operaciones registradas en el sistema.",
+      "empty": "No hay ninguna operación registrada.",
+      "showDetails": "Ver Detalles"
     }
   },
   "store_profile": "Perfil del Negocio",
