@@ -2,7 +2,7 @@
   <b-navbar toggleable="md" type="dark" variant="dark">
     <b-navbar-brand to="/">
       <img
-        :alt="`Logo ${$t('app.app_name')}`"
+        :alt="`Logo ${$t('app.appName')}`"
         src="../assets/logo.png"
         style="max-height:60px;"
       />

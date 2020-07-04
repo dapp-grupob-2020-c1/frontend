@@ -1,6 +1,6 @@
 <template>
   <b-container class="my-5">
-    <h1 class="h1">{{ $t("dashboard") }}</h1>
+    <h1 class="h1">{{ $t("dashboard.dashboard") }}</h1>
 
     <!-- Buyer -->
     <BuyerDashboard v-if="userType === 'buyer'" />

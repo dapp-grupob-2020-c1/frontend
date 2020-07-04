@@ -8,7 +8,7 @@
       <b-row class="justify-content-center">
         <b-col md="10" lg="8">
           <div class="about">
-            <h1>{{ $t("home.app_name") }}</h1>
+            <h1>{{ $t("app.appName") }}</h1>
             <p>
               La actual situación de aislamiento obligatorio dificulta el acceso
               a los comercios de cercanía y la adquisición de diversos productos

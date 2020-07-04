@@ -2,18 +2,18 @@
   <div id="buyer-dashboard">
     <b-card no-body>
       <b-tabs pills card fill>
-        <b-tab title="Perfil" active>
+        <b-tab :title="$t('dashboard.buyer.profile')" active>
           <div class="my-4">
-            <p>Nombre</p>
+            <p>{{ $t("dashboard.buyer.name") }}</p>
           </div>
         </b-tab>
-        <b-tab title="Ubicaciones">
+        <b-tab :title="$t('dashboard.buyer.locations')">
           <BuyerLocationList />
         </b-tab>
-        <b-tab title="Compras Anteriores">
+        <b-tab :title="$t('dashboard.buyer.operations')">
           <BuyerOperationList />
         </b-tab>
-        <b-tab title="Alertas">
+        <b-tab :title="$t('dashboard.buyer.alerts')">
           <p class="text-muted">WIP</p>
         </b-tab>
       </b-tabs>

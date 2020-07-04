@@ -1,11 +1,10 @@
 {
   "app": {
-    "app_name": "Comprando En Casa",
+    "appName": "Comprando En Casa",
     "group_name": "Grupo B"
   },
   "home": {
     "welcome": "Bienvenido",
-    "app_name": "Comprando En Casa",
     "intro_buyer_seller": "Podés registrarte como comprador o vendedor.",
     "intro_login": "Si ya estás registrado, podes iniciar sesión",
     "see_more": "Ver Más",
@@ -48,12 +47,25 @@
     "register": "Registrar Nuevo Usuario",
     "login_success": "Sesión Iniciada Correctamente"
   },
-  "dashboard": "Dashboard",
-  "buyer_profile": "Perfil",
+  "dashboard": {
+    "dashboard": "Dashboard",
+    "buyer": {
+      "profile": "Perfil",
+      "name": "Nombre",
+      "locations": "Ubicaciones",
+      "operations": "Compras Anteriores",
+      "alerts": "Alertas"
+    },
+    "buyerLocations": {
+      "description": "Las direcciones cargadas por el cliente son usadas para calcular los envíos de productos.",
+      "empty": "No hay ninguna ubicación registrada.",
+      "add_location": "Agregar Ubicación."
+    }
+  },
   "store_profile": "Perfil del Negocio",
-  "locations": "Ubicaciones",
-  "operations": "Compras Anteriores",
-  "alerts": "Alertas",
+
+
+
   "store_name": "Nombre",
   "location": "Ubicación",
   "opening_time": "Horario de Atención",
