@@ -2,12 +2,12 @@
   <b-container class="my-5">
     <b-row align-h="center" align-v="center">
       <b-col cols="12" md="8" lg="6">
-        <h1>Iniciar Sesión</h1>
+        <h1>{{ $t("login.login") }}</h1>
         <b-card>
           <form @submit.prevent="handleLogin">
             <b-form-group
               id="input-group-username"
-              label="Usuario"
+              :label="$t('login.username')"
               label-for="username"
             >
               <b-form-input
@@ -21,7 +21,7 @@
             </b-form-group>
             <b-form-group
               id="input-group-password"
-              label="Contraseña"
+              :label="$t('login.password')"
               label-for="password"
             >
               <b-form-input
@@ -39,20 +39,21 @@
             <b-form-row>
               <b-col>
                 <b-button block variant="primary" @click="handleSellerLogin">
-                  Iniciar Sesión (Seller)
+                  {{ $t("login.login_seller") }}
                 </b-button>
               </b-col>
               <b-col>
                 <b-button block variant="primary" @click="handleBuyerLogin">
-                  Iniciar Sesión (Buyer)
+                  {{ $t("login.login_buyer") }}
                 </b-button>
               </b-col>
             </b-form-row>
           </form>
         </b-card>
         <p>
-          No tenés cuenta?
-          <router-link to="/register">Registrar nuevo usuario</router-link>.
+          {{ $t("login.dont_have_account") }}
+          <router-link to="/register">{{ $t("login.register") }}</router-link
+          >.
         </p>
       </b-col>
     </b-row>
@@ -70,9 +71,8 @@ export default {
   },
   methods: {
     handleLogin(userInfo) {
-      console.log("enviando login!", userInfo);
       this.$store.dispatch("auth/login", userInfo);
-      this.$root.$bvToast.toast("Sesión Iniciada Correctamente", {
+      this.$root.$bvToast.toast(this.$t("login.login_success"), {
         variant: "success",
         toaster: "b-toaster-top-right",
         noCloseButton: true,

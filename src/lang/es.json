@@ -36,6 +36,16 @@
     "already_have_account": "Ya tenés cuenta?",
     "login": "Iniciar Sesión"
   },
+  "login": {
+    "login": "Iniciar Sesión",
+    "username": "Nombre",
+    "password": "Contraseña",
+    "login_buyer": "Iniciar Sesión (Comprador)",
+    "login_seller": "Iniciar Sesión (Vendedor)",
+    "dont_have_account": "No tenés una cuenta?",
+    "register": "Registrar Nuevo Usuario",
+    "login_success": "Sesión Iniciada Correctamente"
+  },
   "dashboard": "Dashboard",
   "buyer_profile": "Perfil",
   "store_profile": "Perfil del Negocio",
