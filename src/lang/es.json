@@ -114,7 +114,26 @@
   },
   "product": {
     "addToCart": "Agregar al Carrito",
-    "addedToCart": "agregado al carrito."
+    "addedToCart": "agregado al carrito.",
+    "create": {
+      "createNewProduct": "Crear Nuevo Producto",
+      "productName": "Nombre",
+      "productBrand": "Marca",
+      "productPrice": "Precio",
+      "productCategories": "Categorías",
+      "submit": "Crear Producto",
+      "cancel": "Cancelar"
+    },
+    "upload": {
+      "uploadFile": "Cargar Listado CSV",
+      "uploadDescription": "Se puede cargar un listado de multiples productos, en formato CSV.",
+      "selectFilePlaceholder": "Selecciona o arrastra un archivo...",
+      "selectFileBrowseText": "Seleccionar",
+      "dropFilePlaceholder": "Arrastra un archivo hasta acá...",
+      "selectedFile": "Archivo Seleccionado",
+      "submit": "Cargar Listado",
+      "cancel": "Cancelar"
+    }
   },
   "search": {
     "searchProducts": "Buscar Productos",

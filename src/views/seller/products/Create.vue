@@ -1,7 +1,12 @@
 <template>
   <b-container class="my-5">
-    <h1 class="h1">Cargar Nuevo Producto</h1>
-    <b-form-group id="input-group-name" label="Nombre" label-for="name">
+    <h1 class="h1">{{ $t("product.create.createNewProduct") }}</h1>
+
+    <b-form-group
+      id="input-group-name"
+      :label="$t('product.create.productName')"
+      label-for="name"
+    >
       <b-form-input
         id="name"
         type="text"
@@ -10,7 +15,12 @@
         v-model="name"
       ></b-form-input>
     </b-form-group>
-    <b-form-group id="input-group-brand" label="Marca" label-for="brand">
+
+    <b-form-group
+      id="input-group-brand"
+      :label="$t('product.create.productBrand')"
+      label-for="brand"
+    >
       <b-form-input
         id="brand"
         type="text"
@@ -19,7 +29,12 @@
         v-model="brand"
       ></b-form-input>
     </b-form-group>
-    <b-form-group id="input-group-price" label="Precio" label-for="price">
+
+    <b-form-group
+      id="input-group-price"
+      :label="$t('product.create.productPrice')"
+      label-for="price"
+    >
       <b-form-input
         id="price"
         type="number"
@@ -28,7 +43,8 @@
         v-model="price"
       ></b-form-input>
     </b-form-group>
-    <b-form-group label="Categorías">
+
+    <b-form-group :label="$t('product.create.productCategories')">
       <b-form-checkbox-group
         id="shop-categories"
         v-model="categories"
@@ -38,10 +54,10 @@
     </b-form-group>
 
     <b-button variant="primary" size="lg" @click="handleCreateProduct">
-      Crear Producto
+      {{ $t("product.create.submit") }}
     </b-button>
     <b-button variant="text" size="lg" @click="handleCancel">
-      Cancelar
+      {{ $t("product.create.cancel") }}
     </b-button>
   </b-container>
 </template>

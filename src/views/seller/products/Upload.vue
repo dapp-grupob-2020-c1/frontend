@@ -1,21 +1,25 @@
 <template>
   <b-container class="my-5">
-    <h1 class="h1">Cargar Listado</h1>
-    <p>Se puede cargar un listado de multiples productos, en formato CSV.</p>
+    <h1 class="h1">{{ $t("product.upload.uploadFile") }}</h1>
+    <p>{{ $t("product.upload.uploadDescription") }}</p>
 
     <b-form-file
       v-model="file"
       :state="Boolean(file)"
-      placeholder="Choose a file or drop it here..."
-      drop-placeholder="Drop file here..."
+      :placeholder="$t('product.upload.selectFilePlaceholder')"
+      :drop-placeholder="$t('product.upload.dropFilePlaceholder')"
+      :browse-text="$t('product.upload.selectFileBrowseText')"
     ></b-form-file>
-    <div class="my-3">Selected file: {{ file ? file.name : "" }}</div>
+
+    <div class="my-3">
+      {{ $t("product.upload.selectedFile") }}: {{ file ? file.name : "" }}
+    </div>
 
     <b-button variant="primary" size="lg" @click="handleCreateProduct">
-      Cargar Archivo
+      {{ $t("product.upload.submit") }}
     </b-button>
     <b-button variant="text" size="lg" @click="handleCancel">
-      Cancelar
+      {{ $t("product.upload.cancel") }}
     </b-button>
   </b-container>
 </template>
