@@ -1,14 +1,8 @@
 <template>
   <div>
     <b-jumbotron :header="$t('home.welcome')">
-      <p>
-        Podés <router-link to="/register">registrarte</router-link> como
-        <strong>comprador</strong> o <strong>vendedor</strong>.
-      </p>
-      <p>
-        Si ya tenés una cuenta, podés
-        <router-link to="/login">iniciar sesión</router-link>.
-      </p>
+      <p>{{ $t("home.intro_buyer_seller") }}</p>
+      <p>{{ $t("home.intro_login") }}</p>
     </b-jumbotron>
     <b-container class="my-5">
       <b-row class="justify-content-center">

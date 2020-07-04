@@ -16,7 +16,10 @@ import SellerDashboard from "../components/SellerDashboard";
 
 export default {
   name: "Dashboard",
-  components: { BuyerDashboard, SellerDashboard },
+  components: {
+    BuyerDashboard,
+    SellerDashboard
+  },
   computed: {
     userType() {
       return this.$store.state.auth.type;

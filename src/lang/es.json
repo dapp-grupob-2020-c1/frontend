@@ -6,6 +6,8 @@
   "home": {
     "welcome": "Bienvenido",
     "app_name": "Comprando En Casa",
+    "intro_buyer_seller": "Podés registrarte como comprador o vendedor.",
+    "intro_login": "Si ya estás registrado, podes iniciar sesión",
     "see_more": "Ver Más",
     "see_less": "Ver Menos"
   },
