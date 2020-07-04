@@ -30,6 +30,15 @@ export default {
         quantity: this.quantity
       };
       this.$store.dispatch("buyer/addItemToCart", cartItem);
+      this.$root.$bvToast.toast(
+        `${cartItem.quantity} x ${cartItem.product} agregado al carrito`,
+        {
+          variant: "success",
+          toaster: "b-toaster-top-right",
+          noCloseButton: true,
+          autoHideDelay: 4000
+        }
+      );
     }
   }
 };

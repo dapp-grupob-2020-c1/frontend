@@ -69,22 +69,29 @@ export default {
     };
   },
   methods: {
-    handleLogin(e) {
-      console.log("enviando login!", e);
+    handleLogin(userInfo) {
+      console.log("enviando login!", userInfo);
+      this.$store.dispatch("auth/login", userInfo);
+      this.$root.$bvToast.toast("Sesión Iniciada Correctamente", {
+        variant: "success",
+        toaster: "b-toaster-top-right",
+        noCloseButton: true,
+        autoHideDelay: 4000
+      });
     },
     handleSellerLogin() {
       const sellerInfo = {
         name: "Juan Seller",
         type: "seller"
       };
-      this.$store.dispatch("auth/login", sellerInfo);
+      this.handleLogin(sellerInfo);
     },
     handleBuyerLogin() {
       const buyerInfo = {
         name: "Roberto Buyer",
         type: "buyer"
       };
-      this.$store.dispatch("auth/login", buyerInfo);
+      this.handleLogin(buyerInfo);
     }
   }
 };
