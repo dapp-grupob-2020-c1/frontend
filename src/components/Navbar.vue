@@ -9,17 +9,17 @@
     <b-collapse id="nav-collapse" is-nav>
       <b-navbar-nav>
         <LocaleChanger />
-        <b-nav-item to="/search">Buscar</b-nav-item>
-        <b-nav-item to="/map">Mapa</b-nav-item>
+        <b-nav-item to="/search">{{ $t("navbar.search") }}</b-nav-item>
+        <b-nav-item to="/map">{{ $t("navbar.map") }}</b-nav-item>
       </b-navbar-nav>
 
       <!-- Right aligned nav items -->
       <b-navbar-nav class="ml-auto">
         <b-nav-item to="/register" v-if="!isAuthenticated">
-          Registrarse
+          {{ $t("navbar.register") }}
         </b-nav-item>
         <b-button to="/login" variant="outline-primary" v-if="!isAuthenticated">
-          Iniciar Sesión
+          {{ $t("navbar.login") }}
         </b-button>
 
         <NavbarShoppingCart />
@@ -29,9 +29,15 @@
           :text="$store.state.auth.name"
           right
         >
-          <b-dropdown-item to="/dashboard">Dashboard</b-dropdown-item>
-          <b-dropdown-item to="/cart">Shopping Cart</b-dropdown-item>
-          <b-dropdown-item @click="handleLogout">Cerrar Sesión</b-dropdown-item>
+          <b-dropdown-item to="/dashboard">
+            {{ $t("navbar.dashboard") }}
+          </b-dropdown-item>
+          <b-dropdown-item to="/cart">
+            {{ $t("navbar.shopping_cart") }}
+          </b-dropdown-item>
+          <b-dropdown-item @click="handleLogout">
+            {{ $t("navbar.logout") }}
+          </b-dropdown-item>
         </b-nav-item-dropdown>
       </b-navbar-nav>
     </b-collapse>

@@ -9,6 +9,26 @@
     "see_more": "Ver Más",
     "see_less": "Ver Menos"
   },
+  "cart": {
+    "cart": "Carrito de Compras",
+    "products_list": "Listado de Productos",
+    "alerts": "Alertas",
+    "alerts_description": "WIP: muestro las alertas de la compra.",
+    "shipping_options": "Opciones de Envío",
+    "shipping_options_description": "WIP: muestro distintas opciones de envío.",
+    "payment_methods": "Medios de Pago",
+    "payment_methods_description": "WIP: muestro los distintos medios de pago.",
+    "checkout": "Finalizar Compra"
+  },
+  "navbar": {
+    "search": "Buscar",
+    "map": "Mapa",
+    "register": "Registrarse",
+    "login": "Iniciar Sesión",
+    "logout": "Cerrar Sesión",
+    "dashboard": "Dashboard",
+    "shopping_cart": "Carrito de Compras"
+  },
   "dashboard": "Dashboard",
   "buyer_profile": "Perfil",
   "store_profile": "Perfil del Negocio",
