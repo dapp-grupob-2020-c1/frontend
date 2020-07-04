@@ -15,7 +15,7 @@
       No hay ningún producto cargado hasta el momento.
     </b-alert>
     <p>
-      <b-button variant="primary">Cargar Producto</b-button>
+      <b-button variant="primary" to="/createProduct">Cargar Producto</b-button>
     </p>
   </div>
 </template>
