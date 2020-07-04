@@ -1,7 +1,8 @@
 {
   "app": {
     "appName": "Comprando En Casa",
-    "group_name": "Grupo B"
+    "group_name": "Grupo B",
+    "repositories": "Repositorios"
   },
   "home": {
     "welcome": "Bienvenido",

@@ -3,7 +3,7 @@
     <p>{{ $t("app.appName") }} <em> | </em> {{ $t("app.group_name") }}</p>
     <p>Nahuel Moscatelli <em> | </em> Tehuel Torres Baldi</p>
     <p>
-      Repos:
+      {{ $t("app.repositories") }}:
       <a href="https://github.com/dapp-grupob-2020-c1/frontend">Frontend</a>
       <em> | </em>
       <a href="https://github.com/dapp-grupob-2020-c1/backend">Backend</a>
