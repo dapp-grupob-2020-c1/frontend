@@ -1,0 +1,18 @@
+{
+  "home": {
+    "welcome": "Welcome"
+  },
+  "welcome": "Welcome",
+  "dashboard": "Dashboard",
+  "buyer_profile": "User Profile",
+  "store_profile": "Store Profile",
+  "locations": "Locations",
+  "operations": "Previous Operations",
+  "alerts": "Alerts",
+  "store_name": "Name",
+  "location": "Location",
+  "opening_time": "Opening Hours",
+  "shipping_distance": "Shipping Distance",
+  "products": "Products",
+  "discounts": "Discounts"
+}

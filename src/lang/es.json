@@ -1,0 +1,24 @@
+{
+  "app": {
+    "app_name": "Comprando En Casa",
+    "group_name": "Grupo B"
+  },
+  "home": {
+    "welcome": "Bienvenido",
+    "app_name": "Comprando En Casa",
+    "see_more": "Ver Más",
+    "see_less": "Ver Menos"
+  },
+  "dashboard": "Dashboard",
+  "buyer_profile": "Perfil",
+  "store_profile": "Perfil del Negocio",
+  "locations": "Ubicaciones",
+  "operations": "Compras Anteriores",
+  "alerts": "Alertas",
+  "store_name": "Nombre",
+  "location": "Ubicación",
+  "opening_time": "Horario de Atención",
+  "shipping_distance": "Distancia de Envío",
+  "products": "Productos",
+  "discounts": "Descuentos"
+}

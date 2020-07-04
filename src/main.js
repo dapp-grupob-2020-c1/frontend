@@ -9,6 +9,15 @@ import "./assets/style.scss";
 
 Vue.config.productionTip = false;
 
+// i18n
+import { defaultLocale, messages } from "./lang";
+import VueI18n from "vue-i18n";
+Vue.use(VueI18n);
+var i18n = new VueI18n({
+  locale: defaultLocale,
+  messages: messages
+});
+
 // Vue-Authenticate
 import VueAuthenticate from "vue-authenticate";
 Vue.use(VueAxios, axios);
@@ -39,5 +48,6 @@ Vue.use(IconsPlugin);
 new Vue({
   router,
   store,
+  i18n,
   render: h => h(App)
 }).$mount("#app");
