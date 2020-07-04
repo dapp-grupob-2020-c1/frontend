@@ -29,6 +29,13 @@
     "dashboard": "Dashboard",
     "shopping_cart": "Carrito de Compras"
   },
+  "register": {
+    "register_new_user": "Registrar Nuevo Usuario",
+    "buyer": "Comprador",
+    "seller": "Vendedor",
+    "already_have_account": "Ya tenés cuenta?",
+    "login": "Iniciar Sesión"
+  },
   "dashboard": "Dashboard",
   "buyer_profile": "Perfil",
   "store_profile": "Perfil del Negocio",
