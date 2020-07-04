@@ -1,6 +1,5 @@
 <template>
   <div>
-    <h2 class="h3">Ubicaciones</h2>
     <p>
       Las direcciones cargadas por el cliente son usadas para calcular los
       envíos de productos.

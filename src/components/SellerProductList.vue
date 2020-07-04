@@ -1,6 +1,5 @@
 <template>
   <div>
-    <h2 class="h3">Productos</h2>
     <p>
       Listado de productos cargados en el sistema.
     </p>
