@@ -65,16 +65,31 @@
       "description": "Podés llevar un registro de todas las operaciones registradas en el sistema.",
       "empty": "No hay ninguna operación registrada.",
       "showDetails": "Ver Detalles"
-    }
-  },
-  "store_profile": "Perfil del Negocio",
-
-
-
-  "store_name": "Nombre",
-  "location": "Ubicación",
-  "opening_time": "Horario de Atención",
-  "shipping_distance": "Distancia de Envío",
-  "products": "Productos",
-  "discounts": "Descuentos"
+    },
+    "seller": {
+      "profile": "Perfil del Negocio",
+      "products": "Productos",
+      "discounts": "Descuentos",
+      "operations": "Ventas Registradas"
+    },
+    "sellerProfile": {
+      "storeName": "Nombre del Negocio",
+      "location": "Ubicación",
+      "openingHours": "Horario de Atención",
+      "shippingDistance": "Distancia de Envío"
+    },
+    "sellerProducts": {
+      "description": "Listado de productos cargados en el sistema.",
+      "showDetails": "Ver Detalles",
+      "empty": "No hay ningún producto cargado hasta el momento.",
+      "createProduct": "Crear Nuevo",
+      "uploadFile": "Cargar .CSV"
+    },
+    "sellerOperations": {
+      "description": "Listado de las ventas registradas en el sistema.",
+      "showDetails": "Ver Detalles",
+      "empty": "No hay ninguna venta registrada hasta el momento."
+    },
+    "sellerDiscounts": {}
+  }
 }

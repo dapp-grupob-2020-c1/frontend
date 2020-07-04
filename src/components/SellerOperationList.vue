@@ -1,20 +1,22 @@
 <template>
   <div>
     <p>
-      Listado de las ventas registradas en el sistema.
+      {{ $t("dashboard.sellerOperations.description") }}
     </p>
     <b-list-group v-if="operationsList.length">
       <b-list-group-item
         v-for="(operation, index) in operationsList"
         :key="index"
       >
-        <p>Venta #{{ index }}</p>
+        <p>#{{ index }}</p>
         <pre>{{ operation }}</pre>
-        <b-button variant="text">Ver Detalles</b-button>
+        <b-button variant="text">
+          {{ $t("dashboard.sellerOperations.showDetails") }}
+        </b-button>
       </b-list-group-item>
     </b-list-group>
     <b-alert show v-else>
-      No hay ninguna venta registrada hasta el momento.
+      {{ $t("dashboard.sellerOperations.empty") }}
     </b-alert>
   </div>
 </template>

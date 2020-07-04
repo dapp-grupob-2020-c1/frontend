@@ -2,20 +2,19 @@
   <div id="seller-dashboard">
     <b-card no-body>
       <b-tabs pills card fill>
-        <b-tab title="Perfil del Negocio" active>
-          <p class="text-muted">WIP</p>
-          <p>Nombre</p>
-          <p>Ubicación</p>
-          <p>Horarios de Atención</p>
-          <p>Distancia de Envío</p>
+        <b-tab :title="$t('dashboard.seller.profile')" active>
+          <p>{{ $t("dashboard.sellerProfile.storeName") }}</p>
+          <p>{{ $t("dashboard.sellerProfile.location") }}</p>
+          <p>{{ $t("dashboard.sellerProfile.openingHours") }}</p>
+          <p>{{ $t("dashboard.sellerProfile.shippingDistance") }}</p>
         </b-tab>
-        <b-tab title="Productos">
+        <b-tab :title="$t('dashboard.seller.products')">
           <SellerProductList />
         </b-tab>
-        <b-tab title="Operaciones">
+        <b-tab :title="$t('dashboard.seller.operations')">
           <SellerOperationList />
         </b-tab>
-        <b-tab title="Descuentos">
+        <b-tab :title="$t('dashboard.seller.discounts')">
           <p class="text-muted">WIP</p>
         </b-tab>
       </b-tabs>

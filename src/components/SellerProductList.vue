@@ -1,24 +1,24 @@
 <template>
   <div>
-    <p>
-      Listado de productos cargados en el sistema.
-    </p>
+    <p>{{ $t("dashboard.sellerProducts.description") }}</p>
     <b-list-group v-if="productsList.length">
       <b-list-group-item v-for="(product, index) in productsList" :key="index">
-        <p>Producto #{{ index }}</p>
+        <p>#{{ index }}</p>
         <pre>{{ product }}</pre>
-        <b-button variant="text">Ver Detalles</b-button>
+        <b-button variant="text">
+          {{ $t("dashboard.sellerProducts.showDetails") }}
+        </b-button>
       </b-list-group-item>
     </b-list-group>
     <b-alert show v-else>
-      No hay ningún producto cargado hasta el momento.
+      {{ $t("dashboard.sellerProducts.empty") }}
     </b-alert>
     <p>
       <b-button class="mr-2" variant="primary" to="/createProduct">
-        Cargar Producto
+        {{ $t("dashboard.sellerProducts.createProduct") }}
       </b-button>
       <b-button class="mr-2" variant="outline-primary" to="/uploadProducts">
-        Cargar .CSV
+        {{ $t("dashboard.sellerProducts.uploadFile") }}
       </b-button>
     </p>
   </div>
