@@ -4,7 +4,7 @@
     {{ product }}
     </pre>
     <b-button variant="primary" @click="handleAddToCart">
-      Agregar al Carrito
+      {{ $t("product.addToCart") }}
     </b-button>
   </b-card>
 </template>
@@ -31,7 +31,9 @@ export default {
       };
       this.$store.dispatch("buyer/addItemToCart", cartItem);
       this.$root.$bvToast.toast(
-        `${cartItem.quantity} x ${cartItem.product} agregado al carrito`,
+        `${cartItem.quantity} x ${cartItem.product} ${this.$t(
+          "product.addedToCart"
+        )}`,
         {
           variant: "success",
           toaster: "b-toaster-top-right",

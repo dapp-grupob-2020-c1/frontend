@@ -35,7 +35,27 @@
     "buyer": "Comprador",
     "seller": "Vendedor",
     "already_have_account": "Ya tenés cuenta?",
-    "login": "Iniciar Sesión"
+    "login": "Iniciar Sesión",
+    "registerSeller": {
+      "managerInformation": "Datos del Manager",
+      "managerName": "Nombre Completo",
+      "managerEmail": "Email",
+      "managerPassword": "Password",
+      "shopInformation": "Datos del Negocio",
+      "shopName": "Nombre",
+      "shopCategories": "Categorías",
+      "shopPaymentOptions": "Medios de Pago",
+      "shopOpeningDays": "Días y horario de atención",
+      "shopOpeningHourFrom": "Desde",
+      "shopOpeningHourTo": "Hasta",
+      "submit": "Registrar Vendedor"
+    },
+    "registerBuyer": {
+      "buyerName": "Nombre Completo",
+      "buyerEmail": "Email",
+      "buyerPassword": "Password",
+      "submit": "Registrar Comprador"
+    }
   },
   "login": {
     "login": "Iniciar Sesión",
@@ -91,5 +111,9 @@
       "empty": "No hay ninguna venta registrada hasta el momento."
     },
     "sellerDiscounts": {}
+  },
+  "product": {
+    "addToCart": "Agregar al Carrito",
+    "addedToCart": "agregado al carrito."
   }
 }
