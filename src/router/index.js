@@ -24,6 +24,15 @@ const onlyBuyer = (to, from, next) => {
   }
 };
 
+const onlySeller = (to, from, next) => {
+  if (store.state.auth.type === "seller") {
+    next();
+  } else {
+    console.log("ruta sólo disponible para seller");
+    next("/login");
+  }
+};
+
 const routes = [
   {
     path: "/",
@@ -62,6 +71,15 @@ const routes = [
     beforeEnter: multiguard([requiresAuth, onlyBuyer]),
     component: () =>
       import(/* webpackChunkName: "cart" */ "../views/ShoppingCart.vue")
+  },
+  {
+    path: "/createProduct",
+    name: "CreateProduct",
+    beforeEnter: multiguard([requiresAuth, onlySeller]),
+    component: () =>
+      import(
+        /* webpackChunkName: "createProduct" */ "../views/seller/products/Create.vue"
+      )
   }
 ];
 
