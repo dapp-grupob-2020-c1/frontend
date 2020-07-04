@@ -1,17 +1,20 @@
 <template>
   <div>
-    <b-jumbotron header="Bienvenido">
+    <b-jumbotron :header="$t('home.welcome')">
       <p>
         Podés <router-link to="/register">registrarte</router-link> como
-        <strong>comprador</strong> o <strong>vendedor</strong>. Si ya tenés una
-        cuenta, podés <router-link to="/login">iniciar sesión</router-link>.
+        <strong>comprador</strong> o <strong>vendedor</strong>.
+      </p>
+      <p>
+        Si ya tenés una cuenta, podés
+        <router-link to="/login">iniciar sesión</router-link>.
       </p>
     </b-jumbotron>
     <b-container class="my-5">
       <b-row class="justify-content-center">
         <b-col md="10" lg="8">
           <div class="about">
-            <h1>Comprando en casa...</h1>
+            <h1>{{ $t("home.app_name") }}</h1>
             <p>
               La actual situación de aislamiento obligatorio dificulta el acceso
               a los comercios de cercanía y la adquisición de diversos productos
@@ -107,8 +110,8 @@
               </p>
             </b-collapse>
             <b-button v-b-toggle.description-collapse variant="text">
-              Ver <span class="when-open">Menos</span
-              ><span class="when-closed">Más...</span>
+              <span class="when-closed">{{ $t("home.see_more") }}</span>
+              <span class="when-open">{{ $t("home.see_less") }}</span>
             </b-button>
           </div>
         </b-col>
