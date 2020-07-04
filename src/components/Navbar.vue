@@ -32,9 +32,6 @@
           <b-dropdown-item to="/dashboard">
             {{ $t("navbar.dashboard") }}
           </b-dropdown-item>
-          <b-dropdown-item to="/cart">
-            {{ $t("navbar.shopping_cart") }}
-          </b-dropdown-item>
           <b-dropdown-item @click="handleLogout">
             {{ $t("navbar.logout") }}
           </b-dropdown-item>

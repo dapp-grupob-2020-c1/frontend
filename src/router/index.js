@@ -80,6 +80,15 @@ const routes = [
       import(
         /* webpackChunkName: "createProduct" */ "../views/seller/products/Create.vue"
       )
+  },
+  {
+    path: "/uploadProducts",
+    name: "UploadProducts",
+    beforeEnter: multiguard([requiresAuth, onlySeller]),
+    component: () =>
+      import(
+        /* webpackChunkName: "uploadProducts" */ "../views/seller/products/Upload.vue"
+      )
   }
 ];
 
