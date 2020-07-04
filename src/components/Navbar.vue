@@ -8,6 +8,7 @@
 
     <b-collapse id="nav-collapse" is-nav>
       <b-navbar-nav>
+        <LocaleChanger />
         <b-nav-item to="/search">Buscar</b-nav-item>
         <b-nav-item to="/map">Mapa</b-nav-item>
       </b-navbar-nav>
@@ -39,9 +40,10 @@
 
 <script>
 import NavbarShoppingCart from "./NavbarShoppingCart";
+import LocaleChanger from "./LocaleChanger";
 export default {
   name: "Navbar",
-  components: { NavbarShoppingCart },
+  components: { LocaleChanger, NavbarShoppingCart },
   computed: {
     isAuthenticated() {
       return this.$store.getters["auth/isAuthenticated"];
