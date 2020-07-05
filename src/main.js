@@ -1,7 +1,4 @@
 import Vue from "vue";
-import axios from "axios";
-import VueAxios from "vue-axios";
-
 import App from "./App.vue";
 import router from "./router";
 import store from "./store";
@@ -16,19 +13,6 @@ Vue.use(VueI18n);
 var i18n = new VueI18n({
   locale: defaultLocale,
   messages: messages
-});
-
-// Vue-Authenticate
-import VueAuthenticate from "vue-authenticate";
-Vue.use(VueAxios, axios);
-Vue.use(VueAuthenticate, {
-  baseUrl: process.env.VUE_APP_API_URL,
-  providers: {
-    google: {
-      clientId: process.env.VUE_APP_OAUTH2_GOOGLE_CLIENT_ID,
-      redirectUri: process.env.VUE_APP_REDIRECT_URL
-    }
-  }
 });
 
 // Vue Google Maps
