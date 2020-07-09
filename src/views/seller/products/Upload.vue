@@ -15,7 +15,7 @@
       {{ $t("product.upload.selectedFile") }}: {{ file ? file.name : "" }}
     </div>
 
-    <b-button variant="primary" size="lg" @click="handleCreateProduct">
+    <b-button variant="primary" size="lg" @click="handleUploadProduct">
       {{ $t("product.upload.submit") }}
     </b-button>
     <b-button variant="text" size="lg" @click="handleCancel">
@@ -26,24 +26,15 @@
 
 <script>
 export default {
-  name: "ProductsCreate",
+  name: "ProductsUpload",
   data() {
     return {
-      file: null,
-      name: null,
-      brand: null,
-      price: null,
-      categories: []
+      file: null
     };
   },
-  computed: {
-    availableProductCategories() {
-      return this.$store.state.availableProductCategories;
-    }
-  },
   methods: {
-    handleCreateProduct() {
-      console.log("//TODO handle create product");
+    handleUploadProduct() {
+      console.log("//TODO handle upload product");
     },
     handleCancel() {
       console.log("//TODO handle cancel");
