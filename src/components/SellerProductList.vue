@@ -13,14 +13,15 @@
     <b-alert show v-else>
       {{ $t("dashboard.sellerProducts.empty") }}
     </b-alert>
-    <p class="mt-2">
+
+    <div class="actions my-2">
       <b-button class="mr-2" variant="primary" to="/createProduct">
         {{ $t("dashboard.sellerProducts.createProduct") }}
       </b-button>
       <b-button class="mr-2" variant="outline-primary" to="/uploadProducts">
         {{ $t("dashboard.sellerProducts.uploadFile") }}
       </b-button>
-    </p>
+    </div>
   </div>
 </template>
 <script>

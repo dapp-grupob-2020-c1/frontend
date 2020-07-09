@@ -79,7 +79,7 @@
     "buyerLocations": {
       "description": "Las direcciones cargadas por el cliente son usadas para calcular los envíos de productos.",
       "empty": "No hay ninguna ubicación registrada.",
-      "addLocation": "Agregar Ubicación."
+      "addLocation": "Agregar Ubicación"
     },
     "buyerOperations": {
       "description": "Podés llevar un registro de todas las operaciones registradas en el sistema.",
@@ -134,6 +134,15 @@
       "dropFilePlaceholder": "Arrastra un archivo hasta acá...",
       "selectedFile": "Archivo Seleccionado",
       "submit": "Cargar Listado",
+      "cancel": "Cancelar"
+    }
+  },
+  "location": {
+    "create": {
+      "createNewLocation": "Agregar Ubicación",
+      "successfulCreation": "Ubicación agregada correctamente",
+      "address": "Dirección",
+      "submit": "Agregar Ubicación",
       "cancel": "Cancelar"
     }
   },

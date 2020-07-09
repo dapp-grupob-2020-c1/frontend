@@ -19,15 +19,21 @@ export default {
   },
   mutations: {
     setSearchResults(state, newSearchResults) {
+      console.log("buyer/setSearchResults mutation", newSearchResults);
       state.searchResults = newSearchResults;
     },
     addItemToCart(state, cartItem) {
+      console.log("buyer/addItemToCart mutation", cartItem);
       state.shoppingCartItems.push(cartItem);
+    },
+    addLocation(state, newLocation) {
+      console.log("buyer/addLocation mutation", newLocation);
+      state.locations.push(newLocation);
     }
   },
   actions: {
     beginSearch({ commit }, payload) {
-      console.log("search action", payload);
+      console.log("buyer/beginSearch action", payload);
       setTimeout(() => {
         const mockedSearchResults = [
           {
@@ -50,7 +56,7 @@ export default {
       }, 500);
     },
     addItemToCart({ commit }, cartItem) {
-      console.log("adding item to cart", cartItem);
+      console.log("buyer/addItemToCart action", cartItem);
       commit("addItemToCart", cartItem);
     }
   },

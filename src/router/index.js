@@ -66,6 +66,15 @@ const routes = [
       import(/* webpackChunkName: "search" */ "../views/buyer/Search.vue")
   },
   {
+    path: "/createLocation",
+    name: "CreateLocation",
+    beforeEnter: multiguard([requiresAuth, onlyBuyer]),
+    component: () =>
+      import(
+        /* webpackChunkName: "createLocation" */ "../views/buyer/locations/Create.vue"
+      )
+  },
+  {
     path: "/cart",
     name: "Cart",
     beforeEnter: multiguard([requiresAuth, onlyBuyer]),

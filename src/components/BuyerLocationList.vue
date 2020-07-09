@@ -13,8 +13,9 @@
     <b-alert variant="info" show v-else>
       {{ $t("dashboard.buyerLocations.empty") }}
     </b-alert>
+
     <div class="actions my-2">
-      <b-button variant="outline-primary">
+      <b-button class="mr-2" variant="primary" to="/createLocation">
         {{ $t("dashboard.buyerLocations.addLocation") }}
       </b-button>
     </div>
