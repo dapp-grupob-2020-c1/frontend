@@ -13,7 +13,7 @@
     <b-alert show v-else>
       {{ $t("dashboard.sellerProducts.empty") }}
     </b-alert>
-    <p>
+    <p class="mt-2">
       <b-button class="mr-2" variant="primary" to="/createProduct">
         {{ $t("dashboard.sellerProducts.createProduct") }}
       </b-button>
