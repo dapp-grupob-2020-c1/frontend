@@ -119,10 +119,12 @@
       "createNewProduct": "Crear Nuevo Producto",
       "productName": "Nombre",
       "productBrand": "Marca",
+      "productImage": "Imagen",
       "productPrice": "Precio",
       "productCategories": "Categorías",
       "submit": "Crear Producto",
-      "cancel": "Cancelar"
+      "cancel": "Cancelar",
+      "successfulCreation": "Creado Correctamente"
     },
     "upload": {
       "uploadFile": "Cargar Listado CSV",

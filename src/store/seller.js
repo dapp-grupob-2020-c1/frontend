@@ -16,7 +16,17 @@ export default {
     ],
     operations: []
   },
-  mutations: {},
-  actions: {},
+  mutations: {
+    addProduct(state, product) {
+      console.log("seller/addProduct mutation", product);
+      state.products.push(product);
+    }
+  },
+  actions: {
+    addProduct({ commit }, product) {
+      console.log("seller/addProduct action", product);
+      commit("addProduct", product);
+    }
+  },
   getters: {}
 };

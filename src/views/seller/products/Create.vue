@@ -31,6 +31,20 @@
     </b-form-group>
 
     <b-form-group
+      id="input-group-image"
+      :label="$t('product.create.productImage')"
+      label-for="image"
+    >
+      <b-form-input
+        id="image"
+        type="text"
+        name="image"
+        required
+        v-model="image"
+      ></b-form-input>
+    </b-form-group>
+
+    <b-form-group
       id="input-group-price"
       :label="$t('product.create.productPrice')"
       label-for="price"
@@ -67,8 +81,9 @@ export default {
   name: "ProductsCreate",
   data() {
     return {
-      name: null,
-      brand: null,
+      name: "",
+      brand: "",
+      image: "",
       price: null,
       categories: []
     };
@@ -81,6 +96,23 @@ export default {
   methods: {
     handleCreateProduct() {
       console.log("//TODO handle create product");
+
+      //TODO: validate product information
+      const newProduct = {
+        name: this.name,
+        brand: this.brand,
+        image: this.image,
+        price: this.price,
+        categories: this.categories
+      };
+      this.$store.dispatch("seller/addProduct", newProduct);
+      this.$root.$bvToast.toast(this.$t("product.create.successfulCreation"), {
+        variant: "success",
+        toaster: "b-toaster-top-right",
+        noCloseButton: true,
+        autoHideDelay: 4000
+      });
+      this.$router.back();
     },
     handleCancel() {
       console.log("//TODO handle cancel");
