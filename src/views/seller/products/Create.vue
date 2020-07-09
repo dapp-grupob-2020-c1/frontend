@@ -75,7 +75,7 @@ export default {
   },
   computed: {
     availableProductCategories() {
-      return this.$store.state.availableCategories;
+      return this.$store.state.availableProductCategories;
     }
   },
   methods: {

@@ -92,7 +92,7 @@ export default {
   },
   computed: {
     availableShopCategories() {
-      return this.$store.state.availableCategories;
+      return this.$store.state.availableShopCategories;
     },
     availablePaymentMethods() {
       return this.$store.state.availablePaymentMethods;

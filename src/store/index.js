@@ -10,7 +10,7 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    availableCategories: [
+    availableShopCategories: [
       "FoodsAndDrinks",
       "OfficeSupplies",
       "ElectronicsAndHomeAppliances",
@@ -19,6 +19,18 @@ export default new Vuex.Store({
       "Bazaar",
       "PetsAndAnimals",
       "VehiclesAndAccessories",
+      "Clothing",
+      "Pharmacy"
+    ],
+    availableProductCategories: [
+      "FoodsAndDrinks",
+      "OfficeSupplies",
+      "ElectronicsAndHomeAppliances",
+      "BooksMoviesAndGames",
+      "Services",
+      "Bazaar",
+      "PetsAndAnimals",
+      "VehiclesAndAccesories",
       "Clothing",
       "Pharmacy"
     ],
