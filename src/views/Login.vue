@@ -4,13 +4,17 @@
       <b-col cols="12" md="8" lg="6">
         <h1>{{ $t("login.login") }}</h1>
 
-        <b-alert variant="danger" :show="!!error" dismissible>
+        <b-alert variant="danger" :show="!!requestInfo.error" dismissible>
           <p class="my-1">
-            {{ $t(messageKey) }}.
-            <span v-b-toggle.error-details v-if="details">Ver Detalles.</span>
+            {{ $t(requestInfo.errorMessageKey) }}.
+            <span
+              v-b-toggle.error-details
+              v-if="requestInfo.errorAdditionalInfo"
+              >Ver Detalles.</span
+            >
           </p>
           <b-collapse id="error-details" class="mt-2">
-            {{ details }}
+            {{ requestInfo.errorAdditionalInfo }}
           </b-collapse>
         </b-alert>
 
@@ -30,7 +34,7 @@
                 autocomplete="email"
                 required
                 v-model="userInformation.email"
-                :disabled="loading"
+                :disabled="requestInfo.loading"
                 autofocus
               ></b-form-input>
             </b-form-group>
@@ -46,11 +50,16 @@
                 autocomplete="current-password"
                 required
                 v-model="userInformation.password"
-                :disabled="loading"
+                :disabled="requestInfo.loading"
               ></b-form-input>
             </b-form-group>
-            <b-button block variant="primary" type="submit" :disabled="loading">
-              <b-spinner small v-if="loading"></b-spinner>
+            <b-button
+              block
+              variant="primary"
+              type="submit"
+              :disabled="requestInfo.loading"
+            >
+              <b-spinner small v-if="requestInfo.loading"></b-spinner>
               <span v-else>{{ $t("login.login") }}</span>
             </b-button>
           </form>
@@ -73,10 +82,12 @@ export default {
   components: { GoogleAuthButton },
   data() {
     return {
-      loading: false,
-      error: false,
-      messageKey: "",
-      details: "",
+      requestInfo: {
+        loading: false,
+        error: false,
+        errorMessageKey: "",
+        errorAdditionalInfo: ""
+      },
       userInformation: {
         email: "carlos@example.com",
         password: "123456"
@@ -84,12 +95,17 @@ export default {
     };
   },
   methods: {
+    resetRequestInfo() {
+      this.requestInfo = {
+        loading: false,
+        error: false,
+        errorMessageKey: "",
+        errorAdditionalInfo: ""
+      };
+    },
     async handleLogin() {
-      // reset error state
-      this.loading = true;
-      this.error = false;
-      this.messageKey = "";
-      this.details = "";
+      this.resetRequestInfo();
+      this.requestInfo.loading = true;
       try {
         const response = await loginUser(this.userInformation);
         this.$store.dispatch("auth/login", response.data.accessToken);
@@ -100,15 +116,15 @@ export default {
           autoHideDelay: 4000
         });
       } catch (error) {
-        this.error = true;
+        this.requestInfo.error = true;
         if (error.response) {
-          this.messageKey = "app.responseError";
-          this.details = error.response.data.message;
+          this.requestInfo.errorMessageKey = "app.responseError";
+          this.requestInfo.errorAdditionalInfo = error.response.data.message;
         } else if (error.request) {
-          this.messageKey = "app.connectionError";
+          this.requestInfo.errorMessageKey = "app.connectionError";
         }
       } finally {
-        this.loading = false;
+        this.requestInfo.loading = false;
       }
     }
   }
