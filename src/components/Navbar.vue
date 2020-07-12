@@ -14,32 +14,33 @@
       <b-navbar-nav>
         <LocaleChanger />
         <b-nav-item to="/search">{{ $t("navbar.search") }}</b-nav-item>
-        <b-nav-item to="/map">{{ $t("navbar.map") }}</b-nav-item>
       </b-navbar-nav>
 
       <!-- Right aligned nav items -->
       <b-navbar-nav class="ml-auto">
-        <b-nav-item to="/register" v-if="!isAuthenticated">
-          {{ $t("navbar.register") }}
-        </b-nav-item>
-        <b-button to="/login" variant="outline-primary" v-if="!isAuthenticated">
-          {{ $t("navbar.login") }}
-        </b-button>
-
-        <NavbarShoppingCart />
-
-        <b-nav-item-dropdown
-          v-if="isAuthenticated"
-          :text="$store.state.auth.name"
-          right
-        >
-          <b-dropdown-item to="/dashboard">
+        <!-- Authenticated -->
+        <template v-if="isAuthenticated">
+          <NavbarShoppingCart />
+          <b-nav-item to="/dashboard">
             {{ $t("navbar.dashboard") }}
-          </b-dropdown-item>
-          <b-dropdown-item @click="handleLogout">
+          </b-nav-item>
+          <b-nav-item @click="handleLogout">
             {{ $t("navbar.logout") }}
-          </b-dropdown-item>
-        </b-nav-item-dropdown>
+          </b-nav-item>
+        </template>
+        <!-- Anonymous, Not Authenticated -->
+        <template v-else>
+          <b-nav-item to="/register" v-if="!isAuthenticated">
+            {{ $t("navbar.register") }}
+          </b-nav-item>
+          <b-button
+            to="/login"
+            variant="outline-primary"
+            v-if="!isAuthenticated"
+          >
+            {{ $t("navbar.login") }}
+          </b-button>
+        </template>
       </b-navbar-nav>
     </b-collapse>
   </b-navbar>
@@ -53,12 +54,19 @@ export default {
   components: { LocaleChanger, NavbarShoppingCart },
   computed: {
     isAuthenticated() {
-      return this.$store.getters["auth/isAuthenticated"];
+      return this.$store.state.auth.authenticated;
     }
   },
   methods: {
     handleLogout() {
+      this.$store.commit("user/deleteUserInfo");
       this.$store.dispatch("auth/logout");
+      this.$root.$bvToast.toast(this.$t("login.logoutSuccess"), {
+        variant: "success",
+        toaster: "b-toaster-top-center",
+        noCloseButton: true,
+        autoHideDelay: 4000
+      });
     }
   }
 };

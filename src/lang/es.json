@@ -2,7 +2,9 @@
   "app": {
     "appName": "Comprando En Casa",
     "groupName": "Grupo B",
-    "repositories": "Repositorios"
+    "repositories": "Repositorios",
+    "connectionError": "Error en la conexión con el backend",
+    "responseError": "Error en la respuesta"
   },
   "home": {
     "welcome": "Bienvenido",
@@ -32,7 +34,7 @@
   },
   "register": {
     "registerNewUser": "Registrar Nuevo Usuario",
-    "registerWithGoogle": "Registrar con Google",
+    "registerWithGoogle": "Registrarse con Google",
     "name": "Nombre Completo",
     "email": "Email",
     "password": "Contraseña",
@@ -49,7 +51,8 @@
     "loginSeller": "Iniciar Sesión (Vendedor)",
     "dontHaveAccount": "No tenés una cuenta?",
     "register": "Registrar Nuevo Usuario",
-    "loginSuccess": "Sesión Iniciada Correctamente"
+    "loginSuccess": "Sesión Iniciada Correctamente",
+    "logoutSuccess": "Sesión Cerrada Correctamente"
   },
   "dashboard": {
     "dashboard": "Dashboard",
@@ -122,13 +125,16 @@
     }
   },
   "location": {
-    "create": {
-      "createNewLocation": "Agregar Ubicación",
-      "successfulCreation": "Ubicación agregada correctamente",
-      "address": "Dirección",
-      "submit": "Agregar Ubicación",
-      "cancel": "Cancelar"
-    }
+    "createNewLocation": "Agregar Ubicación",
+    "locationsList": "Listado de Ubicaciones",
+    "showDetails": "Ver Detalles",
+    "listEmpty": "Listado Vacío",
+    "successfulCreation": "Ubicación agregada correctamente",
+    "submitCreate": "Agregar Ubicación",
+    "address": "Dirección",
+    "coordinates": "Coordenadas",
+    "coordinatesDescription": "Hacé click en el mapa para marcar un punto.",
+    "cancel": "Cancelar"
   },
   "search": {
     "searchProducts": "Buscar Productos",

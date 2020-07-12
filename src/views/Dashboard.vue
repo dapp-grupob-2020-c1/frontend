@@ -15,7 +15,20 @@
 </template>
 
 <script>
+import { getCurrentUserRequest } from "../api/userRequests";
 export default {
-  name: "Dashboard"
+  name: "Dashboard",
+  async mounted() {
+    const currentUser = await getCurrentUserRequest();
+    const currentUserInfo = {
+      locations: currentUser.data.locations,
+      shops: currentUser.data.shops,
+      name: currentUser.data.name,
+      email: currentUser.data.email,
+      imgUrl: currentUser.data.imgUrl,
+      provider: currentUser.data.provider
+    };
+    this.$store.commit("user/setUserInfo", currentUserInfo);
+  }
 };
 </script>

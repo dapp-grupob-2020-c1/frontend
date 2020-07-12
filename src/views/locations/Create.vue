@@ -5,20 +5,20 @@
         {{ $t("dashboard.dashboard") }}
       </b-breadcrumb-item>
       <b-breadcrumb-item to="/locations">
-        {{ $t("location.list.locationsList") }}
+        {{ $t("location.locationsList") }}
       </b-breadcrumb-item>
       <b-breadcrumb-item active to="/locations/create">
-        {{ $t("location.create.createNewLocation") }}
+        {{ $t("location.createNewLocation") }}
       </b-breadcrumb-item>
     </b-breadcrumb>
 
     <h1 class="h1">
-      {{ $t("location.create.createNewLocation") }}
+      {{ $t("location.createNewLocation") }}
     </h1>
 
     <b-form-group
       id="input-group-address"
-      :label="$t('location.create.address')"
+      :label="$t('location.address')"
       label-for="address"
     >
       <b-form-input
@@ -32,12 +32,12 @@
 
     <b-form-group
       id="input-group-coordinates"
-      :label="$t('location.create.coordinates')"
-      :description="$t('location.create.coordinatesDescription')"
+      :label="$t('location.coordinates')"
+      :description="$t('location.coordinatesDescription')"
     >
       <GmapMap
         ref="map"
-        @click="handleClick"
+        @click="handleMapClick"
         :center="{ lat: -34.90385708261236, lng: -58.20926714017421 }"
         :zoom="9"
         style="width: 100%; height: 300px"
@@ -47,15 +47,17 @@
     </b-form-group>
 
     <b-button variant="primary" size="lg" @click="handleCreateLocation">
-      {{ $t("location.create.submit") }}
+      {{ $t("location.submitCreate") }}
     </b-button>
     <b-button variant="text" size="lg" @click="handleCancel">
-      {{ $t("location.create.cancel") }}
+      {{ $t("location.cancel") }}
     </b-button>
   </b-container>
 </template>
 
 <script>
+import { addLocationRequest } from "../../api/userRequests";
+
 export default {
   name: "LocationsCreate",
   data() {
@@ -68,20 +70,25 @@ export default {
     };
   },
   methods: {
-    handleClick(e) {
-      console.log(e);
+    handleMapClick(e) {
+      // update selected position
       this.selectedPosition = e.latLng.toJSON();
     },
-    handleCreateLocation() {
-      console.log("//TODO handle create location");
-
+    async handleCreateLocation() {
       //TODO: validate location information
       const newLocation = {
         address: this.address,
-        lat: this.lat,
-        lng: this.lng
+        latitude: this.selectedPosition.lat,
+        longitude: this.selectedPosition.lng
       };
-      this.$store.commit("buyer/addLocation", newLocation);
+
+      await addLocationRequest(newLocation);
+      const updatedLocations = [
+        newLocation,
+        ...this.$store.state.user.locations
+      ];
+      this.$store.commit("user/setLocations", updatedLocations);
+
       this.$root.$bvToast.toast(this.$t("location.create.successfulCreation"), {
         variant: "success",
         toaster: "b-toaster-top-right",

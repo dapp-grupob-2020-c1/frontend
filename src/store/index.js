@@ -3,8 +3,7 @@ import Vuex from "vuex";
 
 // Modules
 import auth from "./auth";
-import buyer from "./buyer";
-import seller from "./seller";
+import user from "./user";
 
 Vue.use(Vuex);
 
@@ -40,7 +39,6 @@ export default new Vuex.Store({
   actions: {},
   modules: {
     auth,
-    buyer,
-    seller
+    user
   }
 });
