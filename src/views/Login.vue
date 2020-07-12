@@ -4,19 +4,25 @@
       <b-col cols="12" md="8" lg="6">
         <h1>{{ $t("login.login") }}</h1>
         <b-card>
+          <b-button block variant="outline-primary">
+            <img width="32" height="32" src="../assets/google.svg" />
+            {{ $t("login.loginWithGoogle") }}
+          </b-button>
+          <hr class="my-3" />
           <form @submit.prevent="handleLogin">
             <b-form-group
-              id="input-group-username"
-              :label="$t('login.username')"
-              label-for="username"
+              id="input-group-email"
+              :label="$t('login.email')"
+              label-for="email"
             >
               <b-form-input
-                id="username"
+                id="email"
                 type="text"
-                name="username"
-                autocomplete="username"
+                name="email"
+                autocomplete="email"
                 required
-                v-model="username"
+                v-model="email"
+                autofocus
               ></b-form-input>
             </b-form-group>
             <b-form-group
@@ -33,24 +39,12 @@
                 v-model="password"
               ></b-form-input>
             </b-form-group>
-            <!--            <b-button block variant="primary" type="submit">-->
-            <!--              Iniciar Sesión-->
-            <!--            </b-button>-->
-            <b-form-row>
-              <b-col>
-                <b-button block variant="primary" @click="handleSellerLogin">
-                  {{ $t("login.loginSeller") }}
-                </b-button>
-              </b-col>
-              <b-col>
-                <b-button block variant="primary" @click="handleBuyerLogin">
-                  {{ $t("login.loginBuyer") }}
-                </b-button>
-              </b-col>
-            </b-form-row>
+            <b-button block variant="primary" type="submit">
+              Iniciar Sesión
+            </b-button>
           </form>
         </b-card>
-        <p>
+        <p class="my-1">
           {{ $t("login.dontHaveAccount") }}
           <router-link to="/register">{{ $t("login.register") }}</router-link
           >.
@@ -65,8 +59,8 @@ export default {
   name: "Login",
   data() {
     return {
-      username: null,
-      password: null
+      email: "",
+      password: ""
     };
   },
   methods: {

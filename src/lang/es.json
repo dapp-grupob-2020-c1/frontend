@@ -32,34 +32,18 @@
   },
   "register": {
     "registerNewUser": "Registrar Nuevo Usuario",
-    "buyer": "Comprador",
-    "seller": "Vendedor",
-    "alreadyHAveAccount": "Ya tenés cuenta?",
-    "login": "Iniciar Sesión",
-    "registerSeller": {
-      "managerInformation": "Datos del Manager",
-      "managerName": "Nombre Completo",
-      "managerEmail": "Email",
-      "managerPassword": "Password",
-      "shopInformation": "Datos del Negocio",
-      "shopName": "Nombre",
-      "shopCategories": "Categorías",
-      "shopPaymentOptions": "Medios de Pago",
-      "shopOpeningDays": "Días y horario de atención",
-      "shopOpeningHourFrom": "Desde",
-      "shopOpeningHourTo": "Hasta",
-      "submit": "Registrar Vendedor"
-    },
-    "registerBuyer": {
-      "buyerName": "Nombre Completo",
-      "buyerEmail": "Email",
-      "buyerPassword": "Password",
-      "submit": "Registrar Comprador"
-    }
+    "registerWithGoogle": "Registrar con Google",
+    "name": "Nombre Completo",
+    "email": "Email",
+    "password": "Contraseña",
+    "register": "Registrar",
+    "alreadyHaveAccount": "Ya tenés cuenta?",
+    "login": "Iniciar Sesión"
   },
   "login": {
     "login": "Iniciar Sesión",
-    "username": "Nombre",
+    "loginWithGoogle": "Iniciar Sesión con Google",
+    "email": "Email",
     "password": "Contraseña",
     "loginBuyer": "Iniciar Sesión (Comprador)",
     "loginSeller": "Iniciar Sesión (Vendedor)",
