@@ -2,7 +2,7 @@ const axios = require("axios").default;
 
 async function registerUser({ name, email, password }) {
   const requestUrl = new URL(
-    "/auth/register",
+    "/auth/signup",
     process.env.VUE_APP_API_URL
   ).toString();
 
