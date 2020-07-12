@@ -16,7 +16,7 @@ jobs:
         env:
           PUBLIC_PATH: /frontend/
           VUE_APP_GOOGLE_MAPS_API_KEY: ${{ secrets.VUE_APP_GOOGLE_MAPS_API_KEY }}
-          VUE_APP_API_URL: https://dapp-grupob-2020-c1-backend.herokuapp.com/api/
+          VUE_APP_API_URL: https://dapp-grupob-2020-c1-backend.herokuapp.com/
         run: |
           npm install
           npm run build
