@@ -92,7 +92,7 @@ export default {
           noCloseButton: true,
           autoHideDelay: 4000
         });
-        this.$store.dispatch("auth/login", response.data.token);
+        this.$store.dispatch("auth/login", response.data.accessToken);
       } catch (error) {
         // TODO: handle all possible errors (and translate message)
         console.error(error.response.data);
