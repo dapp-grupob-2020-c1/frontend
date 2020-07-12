@@ -58,8 +58,8 @@ async function addLocationRequest({ address, latitude, longitude }) {
       Accept: "application/json",
       "Content-Type": "application/json"
     },
-    data: {
-      address,
+    params: {
+      address: address,
       latitude: String(latitude),
       longitude: String(longitude)
     }
