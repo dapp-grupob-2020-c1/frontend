@@ -3,6 +3,15 @@
     <b-row align-h="center" align-v="center">
       <b-col cols="12" md="8" lg="6">
         <h1>{{ $t("register.registerNewUser") }}</h1>
+
+        <b-alert variant="danger" :show="!!error" dismissible>
+          Hubo un error.
+          <span v-b-toggle.error-details>Detalles</span>.
+          <b-collapse id="error-details" class="mt-2">
+            {{ error }}
+          </b-collapse>
+        </b-alert>
+
         <b-card>
           <b-button block variant="outline-primary">
             <img width="32" height="32" src="../assets/google.svg" />
@@ -21,7 +30,7 @@
                 name="name"
                 autocomplete="name"
                 required
-                v-model="name"
+                v-model="userInformation.name"
                 autofocus
               ></b-form-input>
             </b-form-group>
@@ -36,7 +45,7 @@
                 name="email"
                 autocomplete="email"
                 required
-                v-model="email"
+                v-model="userInformation.email"
               ></b-form-input>
             </b-form-group>
             <b-form-group
@@ -50,7 +59,7 @@
                 name="password"
                 autocomplete="new-password"
                 required
-                v-model="password"
+                v-model="userInformation.password"
               ></b-form-input>
             </b-form-group>
             <b-button block variant="primary" type="submit">
@@ -69,18 +78,32 @@
 </template>
 
 <script>
+import { registerUser } from "../api/register";
 export default {
   name: "Register",
   data() {
     return {
-      name: "",
-      email: "",
-      password: ""
+      loading: false,
+      error: null,
+      userInformation: {
+        name: "Carlos",
+        email: "carlos@example.com",
+        password: "123456"
+      }
     };
   },
   methods: {
-    handleRegister() {
-      console.log("TOOD: handle register");
+    async handleRegister() {
+      this.loading = true;
+      this.error = null;
+      try {
+        const response = await registerUser(this.userInformation);
+        console.log(response);
+      } catch (error) {
+        this.error = error;
+        console.error("REQ ERROR: ", error);
+      }
+      this.loading = false;
     }
   }
 };

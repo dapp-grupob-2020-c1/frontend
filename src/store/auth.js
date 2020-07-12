@@ -3,19 +3,19 @@ import router from "../router";
 export default {
   namespaced: true,
   state: {
-    name: null,
-    type: "" // null, buyer, seller
+    authenticated: false,
+    token: null
   },
   mutations: {
-    setLogin(state, { name, type }) {
-      console.log("auth/setLogin mutation", { name, type });
-      state.name = name;
-      state.type = type;
+    setLogin(state, token) {
+      console.log("auth/setLogin mutation", token);
+      state.authenticated = true;
+      state.token = token;
     },
     setLogout(state) {
       console.log("auth/setLogout mutation");
-      state.name = null;
-      state.type = "";
+      state.authenticated = false;
+      state.token = null;
     }
   },
   actions: {
@@ -28,12 +28,6 @@ export default {
       console.log("auth/logout action");
       commit("setLogout");
       router.replace("/");
-    }
-  },
-  getters: {
-    isAuthenticated(state) {
-      console.log("auth/isAuthenticated getter");
-      return !!state.type;
     }
   }
 };

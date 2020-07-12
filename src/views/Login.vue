@@ -3,6 +3,15 @@
     <b-row align-h="center" align-v="center">
       <b-col cols="12" md="8" lg="6">
         <h1>{{ $t("login.login") }}</h1>
+
+        <b-alert variant="danger" :show="!!error" dismissible>
+          Hubo un error.
+          <span v-b-toggle.error-details>Detalles</span>.
+          <b-collapse id="error-details" class="mt-2">
+            {{ error }}
+          </b-collapse>
+        </b-alert>
+
         <b-card>
           <b-button block variant="outline-primary">
             <img width="32" height="32" src="../assets/google.svg" />
@@ -21,7 +30,8 @@
                 name="email"
                 autocomplete="email"
                 required
-                v-model="email"
+                v-model="userInformation.email"
+                :disabled="loading"
                 autofocus
               ></b-form-input>
             </b-form-group>
@@ -36,11 +46,13 @@
                 name="password"
                 autocomplete="current-password"
                 required
-                v-model="password"
+                v-model="userInformation.password"
+                :disabled="loading"
               ></b-form-input>
             </b-form-group>
-            <b-button block variant="primary" type="submit">
-              Iniciar Sesión
+            <b-button block variant="primary" type="submit" :disabled="loading">
+              <b-spinner small v-if="loading"></b-spinner>
+              <span v-else>Iniciar Sesión</span>
             </b-button>
           </form>
         </b-card>
@@ -55,37 +67,38 @@
 </template>
 
 <script>
+import { loginUser } from "../api/login";
 export default {
   name: "Login",
   data() {
     return {
-      email: "",
-      password: ""
+      loading: false,
+      error: null,
+      userInformation: {
+        email: "carlos@example.com",
+        password: "123456"
+      }
     };
   },
   methods: {
-    handleLogin(userInfo) {
-      this.$store.dispatch("auth/login", userInfo);
-      this.$root.$bvToast.toast(this.$t("login.loginSuccess"), {
-        variant: "success",
-        toaster: "b-toaster-top-right",
-        noCloseButton: true,
-        autoHideDelay: 4000
-      });
-    },
-    handleSellerLogin() {
-      const sellerInfo = {
-        name: "Juan Seller",
-        type: "seller"
-      };
-      this.handleLogin(sellerInfo);
-    },
-    handleBuyerLogin() {
-      const buyerInfo = {
-        name: "Roberto Buyer",
-        type: "buyer"
-      };
-      this.handleLogin(buyerInfo);
+    async handleLogin() {
+      this.loading = true;
+      this.error = null;
+      try {
+        const response = await loginUser(this.userInformation);
+        this.$root.$bvToast.toast(this.$t("login.loginSuccess"), {
+          variant: "success",
+          toaster: "b-toaster-top-right",
+          noCloseButton: true,
+          autoHideDelay: 4000
+        });
+        this.$store.dispatch("auth/login", response.data.token);
+      } catch (error) {
+        // TODO: handle all possible errors (and translate message)
+        console.error(error.response.data);
+        this.error = error.response.data.message;
+      }
+      this.loading = false;
     }
   }
 };

@@ -1,23 +1,20 @@
 const axios = require("axios").default;
 
-async function registerUser({ name, email, password }) {
+async function loginUser({ email, password }) {
   const requestUrl = new URL(
-    "/auth/register",
+    "/auth/login",
     process.env.VUE_APP_API_URL
   ).toString();
 
-  console.log("registerUser requestUrl built", requestUrl);
-
-  const newUSerInformation = {
-    name,
-    email,
-    password
-  };
+  console.log("loginUser requestUrl built", requestUrl);
 
   return axios({
     method: "POST",
     url: requestUrl,
-    data: newUSerInformation,
+    data: {
+      email,
+      password
+    },
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json"
@@ -25,4 +22,4 @@ async function registerUser({ name, email, password }) {
   });
 }
 
-export { registerUser };
+export { loginUser };
