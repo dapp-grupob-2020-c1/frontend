@@ -60,6 +60,18 @@ const routes = [
       )
   },
   {
+    path: "/shops",
+    beforeEnter: requiresAuth,
+    component: () =>
+      import(/* webpackChunkName: "shops" */ "../views/shops/List.vue")
+  },
+  {
+    path: "/shops/create",
+    beforeEnter: requiresAuth,
+    component: () =>
+      import(/* webpackChunkName: "createShop" */ "../views/shops/Create.vue")
+  },
+  {
     path: "/cart",
     beforeEnter: requiresAuth,
     component: () =>

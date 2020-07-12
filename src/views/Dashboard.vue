@@ -10,6 +10,7 @@
 
     <b-nav>
       <b-nav-item to="/locations">Ubicaciones</b-nav-item>
+      <b-nav-item to="/shops">Shops</b-nav-item>
     </b-nav>
   </b-container>
 </template>

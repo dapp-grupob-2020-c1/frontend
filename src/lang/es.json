@@ -136,6 +136,15 @@
     "coordinatesDescription": "Hacé click en el mapa para marcar un punto.",
     "cancel": "Cancelar"
   },
+  "shop": {
+    "createNew": "Crear Nuevo Negocio",
+    "shopList": "Listado de Negocios",
+    "showDetails": "Ver Detalles",
+    "listEmpty": "Listado Vacío",
+    "successfulCreation": "Negocio creado correctamente",
+    "submitCreate": "Crear Negocio",
+    "cancel": "Cancelar"
+  },
   "search": {
     "searchProducts": "Buscar Productos",
     "searchResults": "Resultados",
