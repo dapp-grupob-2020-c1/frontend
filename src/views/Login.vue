@@ -5,10 +5,12 @@
         <h1>{{ $t("login.login") }}</h1>
 
         <b-alert variant="danger" :show="!!error" dismissible>
-          Hubo un error.
-          <span v-b-toggle.error-details>Detalles</span>.
+          <p class="my-1">
+            {{ $t(messageKey) }}.
+            <span v-b-toggle.error-details v-if="details">Ver Detalles.</span>
+          </p>
           <b-collapse id="error-details" class="mt-2">
-            {{ error }}
+            {{ details }}
           </b-collapse>
         </b-alert>
 
@@ -72,7 +74,9 @@ export default {
   data() {
     return {
       loading: false,
-      error: null,
+      error: false,
+      messageKey: "",
+      details: "",
       userInformation: {
         email: "carlos@example.com",
         password: "123456"
@@ -81,8 +85,11 @@ export default {
   },
   methods: {
     async handleLogin() {
+      // reset error state
       this.loading = true;
-      this.error = null;
+      this.error = false;
+      this.messageKey = "";
+      this.details = "";
       try {
         const response = await loginUser(this.userInformation);
         this.$store.dispatch("auth/login", response.data.accessToken);
@@ -93,11 +100,16 @@ export default {
           autoHideDelay: 4000
         });
       } catch (error) {
-        // TODO: handle all possible errors (and translate message)
-        console.error(error.response.data);
-        this.error = error.response.data.message;
+        this.error = true;
+        if (error.response) {
+          this.messageKey = "app.responseError";
+          this.details = error.response.data.message;
+        } else if (error.request) {
+          this.messageKey = "app.connectionError";
+        }
+      } finally {
+        this.loading = false;
       }
-      this.loading = false;
     }
   }
 };
