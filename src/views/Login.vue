@@ -13,10 +13,7 @@
         </b-alert>
 
         <b-card>
-          <b-button block variant="outline-primary" @click="handleGoogleLogin">
-            <img width="32" height="32" src="../assets/google.svg" />
-            {{ $t("login.loginWithGoogle") }}
-          </b-button>
+          <GoogleAuthButton />
           <hr class="my-3" />
           <form @submit.prevent="handleLogin">
             <b-form-group
@@ -68,8 +65,10 @@
 
 <script>
 import { loginUser } from "../api/login";
+import GoogleAuthButton from "../components/GoogleAuthButton";
 export default {
   name: "Login",
+  components: { GoogleAuthButton },
   data() {
     return {
       loading: false,
@@ -81,30 +80,18 @@ export default {
     };
   },
   methods: {
-    handleGoogleLogin() {
-      // window.location = "https://dapp-grupob-2020-c1-backend.herokuapp.com/oauth2/authorize/google?redirect_uri=http://localhost:3000/#/oauth2/redirect";
-      // window.location = "http://localhost:8080/oauth2/authorize/google?redirect_uri=http://localhost:3000/#/oauth2/redirect";
-
-      const authUrl = new URL(
-        "/oauth2/authorize/google?redirect_uri=http://localhost:3000/#/oauth2/redirect",
-        process.env.VUE_APP_API_URL
-      ).toString();
-
-      console.log(authUrl);
-      window.location = authUrl;
-    },
     async handleLogin() {
       this.loading = true;
       this.error = null;
       try {
         const response = await loginUser(this.userInformation);
+        this.$store.dispatch("auth/login", response.data.accessToken);
         this.$root.$bvToast.toast(this.$t("login.loginSuccess"), {
           variant: "success",
-          toaster: "b-toaster-top-right",
+          toaster: "b-toaster-top-center",
           noCloseButton: true,
           autoHideDelay: 4000
         });
-        this.$store.dispatch("auth/login", response.data.accessToken);
       } catch (error) {
         // TODO: handle all possible errors (and translate message)
         console.error(error.response.data);

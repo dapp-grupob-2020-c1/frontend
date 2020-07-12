@@ -13,10 +13,7 @@
         </b-alert>
 
         <b-card>
-          <b-button block variant="outline-primary">
-            <img width="32" height="32" src="../assets/google.svg" />
-            {{ $t("register.registerWithGoogle") }}
-          </b-button>
+          <GoogleAuthButton :caption="$t('register.registerWithGoogle')" />
           <hr class="my-3" />
           <form @submit.prevent="handleRegister">
             <b-form-group
@@ -83,8 +80,10 @@
 
 <script>
 import { registerUser } from "../api/register";
+import GoogleAuthButton from "../components/GoogleAuthButton";
 export default {
   name: "Register",
+  components: { GoogleAuthButton },
   data() {
     return {
       loading: false,
@@ -104,7 +103,7 @@ export default {
         await registerUser(this.userInformation);
         this.$root.$bvToast.toast(this.$t("register.registerSuccess"), {
           variant: "success",
-          toaster: "b-toaster-top-right",
+          toaster: "b-toaster-top-center",
           noCloseButton: true,
           autoHideDelay: 4000
         });
