@@ -3,20 +3,36 @@
     <b-row align-h="center" align-v="center">
       <b-col cols="12" md="8" lg="6">
         <h1>{{ $t("login.login") }}</h1>
+
+        <b-alert variant="danger" :show="!!error" dismissible>
+          Hubo un error.
+          <span v-b-toggle.error-details>Detalles</span>.
+          <b-collapse id="error-details" class="mt-2">
+            {{ error }}
+          </b-collapse>
+        </b-alert>
+
         <b-card>
+          <b-button block variant="outline-primary" @click="handleGoogleLogin">
+            <img width="32" height="32" src="../assets/google.svg" />
+            {{ $t("login.loginWithGoogle") }}
+          </b-button>
+          <hr class="my-3" />
           <form @submit.prevent="handleLogin">
             <b-form-group
-              id="input-group-username"
-              :label="$t('login.username')"
-              label-for="username"
+              id="input-group-email"
+              :label="$t('login.email')"
+              label-for="email"
             >
               <b-form-input
-                id="username"
+                id="email"
                 type="text"
-                name="username"
-                autocomplete="username"
+                name="email"
+                autocomplete="email"
                 required
-                v-model="username"
+                v-model="userInformation.email"
+                :disabled="loading"
+                autofocus
               ></b-form-input>
             </b-form-group>
             <b-form-group
@@ -30,27 +46,17 @@
                 name="password"
                 autocomplete="current-password"
                 required
-                v-model="password"
+                v-model="userInformation.password"
+                :disabled="loading"
               ></b-form-input>
             </b-form-group>
-            <!--            <b-button block variant="primary" type="submit">-->
-            <!--              Iniciar Sesión-->
-            <!--            </b-button>-->
-            <b-form-row>
-              <b-col>
-                <b-button block variant="primary" @click="handleSellerLogin">
-                  {{ $t("login.loginSeller") }}
-                </b-button>
-              </b-col>
-              <b-col>
-                <b-button block variant="primary" @click="handleBuyerLogin">
-                  {{ $t("login.loginBuyer") }}
-                </b-button>
-              </b-col>
-            </b-form-row>
+            <b-button block variant="primary" type="submit" :disabled="loading">
+              <b-spinner small v-if="loading"></b-spinner>
+              <span v-else>{{ $t("login.login") }}</span>
+            </b-button>
           </form>
         </b-card>
-        <p>
+        <p class="my-1">
           {{ $t("login.dontHaveAccount") }}
           <router-link to="/register">{{ $t("login.register") }}</router-link
           >.
@@ -61,37 +67,50 @@
 </template>
 
 <script>
+import { loginUser } from "../api/login";
 export default {
   name: "Login",
   data() {
     return {
-      username: null,
-      password: null
+      loading: false,
+      error: null,
+      userInformation: {
+        email: "carlos@example.com",
+        password: "123456"
+      }
     };
   },
   methods: {
-    handleLogin(userInfo) {
-      this.$store.dispatch("auth/login", userInfo);
-      this.$root.$bvToast.toast(this.$t("login.loginSuccess"), {
-        variant: "success",
-        toaster: "b-toaster-top-right",
-        noCloseButton: true,
-        autoHideDelay: 4000
-      });
+    handleGoogleLogin() {
+      // window.location = "https://dapp-grupob-2020-c1-backend.herokuapp.com/oauth2/authorize/google?redirect_uri=http://localhost:3000/#/oauth2/redirect";
+      // window.location = "http://localhost:8080/oauth2/authorize/google?redirect_uri=http://localhost:3000/#/oauth2/redirect";
+
+      const authUrl = new URL(
+        "/oauth2/authorize/google?redirect_uri=http://localhost:3000/#/oauth2/redirect",
+        process.env.VUE_APP_API_URL
+      ).toString();
+
+      console.log(authUrl);
+      window.location = authUrl;
     },
-    handleSellerLogin() {
-      const sellerInfo = {
-        name: "Juan Seller",
-        type: "seller"
-      };
-      this.handleLogin(sellerInfo);
-    },
-    handleBuyerLogin() {
-      const buyerInfo = {
-        name: "Roberto Buyer",
-        type: "buyer"
-      };
-      this.handleLogin(buyerInfo);
+    async handleLogin() {
+      this.loading = true;
+      this.error = null;
+      try {
+        const response = await loginUser(this.userInformation);
+        this.$root.$bvToast.toast(this.$t("login.loginSuccess"), {
+          variant: "success",
+          toaster: "b-toaster-top-right",
+          noCloseButton: true,
+          autoHideDelay: 4000
+        });
+        this.$store.dispatch("auth/login", response.data.accessToken);
+      } catch (error) {
+        // TODO: handle all possible errors (and translate message)
+        console.error(error.response.data);
+        this.error = error.response.data.message;
+      }
+      this.loading = false;
     }
   }
 };

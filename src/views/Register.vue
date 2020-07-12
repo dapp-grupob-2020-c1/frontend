@@ -3,18 +3,76 @@
     <b-row align-h="center" align-v="center">
       <b-col cols="12" md="8" lg="6">
         <h1>{{ $t("register.registerNewUser") }}</h1>
-        <b-card no-body>
-          <b-tabs card content-class="mt-3">
-            <b-tab :title="$t('register.buyer')" active>
-              <RegisterBuyerForm />
-            </b-tab>
-            <b-tab :title="$t('register.seller')">
-              <RegisterShopForm />
-            </b-tab>
-          </b-tabs>
+
+        <b-alert variant="danger" :show="!!error" dismissible>
+          Hubo un error.
+          <span v-b-toggle.error-details>Detalles</span>.
+          <b-collapse id="error-details" class="mt-2">
+            {{ error }}
+          </b-collapse>
+        </b-alert>
+
+        <b-card>
+          <b-button block variant="outline-primary">
+            <img width="32" height="32" src="../assets/google.svg" />
+            {{ $t("register.registerWithGoogle") }}
+          </b-button>
+          <hr class="my-3" />
+          <form @submit.prevent="handleRegister">
+            <b-form-group
+              id="input-group-name"
+              :label="$t('register.name')"
+              label-for="name"
+            >
+              <b-form-input
+                id="name"
+                type="text"
+                name="name"
+                autocomplete="name"
+                required
+                v-model="userInformation.name"
+                :disabled="loading"
+                autofocus
+              ></b-form-input>
+            </b-form-group>
+            <b-form-group
+              id="input-group-email"
+              :label="$t('register.email')"
+              label-for="email"
+            >
+              <b-form-input
+                id="email"
+                type="email"
+                name="email"
+                autocomplete="email"
+                required
+                v-model="userInformation.email"
+                :disabled="loading"
+              ></b-form-input>
+            </b-form-group>
+            <b-form-group
+              id="input-group-password"
+              :label="$t('register.password')"
+              label-for="password"
+            >
+              <b-form-input
+                id="password"
+                type="password"
+                name="password"
+                autocomplete="new-password"
+                required
+                v-model="userInformation.password"
+                :disabled="loading"
+              ></b-form-input>
+            </b-form-group>
+            <b-button block variant="primary" type="submit" :disabled="loading">
+              <b-spinner small v-if="loading"></b-spinner>
+              <span v-else>{{ $t("register.register") }}</span>
+            </b-button>
+          </form>
         </b-card>
-        <p>
-          {{ $t("register.alreadyHAveAccount") }}
+        <p class="my-1">
+          {{ $t("register.alreadyHaveAccount") }}
           <router-link to="/login">{{ $t("register.login") }}</router-link
           >.
         </p>
@@ -24,13 +82,39 @@
 </template>
 
 <script>
-import RegisterBuyerForm from "../components/RegisterBuyerForm";
-import RegisterShopForm from "../components/RegisterShopForm";
+import { registerUser } from "../api/register";
 export default {
-  name: "Login",
-  components: {
-    RegisterBuyerForm,
-    RegisterShopForm
+  name: "Register",
+  data() {
+    return {
+      loading: false,
+      error: null,
+      userInformation: {
+        name: "Carlos",
+        email: "carlos@example.com",
+        password: "123456"
+      }
+    };
+  },
+  methods: {
+    async handleRegister() {
+      this.loading = true;
+      this.error = null;
+      try {
+        await registerUser(this.userInformation);
+        this.$root.$bvToast.toast(this.$t("register.registerSuccess"), {
+          variant: "success",
+          toaster: "b-toaster-top-right",
+          noCloseButton: true,
+          autoHideDelay: 4000
+        });
+        this.$router.push("/login");
+      } catch (error) {
+        this.error = error.response.data.message;
+        console.error("REQ ERROR: ", error);
+      }
+      this.loading = false;
+    }
   }
 };
 </script>
