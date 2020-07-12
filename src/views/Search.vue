@@ -24,7 +24,7 @@
 </template>
 
 <script>
-import ProductListItem from "../../components/ProductListItem";
+import ProductListItem from "../components/ProductListItem";
 export default {
   name: "Search",
   components: { ProductListItem },
