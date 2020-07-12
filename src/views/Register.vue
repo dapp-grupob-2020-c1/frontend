@@ -31,6 +31,7 @@
                 autocomplete="name"
                 required
                 v-model="userInformation.name"
+                :disabled="loading"
                 autofocus
               ></b-form-input>
             </b-form-group>
@@ -46,6 +47,7 @@
                 autocomplete="email"
                 required
                 v-model="userInformation.email"
+                :disabled="loading"
               ></b-form-input>
             </b-form-group>
             <b-form-group
@@ -60,10 +62,12 @@
                 autocomplete="new-password"
                 required
                 v-model="userInformation.password"
+                :disabled="loading"
               ></b-form-input>
             </b-form-group>
-            <b-button block variant="primary" type="submit">
-              {{ $t("register.register") }}
+            <b-button block variant="primary" type="submit" :disabled="loading">
+              <b-spinner small v-if="loading"></b-spinner>
+              <span v-else>{{ $t("register.register") }}</span>
             </b-button>
           </form>
         </b-card>
