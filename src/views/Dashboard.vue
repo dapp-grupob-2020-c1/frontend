@@ -1,29 +1,21 @@
 <template>
   <b-container class="my-5">
+    <b-breadcrumb>
+      <b-breadcrumb-item active to="/dashboard">{{
+        $t("dashboard.dashboard")
+      }}</b-breadcrumb-item>
+    </b-breadcrumb>
+
     <h1 class="h1">{{ $t("dashboard.dashboard") }}</h1>
 
-    <!-- Buyer -->
-    <BuyerDashboard v-if="userType === 'buyer'" />
-
-    <!-- Seller -->
-    <SellerDashboard v-if="userType === 'seller'" />
+    <b-nav>
+      <b-nav-item to="/locations">Ubicaciones</b-nav-item>
+    </b-nav>
   </b-container>
 </template>
 
 <script>
-import BuyerDashboard from "../components/BuyerDashboard";
-import SellerDashboard from "../components/SellerDashboard";
-
 export default {
-  name: "Dashboard",
-  components: {
-    BuyerDashboard,
-    SellerDashboard
-  },
-  computed: {
-    userType() {
-      return this.$store.state.auth.type;
-    }
-  }
+  name: "Dashboard"
 };
 </script>

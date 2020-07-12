@@ -16,54 +16,52 @@ const requiresAuth = (to, from, next) => {
 const routes = [
   {
     path: "/",
-    name: "Home",
     component: Home
   },
   {
     path: "/login",
-    name: "Login",
     component: () =>
       import(/* webpackChunkName: "login" */ "../views/Login.vue")
   },
   {
     path: "/register",
-    name: "Register",
     component: () =>
       import(/* webpackChunkName: "register" */ "../views/Register.vue")
   },
   {
     path: "/dashboard",
-    name: "Dashboard",
     beforeEnter: requiresAuth,
     component: () =>
       import(/* webpackChunkName: "dashboard" */ "../views/Dashboard.vue")
   },
   {
     path: "/search",
-    name: "Search",
     beforeEnter: requiresAuth,
     component: () =>
-      import(/* webpackChunkName: "search" */ "../views/buyer/Search.vue")
+      import(/* webpackChunkName: "search" */ "../views/Search.vue")
   },
   {
-    path: "/createLocation",
-    name: "CreateLocation",
+    path: "/locations",
+    beforeEnter: requiresAuth,
+    component: () =>
+      import(/* webpackChunkName: "locations" */ "../views/locations/List.vue")
+  },
+  {
+    path: "/locations/create",
     beforeEnter: requiresAuth,
     component: () =>
       import(
-        /* webpackChunkName: "createLocation" */ "../views/buyer/locations/Create.vue"
+        /* webpackChunkName: "createLocation" */ "../views/locations/Create.vue"
       )
   },
   {
     path: "/cart",
-    name: "Cart",
     beforeEnter: requiresAuth,
     component: () =>
       import(/* webpackChunkName: "cart" */ "../views/ShoppingCart.vue")
   },
   {
     path: "/createProduct",
-    name: "CreateProduct",
     beforeEnter: requiresAuth,
     component: () =>
       import(
@@ -72,7 +70,6 @@ const routes = [
   },
   {
     path: "/uploadProducts",
-    name: "UploadProducts",
     beforeEnter: requiresAuth,
     component: () =>
       import(

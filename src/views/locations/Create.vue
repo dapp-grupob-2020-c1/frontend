@@ -1,6 +1,20 @@
 <template>
   <b-container class="my-5">
-    <h1 class="h1">{{ $t("location.create.createNewLocation") }}</h1>
+    <b-breadcrumb>
+      <b-breadcrumb-item to="/dashboard">
+        {{ $t("dashboard.dashboard") }}
+      </b-breadcrumb-item>
+      <b-breadcrumb-item to="/locations">
+        {{ $t("location.list.locationsList") }}
+      </b-breadcrumb-item>
+      <b-breadcrumb-item active to="/locations/create">
+        {{ $t("location.create.createNewLocation") }}
+      </b-breadcrumb-item>
+    </b-breadcrumb>
+
+    <h1 class="h1">
+      {{ $t("location.create.createNewLocation") }}
+    </h1>
 
     <b-form-group
       id="input-group-address"
@@ -16,7 +30,21 @@
       ></b-form-input>
     </b-form-group>
 
-    <p>WIP: punto en el mapa</p>
+    <b-form-group
+      id="input-group-coordinates"
+      :label="$t('location.create.coordinates')"
+      :description="$t('location.create.coordinatesDescription')"
+    >
+      <GmapMap
+        ref="map"
+        @click="handleClick"
+        :center="{ lat: -34.90385708261236, lng: -58.20926714017421 }"
+        :zoom="9"
+        style="width: 100%; height: 300px"
+      >
+        <GmapMarker :position="selectedPosition" />
+      </GmapMap>
+    </b-form-group>
 
     <b-button variant="primary" size="lg" @click="handleCreateLocation">
       {{ $t("location.create.submit") }}
@@ -33,11 +61,17 @@ export default {
   data() {
     return {
       address: "",
-      lat: null,
-      lng: null
+      selectedPosition: {
+        lat: null,
+        lng: null
+      }
     };
   },
   methods: {
+    handleClick(e) {
+      console.log(e);
+      this.selectedPosition = e.latLng.toJSON();
+    },
     handleCreateLocation() {
       console.log("//TODO handle create location");
 
