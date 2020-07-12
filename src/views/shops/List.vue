@@ -17,7 +17,60 @@
 
     <b-list-group v-if="shopsList.length">
       <b-list-group-item v-for="shop in shopsList" :key="shop.id">
-        {{ shop }}
+        <dov class="row">
+          <div class="col-4 align-self-center">
+            <GmapMap
+              :center="{
+                lat: shop.location.latitude,
+                lng: shop.location.longitude
+              }"
+              :zoom="15"
+              :options="{
+                disableDefaultUI: true,
+                fullscreenControl: false
+              }"
+              style="width: 100%; height: 200px"
+            >
+              <GmapMarker
+                :position="{
+                  lat: shop.location.latitude,
+                  lng: shop.location.longitude
+                }"
+              />
+            </GmapMap>
+          </div>
+          <div class="col">
+            <h2 class="h3">{{ shop.name }}</h2>
+            <p>{{ shop.location.address }}</p>
+            <p>{{ $t("shop.deliveryRadius") }}: {{ shop.deliveryRadius }} Km</p>
+
+            <h3 class="h6">{{ $t("shop.categories") }}</h3>
+            <b-badge
+              variant="secondary"
+              v-for="category in shop.categories"
+              :key="category"
+            >
+              {{ category }}
+            </b-badge>
+
+            <h3 class="h6">{{ $t("shop.openingDays") }}</h3>
+            <p>
+              <b-badge
+                variant="secondary"
+                v-for="day in shop.days"
+                :key="day"
+                >{{ day }}</b-badge
+              >
+            </p>
+
+            <div class="actions my-2">
+              <b-button class="mr-2">Detalles</b-button>
+              <b-button class="mr-2" variant="outline-danger">
+                Eliminar
+              </b-button>
+            </div>
+          </div>
+        </dov>
       </b-list-group-item>
     </b-list-group>
     <b-alert show v-else class="m-0">
