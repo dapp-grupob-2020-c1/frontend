@@ -4,19 +4,7 @@
       <b-col cols="12" md="8" lg="6">
         <h1>{{ $t("login.login") }}</h1>
 
-        <b-alert variant="danger" :show="!!requestInfo.error" dismissible>
-          <p class="my-1">
-            {{ $t(requestInfo.errorMessageKey) }}.
-            <span
-              v-b-toggle.error-details
-              v-if="requestInfo.errorAdditionalInfo"
-              >Ver Detalles.</span
-            >
-          </p>
-          <b-collapse id="error-details" class="mt-2">
-            {{ requestInfo.errorAdditionalInfo }}
-          </b-collapse>
-        </b-alert>
+        <ErrorAlert :request-info="requestInfo" />
 
         <b-card>
           <GoogleAuthButton />
@@ -78,9 +66,10 @@
 import { loginUser } from "../api/login";
 import { defaultToasterOptions } from "../config/options";
 import GoogleAuthButton from "../components/GoogleAuthButton";
+import ErrorAlert from "../components/ErrorAlert";
 export default {
   name: "Login",
-  components: { GoogleAuthButton },
+  components: { ErrorAlert, GoogleAuthButton },
   data() {
     return {
       requestInfo: {
@@ -96,17 +85,15 @@ export default {
     };
   },
   methods: {
-    resetRequestInfo() {
+    async handleLogin() {
+      // reset loading state
       this.requestInfo = {
-        loading: false,
+        loading: true,
         error: false,
         errorMessageKey: "",
         errorAdditionalInfo: ""
       };
-    },
-    async handleLogin() {
-      this.resetRequestInfo();
-      this.requestInfo.loading = true;
+
       try {
         const response = await loginUser(this.userInformation);
         this.$store.dispatch("auth/login", response.data.accessToken);
