@@ -77,6 +77,8 @@
 </template>
 
 <script>
+import { defaultToasterOptions } from "../../../config/options";
+
 export default {
   name: "ProductsCreate",
   data() {
@@ -106,12 +108,10 @@ export default {
         categories: this.categories
       };
       this.$store.dispatch("seller/addProduct", newProduct);
-      this.$root.$bvToast.toast(this.$t("product.create.successfulCreation"), {
-        variant: "success",
-        toaster: "b-toaster-top-right",
-        noCloseButton: true,
-        autoHideDelay: 4000
-      });
+      this.$root.$bvToast.toast(
+        this.$t("product.create.successfulCreation"),
+        defaultToasterOptions
+      );
       this.$router.back();
     },
     handleCancel() {

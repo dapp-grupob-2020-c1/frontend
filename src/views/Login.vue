@@ -76,6 +76,7 @@
 
 <script>
 import { loginUser } from "../api/login";
+import { defaultToasterOptions } from "../config/options";
 import GoogleAuthButton from "../components/GoogleAuthButton";
 export default {
   name: "Login",
@@ -109,12 +110,10 @@ export default {
       try {
         const response = await loginUser(this.userInformation);
         this.$store.dispatch("auth/login", response.data.accessToken);
-        this.$root.$bvToast.toast(this.$t("login.loginSuccess"), {
-          variant: "success",
-          toaster: "b-toaster-top-center",
-          noCloseButton: true,
-          autoHideDelay: 4000
-        });
+        this.$root.$bvToast.toast(
+          this.$t("login.loginSuccess"),
+          defaultToasterOptions
+        );
       } catch (error) {
         this.requestInfo.error = true;
         if (error.response) {

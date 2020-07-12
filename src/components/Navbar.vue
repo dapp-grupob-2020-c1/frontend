@@ -49,6 +49,7 @@
 <script>
 import NavbarShoppingCart from "./NavbarShoppingCart";
 import LocaleChanger from "./LocaleChanger";
+import { defaultToasterOptions } from "../config/options";
 export default {
   name: "Navbar",
   components: { LocaleChanger, NavbarShoppingCart },
@@ -61,12 +62,10 @@ export default {
     handleLogout() {
       this.$store.commit("user/deleteUserInfo");
       this.$store.dispatch("auth/logout");
-      this.$root.$bvToast.toast(this.$t("login.logoutSuccess"), {
-        variant: "success",
-        toaster: "b-toaster-top-center",
-        noCloseButton: true,
-        autoHideDelay: 4000
-      });
+      this.$root.$bvToast.toast(
+        this.$t("login.logoutSuccess"),
+        defaultToasterOptions
+      );
     }
   }
 };

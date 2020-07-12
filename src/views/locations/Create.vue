@@ -57,6 +57,7 @@
 
 <script>
 import { addLocationRequest } from "../../api/userRequests";
+import { defaultToasterOptions } from "../../config/options";
 
 export default {
   name: "LocationsCreate",

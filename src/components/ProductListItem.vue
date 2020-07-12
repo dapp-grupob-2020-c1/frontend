@@ -10,6 +10,8 @@
 </template>
 
 <script>
+import { defaultToasterOptions } from "../config/options";
+
 export default {
   name: "ProductListItem",
   props: {
@@ -29,18 +31,11 @@ export default {
         product: this.product.name,
         quantity: this.quantity
       };
+      const cartMessage = `${cartItem.quantity} x ${cartItem.product} ${this.$t(
+        "product.addedToCart"
+      )}`;
       this.$store.dispatch("buyer/addItemToCart", cartItem);
-      this.$root.$bvToast.toast(
-        `${cartItem.quantity} x ${cartItem.product} ${this.$t(
-          "product.addedToCart"
-        )}`,
-        {
-          variant: "success",
-          toaster: "b-toaster-top-right",
-          noCloseButton: true,
-          autoHideDelay: 4000
-        }
-      );
+      this.$root.$bvToast.toast(cartMessage, defaultToasterOptions);
     }
   }
 };

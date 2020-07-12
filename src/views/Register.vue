@@ -81,6 +81,7 @@
 <script>
 import { registerUser } from "../api/register";
 import GoogleAuthButton from "../components/GoogleAuthButton";
+import { defaultToasterOptions } from "../config/options";
 export default {
   name: "Register",
   components: { GoogleAuthButton },
@@ -101,12 +102,10 @@ export default {
       this.error = null;
       try {
         await registerUser(this.userInformation);
-        this.$root.$bvToast.toast(this.$t("register.registerSuccess"), {
-          variant: "success",
-          toaster: "b-toaster-top-center",
-          noCloseButton: true,
-          autoHideDelay: 4000
-        });
+        this.$root.$bvToast.toast(
+          this.$t("register.registerSuccess"),
+          defaultToasterOptions
+        );
         this.$router.push("/login");
       } catch (error) {
         this.error = error.response.data.message;
