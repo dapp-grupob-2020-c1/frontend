@@ -52,7 +52,7 @@
             </b-form-group>
             <b-button block variant="primary" type="submit" :disabled="loading">
               <b-spinner small v-if="loading"></b-spinner>
-              <span v-else>Iniciar Sesión</span>
+              <span v-else>{{ $t("login.login") }}</span>
             </b-button>
           </form>
         </b-card>
