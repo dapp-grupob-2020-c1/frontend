@@ -13,12 +13,31 @@
       {{ $t("location.locationsList") }}
     </h1>
 
+    <ErrorAlert :request-info="requestInfo" />
+
     <b-list-group v-if="locationsList.length">
       <b-list-group-item v-for="location in locationsList" :key="location.id">
-        <pre>{{ location }}</pre>
-        <b-button variant="text">
-          {{ $t("location.showDetails") }}
-        </b-button>
+        <div class="row">
+          <div class="col-6 col-md-4">
+            <GmapMap
+              :center="{ lat: location.latitude, lng: location.longitude }"
+              :zoom="14"
+              :options="{
+                disableDefaultUI: true,
+                fullscreenControl: false
+              }"
+              style="width: 100%; height: 200px"
+            >
+              <GmapMarker
+                :position="{ lat: location.latitude, lng: location.longitude }"
+              />
+            </GmapMap>
+          </div>
+          <div class="col">
+            <p>{{ location.address }}</p>
+            <!-- TODO: Delete -->
+          </div>
+        </div>
       </b-list-group-item>
     </b-list-group>
     <b-alert show v-else class="m-0">
@@ -34,17 +53,23 @@
 </template>
 
 <script>
+import ErrorAlert from "../../components/ErrorAlert";
 export default {
   name: "LocationsList",
+  components: { ErrorAlert },
   data() {
     return {
-      loading: false,
-      error: false
+      requestInfo: {
+        loading: false,
+        error: false,
+        errorMessageKey: "",
+        errorAdditionalInfo: ""
+      }
     };
   },
   computed: {
     locationsList() {
-      return [];
+      return this.$store.state.user.locations;
     }
   }
 };

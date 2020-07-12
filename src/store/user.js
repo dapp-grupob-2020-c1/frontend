@@ -29,5 +29,10 @@ export default {
       state.locations = locations;
     }
   },
-  actions: {}
+  actions: {
+    addLocation({ state, commit }, newLocation) {
+      const updatedLocations = [newLocation, ...state.locations];
+      commit("setLocations", updatedLocations);
+    }
+  }
 };
