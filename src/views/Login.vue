@@ -79,7 +79,7 @@ export default {
         errorAdditionalInfo: ""
       },
       userInformation: {
-        email: "carlos@example.com",
+        email: "manager@example.com",
         password: "123456"
       }
     };
@@ -103,6 +103,7 @@ export default {
         );
       } catch (error) {
         this.requestInfo.error = true;
+        // handle different error types
         if (error.response) {
           this.requestInfo.errorMessageKey = "app.responseError";
           this.requestInfo.errorAdditionalInfo = error.response.data.message;

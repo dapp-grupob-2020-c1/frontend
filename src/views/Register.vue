@@ -90,8 +90,8 @@ export default {
       loading: false,
       error: null,
       userInformation: {
-        name: "Carlos",
-        email: "carlos@example.com",
+        name: "Carlos Manager",
+        email: "manager@example.com",
         password: "123456"
       }
     };
