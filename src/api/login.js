@@ -6,8 +6,6 @@ async function loginUser({ email, password }) {
     process.env.VUE_APP_API_URL
   ).toString();
 
-  console.log("loginUser requestUrl built", requestUrl);
-
   return axios({
     method: "POST",
     url: requestUrl,
