@@ -4,7 +4,7 @@
       <b-breadcrumb-item to="/dashboard">
         {{ $t("dashboard.dashboard") }}
       </b-breadcrumb-item>
-      <b-breadcrumb-item active to="/locations">
+      <b-breadcrumb-item active to="/shops">
         {{ $t("shop.shopList") }}
       </b-breadcrumb-item>
     </b-breadcrumb>
@@ -17,7 +17,7 @@
 
     <b-list-group v-if="shopsList.length">
       <b-list-group-item v-for="shop in shopsList" :key="shop.id">
-        <dov class="row">
+        <div class="row">
           <div class="col-4 align-self-center">
             <GmapMap
               :center="{
@@ -64,13 +64,15 @@
             </p>
 
             <div class="actions my-2">
-              <b-button class="mr-2">Detalles</b-button>
+              <b-button class="mr-2" :to="`/shops/${shop.id}`">
+                Detalles
+              </b-button>
               <b-button class="mr-2" variant="outline-danger">
                 Eliminar
               </b-button>
             </div>
           </div>
-        </dov>
+        </div>
       </b-list-group-item>
     </b-list-group>
     <b-alert show v-else class="m-0">

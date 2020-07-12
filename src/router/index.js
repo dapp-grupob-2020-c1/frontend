@@ -63,13 +63,19 @@ const routes = [
     path: "/shops",
     beforeEnter: requiresAuth,
     component: () =>
-      import(/* webpackChunkName: "shops" */ "../views/shops/List.vue")
+      import(/* webpackChunkName: "shopList" */ "../views/shops/List.vue")
   },
   {
     path: "/shops/create",
     beforeEnter: requiresAuth,
     component: () =>
-      import(/* webpackChunkName: "createShop" */ "../views/shops/Create.vue")
+      import(/* webpackChunkName: "shopCreate" */ "../views/shops/Create.vue")
+  },
+  {
+    path: "/shops/:id",
+    beforeEnter: requiresAuth,
+    component: () =>
+      import(/* webpackChunkName: "shopDetails" */ "../views/shops/Details.vue")
   },
   {
     path: "/cart",
