@@ -53,8 +53,19 @@
               {{ category }}
             </b-badge>
 
+            <h3 class="h6">{{ $t("shop.paymentMethods") }}</h3>
+            <p>
+              <b-badge
+                variant="secondary"
+                v-for="paymentMethod in shop.paymentMethods"
+                :key="paymentMethod"
+                >{{ paymentMethod }}</b-badge
+              >
+            </p>
+
             <h3 class="h6">{{ $t("shop.openingDays") }}</h3>
             <p>
+              {{ shop.openingHour }}-{{ shop.closingHour }},
               <b-badge
                 variant="secondary"
                 v-for="day in shop.days"
