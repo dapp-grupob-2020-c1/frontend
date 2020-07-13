@@ -63,7 +63,7 @@
 </template>
 
 <script>
-import { loginUser } from "../api/login";
+import { loginRequest } from "../api/authRequests";
 import { defaultToasterOptions } from "../config/options";
 import GoogleAuthButton from "../components/GoogleAuthButton";
 import ErrorAlert from "../components/ErrorAlert";
@@ -95,7 +95,7 @@ export default {
       };
 
       try {
-        const response = await loginUser(this.userInformation);
+        const response = await loginRequest(this.userInformation);
         this.$store.dispatch("auth/login", response.data.accessToken);
         this.$root.$bvToast.toast(
           this.$t("login.loginSuccess"),

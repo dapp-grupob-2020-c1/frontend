@@ -79,7 +79,7 @@
 </template>
 
 <script>
-import { registerUser } from "../api/register";
+import { registerRequest } from "../api/authRequests";
 import GoogleAuthButton from "../components/GoogleAuthButton";
 import { defaultToasterOptions } from "../config/options";
 export default {
@@ -101,7 +101,7 @@ export default {
       this.loading = true;
       this.error = null;
       try {
-        await registerUser(this.userInformation);
+        await registerRequest(this.userInformation);
         this.$root.$bvToast.toast(
           this.$t("register.registerSuccess"),
           defaultToasterOptions

@@ -14,18 +14,43 @@
 
     <ErrorAlert :request-info="requestInfo" />
 
-    <p>{{ $route.params.id }}</p>
+    <template v-if="shopDetails">
+      <GmapMap
+        :center="{
+          lat: shopDetails.location.latitude,
+          lng: shopDetails.location.longitude
+        }"
+        :zoom="15"
+        :options="{
+          disableDefaultUI: true,
+          fullscreenControl: false
+        }"
+        style="width: 100%; height: 300px"
+      >
+        <GmapMarker
+          :position="{
+            lat: shopDetails.location.latitude,
+            lng: shopDetails.location.longitude
+          }"
+        />
+      </GmapMap>
+
+      <ShopDetails :shop="shopDetails" expanded />
+    </template>
   </b-container>
 </template>
 
 <script>
 import ErrorAlert from "../../components/ErrorAlert";
+import { getShopRequest } from "../../api/shopRequests";
+import ShopDetails from "../../components/ShopDetails";
 
 export default {
   name: "DisplayShop",
-  components: { ErrorAlert },
-  mounted() {
-    console.log("la url de detalles", this.$route.path);
+  components: { ShopDetails, ErrorAlert },
+  async mounted() {
+    const response = await getShopRequest(this.$route.params.id);
+    this.shopDetails = response.data;
   },
   data() {
     return {
@@ -34,7 +59,8 @@ export default {
         error: false,
         errorMessageKey: "",
         errorAdditionalInfo: ""
-      }
+      },
+      shopDetails: null
     };
   },
   methods: {}
