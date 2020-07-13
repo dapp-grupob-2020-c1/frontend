@@ -14,18 +14,22 @@
 
     <ErrorAlert :request-info="requestInfo" />
 
-    <p>{{ $route.params.id }}</p>
+    <div>
+      <pre>{{ shopDetails }}</pre>
+    </div>
   </b-container>
 </template>
 
 <script>
 import ErrorAlert from "../../components/ErrorAlert";
+import { getShopRequest } from "../../api/shopRequests";
 
 export default {
   name: "DisplayShop",
   components: { ErrorAlert },
-  mounted() {
-    console.log("la url de detalles", this.$route.path);
+  async mounted() {
+    const response = await getShopRequest(this.$route.params.id);
+    this.shopDetails = response.data;
   },
   data() {
     return {
@@ -34,7 +38,8 @@ export default {
         error: false,
         errorMessageKey: "",
         errorAdditionalInfo: ""
-      }
+      },
+      shopDetails: null
     };
   },
   methods: {}

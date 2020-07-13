@@ -27,6 +27,9 @@ export default {
     },
     setLocations(state, locations) {
       state.locations = locations;
+    },
+    setShops(state, shops) {
+      state.shops = shops;
     }
   },
   actions: {

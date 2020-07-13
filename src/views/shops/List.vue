@@ -78,7 +78,11 @@
               <b-button class="mr-2" :to="`/shops/${shop.id}`">
                 Detalles
               </b-button>
-              <b-button class="mr-2" variant="outline-danger">
+              <b-button
+                class="mr-2"
+                variant="outline-danger"
+                @click="handleShopDelete(shop)"
+              >
                 Eliminar
               </b-button>
             </div>
@@ -100,6 +104,8 @@
 
 <script>
 import ErrorAlert from "../../components/ErrorAlert";
+import { deleteShopRequest } from "../../api/shopRequests";
+import { getShopsRequest } from "../../api/userRequests";
 export default {
   name: "ShopsList",
   components: { ErrorAlert },
@@ -112,6 +118,13 @@ export default {
         errorAdditionalInfo: ""
       }
     };
+  },
+  methods: {
+    async handleShopDelete(shop) {
+      await deleteShopRequest(shop.id);
+      const updatedShopsList = await getShopsRequest();
+      this.$store.commit("user/setShops", updatedShopsList);
+    }
   },
   computed: {
     shopsList() {
