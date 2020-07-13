@@ -1,4 +1,13 @@
-import { httpClient } from "./httpClient";
+const axios = require("axios").default;
+
+// configure axios instance
+const httpClient = axios.create({
+  baseURL: process.env.VUE_APP_API_URL,
+  headers: {
+    Accept: "application/json",
+    "Content-Type": "application/json"
+  }
+});
 
 async function loginRequest({ email, password }) {
   return httpClient({
