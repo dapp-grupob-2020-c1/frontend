@@ -1,63 +1,23 @@
-import store from "../store/index";
-const axios = require("axios").default;
+import { httpClient } from "./httpClient";
 
 async function getCurrentUserRequest() {
-  const requestUrl = new URL(
-    "/user/me",
-    process.env.VUE_APP_API_URL
-  ).toString();
-
-  // get token from Store
-  const token = store.state.auth.token;
-
-  return axios({
+  return httpClient({
     method: "GET",
-    url: requestUrl,
-    headers: {
-      Authorization: `Bearer ${token}`,
-      Accept: "application/json",
-      "Content-Type": "application/json"
-    }
+    url: "/user/me"
   });
 }
 
 async function getLocationsRequest() {
-  const requestUrl = new URL(
-    "/user/locations",
-    process.env.VUE_APP_API_URL
-  ).toString();
-
-  // get token from Store
-  const token = store.state.auth.token;
-
-  return axios({
+  return httpClient({
     method: "GET",
-    url: requestUrl,
-    headers: {
-      Authorization: `Bearer ${token}`,
-      Accept: "application/json",
-      "Content-Type": "application/json"
-    }
+    url: "/user/locations"
   });
 }
 
 async function addLocationRequest({ address, latitude, longitude }) {
-  const requestUrl = new URL(
-    "/user/location",
-    process.env.VUE_APP_API_URL
-  ).toString();
-
-  // get token from Store
-  const token = store.state.auth.token;
-
-  return axios({
+  return httpClient({
     method: "POST",
-    url: requestUrl,
-    headers: {
-      Authorization: `Bearer ${token}`,
-      Accept: "application/json",
-      "Content-Type": "application/json"
-    },
+    url: "/user/location",
     params: {
       address: address,
       latitude: String(latitude),
@@ -66,4 +26,19 @@ async function addLocationRequest({ address, latitude, longitude }) {
   });
 }
 
-export { getCurrentUserRequest, getLocationsRequest, addLocationRequest };
+async function deleteLocationRequest() {}
+
+async function getShopsRequest() {
+  return httpClient({
+    method: "GET",
+    url: "/user/myshops"
+  });
+}
+
+export {
+  getCurrentUserRequest,
+  getLocationsRequest,
+  addLocationRequest,
+  deleteLocationRequest,
+  getShopsRequest
+};
