@@ -9,8 +9,9 @@
     <h1 class="h1">{{ $t("dashboard.dashboard") }}</h1>
 
     <b-nav>
-      <b-nav-item to="/locations">Ubicaciones</b-nav-item>
-      <b-nav-item to="/shops">Shops</b-nav-item>
+      <b-nav-item to="/search">{{ $t("dashboard.search") }}</b-nav-item>
+      <b-nav-item to="/locations">{{ $t("dashboard.locations") }}</b-nav-item>
+      <b-nav-item to="/shops">{{ $t("dashboard.shops") }}</b-nav-item>
     </b-nav>
   </b-container>
 </template>

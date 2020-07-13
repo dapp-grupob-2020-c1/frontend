@@ -56,48 +56,9 @@
   },
   "dashboard": {
     "dashboard": "Dashboard",
-    "buyer": {
-      "profile": "Perfil",
-      "name": "Nombre",
-      "locations": "Ubicaciones",
-      "operations": "Compras Anteriores",
-      "alerts": "Alertas"
-    },
-    "buyerLocations": {
-      "description": "Las direcciones cargadas por el cliente son usadas para calcular los envíos de productos.",
-      "empty": "No hay ninguna ubicación registrada.",
-      "addLocation": "Agregar Ubicación"
-    },
-    "buyerOperations": {
-      "description": "Podés llevar un registro de todas las operaciones registradas en el sistema.",
-      "empty": "No hay ninguna operación registrada.",
-      "showDetails": "Ver Detalles"
-    },
-    "seller": {
-      "profile": "Perfil del Negocio",
-      "products": "Productos",
-      "discounts": "Descuentos",
-      "operations": "Ventas Registradas"
-    },
-    "sellerProfile": {
-      "storeName": "Nombre del Negocio",
-      "location": "Ubicación",
-      "openingHours": "Horario de Atención",
-      "shippingDistance": "Distancia de Envío"
-    },
-    "sellerProducts": {
-      "description": "Listado de productos cargados en el sistema.",
-      "showDetails": "Ver Detalles",
-      "empty": "No hay ningún producto cargado hasta el momento.",
-      "createProduct": "Crear Nuevo",
-      "uploadFile": "Cargar .CSV"
-    },
-    "sellerOperations": {
-      "description": "Listado de las ventas registradas en el sistema.",
-      "showDetails": "Ver Detalles",
-      "empty": "No hay ninguna venta registrada hasta el momento."
-    },
-    "sellerDiscounts": {}
+    "search": "Buscar",
+    "locations": "Ubicaciones",
+    "shops": "Negocios"
   },
   "product": {
     "addToCart": "Agregar al Carrito",
@@ -148,6 +109,6 @@
   "search": {
     "searchProducts": "Buscar Productos",
     "searchResults": "Resultados",
-    "beginSearch": "Iniciar Búsqueda"
+    "beginSearch": "Buscar"
   }
 }
