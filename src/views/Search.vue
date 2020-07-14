@@ -69,6 +69,7 @@
 import { searchProductsRequest } from "../api/productsRequests";
 import ProductDetails from "../components/ProductDetails";
 import ErrorAlert from "../components/ErrorAlert";
+import { getLocationsRequest } from "../api/userRequests";
 export default {
   name: "Search",
   components: { ErrorAlert, ProductDetails },
@@ -86,7 +87,11 @@ export default {
       selectedLocation: null
     };
   },
-  mounted() {
+  async mounted() {
+    // update locations
+    const locationsResponse = await getLocationsRequest();
+    this.$store.commit("user/setLocations", locationsResponse.data);
+
     this.selectedLocation = this.userLocationsList[0].id || null;
   },
   computed: {
