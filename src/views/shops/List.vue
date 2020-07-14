@@ -63,11 +63,17 @@ export default {
       }
     };
   },
+  mounted() {
+    this.updateShopsList();
+  },
   methods: {
     async handleShopDelete(shop) {
       await deleteShopRequest(shop.id);
+      await this.updateShopsList();
+    },
+    async updateShopsList() {
       const updatedShopsList = await getShopsRequest();
-      this.$store.commit("user/setShops", updatedShopsList);
+      this.$store.commit("user/setShops", updatedShopsList.data);
     }
   },
   computed: {

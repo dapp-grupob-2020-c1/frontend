@@ -32,7 +32,16 @@
         </b-input-group>
         <div class="search-options mt-3">
           <h3 class="h5">{{ $t("search.searchOptions") }}</h3>
-          <p>Opciones</p>
+          <b-form-group label="Ubicación">
+            <b-form-radio-group
+              id="radio-location"
+              v-model="selectedLocation"
+              :options="userLocationsList"
+              value-field="id"
+              text-field="address"
+              name="location"
+            ></b-form-radio-group>
+          </b-form-group>
         </div>
       </form>
     </b-card>
@@ -65,14 +74,22 @@ export default {
         errorAdditionalInfo: ""
       },
       searchQuery: "",
-      searchResults: []
+      searchResults: [],
+      selectedLocation: null
     };
+  },
+  mounted() {
+    this.selectedLocation = this.userLocationsList[0].id || null;
+  },
+  computed: {
+    userLocationsList() {
+      return this.$store.state.user.locations;
+    }
   },
   methods: {
     async handleSearch() {
-      const firstLocation = 3;
       const searchParams = {
-        locationId: firstLocation,
+        locationId: this.selectedLocation,
         keyword: this.searchQuery
       };
 

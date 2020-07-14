@@ -78,6 +78,30 @@ const routes = [
       import(/* webpackChunkName: "shopDetails" */ "../views/shops/Details.vue")
   },
   {
+    path: "/shops/:id/products",
+    beforeEnter: requiresAuth,
+    component: () =>
+      import(
+        /* webpackChunkName: "shopProductsList" */ "../views/products/List.vue"
+      )
+  },
+  {
+    path: "/shops/:id/products/create",
+    beforeEnter: requiresAuth,
+    component: () =>
+      import(
+        /* webpackChunkName: "shopProductsCreate" */ "../views/products/Create.vue"
+      )
+  },
+  {
+    path: "/shops/:id/products/createMany",
+    beforeEnter: requiresAuth,
+    component: () =>
+      import(
+        /* webpackChunkName: "shopProductsCreateMany" */ "../views/products/CreateMany.vue"
+      )
+  },
+  {
     path: "/cart",
     beforeEnter: requiresAuth,
     component: () =>

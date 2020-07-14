@@ -35,7 +35,12 @@
           </div>
           <div class="col">
             <p>{{ location.address }}</p>
-            <!-- TODO: Delete -->
+            <b-button
+              variant="outline-danger"
+              @click="handleLocationDelete(location)"
+            >
+              {{ $t("location.deleteLocation") }}
+            </b-button>
           </div>
         </div>
       </b-list-group-item>
@@ -54,6 +59,10 @@
 
 <script>
 import ErrorAlert from "../../components/ErrorAlert";
+import {
+  getLocationsRequest,
+  deleteLocationRequest
+} from "../../api/userRequests";
 export default {
   name: "LocationsList",
   components: { ErrorAlert },
@@ -70,6 +79,13 @@ export default {
   computed: {
     locationsList() {
       return this.$store.state.user.locations;
+    }
+  },
+  methods: {
+    async handleLocationDelete(location) {
+      await deleteLocationRequest(location.id);
+      const locationsResponse = await getLocationsRequest();
+      this.$store.commit("user/setLocations", locationsResponse.data);
     }
   }
 };

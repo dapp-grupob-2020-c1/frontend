@@ -36,6 +36,13 @@
       </GmapMap>
 
       <ShopDetails :shop="shopDetails" expanded />
+
+      <b-button
+        variant="outline-primary"
+        :to="`/shops/${shopDetails.id}/products`"
+      >
+        {{ $t("shop.viewProducts") }}
+      </b-button>
     </template>
   </b-container>
 </template>

@@ -26,7 +26,15 @@ async function addLocationRequest({ address, latitude, longitude }) {
   });
 }
 
-async function deleteLocationRequest() {}
+async function deleteLocationRequest(locationId) {
+  return httpClient({
+    method: "DELETE",
+    url: "/user/location",
+    params: {
+      locationId
+    }
+  });
+}
 
 async function getShopsRequest() {
   return httpClient({
