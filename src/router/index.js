@@ -106,22 +106,6 @@ const routes = [
     beforeEnter: requiresAuth,
     component: () =>
       import(/* webpackChunkName: "cart" */ "../views/ShoppingCart.vue")
-  },
-  {
-    path: "/createProduct",
-    beforeEnter: requiresAuth,
-    component: () =>
-      import(
-        /* webpackChunkName: "createProduct" */ "../views/seller/products/Create.vue"
-      )
-  },
-  {
-    path: "/uploadProducts",
-    beforeEnter: requiresAuth,
-    component: () =>
-      import(
-        /* webpackChunkName: "uploadProducts" */ "../views/seller/products/Upload.vue"
-      )
   }
 ];
 
