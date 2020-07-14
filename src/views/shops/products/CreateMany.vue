@@ -23,105 +23,31 @@
     </h1>
 
     <ErrorAlert :request-info="requestInfo" />
-
-    <form @submit.prevent="handleCreateProduct">
-      <!-- id, name, brand, image, price, types -->
-
-      <!-- Nombre -->
-      <b-form-group
-        id="input-group-name"
-        :label="$t('product.name')"
-        label-for="name"
-      >
-        <b-form-input
-          id="name"
-          type="text"
-          name="name"
-          required
-          v-model="product.name"
-        ></b-form-input>
-      </b-form-group>
-
-      <!-- Marca -->
-      <b-form-group
-        id="input-group-brand"
-        :label="$t('product.brand')"
-        label-for="brand"
-      >
-        <b-form-input
-          id="brand"
-          type="text"
-          name="brand"
-          required
-          v-model="product.brand"
-        ></b-form-input>
-      </b-form-group>
-
-      <!-- Imagen -->
-      <b-form-group
-        id="input-group-image"
-        :label="$t('product.image')"
-        label-for="image"
-      >
-        <b-form-input
-          id="image"
-          type="text"
-          name="image"
-          required
-          v-model="product.image"
-        ></b-form-input>
-      </b-form-group>
-
-      <!-- Imagen -->
-      <b-form-group
-        id="input-group-price"
-        :label="$t('product.price')"
-        label-for="price"
-      >
-        <b-form-input
-          id="price"
-          type="number"
-          name="price"
-          required
-          v-model="product.price"
-        ></b-form-input>
-      </b-form-group>
-
-      <!-- Tipo -->
-      <b-form-group
-        id="input-group-types"
-        :label="$t('product.types')"
-        label-for="types"
-      >
-        <b-form-checkbox-group
-          v-model="product.types"
-          :options="productTypes"
-          name="types"
-          stacked
-        ></b-form-checkbox-group>
-      </b-form-group>
-
-      <b-button
-        variant="primary"
-        size="lg"
-        type="submit"
-        :disabled="requestInfo.loading"
-      >
-        {{ $t("shop.submitCreate") }}
-      </b-button>
-      <b-button variant="text" size="lg" @click="handleCancel">
-        {{ $t("shop.cancel") }}
-      </b-button>
-    </form>
+    <vue-csv-import
+      v-model="parsedProducts"
+      autoMatchFields
+      autoMatchIgnoreCase
+      :loadBtnText="$t('shop.loadCsv')"
+      :submitBtnText="$t('shop.loadCsv')"
+      :map-fields="['id', 'name', 'brand', 'image', 'price', 'types']"
+    >
+      <template slot="thead">
+        <tr>
+          <th>{{ $t("products.field") }}</th>
+          <th>{{ $t("products.column") }}</th>
+        </tr>
+      </template>
+    </vue-csv-import>
   </b-container>
 </template>
 
 <script>
 import ErrorAlert from "../../../components/ErrorAlert";
+import { VueCsvImport } from "vue-csv-import";
 
 export default {
   name: "ProductsCreate",
-  components: { ErrorAlert },
+  components: { ErrorAlert, VueCsvImport },
   data() {
     return {
       requestInfo: {
@@ -130,13 +56,7 @@ export default {
         errorMessageKey: "",
         errorAdditionalInfo: ""
       },
-      product: {
-        name: "",
-        brand: "",
-        image: "",
-        price: "",
-        types: []
-      }
+      parsedProducts: []
     };
   },
   computed: {
