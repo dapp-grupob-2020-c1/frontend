@@ -1,2 +1,0 @@
-(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["authRedirect"],{"5a5f":function(t,e,n){"use strict";n.r(e);var u=function(){var t=this,e=t.$createElement,n=t._self._c||e;return n("p",[t._v("Auth Redirect")])},c=[],o={name:"AuthRedirect",data:function(){return{}},mounted:function(){console.log("auth mounted")}},a=o,r=n("2877"),i=Object(r["a"])(a,u,c,!1,null,null,null);e["default"]=i.exports}}]);
-//# sourceMappingURL=authRedirect.3ff406e9.js.map
