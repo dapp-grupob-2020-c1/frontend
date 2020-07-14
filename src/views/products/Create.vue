@@ -117,7 +117,7 @@
 </template>
 
 <script>
-import ErrorAlert from "../../../components/ErrorAlert";
+import ErrorAlert from "../../components/ErrorAlert";
 
 export default {
   name: "ProductsCreate",

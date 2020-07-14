@@ -42,7 +42,7 @@
 </template>
 
 <script>
-import ErrorAlert from "../../../components/ErrorAlert";
+import ErrorAlert from "../../components/ErrorAlert";
 import { VueCsvImport } from "vue-csv-import";
 
 export default {

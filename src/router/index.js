@@ -82,7 +82,7 @@ const routes = [
     beforeEnter: requiresAuth,
     component: () =>
       import(
-        /* webpackChunkName: "shopProductsList" */ "../views/shops/products/List.vue"
+        /* webpackChunkName: "shopProductsList" */ "../views/products/List.vue"
       )
   },
   {
@@ -90,7 +90,7 @@ const routes = [
     beforeEnter: requiresAuth,
     component: () =>
       import(
-        /* webpackChunkName: "shopProductsCreate" */ "../views/shops/products/Create.vue"
+        /* webpackChunkName: "shopProductsCreate" */ "../views/products/Create.vue"
       )
   },
   {
@@ -98,7 +98,7 @@ const routes = [
     beforeEnter: requiresAuth,
     component: () =>
       import(
-        /* webpackChunkName: "shopProductsCreateMany" */ "../views/shops/products/CreateMany.vue"
+        /* webpackChunkName: "shopProductsCreateMany" */ "../views/products/CreateMany.vue"
       )
   },
   {
