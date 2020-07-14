@@ -7,10 +7,10 @@
       <b-breadcrumb-item to="/shops">
         {{ $t("shop.shopList") }}
       </b-breadcrumb-item>
-      <b-breadcrumb-item :to="`/shops/${this.$route.params.id}/`">
+      <b-breadcrumb-item :to="`/shops/${$route.params.id}/`">
         {{ $t("shop.viewDetails") }}
       </b-breadcrumb-item>
-      <b-breadcrumb-item :to="`/shops/${this.$route.params.id}/products`">
+      <b-breadcrumb-item :to="`/shops/${$route.params.id}/products`">
         {{ $t("shop.viewProducts") }}
       </b-breadcrumb-item>
       <b-breadcrumb-item active>
@@ -107,10 +107,10 @@
         type="submit"
         :disabled="requestInfo.loading"
       >
-        {{ $t("shop.submitCreate") }}
+        {{ $t("product.submitCreate") }}
       </b-button>
       <b-button variant="text" size="lg" @click="handleCancel">
-        {{ $t("shop.cancel") }}
+        {{ $t("product.cancel") }}
       </b-button>
     </form>
   </b-container>
@@ -118,6 +118,8 @@
 
 <script>
 import ErrorAlert from "../../components/ErrorAlert";
+import { defaultToasterOptions } from "../../config/options";
+import { createProductRequest } from "../../api/productsRequests";
 
 export default {
   name: "ProductsCreate",
@@ -145,8 +147,38 @@ export default {
     }
   },
   methods: {
-    handleCreateProduct() {
-      console.log("create");
+    async handleCreateProduct() {
+      // reset loading state
+      this.requestInfo = {
+        loading: true,
+        error: false,
+        errorMessageKey: "",
+        errorAdditionalInfo: ""
+      };
+      try {
+        const productData = {
+          shopId: this.$route.params.id,
+          name: this.product.name,
+          brand: this.product.brand,
+          image: this.product.image,
+          price: this.product.price,
+          types: this.product.types
+        };
+        const response = await createProductRequest(productData);
+        console.log(response);
+        //this.$store.dispatch("user/addProduct", response.data);
+        this.$root.$bvToast.toast(
+          this.$t("product.createSuccess"),
+          defaultToasterOptions
+        );
+        this.$router.back();
+      } catch (e) {
+        console.error(e);
+        this.requestInfo.error = true;
+        this.requestInfo.errorMessageKey = "app.requestError";
+      } finally {
+        this.requestInfo.loading = false;
+      }
     },
     handleCancel() {
       this.$router.back();
