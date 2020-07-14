@@ -92,7 +92,7 @@ export default {
     const locationsResponse = await getLocationsRequest();
     this.$store.commit("user/setLocations", locationsResponse.data);
 
-    this.selectedLocation = this.userLocationsList[0].id || null;
+    this.selectedLocation = this.$store.state.user.locations[0].id || null;
   },
   computed: {
     userLocationsList() {
