@@ -5,7 +5,7 @@
         {{ $t("dashboard.dashboard") }}
       </b-breadcrumb-item>
       <b-breadcrumb-item to="/shops">
-        {{ $t("shop.createNew") }}
+        {{ $t("shop.shopList") }}
       </b-breadcrumb-item>
       <b-breadcrumb-item active to="/shops/create">
         {{ $t("shop.createNew") }}
