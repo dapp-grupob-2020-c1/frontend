@@ -21,7 +21,14 @@
 
     <ErrorAlert :request-info="requestInfo" />
 
-    <pre>{{ productsList }}</pre>
+    <b-list-group v-if="productsList.length">
+      <b-list-group-item v-for="product in productsList" :key="product.name">
+        <ProductDetails :product="product" />
+      </b-list-group-item>
+    </b-list-group>
+    <b-alert show v-else class="m-0">
+      {{ $t("product.listEmpty") }}
+    </b-alert>
 
     <div class="actions my-2">
       <b-button
@@ -52,9 +59,10 @@
 <script>
 import ErrorAlert from "../../components/ErrorAlert";
 import { getShopRequest } from "../../api/shopRequests";
+import ProductDetails from "../../components/ProductDetails";
 export default {
   name: "ProductsList",
-  components: { ErrorAlert },
+  components: { ProductDetails, ErrorAlert },
   data() {
     return {
       requestInfo: {

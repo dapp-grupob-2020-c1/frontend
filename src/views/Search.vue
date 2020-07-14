@@ -30,8 +30,11 @@
             </b-button>
           </template>
         </b-input-group>
-        <div class="search-options mt-3">
-          <h3 class="h5">{{ $t("search.searchOptions") }}</h3>
+
+        <h3 class="h5 mt-2" v-b-toggle.search-options>
+          {{ $t("search.searchOptions") }}
+        </h3>
+        <b-collapse id="search-options">
           <b-form-group label="Ubicación">
             <b-form-radio-group
               id="radio-location"
@@ -42,29 +45,33 @@
               name="location"
             ></b-form-radio-group>
           </b-form-group>
-        </div>
+        </b-collapse>
       </form>
     </b-card>
 
     <!-- Resultados -->
-    <div class="mb-5">
+    <div class="my-3" v-if="searchStarted">
       <h2 class="h3">{{ $t("search.searchResults") }}</h2>
-      <ProductListItem
-        v-for="item in searchResults"
-        :key="item.id"
-        :product="item"
-      />
+
+      <b-list-group v-if="searchResults.length">
+        <b-list-group-item v-for="product in searchResults" :key="product.name">
+          <ProductDetails :product="product" buy />
+        </b-list-group-item>
+      </b-list-group>
+      <b-alert show v-else class="m-0">
+        {{ $t("product.listEmpty") }}
+      </b-alert>
     </div>
   </b-container>
 </template>
 
 <script>
 import { searchProductsRequest } from "../api/productsRequests";
-import ProductListItem from "../components/ProductListItem";
+import ProductDetails from "../components/ProductDetails";
 import ErrorAlert from "../components/ErrorAlert";
 export default {
   name: "Search",
-  components: { ErrorAlert, ProductListItem },
+  components: { ErrorAlert, ProductDetails },
   data() {
     return {
       requestInfo: {
@@ -73,6 +80,7 @@ export default {
         errorMessageKey: "",
         errorAdditionalInfo: ""
       },
+      searchStarted: false,
       searchQuery: "",
       searchResults: [],
       selectedLocation: null
@@ -88,6 +96,7 @@ export default {
   },
   methods: {
     async handleSearch() {
+      this.searchStarted = true;
       const searchParams = {
         locationId: this.selectedLocation,
         keyword: this.searchQuery
