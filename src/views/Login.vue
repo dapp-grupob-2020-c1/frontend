@@ -1,11 +1,11 @@
 <template>
-  <PageContainer>
+  <PageContainer
+    :title="$t('login.login')"
+    :request-info="requestInfo"
+    centered
+  >
     <b-row align-h="center" align-v="center">
       <b-col cols="12" md="8" lg="6">
-        <h1>{{ $t("login.login") }}</h1>
-
-        <ErrorAlert :request-info="requestInfo" />
-
         <b-card>
           <GoogleAuthButton />
           <hr class="my-3" />
@@ -66,11 +66,10 @@
 import { loginRequest } from "../api/authRequests";
 import { defaultToasterOptions } from "../config/options";
 import GoogleAuthButton from "../components/GoogleAuthButton";
-import ErrorAlert from "../components/ErrorAlert";
 import PageContainer from "../components/PageContainer";
 export default {
   name: "Login",
-  components: { PageContainer, ErrorAlert, GoogleAuthButton },
+  components: { PageContainer, GoogleAuthButton },
   data() {
     return {
       requestInfo: {

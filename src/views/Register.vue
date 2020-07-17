@@ -1,9 +1,11 @@
 <template>
-  <PageContainer>
+  <PageContainer
+    :title="$t('register.registerNewUser')"
+    :request-info="requestInfo"
+    centered
+  >
     <b-row align-h="center" align-v="center">
       <b-col cols="12" md="8" lg="6">
-        <h1>{{ $t("register.registerNewUser") }}</h1>
-
         <b-alert variant="danger" :show="!!error" dismissible>
           Hubo un error.
           <span v-b-toggle.error-details>Detalles</span>.
@@ -88,6 +90,12 @@ export default {
   components: { PageContainer, GoogleAuthButton },
   data() {
     return {
+      requestInfo: {
+        loading: false,
+        error: false,
+        errorMessageKey: "",
+        errorAdditionalInfo: ""
+      },
       loading: false,
       error: null,
       userInformation: {
