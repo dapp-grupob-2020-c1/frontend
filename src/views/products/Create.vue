@@ -1,29 +1,9 @@
 <template>
-  <PageContainer>
-    <b-breadcrumb>
-      <b-breadcrumb-item to="/dashboard">
-        {{ $t("dashboard.dashboard") }}
-      </b-breadcrumb-item>
-      <b-breadcrumb-item to="/shops">
-        {{ $t("shop.shopList") }}
-      </b-breadcrumb-item>
-      <b-breadcrumb-item :to="`/shops/${$route.params.id}/`">
-        {{ $t("shop.viewDetails") }}
-      </b-breadcrumb-item>
-      <b-breadcrumb-item :to="`/shops/${$route.params.id}/products`">
-        {{ $t("shop.viewProducts") }}
-      </b-breadcrumb-item>
-      <b-breadcrumb-item active>
-        {{ $t("shop.createProduct") }}
-      </b-breadcrumb-item>
-    </b-breadcrumb>
-
-    <h1 class="h1">
-      {{ $t("shop.createProduct") }}
-    </h1>
-
-    <ErrorAlert :request-info="requestInfo" />
-
+  <PageContainer
+    :title="$t('shop.createProduct')"
+    :breadcrumb-items="breadcrumbItems"
+    :request-info="requestInfo"
+  >
     <form @submit.prevent="handleCreateProduct">
       <!-- id, name, brand, image, price, types -->
 
@@ -117,16 +97,36 @@
 </template>
 
 <script>
-import ErrorAlert from "../../components/ErrorAlert";
 import { defaultToasterOptions } from "../../config/options";
 import { createProductRequest } from "../../api/productsRequests";
 import PageContainer from "../../components/PageContainer";
 
 export default {
   name: "ProductsCreate",
-  components: { PageContainer, ErrorAlert },
+  components: { PageContainer },
   data() {
     return {
+      breadcrumbItems: [
+        {
+          text: this.$t("dashboard.dashboard"),
+          to: "/dashboard"
+        },
+        {
+          text: this.$t("shops.shopList"),
+          to: "/shops"
+        },
+        {
+          text: this.$t("shops.viewDetails"),
+          to: `/shops/${this.$route.params.id}/`
+        },
+        {
+          text: this.$t("shops.viewProducts"),
+          to: `/shops/${this.$route.params.id}/products`
+        },
+        {
+          text: this.$t("shop.createProduct")
+        }
+      ],
       requestInfo: {
         loading: false,
         error: false,

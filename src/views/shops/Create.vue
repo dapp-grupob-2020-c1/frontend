@@ -1,23 +1,9 @@
 <template>
-  <PageContainer>
-    <b-breadcrumb>
-      <b-breadcrumb-item to="/dashboard">
-        {{ $t("dashboard.dashboard") }}
-      </b-breadcrumb-item>
-      <b-breadcrumb-item to="/shops">
-        {{ $t("shop.shopList") }}
-      </b-breadcrumb-item>
-      <b-breadcrumb-item active to="/shops/create">
-        {{ $t("shop.createNew") }}
-      </b-breadcrumb-item>
-    </b-breadcrumb>
-
-    <h1 class="h1">
-      {{ $t("shop.createNew") }}
-    </h1>
-
-    <ErrorAlert :request-info="requestInfo" />
-
+  <PageContainer
+    :title="$t('shop.createNew')"
+    :breadcrumb-items="breadcrumbItems"
+    :request-info="requestInfo"
+  >
     <form @submit.prevent="handleCreateShop">
       <!-- openingHour, closingHour -->
 
@@ -170,14 +156,27 @@
 <script>
 import { createShopRequest } from "../../api/shopRequests";
 import { defaultToasterOptions } from "../../config/options";
-import ErrorAlert from "../../components/ErrorAlert";
 import PageContainer from "../../components/PageContainer";
 
 export default {
   name: "ShopsCreate",
-  components: { PageContainer, ErrorAlert },
+  components: { PageContainer },
   data() {
     return {
+      breadcrumbItems: [
+        {
+          text: this.$t("dashboard.dashboard"),
+          to: "/dashboard"
+        },
+        {
+          text: this.$t("shops.shopList"),
+          to: "/shops"
+        },
+        {
+          text: this.$t("shops.createNew"),
+          to: "/shops/create"
+        }
+      ],
       requestInfo: {
         loading: false,
         error: false,

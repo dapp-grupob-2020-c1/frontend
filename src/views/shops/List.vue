@@ -1,20 +1,9 @@
 <template>
-  <PageContainer>
-    <b-breadcrumb>
-      <b-breadcrumb-item to="/dashboard">
-        {{ $t("dashboard.dashboard") }}
-      </b-breadcrumb-item>
-      <b-breadcrumb-item active to="/shops">
-        {{ $t("shop.shopList") }}
-      </b-breadcrumb-item>
-    </b-breadcrumb>
-
-    <h1 class="h1">
-      {{ $t("shop.shopList") }}
-    </h1>
-
-    <ErrorAlert :request-info="requestInfo" />
-
+  <PageContainer
+    :title="$t('shop.shopList')"
+    :breadcrumb-items="breadcrumbItems"
+    :request-info="requestInfo"
+  >
     <b-list-group v-if="shopsList.length">
       <b-list-group-item v-for="shop in shopsList" :key="shop.id">
         <ShopDetails :shop="shop" />
@@ -46,16 +35,24 @@
 </template>
 
 <script>
-import ErrorAlert from "../../components/ErrorAlert";
 import { deleteShopRequest } from "../../api/shopRequests";
 import { getShopsRequest } from "../../api/userRequests";
 import ShopDetails from "../../components/ShopDetails";
 import PageContainer from "../../components/PageContainer";
 export default {
   name: "ShopsList",
-  components: { PageContainer, ShopDetails, ErrorAlert },
+  components: { PageContainer, ShopDetails },
   data() {
     return {
+      breadcrumbItems: [
+        {
+          text: this.$t("dashboard.dashboard"),
+          to: "/dashboard"
+        },
+        {
+          text: this.$t("shops.shopList")
+        }
+      ],
       requestInfo: {
         loading: false,
         error: false,

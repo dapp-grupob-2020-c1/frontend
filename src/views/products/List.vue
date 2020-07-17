@@ -1,26 +1,9 @@
 <template>
-  <PageContainer>
-    <b-breadcrumb>
-      <b-breadcrumb-item to="/dashboard">
-        {{ $t("dashboard.dashboard") }}
-      </b-breadcrumb-item>
-      <b-breadcrumb-item to="/shops">
-        {{ $t("shop.shopList") }}
-      </b-breadcrumb-item>
-      <b-breadcrumb-item :to="`/shops/${this.$route.params.id}/`">
-        {{ $t("shop.viewDetails") }}
-      </b-breadcrumb-item>
-      <b-breadcrumb-item active>
-        {{ $t("shop.viewProducts") }}
-      </b-breadcrumb-item>
-    </b-breadcrumb>
-
-    <h1 class="h1">
-      {{ $t("shop.viewProducts") }}
-    </h1>
-
-    <ErrorAlert :request-info="requestInfo" />
-
+  <PageContainer
+    :title="$t('shop.viewProducts')"
+    :breadcrumb-items="breadcrumbItems"
+    :request-info="requestInfo"
+  >
     <b-list-group v-if="productsList.length">
       <b-list-group-item v-for="product in productsList" :key="product.name">
         <ProductDetails :product="product" />
@@ -57,15 +40,31 @@
 </template>
 
 <script>
-import ErrorAlert from "../../components/ErrorAlert";
 import { getShopRequest } from "../../api/shopRequests";
 import ProductDetails from "../../components/ProductDetails";
 import PageContainer from "../../components/PageContainer";
 export default {
   name: "ProductsList",
-  components: { PageContainer, ProductDetails, ErrorAlert },
+  components: { PageContainer, ProductDetails },
   data() {
     return {
+      breadcrumbItems: [
+        {
+          text: this.$t("dashboard.dashboard"),
+          to: "/dashboard"
+        },
+        {
+          text: this.$t("shops.shopList"),
+          to: "/shops"
+        },
+        {
+          text: this.$t("shops.viewDetails"),
+          to: `/shops/${this.$route.params.id}/`
+        },
+        {
+          text: this.$t("shops.viewProducts")
+        }
+      ],
       requestInfo: {
         loading: false,
         error: false,
@@ -90,3 +89,13 @@ export default {
   methods: {}
 };
 </script>
+
+<b-breadcrumb-item to="/shops">
+  {{ $t("shop.shopList") }}
+</b-breadcrumb-item>
+<b-breadcrumb-item :to="`/shops/${this.$route.params.id}/`">
+  {{ $t("shop.viewDetails") }}
+</b-breadcrumb-item>
+<b-breadcrumb-item active>
+  {{ $t("shop.viewProducts") }}
+</b-breadcrumb-item>

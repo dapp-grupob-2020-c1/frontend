@@ -1,19 +1,9 @@
 <template>
-  <PageContainer>
-    <b-breadcrumb>
-      <b-breadcrumb-item to="/dashboard">
-        {{ $t("dashboard.dashboard") }}
-      </b-breadcrumb-item>
-      <b-breadcrumb-item to="/shops">
-        {{ $t("shop.shopList") }}
-      </b-breadcrumb-item>
-      <b-breadcrumb-item active>
-        {{ $t("shop.viewDetails") }}
-      </b-breadcrumb-item>
-    </b-breadcrumb>
-
-    <ErrorAlert :request-info="requestInfo" />
-
+  <PageContainer
+    :title="$t('shop.viewDetails')"
+    :breadcrumb-items="breadcrumbItems"
+    :request-info="requestInfo"
+  >
     <template v-if="shopDetails">
       <GmapMap
         :center="{
@@ -48,20 +38,32 @@
 </template>
 
 <script>
-import ErrorAlert from "../../components/ErrorAlert";
 import { getShopRequest } from "../../api/shopRequests";
 import ShopDetails from "../../components/ShopDetails";
 import PageContainer from "../../components/PageContainer";
 
 export default {
   name: "DisplayShop",
-  components: { PageContainer, ShopDetails, ErrorAlert },
+  components: { PageContainer, ShopDetails },
   async mounted() {
     const response = await getShopRequest(this.$route.params.id);
     this.shopDetails = response.data;
   },
   data() {
     return {
+      breadcrumbItems: [
+        {
+          text: this.$t("dashboard.dashboard"),
+          to: "/dashboard"
+        },
+        {
+          text: this.$t("shops.shopList"),
+          to: "/shops"
+        },
+        {
+          text: this.$t("shops.viewDetails")
+        }
+      ],
       requestInfo: {
         loading: false,
         error: false,

@@ -1,23 +1,8 @@
 <template>
-  <PageContainer>
-    <b-breadcrumb>
-      <b-breadcrumb-item to="/dashboard">
-        {{ $t("dashboard.dashboard") }}
-      </b-breadcrumb-item>
-      <b-breadcrumb-item to="/locations">
-        {{ $t("location.locationsList") }}
-      </b-breadcrumb-item>
-      <b-breadcrumb-item active to="/locations/create">
-        {{ $t("location.createNewLocation") }}
-      </b-breadcrumb-item>
-    </b-breadcrumb>
-
-    <h1 class="h1">
-      {{ $t("location.createNewLocation") }}
-    </h1>
-
-    <ErrorAlert :request-info="requestInfo" />
-
+  <PageContainer
+    :title="$t('location.createNewLocation')"
+    :breadcrumb-items="breadcrumbItems"
+  >
     <form @submit.prevent="handleCreateLocation">
       <!-- Dirección -->
       <b-form-group
@@ -71,14 +56,27 @@
 <script>
 import { addLocationRequest } from "../../api/userRequests";
 import { defaultToasterOptions } from "../../config/options";
-import ErrorAlert from "../../components/ErrorAlert";
 import PageContainer from "../../components/PageContainer";
 
 export default {
   name: "LocationsCreate",
-  components: { PageContainer, ErrorAlert },
+  components: { PageContainer },
   data() {
     return {
+      breadcrumbItems: [
+        {
+          text: this.$t("dashboard.dashboard"),
+          to: "/dashboard"
+        },
+        {
+          text: this.$t("location.locationsList"),
+          to: "/locations"
+        },
+        {
+          text: this.$t("location.createNewLocation"),
+          to: "/locations/create"
+        }
+      ],
       requestInfo: {
         loading: false,
         error: false,

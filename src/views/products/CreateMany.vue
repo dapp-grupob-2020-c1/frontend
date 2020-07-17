@@ -1,28 +1,9 @@
 <template>
-  <PageContainer>
-    <b-breadcrumb>
-      <b-breadcrumb-item to="/dashboard">
-        {{ $t("dashboard.dashboard") }}
-      </b-breadcrumb-item>
-      <b-breadcrumb-item to="/shops">
-        {{ $t("shop.shopList") }}
-      </b-breadcrumb-item>
-      <b-breadcrumb-item :to="`/shops/${this.$route.params.id}/`">
-        {{ $t("shop.viewDetails") }}
-      </b-breadcrumb-item>
-      <b-breadcrumb-item :to="`/shops/${this.$route.params.id}/products`">
-        {{ $t("shop.viewProducts") }}
-      </b-breadcrumb-item>
-      <b-breadcrumb-item active>
-        {{ $t("shop.createManyProducts") }}
-      </b-breadcrumb-item>
-    </b-breadcrumb>
-
-    <h1 class="h1">
-      {{ $t("shop.createManyProducts") }}
-    </h1>
-
-    <ErrorAlert :request-info="requestInfo" />
+  <PageContainer
+    :title="$t('shop.createManyProducts')"
+    :breadcrumb-items="breadcrumbItems"
+    :request-info="requestInfo"
+  >
     <vue-csv-import
       v-model="parsedProducts"
       autoMatchFields
@@ -42,15 +23,35 @@
 </template>
 
 <script>
-import ErrorAlert from "../../components/ErrorAlert";
 import { VueCsvImport } from "vue-csv-import";
 import PageContainer from "../../components/PageContainer";
 
 export default {
   name: "ProductsCreate",
-  components: { PageContainer, ErrorAlert, VueCsvImport },
+  components: { PageContainer, VueCsvImport },
   data() {
     return {
+      breadcrumbItems: [
+        {
+          text: this.$t("dashboard.dashboard"),
+          to: "/dashboard"
+        },
+        {
+          text: this.$t("shops.shopList"),
+          to: "/shops"
+        },
+        {
+          text: this.$t("shops.viewDetails"),
+          to: `/shops/${this.$route.params.id}/`
+        },
+        {
+          text: this.$t("shops.viewProducts"),
+          to: `/shops/${this.$route.params.id}/products`
+        },
+        {
+          text: this.$t("shop.createManyProducts")
+        }
+      ],
       requestInfo: {
         loading: false,
         error: false,

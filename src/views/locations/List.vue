@@ -1,20 +1,9 @@
 <template>
-  <PageContainer>
-    <b-breadcrumb>
-      <b-breadcrumb-item to="/dashboard">
-        {{ $t("dashboard.dashboard") }}
-      </b-breadcrumb-item>
-      <b-breadcrumb-item active to="/locations">
-        {{ $t("location.locationsList") }}
-      </b-breadcrumb-item>
-    </b-breadcrumb>
-
-    <h1 class="h1">
-      {{ $t("location.locationsList") }}
-    </h1>
-
-    <ErrorAlert :request-info="requestInfo" />
-
+  <PageContainer
+    :title="$t('location.locationsList')"
+    :breadcrumb-items="breadcrumbItems"
+    :request-info="requestInfo"
+  >
     <b-list-group v-if="locationsList.length">
       <b-list-group-item v-for="location in locationsList" :key="location.id">
         <div class="row">
@@ -58,7 +47,6 @@
 </template>
 
 <script>
-import ErrorAlert from "../../components/ErrorAlert";
 import {
   getLocationsRequest,
   deleteLocationRequest
@@ -66,9 +54,19 @@ import {
 import PageContainer from "../../components/PageContainer";
 export default {
   name: "LocationsList",
-  components: { PageContainer, ErrorAlert },
+  components: { PageContainer },
   data() {
     return {
+      breadcrumbItems: [
+        {
+          text: this.$t("dashboard.dashboard"),
+          to: "/dashboard"
+        },
+        {
+          text: this.$t("location.locationsList"),
+          to: "/locations"
+        }
+      ],
       requestInfo: {
         loading: false,
         error: false,
