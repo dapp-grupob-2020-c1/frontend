@@ -1,5 +1,5 @@
 <template>
-  <b-container class="my-5">
+  <PageContainer>
     <b-breadcrumb>
       <b-breadcrumb-item active to="/dashboard">{{
         $t("dashboard.dashboard")
@@ -13,13 +13,15 @@
       <b-nav-item to="/locations">{{ $t("dashboard.locations") }}</b-nav-item>
       <b-nav-item to="/shops">{{ $t("dashboard.shops") }}</b-nav-item>
     </b-nav>
-  </b-container>
+  </PageContainer>
 </template>
 
 <script>
 import { getCurrentUserRequest } from "../api/userRequests";
+import PageContainer from "../components/PageContainer";
 export default {
   name: "Dashboard",
+  components: { PageContainer },
   async mounted() {
     const currentUser = await getCurrentUserRequest();
     const currentUserInfo = {

@@ -1,5 +1,5 @@
 <template>
-  <b-container class="my-5">
+  <PageContainer>
     <b-breadcrumb>
       <b-breadcrumb-item to="/dashboard">
         {{ $t("dashboard.dashboard") }}
@@ -53,16 +53,17 @@
         {{ $t("shop.downloadCsv") }}
       </b-button>
     </div>
-  </b-container>
+  </PageContainer>
 </template>
 
 <script>
 import ErrorAlert from "../../components/ErrorAlert";
 import { getShopRequest } from "../../api/shopRequests";
 import ProductDetails from "../../components/ProductDetails";
+import PageContainer from "../../components/PageContainer";
 export default {
   name: "ProductsList",
-  components: { ProductDetails, ErrorAlert },
+  components: { PageContainer, ProductDetails, ErrorAlert },
   data() {
     return {
       requestInfo: {

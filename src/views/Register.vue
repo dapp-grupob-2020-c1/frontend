@@ -1,5 +1,5 @@
 <template>
-  <b-container class="my-5">
+  <PageContainer>
     <b-row align-h="center" align-v="center">
       <b-col cols="12" md="8" lg="6">
         <h1>{{ $t("register.registerNewUser") }}</h1>
@@ -75,16 +75,17 @@
         </p>
       </b-col>
     </b-row>
-  </b-container>
+  </PageContainer>
 </template>
 
 <script>
 import { registerRequest } from "../api/authRequests";
 import GoogleAuthButton from "../components/GoogleAuthButton";
 import { defaultToasterOptions } from "../config/options";
+import PageContainer from "../components/PageContainer";
 export default {
   name: "Register",
-  components: { GoogleAuthButton },
+  components: { PageContainer, GoogleAuthButton },
   data() {
     return {
       loading: false,

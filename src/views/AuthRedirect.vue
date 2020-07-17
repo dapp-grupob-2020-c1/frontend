@@ -1,12 +1,16 @@
 <template>
-  <p class="text-center">Auth...</p>
+  <PageContainer>
+    <p class="text-center">Auth...</p>
+  </PageContainer>
 </template>
 
 <script>
 import { defaultToasterOptions } from "../config/options";
+import PageContainer from "../components/PageContainer";
 
 export default {
   name: "AuthRedirect",
+  components: { PageContainer },
   mounted() {
     console.log("auth mounted");
     if (this.$route.query.token) {

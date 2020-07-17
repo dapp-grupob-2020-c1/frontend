@@ -1,5 +1,5 @@
 <template>
-  <b-container class="my-5">
+  <PageContainer>
     <h1 class="h1">{{ $t("cart.cart") }}</h1>
     <!-- Alertas -->
     <div class="my-4">
@@ -29,11 +29,13 @@
     <div class="my-4">
       <b-button variant="primary" size="lg">{{ $t("cart.checkout") }}</b-button>
     </div>
-  </b-container>
+  </PageContainer>
 </template>
 
 <script>
+import PageContainer from "../components/PageContainer";
 export default {
-  name: "ShoppingCart"
+  name: "ShoppingCart",
+  components: { PageContainer }
 };
 </script>

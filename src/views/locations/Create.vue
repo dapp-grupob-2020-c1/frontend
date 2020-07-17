@@ -1,5 +1,5 @@
 <template>
-  <b-container class="my-5">
+  <PageContainer>
     <b-breadcrumb>
       <b-breadcrumb-item to="/dashboard">
         {{ $t("dashboard.dashboard") }}
@@ -52,6 +52,7 @@
           />
         </GmapMap>
       </b-form-group>
+
       <b-button
         variant="primary"
         size="lg"
@@ -64,17 +65,18 @@
         {{ $t("location.cancel") }}
       </b-button>
     </form>
-  </b-container>
+  </PageContainer>
 </template>
 
 <script>
 import { addLocationRequest } from "../../api/userRequests";
 import { defaultToasterOptions } from "../../config/options";
 import ErrorAlert from "../../components/ErrorAlert";
+import PageContainer from "../../components/PageContainer";
 
 export default {
   name: "LocationsCreate",
-  components: { ErrorAlert },
+  components: { PageContainer, ErrorAlert },
   data() {
     return {
       requestInfo: {

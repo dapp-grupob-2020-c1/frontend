@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <PageContainer>
     <b-jumbotron :header="$t('home.welcome')">
       <p>{{ $t("home.introRolesSuggestion") }}</p>
       <p>{{ $t("home.introLoginSuggestion") }}</p>
@@ -111,13 +111,16 @@
         </b-col>
       </b-row>
     </b-container>
-  </div>
+  </PageContainer>
 </template>
 
 <script>
+import PageContainer from "../components/PageContainer";
 export default {
   name: "Home",
-  components: {}
+  components: {
+    PageContainer
+  }
 };
 </script>
 

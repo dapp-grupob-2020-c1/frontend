@@ -1,5 +1,5 @@
 <template>
-  <b-container class="my-5">
+  <PageContainer>
     <b-breadcrumb>
       <b-breadcrumb-item to="/dashboard">
         {{ $t("dashboard.dashboard") }}
@@ -42,7 +42,7 @@
         {{ $t("shop.createNew") }}
       </b-button>
     </div>
-  </b-container>
+  </PageContainer>
 </template>
 
 <script>
@@ -50,9 +50,10 @@ import ErrorAlert from "../../components/ErrorAlert";
 import { deleteShopRequest } from "../../api/shopRequests";
 import { getShopsRequest } from "../../api/userRequests";
 import ShopDetails from "../../components/ShopDetails";
+import PageContainer from "../../components/PageContainer";
 export default {
   name: "ShopsList",
-  components: { ShopDetails, ErrorAlert },
+  components: { PageContainer, ShopDetails, ErrorAlert },
   data() {
     return {
       requestInfo: {

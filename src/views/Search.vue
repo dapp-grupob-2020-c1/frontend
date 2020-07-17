@@ -1,5 +1,5 @@
 <template>
-  <b-container class="my-5">
+  <PageContainer>
     <b-breadcrumb>
       <b-breadcrumb-item to="/dashboard">
         {{ $t("dashboard.dashboard") }}
@@ -62,7 +62,7 @@
         {{ $t("product.listEmpty") }}
       </b-alert>
     </div>
-  </b-container>
+  </PageContainer>
 </template>
 
 <script>
@@ -70,9 +70,10 @@ import { searchProductsRequest } from "../api/productsRequests";
 import ProductDetails from "../components/ProductDetails";
 import ErrorAlert from "../components/ErrorAlert";
 import { getLocationsRequest } from "../api/userRequests";
+import PageContainer from "../components/PageContainer";
 export default {
   name: "Search",
-  components: { ErrorAlert, ProductDetails },
+  components: { PageContainer, ErrorAlert, ProductDetails },
   data() {
     return {
       requestInfo: {

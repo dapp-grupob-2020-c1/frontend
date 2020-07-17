@@ -1,5 +1,5 @@
 <template>
-  <b-container class="my-5">
+  <PageContainer>
     <b-row align-h="center" align-v="center">
       <b-col cols="12" md="8" lg="6">
         <h1>{{ $t("login.login") }}</h1>
@@ -59,7 +59,7 @@
         </p>
       </b-col>
     </b-row>
-  </b-container>
+  </PageContainer>
 </template>
 
 <script>
@@ -67,9 +67,10 @@ import { loginRequest } from "../api/authRequests";
 import { defaultToasterOptions } from "../config/options";
 import GoogleAuthButton from "../components/GoogleAuthButton";
 import ErrorAlert from "../components/ErrorAlert";
+import PageContainer from "../components/PageContainer";
 export default {
   name: "Login",
-  components: { ErrorAlert, GoogleAuthButton },
+  components: { PageContainer, ErrorAlert, GoogleAuthButton },
   data() {
     return {
       requestInfo: {

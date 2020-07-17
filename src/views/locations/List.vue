@@ -1,5 +1,5 @@
 <template>
-  <b-container class="my-5">
+  <PageContainer>
     <b-breadcrumb>
       <b-breadcrumb-item to="/dashboard">
         {{ $t("dashboard.dashboard") }}
@@ -54,7 +54,7 @@
         {{ $t("location.createNewLocation") }}
       </b-button>
     </div>
-  </b-container>
+  </PageContainer>
 </template>
 
 <script>
@@ -63,9 +63,10 @@ import {
   getLocationsRequest,
   deleteLocationRequest
 } from "../../api/userRequests";
+import PageContainer from "../../components/PageContainer";
 export default {
   name: "LocationsList",
-  components: { ErrorAlert },
+  components: { PageContainer, ErrorAlert },
   data() {
     return {
       requestInfo: {

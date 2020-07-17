@@ -1,5 +1,5 @@
 <template>
-  <b-container class="my-5">
+  <PageContainer>
     <b-breadcrumb>
       <b-breadcrumb-item to="/dashboard">
         {{ $t("dashboard.dashboard") }}
@@ -44,17 +44,18 @@
         {{ $t("shop.viewProducts") }}
       </b-button>
     </template>
-  </b-container>
+  </PageContainer>
 </template>
 
 <script>
 import ErrorAlert from "../../components/ErrorAlert";
 import { getShopRequest } from "../../api/shopRequests";
 import ShopDetails from "../../components/ShopDetails";
+import PageContainer from "../../components/PageContainer";
 
 export default {
   name: "DisplayShop",
-  components: { ShopDetails, ErrorAlert },
+  components: { PageContainer, ShopDetails, ErrorAlert },
   async mounted() {
     const response = await getShopRequest(this.$route.params.id);
     this.shopDetails = response.data;

@@ -1,5 +1,5 @@
 <template>
-  <b-container class="my-5">
+  <PageContainer>
     <b-breadcrumb>
       <b-breadcrumb-item to="/dashboard">
         {{ $t("dashboard.dashboard") }}
@@ -113,17 +113,18 @@
         {{ $t("product.cancel") }}
       </b-button>
     </form>
-  </b-container>
+  </PageContainer>
 </template>
 
 <script>
 import ErrorAlert from "../../components/ErrorAlert";
 import { defaultToasterOptions } from "../../config/options";
 import { createProductRequest } from "../../api/productsRequests";
+import PageContainer from "../../components/PageContainer";
 
 export default {
   name: "ProductsCreate",
-  components: { ErrorAlert },
+  components: { PageContainer, ErrorAlert },
   data() {
     return {
       requestInfo: {

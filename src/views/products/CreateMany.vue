@@ -1,5 +1,5 @@
 <template>
-  <b-container class="my-5">
+  <PageContainer>
     <b-breadcrumb>
       <b-breadcrumb-item to="/dashboard">
         {{ $t("dashboard.dashboard") }}
@@ -38,16 +38,17 @@
         </tr>
       </template>
     </vue-csv-import>
-  </b-container>
+  </PageContainer>
 </template>
 
 <script>
 import ErrorAlert from "../../components/ErrorAlert";
 import { VueCsvImport } from "vue-csv-import";
+import PageContainer from "../../components/PageContainer";
 
 export default {
   name: "ProductsCreate",
-  components: { ErrorAlert, VueCsvImport },
+  components: { PageContainer, ErrorAlert, VueCsvImport },
   data() {
     return {
       requestInfo: {
