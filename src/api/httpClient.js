@@ -4,7 +4,7 @@ const axios = require("axios").default;
 // get token from Store
 const token = store.state.auth.token;
 
-// configure axios instance
+// configure authenticated axios instance
 const httpClient = axios.create({
   baseURL: process.env.VUE_APP_API_URL,
   headers: {
