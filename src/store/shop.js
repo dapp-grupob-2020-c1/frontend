@@ -2,13 +2,15 @@ export default {
   namespaced: true,
   state: {
     selectedId: null,
-    selectedShop: null,
+    selectedShop: null
   },
   mutations: {
-    setSelected(state, selectedShop);
+    setSelected(state, selectedShop) {
+      state.selectedShop = selectedShop;
+    }
   },
   actions: {
     selectShop() {},
-    updateSelected() {},
+    updateSelected() {}
   }
 };

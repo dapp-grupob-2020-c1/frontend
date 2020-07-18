@@ -18,12 +18,16 @@ export default {
     }
   },
   actions: {
-    async login({ commit }, userInformation) {
+    async login({ commit, dispatch }, userInformation) {
       commit("requests/beginLoading", null, { root: true });
       try {
         const response = await loginRequest(userInformation);
         commit("setLogin", response.data.accessToken);
-        await router.push("/dashboard");
+        console.log("login action, despues de setLogin");
+        dispatch("messages/showMessage", "login.loginSucceeded", {
+          root: true
+        });
+        router.push("/dashboard");
       } catch (error) {
         commit("requests/setError", null, { root: true });
         // handle different error types
@@ -36,10 +40,13 @@ export default {
         commit("requests/endLoading", null, { root: true });
       }
     },
-    async register({ commit }, userInformation) {
+    async register({ commit, dispatch }, userInformation) {
       commit("requests/beginLoading", null, { root: true });
       try {
         await registerRequest(userInformation);
+        dispatch("messages/showMessage", "register.registerSucceeded", {
+          root: true
+        });
         await router.push("/login");
       } catch (error) {
         commit("requests/setError", null, { root: true });
@@ -53,8 +60,11 @@ export default {
         commit("requests/endLoading", null, { root: true });
       }
     },
-    logout({ commit }) {
+    logout({ commit, dispatch }) {
       commit("setLogout");
+      dispatch("messages/showMessage", "login.logoutSucceeded", {
+        root: true
+      });
       router.replace("/");
     }
   }

@@ -5,6 +5,7 @@ import Vuex from "vuex";
 import auth from "./auth";
 import user from "./user";
 import requests from "./requests";
+import messages from "./messages";
 
 Vue.use(Vuex);
 
@@ -39,8 +40,9 @@ export default new Vuex.Store({
   mutations: {},
   actions: {},
   modules: {
+    requests,
+    messages,
     auth,
-    user,
-    requests
+    user
   }
 });
