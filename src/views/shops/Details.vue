@@ -57,11 +57,11 @@ export default {
           to: "/dashboard"
         },
         {
-          text: this.$t("shops.shopList"),
+          text: this.$t("shop.shopList"),
           to: "/shops"
         },
         {
-          text: this.$t("shops.viewDetails"),
+          text: this.$t("shop.viewDetails"),
           to: `/shops/${this.$route.params.id}`
         }
       ],

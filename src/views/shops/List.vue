@@ -75,7 +75,7 @@ export default {
           to: "/dashboard"
         },
         {
-          text: this.$t("shops.shopList")
+          text: this.$t("shop.shopList")
         }
       ],
       requestInfo: {

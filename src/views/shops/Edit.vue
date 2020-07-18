@@ -141,11 +141,7 @@
 </template>
 
 <script>
-import {
-  createShopRequest,
-  editShopRequest,
-  getShopRequest
-} from "../../api/shopRequests";
+import { editShopRequest, getShopRequest } from "../../api/shopRequests";
 import { defaultToasterOptions } from "../../config/options";
 import PageContainer from "../../components/PageContainer";
 
@@ -160,11 +156,11 @@ export default {
           to: "/dashboard"
         },
         {
-          text: this.$t("shops.shopList"),
+          text: this.$t("shop.shopList"),
           to: "/shops"
         },
         {
-          text: this.$t("shops.edit"),
+          text: this.$t("shop.edit"),
           to: `/shops/${this.$route.params.id}/edit`
         }
       ],

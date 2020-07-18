@@ -6,6 +6,13 @@
     "connectionError": "Error en la conexión con el backend",
     "responseError": "Error en la respuesta"
   },
+  "general": {
+    "create": "Crear",
+    "edit": "Editar",
+    "delete": "Eliminar",
+    "view": "Ver",
+    "cancel": "Cancelar"
+  },
   "home": {
     "welcome": "Bienvenido",
     "introRolesSuggestion": "Podés registrarte como comprador o vendedor.",
@@ -88,7 +95,7 @@
   "location": {
     "createNewLocation": "Agregar Ubicación",
     "locationsList": "Listado de Ubicaciones",
-    "showDetails": "Ver Detalles",
+    "viewDetails": "Ver Detalles",
     "listEmpty": "Listado Vacío",
     "successfulCreation": "Ubicación agregada correctamente",
     "submitCreate": "Agregar Ubicación",
@@ -100,7 +107,11 @@
   "shop": {
     "createNew": "Crear Nuevo Negocio",
     "shopList": "Listado de Negocios",
-    "showDetails": "Ver Detalles",
+    "viewDetails": "Ver Detalles",
+    "editDetails": "Editar detalles",
+    "viewProducts": "Ver Productos",
+    "createNewProduct": "Crear Nuevo",
+    "createManyProducts": "Cargar Varios Productos",
     "listEmpty": "Listado Vacío",
     "successfulCreation": "Negocio creado correctamente",
     "submitCreate": "Crear Negocio",

@@ -169,11 +169,11 @@ export default {
           to: "/dashboard"
         },
         {
-          text: this.$t("shops.shopList"),
+          text: this.$t("shop.shopList"),
           to: "/shops"
         },
         {
-          text: this.$t("shops.createNew"),
+          text: this.$t("shop.createNew"),
           to: "/shops/create"
         }
       ],
