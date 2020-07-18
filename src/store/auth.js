@@ -62,6 +62,7 @@ export default {
     },
     logout({ commit, dispatch }) {
       commit("setLogout");
+      commit("user/deleteUserInfo", null, { root: true });
       dispatch("messages/showMessage", "login.logoutSucceeded", {
         root: true
       });

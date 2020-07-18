@@ -60,12 +60,7 @@ export default {
   },
   methods: {
     handleLogout() {
-      this.$store.commit("user/deleteUserInfo");
       this.$store.dispatch("auth/logout");
-      this.$root.$bvToast.toast(
-        this.$t("login.logoutSuccess"),
-        defaultToasterOptions
-      );
     }
   }
 };
