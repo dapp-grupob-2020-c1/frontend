@@ -73,19 +73,19 @@ const routes = [
       import(/* webpackChunkName: "shopCreate" */ "../views/shops/Create.vue")
   },
   {
-    path: "/shops/:id",
+    path: "/shops/:shopId",
     beforeEnter: requiresAuth,
     component: () =>
       import(/* webpackChunkName: "shopDetails" */ "../views/shops/Details.vue")
   },
   {
-    path: "/shops/:id/edit",
+    path: "/shops/:shopId/edit",
     beforeEnter: requiresAuth,
     component: () =>
       import(/* webpackChunkName: "shopEdit" */ "../views/shops/Edit.vue")
   },
   {
-    path: "/shops/:id/products",
+    path: "/shops/:shopId/products",
     beforeEnter: requiresAuth,
     component: () =>
       import(
@@ -93,7 +93,7 @@ const routes = [
       )
   },
   {
-    path: "/shops/:id/products/create",
+    path: "/shops/:shopId/products/create",
     beforeEnter: requiresAuth,
     component: () =>
       import(
@@ -101,7 +101,7 @@ const routes = [
       )
   },
   {
-    path: "/shops/:id/products/createMany",
+    path: "/shops/:shopId/products/createMany",
     beforeEnter: requiresAuth,
     component: () =>
       import(

@@ -161,7 +161,7 @@ export default {
         },
         {
           text: this.$t("shop.edit"),
-          to: `/shops/${this.$route.params.id}/edit`
+          to: `/shops/${this.$route.params.shopId}/edit`
         }
       ],
       requestInfo: {
@@ -171,7 +171,7 @@ export default {
         errorAdditionalInfo: ""
       },
       shopInfo: {
-        id: this.$route.params.id,
+        id: this.$route.params.shopId,
         name: null,
         categories: [],
         imageUrl: null,
@@ -232,7 +232,7 @@ export default {
           this.$t("shop.editSuccess"),
           defaultToasterOptions
         );
-        this.$router.push(`/shops/${this.$route.params.id}`);
+        this.$router.push(`/shops/${this.$route.params.shopId}`);
       } catch (e) {
         console.error(e);
         this.requestInfo.error = true;
@@ -243,7 +243,7 @@ export default {
       }
     },
     handleCancel() {
-      this.$router.push(`/shops/${this.$route.params.id}`);
+      this.$router.push(`/shops/${this.$route.params.shopId}`);
     },
     async getRemoteShopInfo() {
       // reset loading state
@@ -254,7 +254,7 @@ export default {
         errorAdditionalInfo: ""
       };
       try {
-        const response = await getShopRequest(this.$route.params.id);
+        const response = await getShopRequest(this.$route.params.shopId);
         this.shopInfo = Object.assign({}, this.shopInfo, response.data);
       } catch (e) {
         console.error(e);

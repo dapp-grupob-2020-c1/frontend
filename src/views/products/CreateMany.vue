@@ -42,11 +42,11 @@ export default {
         },
         {
           text: this.$t("shop.viewDetails"),
-          to: `/shops/${this.$route.params.id}/`
+          to: `/shops/${this.$route.params.shopId}/`
         },
         {
           text: this.$t("shop.viewProducts"),
-          to: `/shops/${this.$route.params.id}/products`
+          to: `/shops/${this.$route.params.shopId}/products`
         },
         {
           text: this.$t("shop.createManyProducts")

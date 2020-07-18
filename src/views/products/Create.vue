@@ -117,11 +117,11 @@ export default {
         },
         {
           text: this.$t("shop.viewDetails"),
-          to: `/shops/${this.$route.params.id}/`
+          to: `/shops/${this.$route.params.shopId}/`
         },
         {
           text: this.$t("shop.viewProducts"),
-          to: `/shops/${this.$route.params.id}/products`
+          to: `/shops/${this.$route.params.shopId}/products`
         },
         {
           text: this.$t("shop.createProduct")
@@ -158,7 +158,7 @@ export default {
       };
       try {
         const productData = {
-          shopId: this.$route.params.id,
+          shopId: this.$route.params.shopId,
           name: this.product.name,
           brand: this.product.brand,
           image: this.product.image,

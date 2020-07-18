@@ -49,7 +49,7 @@ export default {
   name: "DisplayShop",
   components: { PageContainer, ShopDetails },
   async mounted() {
-    const response = await getShopRequest(this.$route.params.id);
+    const response = await getShopRequest(this.$route.params.shopId);
     this.shopDetails = response.data;
   },
   data() {
@@ -65,7 +65,7 @@ export default {
         },
         {
           text: this.$t("shop.viewDetails"),
-          to: `/shops/${this.$route.params.id}`
+          to: `/shops/${this.$route.params.shopId}`
         }
       ],
       requestInfo: {
