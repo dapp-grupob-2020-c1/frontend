@@ -9,15 +9,29 @@
         <ShopDetails :shop="shop" />
 
         <div class="actions mt-3 pt-3 border-top border-light">
-          <b-button class="mr-2" :to="`/shops/${shop.id}`">
-            Detalles
+          <b-button
+            variant="outline-primary"
+            class="mr-2"
+            :to="`/shops/${shop.id}`"
+          >
+            <b-icon-info-square />
+            {{ $t("shop.viewDetails") }}
+          </b-button>
+          <b-button
+            variant="outline-primary"
+            class="mr-2"
+            :to="`/shops/${shop.id}/edit`"
+          >
+            <b-icon-pencil-square />
+            {{ $t("shop.editDetails") }}
           </b-button>
           <b-button
             class="mr-2"
             variant="outline-danger"
             @click="handleShopDelete(shop)"
           >
-            Eliminar
+            <b-icon-x-square />
+            {{ $t("shop.delete") }}
           </b-button>
         </div>
       </b-list-group-item>
@@ -35,13 +49,24 @@
 </template>
 
 <script>
+import {
+  BIconPencilSquare,
+  BIconXSquare,
+  BIconInfoSquare
+} from "bootstrap-vue";
 import { deleteShopRequest } from "../../api/shopRequests";
 import { getShopsRequest } from "../../api/userRequests";
 import ShopDetails from "../../components/ShopDetails";
 import PageContainer from "../../components/PageContainer";
 export default {
   name: "ShopsList",
-  components: { PageContainer, ShopDetails },
+  components: {
+    PageContainer,
+    ShopDetails,
+    BIconPencilSquare,
+    BIconXSquare,
+    BIconInfoSquare
+  },
   data() {
     return {
       breadcrumbItems: [

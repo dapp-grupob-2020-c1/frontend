@@ -61,7 +61,8 @@ export default {
           to: "/shops"
         },
         {
-          text: this.$t("shops.viewDetails")
+          text: this.$t("shops.viewDetails"),
+          to: `/shops/${this.$route.params.id}`
         }
       ],
       requestInfo: {

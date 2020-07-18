@@ -9,6 +9,7 @@ const requiresAuth = (to, from, next) => {
   if (store.state.auth.authenticated) {
     next();
   } else {
+    // TODO: launch error or notification
     next("/login");
   }
 };
