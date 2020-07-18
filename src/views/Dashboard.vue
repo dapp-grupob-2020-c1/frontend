@@ -6,55 +6,25 @@
   >
     <div class="row">
       <div class="mb-3 col-12 col-sm-6 col-lg-4 col-xl-3">
-        <b-card>
-          <b-button
-            to="/search"
-            size="lg"
-            variant="outline-primary"
-            block
-            class="stretched-link"
-          >
-            {{ $t("dashboard.search") }}
-          </b-button>
-          <p class="mt-3">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto
-            consequatur deleniti ducimus eaque excepturi.
-          </p>
-        </b-card>
+        <DashboardBox
+          to="/search"
+          :title="$t('dashboard.search')"
+          subtitle="Lorem ipsum dolor sit amet."
+        />
       </div>
       <div class="mb-3 col-12 col-sm-6 col-lg-4 col-xl-3">
-        <b-card>
-          <b-button
-            to="/locations"
-            size="lg"
-            variant="outline-primary"
-            block
-            class="stretched-link"
-          >
-            {{ $t("dashboard.locations") }}
-          </b-button>
-          <p class="mt-3">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto
-            consequatur deleniti ducimus eaque excepturi.
-          </p>
-        </b-card>
+        <DashboardBox
+          to="/locations"
+          :title="$t('dashboard.locations')"
+          subtitle="Lorem ipsum dolor sit amet."
+        />
       </div>
       <div class="mb-3 col-12 col-sm-6 col-lg-4 col-xl-3">
-        <b-card>
-          <b-button
-            to="/shops"
-            size="lg"
-            variant="outline-primary"
-            block
-            class="stretched-link"
-          >
-            {{ $t("dashboard.shops") }}
-          </b-button>
-          <p class="mt-3">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto
-            consequatur deleniti ducimus eaque excepturi.
-          </p>
-        </b-card>
+        <DashboardBox
+          to="/shops"
+          :title="$t('dashboard.shops')"
+          subtitle="Lorem ipsum dolor sit amet."
+        />
       </div>
     </div>
   </PageContainer>
@@ -63,9 +33,10 @@
 <script>
 import { getCurrentUserRequest } from "../api/userRequests";
 import PageContainer from "../components/PageContainer";
+import DashboardBox from "../components/DashboardBox";
 export default {
   name: "Dashboard",
-  components: { PageContainer },
+  components: { DashboardBox, PageContainer },
   data() {
     return {
       breadcrumbItems: [
