@@ -1,13 +1,62 @@
 <template>
   <PageContainer
     :title="$t('dashboard.dashboard')"
+    subtitle="Lorem ipsum dolor sit amet, consectetur adipisicing elit."
     :breadcrumb-items="breadcrumbItems"
   >
-    <b-nav>
-      <b-nav-item to="/search">{{ $t("dashboard.search") }}</b-nav-item>
-      <b-nav-item to="/locations">{{ $t("dashboard.locations") }}</b-nav-item>
-      <b-nav-item to="/shops">{{ $t("dashboard.shops") }}</b-nav-item>
-    </b-nav>
+    <div class="row">
+      <div class="mb-3 col-12 col-sm-6 col-lg-4 col-xl-3">
+        <b-card>
+          <b-button
+            to="/search"
+            size="lg"
+            variant="outline-primary"
+            block
+            class="stretched-link"
+          >
+            {{ $t("dashboard.search") }}
+          </b-button>
+          <p class="mt-3">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto
+            consequatur deleniti ducimus eaque excepturi.
+          </p>
+        </b-card>
+      </div>
+      <div class="mb-3 col-12 col-sm-6 col-lg-4 col-xl-3">
+        <b-card>
+          <b-button
+            to="/locations"
+            size="lg"
+            variant="outline-primary"
+            block
+            class="stretched-link"
+          >
+            {{ $t("dashboard.locations") }}
+          </b-button>
+          <p class="mt-3">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto
+            consequatur deleniti ducimus eaque excepturi.
+          </p>
+        </b-card>
+      </div>
+      <div class="mb-3 col-12 col-sm-6 col-lg-4 col-xl-3">
+        <b-card>
+          <b-button
+            to="/shops"
+            size="lg"
+            variant="outline-primary"
+            block
+            class="stretched-link"
+          >
+            {{ $t("dashboard.shops") }}
+          </b-button>
+          <p class="mt-3">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto
+            consequatur deleniti ducimus eaque excepturi.
+          </p>
+        </b-card>
+      </div>
+    </div>
   </PageContainer>
 </template>
 

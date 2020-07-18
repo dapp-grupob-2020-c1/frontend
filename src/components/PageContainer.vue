@@ -6,6 +6,8 @@
       {{ title }}
     </h1>
 
+    <p class="lead">{{ subtitle }}</p>
+
     <ErrorAlert :request-info="requestInfo" v-if="requestInfo" />
 
     <slot></slot>
@@ -19,6 +21,9 @@ export default {
   components: { ErrorAlert },
   props: {
     title: {
+      type: String
+    },
+    subtitle: {
       type: String
     },
     breadcrumbItems: {
