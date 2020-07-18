@@ -1,75 +1,61 @@
 <template>
-  <PageContainer
-    :title="$t('register.registerNewUser')"
-    :request-info="requestInfo"
-    centered
-  >
+  <PageContainer :title="$t('register.registerNewUser')" centered>
     <b-row align-h="center" align-v="center">
       <b-col cols="12" md="8" lg="6">
-        <b-alert variant="danger" :show="!!error" dismissible>
-          Hubo un error.
-          <span v-b-toggle.error-details>Detalles</span>.
-          <b-collapse id="error-details" class="mt-2">
-            {{ error }}
-          </b-collapse>
-        </b-alert>
-
-        <b-card>
-          <GoogleAuthButton :caption="$t('register.registerWithGoogle')" />
-          <hr class="my-3" />
-          <form @submit.prevent="handleRegister">
-            <b-form-group
-              id="input-group-name"
-              :label="$t('register.name')"
-              label-for="name"
-            >
-              <b-form-input
-                id="name"
-                type="text"
-                name="name"
-                autocomplete="name"
-                required
-                v-model="userInformation.name"
-                :disabled="loading"
-                autofocus
-              ></b-form-input>
-            </b-form-group>
-            <b-form-group
-              id="input-group-email"
-              :label="$t('register.email')"
-              label-for="email"
-            >
-              <b-form-input
-                id="email"
-                type="email"
-                name="email"
-                autocomplete="email"
-                required
-                v-model="userInformation.email"
-                :disabled="loading"
-              ></b-form-input>
-            </b-form-group>
-            <b-form-group
-              id="input-group-password"
-              :label="$t('register.password')"
-              label-for="password"
-            >
-              <b-form-input
-                id="password"
-                type="password"
-                name="password"
-                autocomplete="new-password"
-                required
-                v-model="userInformation.password"
-                :disabled="loading"
-              ></b-form-input>
-            </b-form-group>
-            <b-button block variant="primary" type="submit" :disabled="loading">
-              <b-spinner small v-if="loading"></b-spinner>
-              <span v-else>{{ $t("register.register") }}</span>
-            </b-button>
-          </form>
-        </b-card>
+        <b-overlay :show="$store.state.requests.loading">
+          <b-card>
+            <GoogleAuthButton :caption="$t('register.registerWithGoogle')" />
+            <hr class="my-3" />
+            <form @submit.prevent="handleRegister">
+              <b-form-group
+                id="input-group-name"
+                :label="$t('register.name')"
+                label-for="name"
+              >
+                <b-form-input
+                  id="name"
+                  type="text"
+                  name="name"
+                  autocomplete="name"
+                  required
+                  v-model="userInformation.name"
+                  autofocus
+                ></b-form-input>
+              </b-form-group>
+              <b-form-group
+                id="input-group-email"
+                :label="$t('register.email')"
+                label-for="email"
+              >
+                <b-form-input
+                  id="email"
+                  type="email"
+                  name="email"
+                  autocomplete="email"
+                  required
+                  v-model="userInformation.email"
+                ></b-form-input>
+              </b-form-group>
+              <b-form-group
+                id="input-group-password"
+                :label="$t('register.password')"
+                label-for="password"
+              >
+                <b-form-input
+                  id="password"
+                  type="password"
+                  name="password"
+                  autocomplete="new-password"
+                  required
+                  v-model="userInformation.password"
+                ></b-form-input>
+              </b-form-group>
+              <b-button block variant="primary" type="submit">
+                {{ $t("register.register") }}
+              </b-button>
+            </form>
+          </b-card>
+        </b-overlay>
         <p class="my-1">
           {{ $t("register.alreadyHaveAccount") }}
           <router-link to="/login">{{ $t("register.login") }}</router-link
@@ -81,23 +67,13 @@
 </template>
 
 <script>
-import { registerRequest } from "../api/authRequests";
 import GoogleAuthButton from "../components/GoogleAuthButton";
-import { defaultToasterOptions } from "../config/options";
 import PageContainer from "../components/PageContainer";
 export default {
   name: "Register",
   components: { PageContainer, GoogleAuthButton },
   data() {
     return {
-      requestInfo: {
-        loading: false,
-        error: false,
-        errorMessageKey: "",
-        errorAdditionalInfo: ""
-      },
-      loading: false,
-      error: null,
       userInformation: {
         name: "Carlos Manager",
         email: "manager@example.com",
@@ -107,20 +83,7 @@ export default {
   },
   methods: {
     async handleRegister() {
-      this.loading = true;
-      this.error = null;
-      try {
-        await registerRequest(this.userInformation);
-        this.$root.$bvToast.toast(
-          this.$t("register.registerSuccess"),
-          defaultToasterOptions
-        );
-        this.$router.push("/login");
-      } catch (error) {
-        this.error = error.response.data.message;
-        console.error("REQ ERROR: ", error);
-      }
-      this.loading = false;
+      this.$store.dispatch("auth/register", this.userInformation);
     }
   }
 };

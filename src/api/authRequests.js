@@ -22,9 +22,9 @@ async function loginRequest({ email, password }) {
 
 async function registerRequest({ name, email, password }) {
   return httpClient({
-    method: "GET",
+    method: "POST",
     url: "/auth/signup",
-    params: {
+    data: {
       name,
       email,
       password

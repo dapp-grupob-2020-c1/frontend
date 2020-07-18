@@ -8,7 +8,7 @@
 
     <p class="lead">{{ subtitle }}</p>
 
-    <ErrorAlert :request-info="requestInfo" v-if="requestInfo" />
+    <ErrorAlert />
 
     <slot></slot>
   </b-container>

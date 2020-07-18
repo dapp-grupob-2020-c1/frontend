@@ -15,9 +15,8 @@ export default {
       state.loading = false;
     },
     setError(state, errorMessage) {
-      state.error = errorMessage;
+      state.error = true;
       state.errorMessage = errorMessage;
     }
-  },
-  actions: {}
+  }
 };

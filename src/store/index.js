@@ -4,6 +4,7 @@ import Vuex from "vuex";
 // Modules
 import auth from "./auth";
 import user from "./user";
+import requests from "./requests";
 
 Vue.use(Vuex);
 
@@ -39,6 +40,7 @@ export default new Vuex.Store({
   actions: {},
   modules: {
     auth,
-    user
+    user,
+    requests
   }
 });
