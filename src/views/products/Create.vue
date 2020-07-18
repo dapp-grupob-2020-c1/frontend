@@ -18,6 +18,7 @@
           type="text"
           name="name"
           required
+          autofocus
           v-model="product.name"
         ></b-form-input>
       </b-form-group>
@@ -47,7 +48,6 @@
           id="image"
           type="text"
           name="image"
-          required
           v-model="product.image"
         ></b-form-input>
       </b-form-group>

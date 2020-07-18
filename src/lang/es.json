@@ -106,9 +106,11 @@
   },
   "shop": {
     "createNew": "Crear Nuevo Negocio",
+    "deliveryRadius": "Radio de Entrega",
     "shopList": "Listado de Negocios",
     "viewDetails": "Ver Detalles",
     "editDetails": "Editar detalles",
+    "delete": "Eliminar Negocio",
     "viewProducts": "Ver Productos",
     "createNewProduct": "Crear Nuevo",
     "createManyProducts": "Cargar Varios Productos",
