@@ -27,7 +27,24 @@ async function createShopRequest(newShopData) {
   });
 }
 
-async function modifyShopRequest() {}
+async function editShopRequest(newShopData) {
+  return httpClient({
+    method: "PATCH",
+    url: "/shop",
+    data: {
+      id: newShopData.id,
+      name: newShopData.name,
+      imageUrl: newShopData.imageUrl,
+      categories: newShopData.categories,
+      location: newShopData.location,
+      days: newShopData.days,
+      openingHour: newShopData.openingHour,
+      closingHour: newShopData.closingHour,
+      paymentMethods: newShopData.paymentMethods,
+      deliveryRadius: newShopData.deliveryRadius
+    }
+  });
+}
 
 async function deleteShopRequest(shopId) {
   return httpClient({
@@ -42,6 +59,6 @@ async function deleteShopRequest(shopId) {
 export {
   createShopRequest,
   getShopRequest,
-  modifyShopRequest,
+  editShopRequest,
   deleteShopRequest
 };
