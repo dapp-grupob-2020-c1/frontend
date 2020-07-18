@@ -232,7 +232,7 @@ export default {
       try {
         const response = await createShopRequest(this.shopInfo);
         console.log(response);
-        //this.$store.dispatch("user/addLocation", response.data);
+        this.$store.dispatch("user/addShop", response.data);
         this.$root.$bvToast.toast(
           this.$t("shop.createSuccess"),
           defaultToasterOptions
@@ -241,6 +241,7 @@ export default {
       } catch (e) {
         console.error(e);
         this.requestInfo.error = true;
+        // TODO: handle all possible errors
         this.requestInfo.errorMessageKey = "app.requestError";
       } finally {
         this.requestInfo.loading = false;

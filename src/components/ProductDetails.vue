@@ -48,7 +48,7 @@ export default {
       const cartMessage = `${cartItem.quantity} x ${cartItem.product} ${this.$t(
         "product.addedToCart"
       )}`;
-      this.$store.dispatch("buyer/addItemToCart", cartItem);
+      // TODO this.$store.dispatch("buyer/addItemToCart", cartItem);
       this.$root.$bvToast.toast(cartMessage, defaultToasterOptions);
     }
   }

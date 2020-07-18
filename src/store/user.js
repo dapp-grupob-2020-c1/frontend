@@ -36,6 +36,10 @@ export default {
     addLocation({ state, commit }, newLocation) {
       const updatedLocations = [newLocation, ...state.locations];
       commit("setLocations", updatedLocations);
+    },
+    addShop({ state, commit }, newShop) {
+      const updatedShops = [newShop, ...state.shops];
+      commit("setShops", updatedShops);
     }
   }
 };
