@@ -8,7 +8,7 @@
       <b-list-group-item v-for="shop in shopsList" :key="shop.id">
         <ShopDetails :shop="shop" />
 
-        <div class="actions my-2">
+        <div class="actions mt-3 pt-3 border-top border-light">
           <b-button class="mr-2" :to="`/shops/${shop.id}`">
             Detalles
           </b-button>
