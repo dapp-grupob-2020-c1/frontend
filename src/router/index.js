@@ -78,6 +78,12 @@ const routes = [
       import(/* webpackChunkName: "shopDetails" */ "../views/shops/Details.vue")
   },
   {
+    path: "/shops/:id/edit",
+    beforeEnter: requiresAuth,
+    component: () =>
+      import(/* webpackChunkName: "shopEdit" */ "../views/shops/Edit.vue")
+  },
+  {
     path: "/shops/:id/products",
     beforeEnter: requiresAuth,
     component: () =>
