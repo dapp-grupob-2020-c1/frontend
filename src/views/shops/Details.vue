@@ -27,12 +27,15 @@
 
       <ShopDetails :shop="shopDetails" expanded />
 
-      <b-button
-        variant="outline-primary"
-        :to="`/shops/${shopDetails.id}/products`"
-      >
-        {{ $t("shop.viewProducts") }}
-      </b-button>
+      <div class="actions my-2">
+        <b-button
+          variant="outline-primary"
+          size="lg"
+          :to="`/shops/${shopDetails.id}/products`"
+        >
+          {{ $t("shop.viewProducts") }}
+        </b-button>
+      </div>
     </template>
   </PageContainer>
 </template>

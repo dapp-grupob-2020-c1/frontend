@@ -42,6 +42,7 @@
 
     <div class="actions my-2">
       <b-button variant="primary" size="lg" to="/shops/create">
+        <b-icon-plus-square />
         {{ $t("shop.createNew") }}
       </b-button>
     </div>
@@ -49,11 +50,6 @@
 </template>
 
 <script>
-import {
-  BIconPencilSquare,
-  BIconXSquare,
-  BIconInfoSquare
-} from "bootstrap-vue";
 import { deleteShopRequest } from "../../api/shopRequests";
 import { getShopsRequest } from "../../api/userRequests";
 import ShopDetails from "../../components/ShopDetails";
@@ -62,10 +58,7 @@ export default {
   name: "ShopsList",
   components: {
     PageContainer,
-    ShopDetails,
-    BIconPencilSquare,
-    BIconXSquare,
-    BIconInfoSquare
+    ShopDetails
   },
   data() {
     return {
