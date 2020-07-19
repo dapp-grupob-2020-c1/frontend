@@ -49,7 +49,6 @@
 <script>
 import NavbarShoppingCart from "./NavbarShoppingCart";
 import LocaleChanger from "./LocaleChanger";
-import { defaultToasterOptions } from "../config/options";
 export default {
   name: "Navbar",
   components: { LocaleChanger, NavbarShoppingCart },
