@@ -1,6 +1,4 @@
-import { httpClient } from "./httpClient";
-
-async function searchProductsRequest(searchParams) {
+async function searchProductsRequest(httpClient, searchParams) {
   // required search params
   const finalSearchParams = {
     locationId: searchParams.locationId
@@ -32,7 +30,7 @@ async function searchProductsRequest(searchParams) {
   });
 }
 
-async function getProductRequest(productId) {
+async function getProductRequest(httpClient, productId) {
   return httpClient({
     method: "GET",
     url: "/product",
@@ -42,7 +40,7 @@ async function getProductRequest(productId) {
   });
 }
 
-async function createProductRequest(productInfo) {
+async function createProductRequest(httpClient, productInfo) {
   return httpClient({
     method: "POST",
     url: "/product",
@@ -50,7 +48,7 @@ async function createProductRequest(productInfo) {
   });
 }
 
-async function createManyProductsRequest(productsInfo) {
+async function createManyProductsRequest(httpClient, productsInfo) {
   return httpClient({
     method: "POST",
     url: "/products",
@@ -58,7 +56,7 @@ async function createManyProductsRequest(productsInfo) {
   });
 }
 
-async function deleteProduct({ shopId, productId }) {
+async function deleteProduct(httpClient, { shopId, productId }) {
   return httpClient({
     method: "DELETE",
     url: "/products",

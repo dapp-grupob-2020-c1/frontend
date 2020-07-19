@@ -4,6 +4,7 @@ import Vuex from "vuex";
 // Modules
 import auth from "./auth";
 import user from "./user";
+import products from "./products";
 import requests from "./requests";
 import messages from "./messages";
 
@@ -51,6 +52,7 @@ export default new Vuex.Store({
   modules: {
     auth,
     user,
+    products,
     requests,
     messages
   }

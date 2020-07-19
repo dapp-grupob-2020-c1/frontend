@@ -97,9 +97,9 @@
 </template>
 
 <script>
-import { defaultToasterOptions } from "../../config/options";
-import { createProductRequest } from "../../api/productsRequests";
-import PageContainer from "../../components/PageContainer";
+import { defaultToasterOptions } from "../../../config/options";
+import { createProductRequest } from "../../../api/productsRequests";
+import PageContainer from "../../../components/PageContainer";
 
 export default {
   name: "ProductsCreate",

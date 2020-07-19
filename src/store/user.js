@@ -244,5 +244,11 @@ export default {
         commit("requests/endLoading", null, { root: true });
       }
     }
+  },
+  getters: {
+    findShop: state => shopId => {
+      console.log("user/getters/findShop");
+      return state.shops.find(shop => shop.id == shopId);
+    }
   }
 };

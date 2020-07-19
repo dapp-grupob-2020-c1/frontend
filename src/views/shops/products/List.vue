@@ -1,9 +1,5 @@
 <template>
-  <PageContainer
-    :title="$t('shop.viewProducts')"
-    :breadcrumb-items="breadcrumbItems"
-    :request-info="requestInfo"
-  >
+  <PageContainer :title="pageTitle" :breadcrumb-items="breadcrumbItems">
     <b-list-group v-if="productsList.length">
       <b-list-group-item v-for="product in productsList" :key="product.name">
         <ProductDetails :product="product" />
@@ -40,9 +36,8 @@
 </template>
 
 <script>
-import { getShopRequest } from "../../api/shopRequests";
-import ProductDetails from "../../components/ProductDetails";
-import PageContainer from "../../components/PageContainer";
+import ProductDetails from "../../../components/ProductDetails";
+import PageContainer from "../../../components/PageContainer";
 export default {
   name: "ProductsList",
   components: { PageContainer, ProductDetails },
@@ -59,43 +54,29 @@ export default {
         },
         {
           text: this.$t("shop.viewDetails"),
-          to: `/shops/${this.$route.params.id}/`
+          to: `/shops/${this.$route.params.shopId}/`
         },
         {
           text: this.$t("shop.viewProducts")
         }
-      ],
-      requestInfo: {
-        loading: false,
-        error: false,
-        errorMessageKey: "",
-        errorAdditionalInfo: ""
-      },
-      shopDetails: null
+      ]
     };
   },
-  async mounted() {
-    const response = await getShopRequest(this.$route.params.id);
-    this.shopDetails = response.data;
+  mounted() {
+    this.$store.commit("products/setProducts", []);
+    this.$store.dispatch("products/getShopProducts", this.$route.params.shopId);
   },
   computed: {
     productsList() {
-      if (!this.shopDetails) {
-        return [];
-      }
-      return this.shopDetails.products;
+      return this.$store.state.products.products;
+    },
+    pageTitle() {
+      const shopName = this.$store.getters["user/findShop"](
+        this.$route.params.shopId
+      ).name;
+      return this.$t("shop.productsForShop", { shopName });
     }
   },
   methods: {}
 };
 </script>
-
-<b-breadcrumb-item to="/shops">
-  {{ $t("shop.shopList") }}
-</b-breadcrumb-item>
-<b-breadcrumb-item :to="`/shops/${this.$route.params.id}/`">
-  {{ $t("shop.viewDetails") }}
-</b-breadcrumb-item>
-<b-breadcrumb-item active>
-  {{ $t("shop.viewProducts") }}
-</b-breadcrumb-item>

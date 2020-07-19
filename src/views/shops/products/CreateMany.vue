@@ -24,7 +24,7 @@
 
 <script>
 import { VueCsvImport } from "vue-csv-import";
-import PageContainer from "../../components/PageContainer";
+import PageContainer from "../../../components/PageContainer";
 
 export default {
   name: "ProductsCreate",

@@ -58,12 +58,10 @@ import PageContainer from "../../components/PageContainer";
 export default {
   name: "DisplayShop",
   components: { PageContainer, ShopDetails },
-  mounted() {
-    // find shop info in user shops, and copy to local data
-    const foundShop = this.$store.state.user.shops.find(shop => {
-      return shop.id == this.$route.params.shopId;
-    });
-    this.shopInfo = { ...foundShop };
+  computed: {
+    shopInfo() {
+      return this.$store.getters["user/findShop"](this.$route.params.shopId);
+    }
   },
   data() {
     return {
@@ -80,20 +78,7 @@ export default {
           text: this.$t("shop.viewDetails"),
           to: `/shops/${this.$route.params.shopId}`
         }
-      ],
-      shopInfo: {
-        imageUrl: "",
-        id: null,
-        name: "",
-        categories: [],
-        location: null,
-        days: [],
-        openingHour: null,
-        closingHour: null,
-        deliveryRadius: null,
-        discounts: [],
-        paymentMethods: []
-      }
+      ]
     };
   }
 };
