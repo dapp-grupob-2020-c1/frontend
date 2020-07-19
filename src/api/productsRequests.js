@@ -56,13 +56,13 @@ async function createManyProductsRequest(httpClient, productsInfo) {
   });
 }
 
-async function deleteProduct(httpClient, { shopId, productId }) {
+async function deleteProductRequest(httpClient, { shopId, productId }) {
   return httpClient({
     method: "DELETE",
-    url: "/products",
+    url: "/product",
     params: {
-      shopId,
-      productId
+      shopId: shopId,
+      productId: productId
     }
   });
 }
@@ -72,5 +72,5 @@ export {
   getProductRequest,
   createProductRequest,
   createManyProductsRequest,
-  deleteProduct
+  deleteProductRequest
 };

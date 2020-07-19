@@ -2,7 +2,6 @@
   <PageContainer
     :title="$t('shop.createProduct')"
     :breadcrumb-items="breadcrumbItems"
-    :request-info="requestInfo"
   >
     <form @submit.prevent="handleCreateProduct">
       <!-- id, name, brand, image, price, types -->
@@ -75,18 +74,13 @@
       >
         <b-form-checkbox-group
           v-model="product.types"
-          :options="productTypes"
+          :options="$store.state.availableProductCategories"
           name="types"
           stacked
         ></b-form-checkbox-group>
       </b-form-group>
 
-      <b-button
-        variant="primary"
-        size="lg"
-        type="submit"
-        :disabled="requestInfo.loading"
-      >
+      <b-button variant="primary" size="lg" type="submit">
         {{ $t("product.submitCreate") }}
       </b-button>
       <b-button variant="text" size="lg" @click="handleCancel">
@@ -97,8 +91,6 @@
 </template>
 
 <script>
-import { defaultToasterOptions } from "../../../config/options";
-import { createProductRequest } from "../../../api/productsRequests";
 import PageContainer from "../../../components/PageContainer";
 
 export default {
@@ -127,12 +119,6 @@ export default {
           text: this.$t("shop.createProduct")
         }
       ],
-      requestInfo: {
-        loading: false,
-        error: false,
-        errorMessageKey: "",
-        errorAdditionalInfo: ""
-      },
       product: {
         name: "",
         brand: "",
@@ -142,47 +128,21 @@ export default {
       }
     };
   },
-  computed: {
-    productTypes() {
-      return this.$store.state.availableProductCategories;
-    }
-  },
   methods: {
     async handleCreateProduct() {
-      // reset loading state
-      this.requestInfo = {
-        loading: true,
-        error: false,
-        errorMessageKey: "",
-        errorAdditionalInfo: ""
+      const productInfo = {
+        shopId: this.$route.params.shopId,
+        name: this.product.name,
+        brand: this.product.brand,
+        image: this.product.image,
+        price: this.product.price,
+        types: this.product.types
       };
-      try {
-        const productData = {
-          shopId: this.$route.params.shopId,
-          name: this.product.name,
-          brand: this.product.brand,
-          image: this.product.image,
-          price: this.product.price,
-          types: this.product.types
-        };
-        const response = await createProductRequest(productData);
-        console.log(response);
-        //this.$store.dispatch("user/addProduct", response.data);
-        this.$root.$bvToast.toast(
-          this.$t("product.createSuccess"),
-          defaultToasterOptions
-        );
-        this.$router.back();
-      } catch (e) {
-        console.error(e);
-        this.requestInfo.error = true;
-        this.requestInfo.errorMessageKey = "app.requestError";
-      } finally {
-        this.requestInfo.loading = false;
-      }
+      await this.$store.dispatch("products/createProduct", productInfo);
+      this.$router.push(`/shops/${this.$route.params.shopId}/products`);
     },
     handleCancel() {
-      this.$router.back();
+      this.$router.push(`/shops/${this.$route.params.shopId}/products`);
     }
   }
 };
