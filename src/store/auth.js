@@ -1,3 +1,4 @@
+const axios = require("axios").default;
 import router from "../router";
 import { loginRequest, registerRequest } from "../api/authRequests";
 
@@ -5,16 +6,26 @@ export default {
   namespaced: true,
   state: {
     authenticated: false,
-    token: null
+    token: null,
+    httpClient: null
   },
   mutations: {
     setLogin(state, token) {
       state.authenticated = true;
       state.token = token;
+      state.httpClient = axios.create({
+        baseURL: process.env.VUE_APP_API_URL,
+        headers: {
+          Authorization: `Bearer ${token}`,
+          Accept: "application/json",
+          "Content-Type": "application/json"
+        }
+      });
     },
     setLogout(state) {
       state.authenticated = false;
       state.token = null;
+      state.httpClient = null;
     }
   },
   actions: {
@@ -62,7 +73,7 @@ export default {
     },
     logout({ commit, dispatch }) {
       commit("setLogout");
-      commit("user/deleteUserInfo", null, { root: true });
+      commit("user/deleteUserInformation", null, { root: true });
       dispatch("messages/showMessage", "login.logoutSucceeded", {
         root: true
       });

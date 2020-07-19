@@ -2,13 +2,12 @@
   <PageContainer
     :title="$t('shop.viewDetails')"
     :breadcrumb-items="breadcrumbItems"
-    :request-info="requestInfo"
   >
-    <template v-if="shopDetails">
+    <template v-if="shopInfo">
       <GmapMap
         :center="{
-          lat: shopDetails.location.latitude,
-          lng: shopDetails.location.longitude
+          lat: shopInfo.location.latitude,
+          lng: shopInfo.location.longitude
         }"
         :zoom="15"
         :options="{
@@ -19,19 +18,19 @@
       >
         <GmapMarker
           :position="{
-            lat: shopDetails.location.latitude,
-            lng: shopDetails.location.longitude
+            lat: shopInfo.location.latitude,
+            lng: shopInfo.location.longitude
           }"
         />
       </GmapMap>
 
-      <ShopDetails :shop="shopDetails" expanded />
+      <ShopDetails :shop="shopInfo" expanded />
 
       <div class="actions my-2">
         <b-button
           variant="outline-primary"
           size="lg"
-          :to="`/shops/${shopDetails.id}/products`"
+          :to="`/shops/${shopInfo.id}/products`"
         >
           {{ $t("shop.viewProducts") }}
         </b-button>
@@ -41,16 +40,18 @@
 </template>
 
 <script>
-import { getShopRequest } from "../../api/shopRequests";
 import ShopDetails from "../../components/ShopDetails";
 import PageContainer from "../../components/PageContainer";
 
 export default {
   name: "DisplayShop",
   components: { PageContainer, ShopDetails },
-  async mounted() {
-    const response = await getShopRequest(this.$route.params.shopId);
-    this.shopDetails = response.data;
+  mounted() {
+    // find shop info in user shops, and copy to local data
+    const foundShop = this.$store.state.user.shops.find(shop => {
+      return shop.id == this.$route.params.shopId;
+    });
+    this.shopInfo = { ...foundShop };
   },
   data() {
     return {
@@ -68,15 +69,8 @@ export default {
           to: `/shops/${this.$route.params.shopId}`
         }
       ],
-      requestInfo: {
-        loading: false,
-        error: false,
-        errorMessageKey: "",
-        errorAdditionalInfo: ""
-      },
-      shopDetails: null
+      shopInfo: null
     };
-  },
-  methods: {}
+  }
 };
 </script>

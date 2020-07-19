@@ -35,14 +35,23 @@ export default new Vuex.Store({
       "Clothing",
       "Pharmacy"
     ],
-    availablePaymentMethods: ["CASH", "MERCADOPAGO", "DEBIT", "CREDIT"]
+    availablePaymentMethods: ["CASH", "MERCADOPAGO", "DEBIT", "CREDIT"],
+    availableDaysOfWeek: [
+      "MONDAY",
+      "TUESDAY",
+      "WEDNESDAY",
+      "THURSDAY",
+      "FRIDAY",
+      "SATURDAY",
+      "SUNDAY"
+    ]
   },
   mutations: {},
   actions: {},
   modules: {
-    requests,
-    messages,
     auth,
-    user
+    user,
+    requests,
+    messages
   }
 });

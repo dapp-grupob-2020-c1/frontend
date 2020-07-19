@@ -1,6 +1,11 @@
-import { httpClient } from "./httpClient";
+async function getShopsRequest(httpClient) {
+  return httpClient({
+    method: "GET",
+    url: "/user/myshops"
+  });
+}
 
-async function getShopRequest(shopId) {
+async function getShopRequest(httpClient, shopId) {
   return httpClient({
     method: "GET",
     url: "/shop",
@@ -10,12 +15,13 @@ async function getShopRequest(shopId) {
   });
 }
 
-async function createShopRequest(newShopData) {
+async function createShopRequest(httpClient, newShopData) {
   return httpClient({
     method: "POST",
     url: "/shop",
     data: {
       name: newShopData.name,
+      imageUrl: newShopData.imageUrl,
       categories: newShopData.categories,
       location: newShopData.location,
       days: newShopData.days,
@@ -27,7 +33,7 @@ async function createShopRequest(newShopData) {
   });
 }
 
-async function editShopRequest(newShopData) {
+async function editShopRequest(httpClient, newShopData) {
   return httpClient({
     method: "PATCH",
     url: "/shop",
@@ -46,7 +52,7 @@ async function editShopRequest(newShopData) {
   });
 }
 
-async function deleteShopRequest(shopId) {
+async function deleteShopRequest(httpClient, shopId) {
   return httpClient({
     method: "DELETE",
     url: "/shop",
@@ -57,6 +63,7 @@ async function deleteShopRequest(shopId) {
 }
 
 export {
+  getShopsRequest,
   createShopRequest,
   getShopRequest,
   editShopRequest,

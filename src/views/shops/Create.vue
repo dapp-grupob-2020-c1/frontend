@@ -2,7 +2,6 @@
   <PageContainer
     :title="$t('shop.createNew')"
     :breadcrumb-items="breadcrumbItems"
-    :request-info="requestInfo"
   >
     <form @submit.prevent="handleCreateShop">
       <!-- openingHour, closingHour -->
@@ -20,6 +19,21 @@
           required
           autofocus
           v-model="shopInfo.name"
+        ></b-form-input>
+      </b-form-group>
+
+      <!-- Image -->
+      <b-form-group
+        id="input-group-image"
+        :label="$t('shop.image')"
+        label-for="image"
+      >
+        <b-form-input
+          id="image"
+          type="text"
+          name="image"
+          required
+          v-model="shopInfo.imageUrl"
         ></b-form-input>
       </b-form-group>
 
@@ -138,12 +152,7 @@
         <b-form-timepicker v-model="shopInfo.closingHour"></b-form-timepicker>
       </b-form-group>
 
-      <b-button
-        variant="primary"
-        size="lg"
-        type="submit"
-        :disabled="requestInfo.loading"
-      >
+      <b-button variant="primary" size="lg" type="submit">
         {{ $t("shop.submitCreate") }}
       </b-button>
       <b-button variant="text" size="lg" @click="handleCancel">
@@ -154,8 +163,6 @@
 </template>
 
 <script>
-import { createShopRequest } from "../../api/shopRequests";
-import { defaultToasterOptions } from "../../config/options";
 import PageContainer from "../../components/PageContainer";
 
 export default {
@@ -177,14 +184,9 @@ export default {
           to: "/shops/create"
         }
       ],
-      requestInfo: {
-        loading: false,
-        error: false,
-        errorMessageKey: "",
-        errorAdditionalInfo: ""
-      },
       shopInfo: {
         name: null,
+        imageUrl: null,
         categories: [],
         location: {
           address: "",
@@ -220,32 +222,10 @@ export default {
       this.shopInfo.location.coordinates = e.latLng.toJSON();
     },
     async handleCreateShop() {
-      // //TODO: validate information
-
-      // reset loading state
-      this.requestInfo = {
-        loading: true,
-        error: false,
-        errorMessageKey: "",
-        errorAdditionalInfo: ""
-      };
-      try {
-        const response = await createShopRequest(this.shopInfo);
-        console.log(response);
-        this.$store.dispatch("user/addShop", response.data);
-        this.$root.$bvToast.toast(
-          this.$t("shop.createSuccess"),
-          defaultToasterOptions
-        );
-        this.$router.back();
-      } catch (e) {
-        console.error(e);
-        this.requestInfo.error = true;
-        // TODO: handle all possible errors
-        this.requestInfo.errorMessageKey = "app.requestError";
-      } finally {
-        this.requestInfo.loading = false;
-      }
+      //TODO: validate information
+      await this.$store.dispatch("user/createShop", this.shopInfo);
+      await this.$store.dispatch("user/getUserInformation");
+      this.$router.push("/shops");
     },
     handleCancel() {
       this.$router.back();

@@ -8,7 +8,6 @@ export default {
   mutations: {
     addMessage(state, newMessage) {
       state.messagesList = [newMessage, ...state.messagesList];
-      console.log("message added to list");
     },
     deleteMessage(state, messageUuid) {
       state.messagesList = state.messagesList.filter(msg => {
@@ -18,11 +17,21 @@ export default {
   },
   actions: {
     showMessage({ commit }, message) {
-      console.log("show new message action");
       const newMessage = {
         uuid: uuid(),
         text: message,
         variant: "primary"
+      };
+      commit("addMessage", newMessage);
+      setTimeout(() => {
+        commit("deleteMessage", newMessage.uuid);
+      }, 5000);
+    },
+    showErrorMessage({ commit }, message) {
+      const newMessage = {
+        uuid: uuid(),
+        text: message,
+        variant: "danger"
       };
       commit("addMessage", newMessage);
       setTimeout(() => {
