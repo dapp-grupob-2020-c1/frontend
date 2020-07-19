@@ -21,10 +21,10 @@
         {{ $t("shop.createManyProducts") }}
       </b-button>
 
-      <b-button variant="outline-primary" size="lg" class="mr-2" disabled>
+      <download-csv :data="productsList" class="btn btn-lg btn-outline-primary">
         <b-icon-arrow-down-square />
         {{ $t("shop.downloadCsv") }}
-      </b-button>
+      </download-csv>
     </div>
     <b-list-group v-if="productsList.length">
       <b-list-group-item v-for="product in productsList" :key="product.name">
@@ -58,9 +58,13 @@
 <script>
 import ProductDetails from "../../../components/ProductDetails";
 import PageContainer from "../../../components/PageContainer";
+
+// Vue JSON CSV
+import JsonCSV from "vue-json-csv";
+
 export default {
   name: "ProductsList",
-  components: { PageContainer, ProductDetails },
+  components: { PageContainer, ProductDetails, downloadCsv: JsonCSV },
   data() {
     return {
       breadcrumbItems: [
