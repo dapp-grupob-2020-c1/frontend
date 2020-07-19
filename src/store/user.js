@@ -1,4 +1,9 @@
-import { getCurrentUserRequest } from "../api/userRequests";
+import {
+  createLocationRequest,
+  deleteLocationRequest,
+  getCurrentUserRequest,
+  getLocationsRequest
+} from "../api/userRequests";
 import {
   getShopsRequest,
   createShopRequest,
@@ -167,13 +172,77 @@ export default {
         commit("requests/endLoading", null, { root: true });
       }
     },
-    addLocation({ state, commit }, newLocation) {
-      const updatedLocations = [newLocation, ...state.locations];
-      commit("setLocations", updatedLocations);
+    async getLocations({ commit, rootState }) {
+      commit("requests/beginLoading", null, { root: true });
+      try {
+        const httpClient = rootState.auth.httpClient;
+        const getLocationsResponse = await getLocationsRequest(httpClient);
+        commit("setLocations", getLocationsResponse.data);
+      } catch (error) {
+        commit("requests/setError", null, { root: true });
+        // handle different error types
+        if (error.response) {
+          commit("requests/setError", "app.responseError", { root: true });
+        } else if (error.request) {
+          commit("requests/setError", "app.connectionError", { root: true });
+        }
+      } finally {
+        commit("requests/endLoading", null, { root: true });
+      }
     },
-    addShop({ state, commit }, newShop) {
-      const updatedShops = [newShop, ...state.shops];
-      commit("setShops", updatedShops);
+    async createLocation({ commit, dispatch, rootState }, locationInformation) {
+      commit("requests/beginLoading", null, { root: true });
+      try {
+        const httpClient = rootState.auth.httpClient;
+        const createLocationResponse = await createLocationRequest(
+          httpClient,
+          locationInformation
+        );
+        console.log(createLocationResponse);
+        dispatch("messages/showMessage", "user.createLocationSuccess", {
+          root: true
+        });
+      } catch (error) {
+        commit("requests/setError", null, { root: true });
+        dispatch("messages/showErrorMessage", "user.createLocationError", {
+          root: true
+        });
+        // handle different error types
+        if (error.response) {
+          commit("requests/setError", "app.responseError", { root: true });
+        } else if (error.request) {
+          commit("requests/setError", "app.connectionError", { root: true });
+        }
+      } finally {
+        commit("requests/endLoading", null, { root: true });
+      }
+    },
+    async deleteLocation({ commit, dispatch, rootState }, locationId) {
+      commit("requests/beginLoading", null, { root: true });
+      try {
+        const httpClient = rootState.auth.httpClient;
+        const deleteShopResponse = await deleteLocationRequest(
+          httpClient,
+          locationId
+        );
+        console.log(deleteShopResponse);
+        dispatch("messages/showMessage", "user.deleteLocationSuccess", {
+          root: true
+        });
+      } catch (error) {
+        commit("requests/setError", null, { root: true });
+        dispatch("messages/showErrorMessage", "user.deleteLocationError", {
+          root: true
+        });
+        // handle different error types
+        if (error.response) {
+          commit("requests/setError", "app.responseError", { root: true });
+        } else if (error.request) {
+          commit("requests/setError", "app.connectionError", { root: true });
+        }
+      } finally {
+        commit("requests/endLoading", null, { root: true });
+      }
     }
   }
 };

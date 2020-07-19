@@ -221,14 +221,14 @@ export default {
       // update selected position
       this.shopInfo.location.coordinates = e.latLng.toJSON();
     },
+    handleCancel() {
+      this.$router.push("/shops");
+    },
     async handleCreateShop() {
       //TODO: validate information
       await this.$store.dispatch("user/createShop", this.shopInfo);
       await this.$store.dispatch("user/getUserInformation");
       this.$router.push("/shops");
-    },
-    handleCancel() {
-      this.$router.back();
     }
   }
 };

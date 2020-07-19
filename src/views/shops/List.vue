@@ -3,6 +3,13 @@
     :title="$t('shop.shopList')"
     :breadcrumb-items="breadcrumbItems"
   >
+    <div class="actions my-2">
+      <b-button variant="primary" size="lg" to="/shops/create">
+        <b-icon-plus-square />
+        {{ $t("shop.createNew") }}
+      </b-button>
+    </div>
+
     <b-list-group v-if="shopsList.length">
       <b-list-group-item v-for="shop in shopsList" :key="shop.id">
         <ShopDetails :shop="shop" />
@@ -38,13 +45,6 @@
     <b-alert show v-else class="m-0">
       {{ $t("shop.listEmpty") }}
     </b-alert>
-
-    <div class="actions my-2">
-      <b-button variant="primary" size="lg" to="/shops/create">
-        <b-icon-plus-square />
-        {{ $t("shop.createNew") }}
-      </b-button>
-    </div>
   </PageContainer>
 </template>
 

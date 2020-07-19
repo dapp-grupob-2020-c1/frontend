@@ -28,7 +28,7 @@
           ref="map"
           @click="handleMapClick"
           :center="{ lat: -34.90385708261236, lng: -58.20926714017421 }"
-          :zoom="9"
+          :zoom="11"
           style="width: 100%; height: 300px"
         >
           <GmapMarker
@@ -38,12 +38,7 @@
         </GmapMap>
       </b-form-group>
 
-      <b-button
-        variant="primary"
-        size="lg"
-        type="submit"
-        :disabled="requestInfo.loading"
-      >
+      <b-button variant="primary" size="lg" type="submit">
         {{ $t("location.submitCreate") }}
       </b-button>
       <b-button variant="text" size="lg" @click="handleCancel">
@@ -54,8 +49,6 @@
 </template>
 
 <script>
-import { addLocationRequest } from "../../api/userRequests";
-import { defaultToasterOptions } from "../../config/options";
 import PageContainer from "../../components/PageContainer";
 
 export default {
@@ -77,12 +70,6 @@ export default {
           to: "/locations/create"
         }
       ],
-      requestInfo: {
-        loading: false,
-        error: false,
-        errorMessageKey: "",
-        errorAdditionalInfo: ""
-      },
       address: "",
       selectedPosition: {
         lat: null,
@@ -95,6 +82,9 @@ export default {
       // update selected position
       this.selectedPosition = e.latLng.toJSON();
     },
+    handleCancel() {
+      this.$router.push("/locations");
+    },
     async handleCreateLocation() {
       //TODO: validate location information
       const newLocationInformation = {
@@ -103,32 +93,9 @@ export default {
         longitude: this.selectedPosition.lng
       };
 
-      // reset loading state
-      this.requestInfo = {
-        loading: true,
-        error: false,
-        errorMessageKey: "",
-        errorAdditionalInfo: ""
-      };
-
-      try {
-        const response = await addLocationRequest(newLocationInformation);
-        this.$store.dispatch("user/addLocation", response.data);
-        this.$root.$bvToast.toast(
-          this.$t("location.createSuccess"),
-          defaultToasterOptions
-        );
-        this.$router.back();
-      } catch (e) {
-        console.error(e);
-        this.requestInfo.error = true;
-        this.requestInfo.errorMessageKey = "app.requestError";
-      } finally {
-        this.requestInfo.loading = false;
-      }
-    },
-    handleCancel() {
-      this.$router.back();
+      await this.$store.dispatch("user/createLocation", newLocationInformation);
+      await this.$store.dispatch("user/getLocations");
+      this.$router.push("/locations");
     }
   }
 };

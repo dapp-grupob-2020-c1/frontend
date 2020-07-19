@@ -3,8 +3,30 @@
     :title="$t('shop.viewDetails')"
     :breadcrumb-items="breadcrumbItems"
   >
+    <div class="actions my-2">
+      <b-button
+        variant="outline-primary"
+        size="lg"
+        class="mr-2"
+        :to="`/shops/${shopInfo.id}/products`"
+      >
+        <b-icon-info-square />
+        {{ $t("shop.viewProducts") }}
+      </b-button>
+      <b-button
+        variant="outline-primary"
+        size="lg"
+        class="mr-2"
+        :to="`/shops/${shopInfo.id}/edit`"
+      >
+        <b-icon-pencil-square />
+        {{ $t("shop.editDetails") }}
+      </b-button>
+    </div>
+
     <template v-if="shopInfo">
       <GmapMap
+        v-if="shopInfo.location"
         :center="{
           lat: shopInfo.location.latitude,
           lng: shopInfo.location.longitude
@@ -25,16 +47,6 @@
       </GmapMap>
 
       <ShopDetails :shop="shopInfo" expanded />
-
-      <div class="actions my-2">
-        <b-button
-          variant="outline-primary"
-          size="lg"
-          :to="`/shops/${shopInfo.id}/products`"
-        >
-          {{ $t("shop.viewProducts") }}
-        </b-button>
-      </div>
     </template>
   </PageContainer>
 </template>
@@ -69,7 +81,19 @@ export default {
           to: `/shops/${this.$route.params.shopId}`
         }
       ],
-      shopInfo: null
+      shopInfo: {
+        imageUrl: "",
+        id: null,
+        name: "",
+        categories: [],
+        location: null,
+        days: [],
+        openingHour: null,
+        closingHour: null,
+        deliveryRadius: null,
+        discounts: [],
+        paymentMethods: []
+      }
     };
   }
 };

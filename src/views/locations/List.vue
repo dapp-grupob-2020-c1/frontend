@@ -2,8 +2,14 @@
   <PageContainer
     :title="$t('location.locationsList')"
     :breadcrumb-items="breadcrumbItems"
-    :request-info="requestInfo"
   >
+    <div class="actions my-2">
+      <b-button variant="primary" size="lg" to="/locations/create">
+        <b-icon-plus-square />
+        {{ $t("location.createNewLocation") }}
+      </b-button>
+    </div>
+
     <b-list-group v-if="locationsList.length">
       <b-list-group-item v-for="location in locationsList" :key="location.id">
         <div class="row">
@@ -28,6 +34,7 @@
               variant="outline-danger"
               @click="handleLocationDelete(location)"
             >
+              <b-icon-x-square />
               {{ $t("location.deleteLocation") }}
             </b-button>
           </div>
@@ -37,20 +44,10 @@
     <b-alert show v-else class="m-0">
       {{ $t("location.listEmpty") }}
     </b-alert>
-
-    <div class="actions my-2">
-      <b-button variant="primary" size="lg" to="/locations/create">
-        {{ $t("location.createNewLocation") }}
-      </b-button>
-    </div>
   </PageContainer>
 </template>
 
 <script>
-import {
-  getLocationsRequest,
-  deleteLocationRequest
-} from "../../api/userRequests";
 import PageContainer from "../../components/PageContainer";
 export default {
   name: "LocationsList",
@@ -66,13 +63,7 @@ export default {
           text: this.$t("location.locationsList"),
           to: "/locations"
         }
-      ],
-      requestInfo: {
-        loading: false,
-        error: false,
-        errorMessageKey: "",
-        errorAdditionalInfo: ""
-      }
+      ]
     };
   },
   computed: {
@@ -80,11 +71,13 @@ export default {
       return this.$store.state.user.locations;
     }
   },
+  mounted() {
+    this.$store.dispatch("user/getLocations");
+  },
   methods: {
     async handleLocationDelete(location) {
-      await deleteLocationRequest(location.id);
-      const locationsResponse = await getLocationsRequest();
-      this.$store.commit("user/setLocations", locationsResponse.data);
+      this.$store.dispatch("user/deleteLocation", location.id);
+      this.$store.dispatch("user/getLocations");
     }
   }
 };

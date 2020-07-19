@@ -12,7 +12,7 @@ async function getLocationsRequest(httpClient) {
   });
 }
 
-async function addLocationRequest(httpClient, location) {
+async function createLocationRequest(httpClient, location) {
   return httpClient({
     method: "POST",
     url: "/user/location",
@@ -37,6 +37,6 @@ async function deleteLocationRequest(httpClient, locationId) {
 export {
   getCurrentUserRequest,
   getLocationsRequest,
-  addLocationRequest,
+  createLocationRequest,
   deleteLocationRequest
 };
