@@ -166,7 +166,6 @@
 import PageContainer from "../../components/PageContainer";
 
 export default {
-  name: "ShopsCreate",
   components: { PageContainer },
   data() {
     return {

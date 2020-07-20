@@ -63,7 +63,6 @@ import PageContainer from "../../../components/PageContainer";
 import JsonCSV from "vue-json-csv";
 
 export default {
-  name: "ProductsList",
   components: { PageContainer, ProductDetails, downloadCsv: JsonCSV },
   data() {
     return {

@@ -72,7 +72,6 @@ import ErrorAlert from "../components/ErrorAlert";
 import { getLocationsRequest } from "../api/userRequests";
 import PageContainer from "../components/PageContainer";
 export default {
-  name: "Search",
   components: { PageContainer, ErrorAlert, ProductDetails },
   data() {
     return {

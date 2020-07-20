@@ -117,7 +117,6 @@
 <script>
 import PageContainer from "../components/PageContainer";
 export default {
-  name: "Home",
   components: {
     PageContainer
   }

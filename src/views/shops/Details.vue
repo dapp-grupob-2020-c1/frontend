@@ -56,7 +56,6 @@ import ShopDetails from "../../components/ShopDetails";
 import PageContainer from "../../components/PageContainer";
 
 export default {
-  name: "DisplayShop",
   components: { PageContainer, ShopDetails },
   computed: {
     shopInfo() {

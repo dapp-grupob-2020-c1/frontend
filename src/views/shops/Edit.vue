@@ -135,7 +135,6 @@
 import PageContainer from "../../components/PageContainer";
 
 export default {
-  name: "ShopsEdit",
   components: { PageContainer },
   data() {
     return {

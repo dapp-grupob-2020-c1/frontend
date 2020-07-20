@@ -49,7 +49,6 @@
 import PageContainer from "../components/PageContainer";
 import DashboardBox from "../components/DashboardBox";
 export default {
-  name: "Dashboard",
   components: { DashboardBox, PageContainer },
   data() {
     return {

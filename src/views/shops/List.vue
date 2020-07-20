@@ -52,7 +52,6 @@
 import ShopDetails from "../../components/ShopDetails";
 import PageContainer from "../../components/PageContainer";
 export default {
-  name: "ShopsList",
   components: {
     PageContainer,
     ShopDetails

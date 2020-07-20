@@ -35,7 +35,6 @@ import { VueCsvImport } from "vue-csv-import";
 import PageContainer from "../../../components/PageContainer";
 
 export default {
-  name: "ProductsCreate",
   components: { PageContainer, VueCsvImport },
   data() {
     return {

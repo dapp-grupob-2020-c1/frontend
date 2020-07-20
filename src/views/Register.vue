@@ -70,7 +70,6 @@
 import GoogleAuthButton from "../components/GoogleAuthButton";
 import PageContainer from "../components/PageContainer";
 export default {
-  name: "Register",
   components: { PageContainer, GoogleAuthButton },
   data() {
     return {

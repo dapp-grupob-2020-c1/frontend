@@ -50,7 +50,6 @@
 <script>
 import PageContainer from "../../components/PageContainer";
 export default {
-  name: "LocationsList",
   components: { PageContainer },
   data() {
     return {

@@ -52,7 +52,6 @@
 import PageContainer from "../../components/PageContainer";
 
 export default {
-  name: "LocationsCreate",
   components: { PageContainer },
   data() {
     return {

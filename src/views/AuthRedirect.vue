@@ -9,7 +9,6 @@ import { defaultToasterOptions } from "../config/options";
 import PageContainer from "../components/PageContainer";
 
 export default {
-  name: "AuthRedirect",
   components: { PageContainer },
   mounted() {
     console.log("auth mounted");

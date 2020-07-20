@@ -35,7 +35,6 @@
 <script>
 import PageContainer from "../components/PageContainer";
 export default {
-  name: "ShoppingCart",
   components: { PageContainer }
 };
 </script>
