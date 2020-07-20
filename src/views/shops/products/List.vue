@@ -27,7 +27,7 @@
       </download-csv>
     </div>
     <b-list-group v-if="productsList.length">
-      <b-list-group-item v-for="product in productsList" :key="product.name">
+      <b-list-group-item v-for="product in productsList" :key="product.id">
         <ProductDetails :product="product" />
         <div class="actions mt-3 pt-3 border-top border-light">
           <b-button
