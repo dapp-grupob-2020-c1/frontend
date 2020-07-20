@@ -13,7 +13,7 @@ export default {
     },
     errorMessage() {
       return this.$store.state.requests.errorMessage;
-    }
-  }
+    },
+  },
 };
 </script>

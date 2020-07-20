@@ -4,7 +4,7 @@
       <img
         :alt="`Logo ${$t('app.appName')}`"
         src="../assets/logo.png"
-        style="max-height:60px;"
+        style="max-height: 60px;"
       />
     </b-navbar-brand>
 
@@ -55,12 +55,12 @@ export default {
   computed: {
     isAuthenticated() {
       return this.$store.state.auth.authenticated;
-    }
+    },
   },
   methods: {
     handleLogout() {
       this.$store.dispatch("auth/logout");
-    }
-  }
+    },
+  },
 };
 </script>

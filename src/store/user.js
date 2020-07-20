@@ -2,13 +2,13 @@ import {
   createLocationRequest,
   deleteLocationRequest,
   getCurrentUserRequest,
-  getLocationsRequest
+  getLocationsRequest,
 } from "../api/userRequests";
 import {
   getShopsRequest,
   createShopRequest,
   deleteShopRequest,
-  editShopRequest
+  editShopRequest,
 } from "../api/shopRequests";
 
 export default {
@@ -22,7 +22,7 @@ export default {
     shoppingList: null,
     typeThresholds: null,
     suggestedTypeThresholds: null,
-    totalThreshold: null
+    totalThreshold: null,
   },
   namespaced: true,
   mutations: {
@@ -55,7 +55,7 @@ export default {
     },
     setShops(state, shops) {
       state.shops = shops;
-    }
+    },
   },
   actions: {
     async getUserInformation({ commit, rootState }) {
@@ -104,12 +104,12 @@ export default {
         );
         console.log(createShopResponse);
         dispatch("messages/showMessage", "user.createShopSuccess", {
-          root: true
+          root: true,
         });
       } catch (error) {
         commit("requests/setError", null, { root: true });
         dispatch("messages/showErrorMessage", "user.createShopError", {
-          root: true
+          root: true,
         });
         // handle different error types
         if (error.response) {
@@ -131,12 +131,12 @@ export default {
         );
         console.log(editShopResponse);
         dispatch("messages/showMessage", "user.editShopSuccess", {
-          root: true
+          root: true,
         });
       } catch (error) {
         commit("requests/setError", null, { root: true });
         dispatch("messages/showErrorMessage", "user.editShopError", {
-          root: true
+          root: true,
         });
         // handle different error types
         if (error.response) {
@@ -155,12 +155,12 @@ export default {
         const deleteShopResponse = await deleteShopRequest(httpClient, shopId);
         console.log(deleteShopResponse);
         dispatch("messages/showMessage", "user.deleteShopSuccess", {
-          root: true
+          root: true,
         });
       } catch (error) {
         commit("requests/setError", null, { root: true });
         dispatch("messages/showErrorMessage", "user.deleteShopError", {
-          root: true
+          root: true,
         });
         // handle different error types
         if (error.response) {
@@ -200,12 +200,12 @@ export default {
         );
         console.log(createLocationResponse);
         dispatch("messages/showMessage", "user.createLocationSuccess", {
-          root: true
+          root: true,
         });
       } catch (error) {
         commit("requests/setError", null, { root: true });
         dispatch("messages/showErrorMessage", "user.createLocationError", {
-          root: true
+          root: true,
         });
         // handle different error types
         if (error.response) {
@@ -227,12 +227,12 @@ export default {
         );
         console.log(deleteShopResponse);
         dispatch("messages/showMessage", "user.deleteLocationSuccess", {
-          root: true
+          root: true,
         });
       } catch (error) {
         commit("requests/setError", null, { root: true });
         dispatch("messages/showErrorMessage", "user.deleteLocationError", {
-          root: true
+          root: true,
         });
         // handle different error types
         if (error.response) {
@@ -243,12 +243,12 @@ export default {
       } finally {
         commit("requests/endLoading", null, { root: true });
       }
-    }
+    },
   },
   getters: {
-    findShop: state => shopId => {
+    findShop: (state) => (shopId) => {
       console.log("user/getters/findShop");
-      return state.shops.find(shop => shop.id == shopId);
-    }
-  }
+      return state.shops.find((shop) => shop.id == shopId);
+    },
+  },
 };

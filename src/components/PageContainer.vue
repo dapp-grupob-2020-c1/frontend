@@ -21,21 +21,21 @@ export default {
   components: { ErrorAlert },
   props: {
     title: {
-      type: String
+      type: String,
     },
     subtitle: {
-      type: String
+      type: String,
     },
     breadcrumbItems: {
-      type: Array
+      type: Array,
     },
     requestInfo: {
-      type: Object
+      type: Object,
     },
     centered: {
-      type: Boolean
-    }
-  }
+      type: Boolean,
+    },
+  },
 };
 </script>
 

@@ -61,14 +61,14 @@ export default {
     return {
       userInformation: {
         email: "manager@example.com",
-        password: "123456"
-      }
+        password: "123456",
+      },
     };
   },
   methods: {
     handleLogin() {
       this.$store.dispatch("auth/login", this.userInformation);
-    }
-  }
+    },
+  },
 };
 </script>

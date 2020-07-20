@@ -54,19 +54,19 @@ import PageContainer from "../../components/PageContainer";
 export default {
   components: {
     PageContainer,
-    ShopDetails
+    ShopDetails,
   },
   data() {
     return {
       breadcrumbItems: [
         {
           text: this.$t("dashboard.dashboard"),
-          to: "/dashboard"
+          to: "/dashboard",
         },
         {
-          text: this.$t("shop.shopList")
-        }
-      ]
+          text: this.$t("shop.shopList"),
+        },
+      ],
     };
   },
   mounted() {
@@ -76,12 +76,12 @@ export default {
     async handleShopDelete(shop) {
       await this.$store.dispatch("user/deleteShop", shop.id);
       await this.$store.dispatch("user/getShops");
-    }
+    },
   },
   computed: {
     shopsList() {
       return this.$store.state.user.shops;
-    }
-  }
+    },
+  },
 };
 </script>

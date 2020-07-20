@@ -35,6 +35,6 @@
 <script>
 import PageContainer from "../components/PageContainer";
 export default {
-  components: { PageContainer }
+  components: { PageContainer },
 };
 </script>

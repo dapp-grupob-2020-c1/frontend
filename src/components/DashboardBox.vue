@@ -21,8 +21,8 @@ export default {
   props: {
     title: String,
     subtitle: String,
-    to: String
-  }
+    to: String,
+  },
 };
 </script>
 

@@ -26,16 +26,16 @@ export default {
   props: {
     product: {
       type: Object,
-      required: true
+      required: true,
     },
     buy: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
   data() {
     return {
-      quantity: 1
+      quantity: 1,
     };
   },
   computed: {},
@@ -43,14 +43,14 @@ export default {
     handleAddToCart() {
       const cartItem = {
         product: this.product.name,
-        quantity: this.quantity
+        quantity: this.quantity,
       };
       const cartMessage = `${cartItem.quantity} x ${cartItem.product} ${this.$t(
         "product.addedToCart"
       )}`;
       // TODO this.$store.dispatch("buyer/addItemToCart", cartItem);
       this.$root.$bvToast.toast(cartMessage, defaultToasterOptions);
-    }
-  }
+    },
+  },
 };
 </script>

@@ -41,39 +41,39 @@ export default {
       breadcrumbItems: [
         {
           text: this.$t("dashboard.dashboard"),
-          to: "/dashboard"
+          to: "/dashboard",
         },
         {
           text: this.$t("shop.shopList"),
-          to: "/shops"
+          to: "/shops",
         },
         {
           text: this.$t("shop.viewDetails"),
-          to: `/shops/${this.$route.params.shopId}/`
+          to: `/shops/${this.$route.params.shopId}/`,
         },
         {
           text: this.$t("shop.viewProducts"),
-          to: `/shops/${this.$route.params.shopId}/products`
+          to: `/shops/${this.$route.params.shopId}/products`,
         },
         {
-          text: this.$t("shop.createManyProducts")
-        }
+          text: this.$t("shop.createManyProducts"),
+        },
       ],
-      parsedProducts: []
+      parsedProducts: [],
     };
   },
   methods: {
     handleCreateManyProducts() {
       const formattedProductList = this.parsedProducts
-        .filter(prod => prod.id != "id")
-        .map(prod => {
+        .filter((prod) => prod.id != "id")
+        .map((prod) => {
           // create a formatted product from CSV loaded one
           const formattedProd = {
             name: prod.name,
             brand: prod.brand,
             image: prod.image,
             price: prod.price,
-            types: [prod.types]
+            types: [prod.types],
           };
           if (prod.id) {
             formattedProd.id = prod.id;
@@ -85,7 +85,7 @@ export default {
     },
     handleCancel() {
       this.$router.push(`/shops/${this.$route.params.shopId}/products`);
-    }
-  }
+    },
+  },
 };
 </script>

@@ -141,16 +141,16 @@ export default {
       breadcrumbItems: [
         {
           text: this.$t("dashboard.dashboard"),
-          to: "/dashboard"
+          to: "/dashboard",
         },
         {
           text: this.$t("shop.shopList"),
-          to: "/shops"
+          to: "/shops",
         },
         {
           text: this.$t("shop.edit"),
-          to: `/shops/${this.$route.params.shopId}/edit`
-        }
+          to: `/shops/${this.$route.params.shopId}/edit`,
+        },
       ],
       shopInfo: {
         id: this.$route.params.shopId,
@@ -161,8 +161,8 @@ export default {
           address: "",
           coordinates: {
             lat: null,
-            lng: null
-          }
+            lng: null,
+          },
         },
         days: [],
         openingHour: null,
@@ -171,13 +171,13 @@ export default {
         products: [],
         discounts: [],
         paymentMethods: [],
-        turns: []
-      }
+        turns: [],
+      },
     };
   },
   mounted() {
     // find shop info in user shops, and copy to local data
-    const foundShop = this.$store.state.user.shops.find(shop => {
+    const foundShop = this.$store.state.user.shops.find((shop) => {
       return shop.id == this.$route.params.shopId;
     });
     this.shopInfo = { ...foundShop };
@@ -195,7 +195,7 @@ export default {
     },
     handleCancel() {
       this.$router.push("/shops");
-    }
-  }
+    },
+  },
 };
 </script>

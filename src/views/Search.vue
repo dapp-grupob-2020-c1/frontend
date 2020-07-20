@@ -79,12 +79,12 @@ export default {
         loading: false,
         error: false,
         errorMessageKey: "",
-        errorAdditionalInfo: ""
+        errorAdditionalInfo: "",
       },
       searchStarted: false,
       searchQuery: "",
       searchResults: [],
-      selectedLocation: null
+      selectedLocation: null,
     };
   },
   async mounted() {
@@ -97,14 +97,14 @@ export default {
   computed: {
     userLocationsList() {
       return this.$store.state.user.locations;
-    }
+    },
   },
   methods: {
     async handleSearch() {
       this.searchStarted = true;
       const searchParams = {
         locationId: this.selectedLocation,
-        keyword: this.searchQuery
+        keyword: this.searchQuery,
       };
 
       // reset loading state
@@ -112,7 +112,7 @@ export default {
         loading: true,
         error: false,
         errorMessageKey: "",
-        errorAdditionalInfo: ""
+        errorAdditionalInfo: "",
       };
 
       try {
@@ -123,7 +123,7 @@ export default {
       } finally {
         this.requestInfo.loading = false;
       }
-    }
-  }
+    },
+  },
 };
 </script>

@@ -55,15 +55,15 @@ export default {
       breadcrumbItems: [
         {
           text: this.$t("dashboard.dashboard"),
-          to: "/dashboard"
-        }
-      ]
+          to: "/dashboard",
+        },
+      ],
     };
   },
   async mounted() {
     this.$store.dispatch("user/getUserInformation");
     this.$store.dispatch("cart/getActiveShoppingCart");
     this.$store.dispatch("cart/getOldCarts");
-  }
+  },
 };
 </script>

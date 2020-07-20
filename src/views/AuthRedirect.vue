@@ -23,7 +23,7 @@ export default {
         variant: "danger",
         toaster: "b-toaster-top-center",
         noCloseButton: true,
-        autoHideDelay: 5000
+        autoHideDelay: 5000,
       };
       this.$root.$bvToast.toast(
         this.$t("login.loginError"),
@@ -31,6 +31,6 @@ export default {
       );
       this.$router.push("/login");
     }
-  }
+  },
 };
 </script>

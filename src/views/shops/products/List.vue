@@ -69,20 +69,20 @@ export default {
       breadcrumbItems: [
         {
           text: this.$t("dashboard.dashboard"),
-          to: "/dashboard"
+          to: "/dashboard",
         },
         {
           text: this.$t("shop.shopList"),
-          to: "/shops"
+          to: "/shops",
         },
         {
           text: this.$t("shop.viewDetails"),
-          to: `/shops/${this.$route.params.shopId}/`
+          to: `/shops/${this.$route.params.shopId}/`,
         },
         {
-          text: this.$t("shop.viewProducts")
-        }
-      ]
+          text: this.$t("shop.viewProducts"),
+        },
+      ],
     };
   },
   mounted() {
@@ -98,20 +98,20 @@ export default {
         this.$route.params.shopId
       ).name;
       return this.$t("shop.productsForShop", { shopName });
-    }
+    },
   },
   methods: {
     handleProductDelete(product) {
       this.$store.dispatch("products/deleteProduct", {
         shopId: this.$route.params.shopId,
-        productId: product.id
+        productId: product.id,
       });
       this.$store.commit("products/setProducts", []);
       this.$store.dispatch(
         "products/getShopProducts",
         this.$route.params.shopId
       );
-    }
-  }
+    },
+  },
 };
 </script>

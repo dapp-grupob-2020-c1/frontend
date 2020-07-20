@@ -48,12 +48,12 @@ export default {
   props: {
     shop: {
       type: Object,
-      required: true
+      required: true,
     },
     expanded: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
   computed: {
     shopImage() {
@@ -61,7 +61,7 @@ export default {
         return require("../assets/shop-placeholder.png");
       }
       return this.shop.imageUrl;
-    }
-  }
+    },
+  },
 };
 </script>

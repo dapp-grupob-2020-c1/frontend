@@ -1,14 +1,14 @@
 async function getCurrentUserRequest(httpClient) {
   return httpClient({
     method: "GET",
-    url: "/user/me"
+    url: "/user/me",
   });
 }
 
 async function getLocationsRequest(httpClient) {
   return httpClient({
     method: "GET",
-    url: "/user/locations"
+    url: "/user/locations",
   });
 }
 
@@ -19,8 +19,8 @@ async function createLocationRequest(httpClient, location) {
     params: {
       address: location.address,
       latitude: String(location.latitude),
-      longitude: String(location.longitude)
-    }
+      longitude: String(location.longitude),
+    },
   });
 }
 
@@ -29,8 +29,8 @@ async function deleteLocationRequest(httpClient, locationId) {
     method: "DELETE",
     url: "/user/location",
     params: {
-      locationId
-    }
+      locationId,
+    },
   });
 }
 
@@ -38,5 +38,5 @@ export {
   getCurrentUserRequest,
   getLocationsRequest,
   createLocationRequest,
-  deleteLocationRequest
+  deleteLocationRequest,
 };

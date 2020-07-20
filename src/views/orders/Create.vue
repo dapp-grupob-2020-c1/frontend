@@ -52,14 +52,14 @@ export default {
       breadcrumbItems: [
         {
           text: this.$t("dashboard.dashboard"),
-          to: "/dashboard"
+          to: "/dashboard",
         },
         {
           text: this.$t("order.createOrder"),
-          to: "/orders/create"
-        }
+          to: "/orders/create",
+        },
       ],
-      orderLocation: null
+      orderLocation: null,
     };
   },
   mounted() {
@@ -78,7 +78,7 @@ export default {
       // await this.$store.dispatch("user/createShop", this.shopInfo);
       // await this.$store.dispatch("user/getUserInformation");
       // this.$router.push("/shops");
-    }
-  }
+    },
+  },
 };
 </script>

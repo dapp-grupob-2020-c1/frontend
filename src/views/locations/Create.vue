@@ -29,7 +29,7 @@
           @click="handleMapClick"
           :center="{ lat: -34.90385708261236, lng: -58.20926714017421 }"
           :zoom="11"
-          style="width: 100%; height: 300px"
+          style="width: 100%; height: 300px;"
         >
           <GmapMarker
             :position="selectedPosition"
@@ -58,22 +58,22 @@ export default {
       breadcrumbItems: [
         {
           text: this.$t("dashboard.dashboard"),
-          to: "/dashboard"
+          to: "/dashboard",
         },
         {
           text: this.$t("location.locationsList"),
-          to: "/locations"
+          to: "/locations",
         },
         {
           text: this.$t("location.createNewLocation"),
-          to: "/locations/create"
-        }
+          to: "/locations/create",
+        },
       ],
       address: "",
       selectedPosition: {
         lat: null,
-        lng: null
-      }
+        lng: null,
+      },
     };
   },
   methods: {
@@ -89,13 +89,13 @@ export default {
       const newLocationInformation = {
         address: this.address,
         latitude: this.selectedPosition.lat,
-        longitude: this.selectedPosition.lng
+        longitude: this.selectedPosition.lng,
       };
 
       await this.$store.dispatch("user/createLocation", newLocationInformation);
       await this.$store.dispatch("user/getLocations");
       this.$router.push("/locations");
-    }
-  }
+    },
+  },
 };
 </script>

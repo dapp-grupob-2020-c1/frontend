@@ -3,7 +3,7 @@ import { getActiveCartRequest, getOldCartsRequest } from "../api/cartRequests";
 export default {
   state: {
     active: null,
-    history: []
+    history: [],
   },
   namespaced: true,
   mutations: {
@@ -12,7 +12,7 @@ export default {
     },
     setHistory(state, history) {
       state.history = history;
-    }
+    },
   },
   actions: {
     async getActiveShoppingCart({ commit, dispatch, rootState }) {
@@ -27,7 +27,7 @@ export default {
           "messages/showErrorMessage",
           "cart.getActiveShoppingCartError",
           {
-            root: true
+            root: true,
           }
         );
         // handle different error types
@@ -52,7 +52,7 @@ export default {
           "messages/showErrorMessage",
           "cart.getActiveShoppingCartError",
           {
-            root: true
+            root: true,
           }
         );
         // handle different error types
@@ -64,6 +64,6 @@ export default {
       } finally {
         commit("requests/endLoading", null, { root: true });
       }
-    }
-  }
+    },
+  },
 };

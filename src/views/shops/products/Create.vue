@@ -100,31 +100,31 @@ export default {
       breadcrumbItems: [
         {
           text: this.$t("dashboard.dashboard"),
-          to: "/dashboard"
+          to: "/dashboard",
         },
         {
           text: this.$t("shop.shopList"),
-          to: "/shops"
+          to: "/shops",
         },
         {
           text: this.$t("shop.viewDetails"),
-          to: `/shops/${this.$route.params.shopId}/`
+          to: `/shops/${this.$route.params.shopId}/`,
         },
         {
           text: this.$t("shop.viewProducts"),
-          to: `/shops/${this.$route.params.shopId}/products`
+          to: `/shops/${this.$route.params.shopId}/products`,
         },
         {
-          text: this.$t("shop.createProduct")
-        }
+          text: this.$t("shop.createProduct"),
+        },
       ],
       product: {
         name: "",
         brand: "",
         image: "",
         price: "",
-        types: []
-      }
+        types: [],
+      },
     };
   },
   methods: {
@@ -135,14 +135,14 @@ export default {
         brand: this.product.brand,
         image: this.product.image,
         price: this.product.price,
-        types: this.product.types
+        types: this.product.types,
       };
       await this.$store.dispatch("products/createProduct", productInfo);
       this.$router.push(`/shops/${this.$route.params.shopId}/products`);
     },
     handleCancel() {
       this.$router.push(`/shops/${this.$route.params.shopId}/products`);
-    }
-  }
+    },
+  },
 };
 </script>

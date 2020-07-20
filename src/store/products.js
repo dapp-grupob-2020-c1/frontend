@@ -2,18 +2,18 @@ import { getShopRequest } from "../api/shopRequests";
 import {
   createManyProductsRequest,
   createProductRequest,
-  deleteProductRequest
+  deleteProductRequest,
 } from "../api/productsRequests";
 
 export default {
   state: {
-    products: []
+    products: [],
   },
   namespaced: true,
   mutations: {
     setProducts(state, productsList) {
       state.products = [...productsList];
-    }
+    },
   },
   actions: {
     async getShopProducts({ commit, dispatch, rootState }, shopId) {
@@ -25,7 +25,7 @@ export default {
       } catch (error) {
         commit("requests/setError", null, { root: true });
         dispatch("messages/showErrorMessage", "user.getShopProductsError", {
-          root: true
+          root: true,
         });
         // handle different error types
         if (error.response) {
@@ -48,12 +48,12 @@ export default {
         );
         console.log(createProductResponse);
         dispatch("messages/showMessage", "user.createProductSuccess", {
-          root: true
+          root: true,
         });
       } catch (error) {
         commit("requests/setError", null, { root: true });
         dispatch("messages/showErrorMessage", "user.createProductError", {
-          root: true
+          root: true,
         });
         // handle different error types
         if (error.response) {
@@ -76,12 +76,12 @@ export default {
         );
         console.log(createProductResponse);
         dispatch("messages/showMessage", "user.createManyProductsSuccess", {
-          root: true
+          root: true,
         });
       } catch (error) {
         commit("requests/setError", null, { root: true });
         dispatch("messages/showErrorMessage", "user.createManyProductsError", {
-          root: true
+          root: true,
         });
         // handle different error types
         if (error.response) {
@@ -103,16 +103,16 @@ export default {
         const httpClient = rootState.auth.httpClient;
         const createProductResponse = await deleteProductRequest(httpClient, {
           shopId,
-          productId
+          productId,
         });
         console.log(createProductResponse);
         dispatch("messages/showMessage", "user.deleteProductSuccess", {
-          root: true
+          root: true,
         });
       } catch (error) {
         commit("requests/setError", null, { root: true });
         dispatch("messages/showErrorMessage", "user.deleteProductError", {
-          root: true
+          root: true,
         });
         // handle different error types
         if (error.response) {
@@ -123,8 +123,8 @@ export default {
       } finally {
         commit("requests/endLoading", null, { root: true });
       }
-    }
-  }
+    },
+  },
   // getters: {
   //   findShop: state => shopId => {
   //     console.log("user/getters/findShop");
