@@ -65,6 +65,12 @@
     "dashboard": "Dashboard",
     "search": "Buscar",
     "locations": "Ubicaciones",
+    "createOrder": "Crear Nueva Orden",
+    "createOrderDescription": "Crear una nueva orden de compras, es el primer paso de una compra.",
+    "viewOrders": "Ver Ordenes",
+    "viewOrdersDescription": "El listado de todas las ordenes de compra anteriores.",
+    "buySection": "Opciones de Comprador",
+    "sellSection": "Opciones de Vendedor",
     "shops": "Negocios"
   },
   "product": {

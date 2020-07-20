@@ -1,15 +1,24 @@
 <template>
   <PageContainer
     :title="$t('dashboard.dashboard')"
-    subtitle="Lorem ipsum dolor sit amet, consectetur adipisicing elit."
     :breadcrumb-items="breadcrumbItems"
   >
+    <h1 class="h3 pt-3 border-top border-light">
+      {{ $t("dashboard.buySection") }}
+    </h1>
     <div class="row">
       <div class="mb-3 col-12 col-sm-6 col-lg-4 col-xl-3">
         <DashboardBox
-          to="/search"
-          :title="$t('dashboard.search')"
-          subtitle="Lorem ipsum dolor sit amet."
+          to="/orders/create"
+          :title="$t('dashboard.createOrder')"
+          :subtitle="$t('dashboard.createOrderDescription')"
+        />
+      </div>
+      <div class="mb-3 col-12 col-sm-6 col-lg-4 col-xl-3">
+        <DashboardBox
+          to="/orders"
+          :title="$t('dashboard.viewOrders')"
+          :subtitle="$t('dashboard.viewOrdersDescription')"
         />
       </div>
       <div class="mb-3 col-12 col-sm-6 col-lg-4 col-xl-3">
@@ -19,6 +28,12 @@
           subtitle="Lorem ipsum dolor sit amet."
         />
       </div>
+    </div>
+
+    <h1 class="h3 pt-3 border-top border-light">
+      {{ $t("dashboard.sellSection") }}
+    </h1>
+    <div class="row">
       <div class="mb-3 col-12 col-sm-6 col-lg-4 col-xl-3">
         <DashboardBox
           to="/shops"
