@@ -4,6 +4,9 @@ import Vuex from "vuex";
 // Modules
 import auth from "./auth";
 import user from "./user";
+import products from "./products";
+import requests from "./requests";
+import messages from "./messages";
 
 Vue.use(Vuex);
 
@@ -33,12 +36,24 @@ export default new Vuex.Store({
       "Clothing",
       "Pharmacy"
     ],
-    availablePaymentMethods: ["CASH", "MERCADOPAGO", "DEBIT", "CREDIT"]
+    availablePaymentMethods: ["CASH", "MERCADOPAGO", "DEBIT", "CREDIT"],
+    availableDaysOfWeek: [
+      "MONDAY",
+      "TUESDAY",
+      "WEDNESDAY",
+      "THURSDAY",
+      "FRIDAY",
+      "SATURDAY",
+      "SUNDAY"
+    ]
   },
   mutations: {},
   actions: {},
   modules: {
     auth,
-    user
+    user,
+    products,
+    requests,
+    messages
   }
 });

@@ -112,6 +112,7 @@
     "editDetails": "Editar detalles",
     "delete": "Eliminar Negocio",
     "viewProducts": "Ver Productos",
+    "productsForShop": "Productos para {shopName}",
     "createNewProduct": "Crear Nuevo",
     "createManyProducts": "Cargar Varios Productos",
     "listEmpty": "Listado Vacío",

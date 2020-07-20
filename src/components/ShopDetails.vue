@@ -5,7 +5,9 @@
     </div>
     <div class="col order-sm-0">
       <h2 class="h3">{{ shop.name }}</h2>
-      <p>{{ shop.location.address }}</p>
+      <p v-if="shop.location && shop.location.address">
+        {{ shop.location.address }}
+      </p>
       <p>{{ $t("shop.deliveryRadius") }}: {{ shop.deliveryRadius }} Km</p>
       <div class="shop-categories" v-if="expanded">
         <h3 class="h6">{{ $t("shop.categories") }}</h3>

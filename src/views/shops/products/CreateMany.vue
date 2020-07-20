@@ -2,7 +2,6 @@
   <PageContainer
     :title="$t('shop.createManyProducts')"
     :breadcrumb-items="breadcrumbItems"
-    :request-info="requestInfo"
   >
     <vue-csv-import
       v-model="parsedProducts"
@@ -19,12 +18,21 @@
         </tr>
       </template>
     </vue-csv-import>
+    <pre>{{ parsedProducts }}</pre>
+    <b-button
+      @click="handleCreateManyProducts"
+      variant="primary"
+      :disabled="!parsedProducts.length"
+    >
+      <b-icon-check2-square />
+      {{ $t("products.confirmCreateMany") }}
+    </b-button>
   </PageContainer>
 </template>
 
 <script>
 import { VueCsvImport } from "vue-csv-import";
-import PageContainer from "../../components/PageContainer";
+import PageContainer from "../../../components/PageContainer";
 
 export default {
   name: "ProductsCreate",
@@ -52,26 +60,32 @@ export default {
           text: this.$t("shop.createManyProducts")
         }
       ],
-      requestInfo: {
-        loading: false,
-        error: false,
-        errorMessageKey: "",
-        errorAdditionalInfo: ""
-      },
       parsedProducts: []
     };
   },
-  computed: {
-    productTypes() {
-      return this.$store.state.availableProductCategories;
-    }
-  },
   methods: {
-    handleCreateProduct() {
-      console.log("create");
+    handleCreateManyProducts() {
+      const formattedProductList = this.parsedProducts
+        .filter(prod => prod.id != "id")
+        .map(prod => {
+          // create a formatted product from CSV loaded one
+          const formattedProd = {
+            name: prod.name,
+            brand: prod.brand,
+            image: prod.image,
+            price: prod.price,
+            types: [prod.types]
+          };
+          if (prod.id) {
+            formattedProd.id = prod.id;
+          }
+          return formattedProd;
+        });
+      this.$store.dispatch("products/createManyProducts", formattedProductList);
+      this.$router.push(`/shops/${this.$route.params.shopId}/products`);
     },
     handleCancel() {
-      this.$router.back();
+      this.$router.push(`/shops/${this.$route.params.shopId}/products`);
     }
   }
 };

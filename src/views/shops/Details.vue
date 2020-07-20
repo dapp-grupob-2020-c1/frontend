@@ -2,13 +2,34 @@
   <PageContainer
     :title="$t('shop.viewDetails')"
     :breadcrumb-items="breadcrumbItems"
-    :request-info="requestInfo"
   >
-    <template v-if="shopDetails">
+    <div class="actions my-2">
+      <b-button
+        variant="outline-primary"
+        size="lg"
+        class="mr-2"
+        :to="`/shops/${shopInfo.id}/products`"
+      >
+        <b-icon-info-square />
+        {{ $t("shop.viewProducts") }}
+      </b-button>
+      <b-button
+        variant="outline-primary"
+        size="lg"
+        class="mr-2"
+        :to="`/shops/${shopInfo.id}/edit`"
+      >
+        <b-icon-pencil-square />
+        {{ $t("shop.editDetails") }}
+      </b-button>
+    </div>
+
+    <template v-if="shopInfo">
       <GmapMap
+        v-if="shopInfo.location"
         :center="{
-          lat: shopDetails.location.latitude,
-          lng: shopDetails.location.longitude
+          lat: shopInfo.location.latitude,
+          lng: shopInfo.location.longitude
         }"
         :zoom="15"
         :options="{
@@ -19,38 +40,28 @@
       >
         <GmapMarker
           :position="{
-            lat: shopDetails.location.latitude,
-            lng: shopDetails.location.longitude
+            lat: shopInfo.location.latitude,
+            lng: shopInfo.location.longitude
           }"
         />
       </GmapMap>
 
-      <ShopDetails :shop="shopDetails" expanded />
-
-      <div class="actions my-2">
-        <b-button
-          variant="outline-primary"
-          size="lg"
-          :to="`/shops/${shopDetails.id}/products`"
-        >
-          {{ $t("shop.viewProducts") }}
-        </b-button>
-      </div>
+      <ShopDetails :shop="shopInfo" expanded />
     </template>
   </PageContainer>
 </template>
 
 <script>
-import { getShopRequest } from "../../api/shopRequests";
 import ShopDetails from "../../components/ShopDetails";
 import PageContainer from "../../components/PageContainer";
 
 export default {
   name: "DisplayShop",
   components: { PageContainer, ShopDetails },
-  async mounted() {
-    const response = await getShopRequest(this.$route.params.shopId);
-    this.shopDetails = response.data;
+  computed: {
+    shopInfo() {
+      return this.$store.getters["user/findShop"](this.$route.params.shopId);
+    }
   },
   data() {
     return {
@@ -67,16 +78,8 @@ export default {
           text: this.$t("shop.viewDetails"),
           to: `/shops/${this.$route.params.shopId}`
         }
-      ],
-      requestInfo: {
-        loading: false,
-        error: false,
-        errorMessageKey: "",
-        errorAdditionalInfo: ""
-      },
-      shopDetails: null
+      ]
     };
-  },
-  methods: {}
+  }
 };
 </script>

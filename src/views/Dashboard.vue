@@ -31,7 +31,6 @@
 </template>
 
 <script>
-import { getCurrentUserRequest } from "../api/userRequests";
 import PageContainer from "../components/PageContainer";
 import DashboardBox from "../components/DashboardBox";
 export default {
@@ -48,16 +47,7 @@ export default {
     };
   },
   async mounted() {
-    const currentUser = await getCurrentUserRequest();
-    const currentUserInfo = {
-      locations: currentUser.data.locations,
-      shops: currentUser.data.shops,
-      name: currentUser.data.name,
-      email: currentUser.data.email,
-      imgUrl: currentUser.data.imgUrl,
-      provider: currentUser.data.provider
-    };
-    this.$store.commit("user/setUserInfo", currentUserInfo);
+    this.$store.dispatch("user/getUserInformation");
   }
 };
 </script>

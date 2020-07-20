@@ -1,9 +1,5 @@
 <template>
-  <PageContainer
-    :title="$t('shop.edit')"
-    :breadcrumb-items="breadcrumbItems"
-    :request-info="requestInfo"
-  >
+  <PageContainer :title="$t('shop.edit')" :breadcrumb-items="breadcrumbItems">
     <form @submit.prevent="handleEditShop">
       <!-- Nombre -->
       <b-form-group
@@ -95,7 +91,7 @@
           >
             <b-form-checkbox-group
               v-model="shopInfo.days"
-              :options="daysOfWeek"
+              :options="$store.state.availableDaysOfWeek"
               name="days"
               stacked
             ></b-form-checkbox-group>
@@ -125,12 +121,7 @@
         </div>
       </div>
 
-      <b-button
-        variant="primary"
-        size="lg"
-        type="submit"
-        :disabled="requestInfo.loading"
-      >
+      <b-button variant="primary" size="lg" type="submit">
         {{ $t("shop.submitEdit") }}
       </b-button>
       <b-button variant="text" size="lg" @click="handleCancel">
@@ -141,8 +132,6 @@
 </template>
 
 <script>
-import { editShopRequest, getShopRequest } from "../../api/shopRequests";
-import { defaultToasterOptions } from "../../config/options";
 import PageContainer from "../../components/PageContainer";
 
 export default {
@@ -164,12 +153,6 @@ export default {
           to: `/shops/${this.$route.params.shopId}/edit`
         }
       ],
-      requestInfo: {
-        loading: false,
-        error: false,
-        errorMessageKey: "",
-        errorAdditionalInfo: ""
-      },
       shopInfo: {
         id: this.$route.params.shopId,
         name: null,
@@ -194,20 +177,11 @@ export default {
     };
   },
   mounted() {
-    this.getRemoteShopInfo();
-  },
-  computed: {
-    daysOfWeek() {
-      return [
-        "MONDAY",
-        "TUESDAY",
-        "WEDNESDAY",
-        "THURSDAY",
-        "FRIDAY",
-        "SATURDAY",
-        "SUNDAY"
-      ];
-    }
+    // find shop info in user shops, and copy to local data
+    const foundShop = this.$store.state.user.shops.find(shop => {
+      return shop.id == this.$route.params.shopId;
+    });
+    this.shopInfo = { ...foundShop };
   },
   methods: {
     handleMapClick(e) {
@@ -216,54 +190,12 @@ export default {
     },
     async handleEditShop() {
       //TODO: validate information
-
-      // reset loading state
-      this.requestInfo = {
-        loading: true,
-        error: false,
-        errorMessageKey: "",
-        errorAdditionalInfo: ""
-      };
-      try {
-        const response = await editShopRequest(this.shopInfo);
-        console.log(response);
-        // this.$store.dispatch("user/addShop", response.data);
-        this.$root.$bvToast.toast(
-          this.$t("shop.editSuccess"),
-          defaultToasterOptions
-        );
-        this.$router.push(`/shops/${this.$route.params.shopId}`);
-      } catch (e) {
-        console.error(e);
-        this.requestInfo.error = true;
-        // TODO: handle all possible errors
-        this.requestInfo.errorMessageKey = "app.requestError";
-      } finally {
-        this.requestInfo.loading = false;
-      }
-    },
-    handleCancel() {
+      await this.$store.dispatch("user/editShop", this.shopInfo);
+      await this.$store.dispatch("user/getShops");
       this.$router.push(`/shops/${this.$route.params.shopId}`);
     },
-    async getRemoteShopInfo() {
-      // reset loading state
-      this.requestInfo = {
-        loading: true,
-        error: false,
-        errorMessageKey: "",
-        errorAdditionalInfo: ""
-      };
-      try {
-        const response = await getShopRequest(this.$route.params.shopId);
-        this.shopInfo = Object.assign({}, this.shopInfo, response.data);
-      } catch (e) {
-        console.error(e);
-        this.requestInfo.error = true;
-        // TODO: handle all possible errors
-        this.requestInfo.errorMessageKey = "app.requestError";
-      } finally {
-        this.requestInfo.loading = false;
-      }
+    handleCancel() {
+      this.$router.push("/shops");
     }
   }
 };

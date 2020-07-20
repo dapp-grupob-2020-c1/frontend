@@ -1,32 +1,30 @@
-import { httpClient } from "./httpClient";
-
-async function getCurrentUserRequest() {
+async function getCurrentUserRequest(httpClient) {
   return httpClient({
     method: "GET",
     url: "/user/me"
   });
 }
 
-async function getLocationsRequest() {
+async function getLocationsRequest(httpClient) {
   return httpClient({
     method: "GET",
     url: "/user/locations"
   });
 }
 
-async function addLocationRequest({ address, latitude, longitude }) {
+async function createLocationRequest(httpClient, location) {
   return httpClient({
     method: "POST",
     url: "/user/location",
     params: {
-      address: address,
-      latitude: String(latitude),
-      longitude: String(longitude)
+      address: location.address,
+      latitude: String(location.latitude),
+      longitude: String(location.longitude)
     }
   });
 }
 
-async function deleteLocationRequest(locationId) {
+async function deleteLocationRequest(httpClient, locationId) {
   return httpClient({
     method: "DELETE",
     url: "/user/location",
@@ -36,17 +34,9 @@ async function deleteLocationRequest(locationId) {
   });
 }
 
-async function getShopsRequest() {
-  return httpClient({
-    method: "GET",
-    url: "/user/myshops"
-  });
-}
-
 export {
   getCurrentUserRequest,
   getLocationsRequest,
-  addLocationRequest,
-  deleteLocationRequest,
-  getShopsRequest
+  createLocationRequest,
+  deleteLocationRequest
 };
