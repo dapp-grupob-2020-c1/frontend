@@ -1,14 +1,14 @@
 async function getOldCartsRequest(httpClient) {
   return httpClient({
     method: "GET",
-    url: "/cart/historic",
+    url: "/cart/historic"
   });
 }
 
 async function getActiveCartRequest(httpClient) {
   return httpClient({
     method: "GET",
-    url: "/cart",
+    url: "/cart"
   });
 }
 
@@ -33,41 +33,31 @@ async function addProductToCartRequest(httpClient, { productId, amount }) {
   });
 }
 
+async function deleteProductFromCartRequest(httpClient, productId) {
+  return httpClient({
+    method: "DELETE",
+    url: "/cart/product",
+    data: {
+      productId
+    }
+  });
+}
+
 async function checkoutCartRequest(httpClient, cartPurchase) {
   return httpClient({
     method: "POST",
     url: "/cart/purchase",
     data: {
-      cartPurchase,
-    }
-  });
-}
-
-
-
-async function createManyProductsRequest(httpClient, productsInfo) {
-  return httpClient({
-    method: "POST",
-    url: "/products",
-    data: productsInfo
-  });
-}
-
-async function deleteProductRequest(httpClient, { shopId, productId }) {
-  return httpClient({
-    method: "DELETE",
-    url: "/product",
-    params: {
-      shopId: shopId,
-      productId: productId
+      cartPurchase
     }
   });
 }
 
 export {
-  searchProductsRequest,
-  getProductRequest,
-  createProductRequest,
-  createManyProductsRequest,
-  deleteProductRequest
+  getOldCartsRequest,
+  getActiveCartRequest,
+  createCartRequest,
+  addProductToCartRequest,
+  deleteProductFromCartRequest,
+  checkoutCartRequest
 };
