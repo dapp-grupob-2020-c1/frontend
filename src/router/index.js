@@ -109,6 +109,14 @@ const routes = [
       )
   },
   {
+    path: "/shops/:shopId/products/:productId/edit",
+    beforeEnter: requiresAuth,
+    component: () =>
+      import(
+        /* webpackChunkName: "shopProductsEdit" */ "../views/shops/products/Edit.vue"
+      )
+  },
+  {
     path: "/cart",
     beforeEnter: requiresAuth,
     component: () =>
