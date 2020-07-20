@@ -63,6 +63,8 @@ export default {
   },
   async mounted() {
     this.$store.dispatch("user/getUserInformation");
+    this.$store.dispatch("cart/getActiveShoppingCart");
+    this.$store.dispatch("cart/getOldCarts");
   }
 };
 </script>
