@@ -43,12 +43,6 @@ const routes = [
       import(/* webpackChunkName: "dashboard" */ "../views/Dashboard.vue"),
   },
   {
-    path: "/search",
-    beforeEnter: requiresAuth,
-    component: () =>
-      import(/* webpackChunkName: "search" */ "../views/Search.vue"),
-  },
-  {
     path: "/locations",
     beforeEnter: requiresAuth,
     component: () =>
@@ -129,7 +123,7 @@ const routes = [
       ),
   },
   {
-    path: "/orders/:orderId/search",
+    path: "/orders/search",
     beforeEnter: requiresAuth,
     component: () =>
       import(
@@ -137,10 +131,10 @@ const routes = [
       ),
   },
   {
-    path: "/cart",
+    path: "/orders",
     beforeEnter: requiresAuth,
     component: () =>
-      import(/* webpackChunkName: "cart" */ "../views/ShoppingCart.vue"),
+      import(/* webpackChunkName: "ordersList" */ "../views/orders/List.vue"),
   },
 ];
 

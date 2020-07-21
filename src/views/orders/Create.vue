@@ -6,17 +6,17 @@
     <b-alert variant="warning" show v-if="!$store.state.user.locations.length">
       <p>{{ $t("order.mustCreateLocationError") }}</p>
       <b-button variant="primary" size="lg" to="/locations/create">
-        {{ $t("location.createLocation") }}
+        {{ $t("location.createNewLocation") }}
       </b-button>
     </b-alert>
-    <form @submit.prevent="handleCreateOrder">
+    <form @submit.prevent="handleCreateOrder" v-else>
       <!-- Location -->
       <b-form-group
         id="input-group-location"
-        :label="$t('order.Location')"
+        :label="$t('order.deliveryLocation')"
         label-for="location"
       >
-        <b-form-radio-group v-model="orderLocation" name="location" stacked>
+        <b-form-radio-group v-model="orderLocationId" name="location" stacked>
           <b-form-radio
             v-for="location in $store.state.user.locations"
             :value="location.id"
@@ -31,7 +31,7 @@
         variant="primary"
         size="lg"
         type="submit"
-        :disabled="!orderLocation"
+        :disabled="!orderLocationId"
       >
         {{ $t("order.submitCreate") }}
       </b-button>
@@ -59,13 +59,13 @@ export default {
           to: "/orders/create",
         },
       ],
-      orderLocation: null,
+      orderLocationId: null,
     };
   },
   mounted() {
     // select first location by default
     if (this.$store.state.user.locations) {
-      this.orderLocation = this.$store.state.user.locations[0].id;
+      this.orderLocationId = this.$store.state.user.locations[0].id;
     }
   },
   computed: {},
@@ -74,10 +74,9 @@ export default {
       this.$router.push("/dashboard");
     },
     async handleCreateOrder() {
-      // //TODO: validate information
-      // await this.$store.dispatch("user/createShop", this.shopInfo);
+      await this.$store.dispatch("cart/createCart", this.orderLocationId);
       // await this.$store.dispatch("user/getUserInformation");
-      // this.$router.push("/shops");
+      this.$router.push("/orders/search");
     },
   },
 };

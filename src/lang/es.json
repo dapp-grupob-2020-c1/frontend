@@ -126,6 +126,19 @@
     "submitCreate": "Crear Negocio",
     "cancel": "Cancelar"
   },
+  "order": {
+    "createOrder": "Crear Orden",
+    "createNew": "Crear Nueva Orden",
+    "mustCreateLocationError": "Es necesario crear una ubicación antes de poder crear una orden",
+    "viewDetails": "Ver Detalles",
+    "editDetails": "Editar detalles",
+    "delete": "Eliminar Negocio",
+    "deliveryLocation": "Ubicación para entrega",
+    "listEmpty": "Listado Vacío",
+    "successfulCreation": "Negocio creado correctamente",
+    "submitCreate": "Crear Nueva Orden",
+    "cancel": "Cancelar"
+  },
   "search": {
     "searchProducts": "Buscar Productos",
     "searchResults": "Resultados",

@@ -9,6 +9,13 @@
     <div class="row">
       <div class="mb-3 col-12 col-sm-6 col-lg-4 col-xl-3">
         <DashboardBox
+          to="/orders/search"
+          :title="$t('dashboard.searchProducts')"
+          :subtitle="$t('dashboard.searchProductsDescription')"
+        />
+      </div>
+      <div class="mb-3 col-12 col-sm-6 col-lg-4 col-xl-3">
+        <DashboardBox
           to="/orders/create"
           :title="$t('dashboard.createOrder')"
           :subtitle="$t('dashboard.createOrderDescription')"
