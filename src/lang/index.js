@@ -5,5 +5,5 @@ export const defaultLocale = "es";
 
 export const messages = {
   en,
-  es
+  es,
 };

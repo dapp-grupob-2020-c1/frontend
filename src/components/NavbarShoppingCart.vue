@@ -19,12 +19,12 @@ export default {
         return "vacío";
       }
       return `(${this.cart.length})`;
-    }
+    },
   },
   methods: {
     handleLogout() {
       this.$store.dispatch("auth/logout");
-    }
-  }
+    },
+  },
 };
 </script>

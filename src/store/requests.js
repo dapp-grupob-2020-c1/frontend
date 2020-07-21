@@ -3,7 +3,7 @@ export default {
   state: {
     loading: false,
     error: false,
-    errorMessage: ""
+    errorMessage: "",
   },
   mutations: {
     beginLoading(state) {
@@ -17,6 +17,6 @@ export default {
     setError(state, errorMessage) {
       state.error = true;
       state.errorMessage = errorMessage;
-    }
-  }
+    },
+  },
 };

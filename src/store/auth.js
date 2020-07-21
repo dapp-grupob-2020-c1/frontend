@@ -7,7 +7,7 @@ export default {
   state: {
     authenticated: false,
     token: null,
-    httpClient: null
+    httpClient: null,
   },
   mutations: {
     setLogin(state, token) {
@@ -18,15 +18,15 @@ export default {
         headers: {
           Authorization: `Bearer ${token}`,
           Accept: "application/json",
-          "Content-Type": "application/json"
-        }
+          "Content-Type": "application/json",
+        },
       });
     },
     setLogout(state) {
       state.authenticated = false;
       state.token = null;
       state.httpClient = null;
-    }
+    },
   },
   actions: {
     async login({ commit, dispatch }, userInformation) {
@@ -36,7 +36,7 @@ export default {
         commit("setLogin", response.data.accessToken);
         console.log("login action, despues de setLogin");
         dispatch("messages/showMessage", "login.loginSucceeded", {
-          root: true
+          root: true,
         });
         router.push("/dashboard");
       } catch (error) {
@@ -56,7 +56,7 @@ export default {
       try {
         await registerRequest(userInformation);
         dispatch("messages/showMessage", "register.registerSucceeded", {
-          root: true
+          root: true,
         });
         await router.push("/login");
       } catch (error) {
@@ -75,9 +75,9 @@ export default {
       commit("setLogout");
       commit("user/deleteUserInformation", null, { root: true });
       dispatch("messages/showMessage", "login.logoutSucceeded", {
-        root: true
+        root: true,
       });
       router.replace("/");
-    }
-  }
+    },
+  },
 };

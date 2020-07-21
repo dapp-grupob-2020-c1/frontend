@@ -17,8 +17,8 @@ export default {
   name: "LocaleChanger",
   data() {
     return {
-      languagesList: ["es", "en"]
+      languagesList: ["es", "en"],
     };
-  }
+  },
 };
 </script>

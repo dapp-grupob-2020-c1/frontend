@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <Navbar></Navbar>
-    <div style="position: fixed; z-index: 9999">
+    <div style="position: fixed; z-index: 9999;">
       <transition-group name="list">
         <b-alert
           v-for="message in $store.state.messages.messagesList"
@@ -28,7 +28,7 @@ export default {
   name: "App",
   components: {
     Navbar,
-    FooterComponent
-  }
+    FooterComponent,
+  },
 };
 </script>

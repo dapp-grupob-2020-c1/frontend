@@ -1,60 +1,57 @@
-import { getShopRequest } from "../api/shopRequests";
 import {
-  createManyProductsRequest,
-  createProductRequest,
-  deleteProductRequest,
-} from "../api/productsRequests";
+  addProductRequest,
+  createCartRequest,
+  getActiveCartRequest,
+  getOldCartsRequest,
+} from "../api/cartRequests";
+import { searchProductsRequest } from "../api/productsRequests";
 
 export default {
   state: {
-    products: [],
+    active: null,
+    history: [],
+    searchResults: [],
   },
   namespaced: true,
   mutations: {
-    setProducts(state, productsList) {
-      state.products = [...productsList];
+    setActiveCart(state, activeCart) {
+      state.active = activeCart;
+    },
+    setHistory(state, history) {
+      state.history = history;
+    },
+    setSearchResults(state, searchResults) {
+      state.searchResults = searchResults;
     },
   },
   actions: {
-    async getShopProducts({ commit, dispatch, rootState }, shopId) {
+    async getActiveShoppingCart({ commit, rootState }) {
       commit("requests/beginLoading", null, { root: true });
       try {
         const httpClient = rootState.auth.httpClient;
-        const getShopResponse = await getShopRequest(httpClient, shopId);
-        commit("setProducts", getShopResponse.data.products);
+        const getActiveCartResponse = await getActiveCartRequest(httpClient);
+        commit("setActiveCart", getActiveCartResponse.data);
       } catch (error) {
-        commit("requests/setError", null, { root: true });
-        dispatch("messages/showErrorMessage", "user.getShopProductsError", {
-          root: true,
-        });
-        // handle different error types
-        if (error.response) {
-          commit("requests/setError", "app.responseError", { root: true });
-        } else if (error.request) {
-          commit("requests/setError", "app.connectionError", { root: true });
-        }
+        // ignore error!
       } finally {
         commit("requests/endLoading", null, { root: true });
       }
     },
-    async createProduct({ commit, dispatch, rootState }, productInfo) {
-      console.log("createProduct action", productInfo);
+    async getOldCarts({ commit, dispatch, rootState }) {
       commit("requests/beginLoading", null, { root: true });
       try {
         const httpClient = rootState.auth.httpClient;
-        const createProductResponse = await createProductRequest(
-          httpClient,
-          productInfo
+        const getOldCartsResponse = await getOldCartsRequest(httpClient);
+        commit("setHistory", getOldCartsResponse.data);
+      } catch (error) {
+        commit("requests/setError", null, { root: true });
+        dispatch(
+          "messages/showErrorMessage",
+          "cart.getActiveShoppingCartError",
+          {
+            root: true,
+          }
         );
-        console.log(createProductResponse);
-        dispatch("messages/showMessage", "user.createProductSuccess", {
-          root: true,
-        });
-      } catch (error) {
-        commit("requests/setError", null, { root: true });
-        dispatch("messages/showErrorMessage", "user.createProductError", {
-          root: true,
-        });
         // handle different error types
         if (error.response) {
           commit("requests/setError", "app.responseError", { root: true });
@@ -65,22 +62,18 @@ export default {
         commit("requests/endLoading", null, { root: true });
       }
     },
-    async createManyProducts({ commit, dispatch, rootState }, productsInfo) {
-      console.log("createManyProducts action", productsInfo);
+    async createCart({ commit, dispatch, rootState }, locationId) {
       commit("requests/beginLoading", null, { root: true });
       try {
         const httpClient = rootState.auth.httpClient;
-        const createProductResponse = await createManyProductsRequest(
+        const createCartResponse = await createCartRequest(
           httpClient,
-          productsInfo
+          locationId
         );
-        console.log(createProductResponse);
-        dispatch("messages/showMessage", "user.createManyProductsSuccess", {
-          root: true,
-        });
+        commit("setActiveCart", createCartResponse.data);
       } catch (error) {
         commit("requests/setError", null, { root: true });
-        dispatch("messages/showErrorMessage", "user.createManyProductsError", {
+        dispatch("messages/showErrorMessage", "cart.createCartError", {
           root: true,
         });
         // handle different error types
@@ -93,25 +86,46 @@ export default {
         commit("requests/endLoading", null, { root: true });
       }
     },
-    async deleteProduct(
+    async getSearchProducts({ commit, dispatch, rootState }, searchParams) {
+      commit("requests/beginLoading", null, { root: true });
+      try {
+        const httpClient = rootState.auth.httpClient;
+        const searchProductsResponse = await searchProductsRequest(
+          httpClient,
+          searchParams
+        );
+        console.log("getSearchProducts response", searchProductsResponse.data);
+        commit("setSearchResults", searchProductsResponse.data);
+      } catch (error) {
+        commit("requests/setError", null, { root: true });
+        dispatch("messages/showErrorMessage", "cart.getSearchProductsError", {
+          root: true,
+        });
+        // handle different error types
+        if (error.response) {
+          commit("requests/setError", "app.responseError", { root: true });
+        } else if (error.request) {
+          commit("requests/setError", "app.connectionError", { root: true });
+        }
+      } finally {
+        commit("requests/endLoading", null, { root: true });
+      }
+    },
+    async addProductToCart(
       { commit, dispatch, rootState },
-      { shopId, productId }
+      { productId, amount }
     ) {
-      console.log("deleteProduct action", productId);
       commit("requests/beginLoading", null, { root: true });
       try {
         const httpClient = rootState.auth.httpClient;
-        const createProductResponse = await deleteProductRequest(httpClient, {
-          shopId,
+        const addProductResponse = await addProductRequest(httpClient, {
           productId,
+          amount,
         });
-        console.log(createProductResponse);
-        dispatch("messages/showMessage", "user.deleteProductSuccess", {
-          root: true,
-        });
+        commit("setActiveCart", addProductResponse.data);
       } catch (error) {
         commit("requests/setError", null, { root: true });
-        dispatch("messages/showErrorMessage", "user.deleteProductError", {
+        dispatch("messages/showErrorMessage", "cart.addProductToCartError", {
           root: true,
         });
         // handle different error types
@@ -125,10 +139,4 @@ export default {
       }
     },
   },
-  // getters: {
-  //   findShop: state => shopId => {
-  //     console.log("user/getters/findShop");
-  //     return state.shops.find(shop => shop.id == shopId);
-  //   }
-  // }
 };

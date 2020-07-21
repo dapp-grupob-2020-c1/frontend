@@ -14,8 +14,8 @@ export default {
   name: "GoogleAuthButton",
   props: {
     caption: {
-      type: String
-    }
+      type: String,
+    },
   },
   methods: {
     generatedUrl() {
@@ -25,7 +25,7 @@ export default {
         process.env.VUE_APP_API_URL
       ).toString();
       return url;
-    }
-  }
+    },
+  },
 };
 </script>

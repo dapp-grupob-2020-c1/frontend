@@ -1,7 +1,7 @@
 async function getShopsRequest(httpClient) {
   return httpClient({
     method: "GET",
-    url: "/user/myshops"
+    url: "/user/myshops",
   });
 }
 
@@ -10,8 +10,8 @@ async function getShopRequest(httpClient, shopId) {
     method: "GET",
     url: "/shop",
     params: {
-      shopId
-    }
+      shopId,
+    },
   });
 }
 
@@ -28,8 +28,8 @@ async function createShopRequest(httpClient, newShopData) {
       openingHour: newShopData.openingHour,
       closingHour: newShopData.closingHour,
       paymentMethods: newShopData.paymentMethods,
-      deliveryRadius: newShopData.deliveryRadius
-    }
+      deliveryRadius: newShopData.deliveryRadius,
+    },
   });
 }
 
@@ -47,8 +47,8 @@ async function editShopRequest(httpClient, newShopData) {
       openingHour: newShopData.openingHour,
       closingHour: newShopData.closingHour,
       paymentMethods: newShopData.paymentMethods,
-      deliveryRadius: newShopData.deliveryRadius
-    }
+      deliveryRadius: newShopData.deliveryRadius,
+    },
   });
 }
 
@@ -57,8 +57,8 @@ async function deleteShopRequest(httpClient, shopId) {
     method: "DELETE",
     url: "/shop",
     params: {
-      shopId: shopId
-    }
+      shopId: shopId,
+    },
   });
 }
 
@@ -67,5 +67,5 @@ export {
   createShopRequest,
   getShopRequest,
   editShopRequest,
-  deleteShopRequest
+  deleteShopRequest,
 };

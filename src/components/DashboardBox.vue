@@ -6,6 +6,7 @@
       variant="outline-primary"
       block
       class="stretched-link"
+      :disabled="disabled"
     >
       {{ title }}
     </b-button>
@@ -21,8 +22,9 @@ export default {
   props: {
     title: String,
     subtitle: String,
-    to: String
-  }
+    to: String,
+    disabled: Boolean,
+  },
 };
 </script>
 

@@ -56,20 +56,19 @@
 import GoogleAuthButton from "../components/GoogleAuthButton";
 import PageContainer from "../components/PageContainer";
 export default {
-  name: "Login",
   components: { PageContainer, GoogleAuthButton },
   data() {
     return {
       userInformation: {
         email: "manager@example.com",
-        password: "123456"
-      }
+        password: "123456",
+      },
     };
   },
   methods: {
     handleLogin() {
       this.$store.dispatch("auth/login", this.userInformation);
-    }
-  }
+    },
+  },
 };
 </script>

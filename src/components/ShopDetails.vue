@@ -1,6 +1,6 @@
 <template>
   <div class="shop-details row">
-    <div class="col-sm-6 col-lg-4 col-xl-3 order-sm-1">
+    <div class="col-sm-6 col-lg-4 col-xl-3">
       <b-img fluid-grow rounded :src="shopImage" />
     </div>
     <div class="col order-sm-0">
@@ -48,12 +48,12 @@ export default {
   props: {
     shop: {
       type: Object,
-      required: true
+      required: true,
     },
     expanded: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
   computed: {
     shopImage() {
@@ -61,7 +61,7 @@ export default {
         return require("../assets/shop-placeholder.png");
       }
       return this.shop.imageUrl;
-    }
-  }
+    },
+  },
 };
 </script>

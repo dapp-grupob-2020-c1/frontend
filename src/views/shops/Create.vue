@@ -91,13 +91,13 @@
           @click="handleMapClick"
           :center="{ lat: -34.90385708261236, lng: -58.20926714017421 }"
           :zoom="9"
-          style="width: 100%; height: 300px"
+          style="width: 100%; height: 300px;"
         >
           <GmapMarker
             :position="shopInfo.location.coordinates"
             v-if="
               shopInfo.location.coordinates.lat &&
-                shopInfo.location.coordinates.lng
+              shopInfo.location.coordinates.lng
             "
           />
         </GmapMap>
@@ -166,23 +166,22 @@
 import PageContainer from "../../components/PageContainer";
 
 export default {
-  name: "ShopsCreate",
   components: { PageContainer },
   data() {
     return {
       breadcrumbItems: [
         {
           text: this.$t("dashboard.dashboard"),
-          to: "/dashboard"
+          to: "/dashboard",
         },
         {
           text: this.$t("shop.shopList"),
-          to: "/shops"
+          to: "/shops",
         },
         {
           text: this.$t("shop.createNew"),
-          to: "/shops/create"
-        }
+          to: "/shops/create",
+        },
       ],
       shopInfo: {
         name: null,
@@ -192,15 +191,15 @@ export default {
           address: "",
           coordinates: {
             lat: null,
-            lng: null
-          }
+            lng: null,
+          },
         },
         days: null,
         openingHour: null,
         closingHour: null,
         paymentMethods: null,
-        deliveryRadius: null
-      }
+        deliveryRadius: null,
+      },
     };
   },
   computed: {
@@ -212,9 +211,9 @@ export default {
         "THURSDAY",
         "FRIDAY",
         "SATURDAY",
-        "SUNDAY"
+        "SUNDAY",
       ];
-    }
+    },
   },
   methods: {
     handleMapClick(e) {
@@ -229,7 +228,7 @@ export default {
       await this.$store.dispatch("user/createShop", this.shopInfo);
       await this.$store.dispatch("user/getUserInformation");
       this.$router.push("/shops");
-    }
-  }
+    },
+  },
 };
 </script>

@@ -5,6 +5,7 @@ import Vuex from "vuex";
 import auth from "./auth";
 import user from "./user";
 import products from "./products";
+import cart from "./cart";
 import requests from "./requests";
 import messages from "./messages";
 
@@ -22,7 +23,7 @@ export default new Vuex.Store({
       "PetsAndAnimals",
       "VehiclesAndAccessories",
       "Clothing",
-      "Pharmacy"
+      "Pharmacy",
     ],
     availableProductCategories: [
       "FoodsAndDrinks",
@@ -34,7 +35,7 @@ export default new Vuex.Store({
       "PetsAndAnimals",
       "VehiclesAndAccesories",
       "Clothing",
-      "Pharmacy"
+      "Pharmacy",
     ],
     availablePaymentMethods: ["CASH", "MERCADOPAGO", "DEBIT", "CREDIT"],
     availableDaysOfWeek: [
@@ -44,8 +45,8 @@ export default new Vuex.Store({
       "THURSDAY",
       "FRIDAY",
       "SATURDAY",
-      "SUNDAY"
-    ]
+      "SUNDAY",
+    ],
   },
   mutations: {},
   actions: {},
@@ -53,7 +54,8 @@ export default new Vuex.Store({
     auth,
     user,
     products,
+    cart,
     requests,
-    messages
-  }
+    messages,
+  },
 });

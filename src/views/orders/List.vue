@@ -1,60 +1,57 @@
 <template>
   <PageContainer
-    :title="$t('shop.shopList')"
+    :title="$t('order.orderList')"
     :breadcrumb-items="breadcrumbItems"
   >
     <div class="actions my-2">
-      <b-button variant="primary" size="lg" to="/shops/create">
+      <b-button variant="primary" size="lg" to="/orders/create">
         <b-icon-plus-square />
-        {{ $t("shop.createNew") }}
+        {{ $t("order.createNew") }}
       </b-button>
     </div>
 
-    <b-list-group v-if="shopsList.length">
-      <b-list-group-item v-for="shop in shopsList" :key="shop.id">
-        <ShopDetails :shop="shop" />
-
+    <b-list-group v-if="ordersList.length">
+      <b-list-group-item v-for="order in ordersList" :key="order.id">
+        {{ order }}
         <div class="actions mt-3 pt-3 border-top border-light">
           <b-button
             variant="outline-primary"
             class="mr-2"
-            :to="`/shops/${shop.id}`"
+            :to="`/orders/${order.id}`"
           >
             <b-icon-info-square />
-            {{ $t("shop.viewDetails") }}
+            {{ $t("order.viewDetails") }}
           </b-button>
           <b-button
             variant="outline-primary"
             class="mr-2"
-            :to="`/shops/${shop.id}/edit`"
+            :to="`/orders/${order.id}/edit`"
           >
             <b-icon-pencil-square />
-            {{ $t("shop.editDetails") }}
+            {{ $t("order.editDetails") }}
           </b-button>
           <b-button
             class="mr-2"
             variant="outline-danger"
-            @click="handleShopDelete(shop)"
+            @click="handleOrderDelete(order)"
           >
             <b-icon-x-square />
-            {{ $t("shop.delete") }}
+            {{ $t("order.delete") }}
           </b-button>
         </div>
       </b-list-group-item>
     </b-list-group>
     <b-alert show v-else class="m-0">
-      {{ $t("shop.listEmpty") }}
+      {{ $t("order.listEmpty") }}
     </b-alert>
   </PageContainer>
 </template>
 
 <script>
-import ShopDetails from "../../components/ShopDetails";
 import PageContainer from "../../components/PageContainer";
 export default {
   components: {
     PageContainer,
-    ShopDetails,
   },
   data() {
     return {
@@ -64,23 +61,26 @@ export default {
           to: "/dashboard",
         },
         {
-          text: this.$t("shop.shopList"),
+          text: this.$t("order.orderList"),
         },
       ],
     };
   },
   mounted() {
-    this.$store.dispatch("user/getShops");
+    this.$store.dispatch("user/getOrders");
   },
   methods: {
-    async handleShopDelete(shop) {
-      await this.$store.dispatch("user/deleteShop", shop.id);
-      await this.$store.dispatch("user/getShops");
+    async handleOrderDelete(order) {
+      await this.$store.dispatch("user/deleteOrder", order.id);
+      await this.$store.dispatch("user/getOrders");
     },
   },
   computed: {
-    shopsList() {
-      return this.$store.state.user.shops;
+    activeOrder() {
+      return this.$store.state.cart.active;
+    },
+    ordersList() {
+      return this.$store.state.cart.history;
     },
   },
 };

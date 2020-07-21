@@ -63,9 +63,22 @@
   },
   "dashboard": {
     "dashboard": "Dashboard",
-    "search": "Buscar",
+    "searchProducts": "Buscar Productos",
+    "searchProductsDescription": "Buscar y agregar productos a una orden de compras.",
     "locations": "Ubicaciones",
-    "shops": "Negocios"
+    "locationsDescription": "Administrar los domicilios de entrega del ususario.",
+    "createOrder": "Crear Nueva Orden",
+    "createOrderDescription": "Crear una nueva orden de compras, es el primer paso de una compra.",
+    "viewOrders": "Ver Ordenes",
+    "viewOrdersDescription": "El listado de todas las ordenes de compra anteriores.",
+    "discounts": "Descuentos",
+    "discountsDescription": "Se pueden administrar los descuentos para los negocios.",
+    "deliveries": "Entregas",
+    "deliveriesDescription": "Ver el estado de las entregas, para los negocios.",
+    "buySection": "Opciones de Comprador",
+    "sellSection": "Opciones de Vendedor",
+    "shops": "Negocios",
+    "shopsDescription": "Ver y administrar los negocios del usuario."
   },
   "product": {
     "addToCart": "Agregar al Carrito",
@@ -118,6 +131,20 @@
     "listEmpty": "Listado Vacío",
     "successfulCreation": "Negocio creado correctamente",
     "submitCreate": "Crear Negocio",
+    "cancel": "Cancelar"
+  },
+  "order": {
+    "createOrder": "Crear Orden",
+    "createNew": "Crear Nueva Orden",
+    "mustCreateLocationError": "Es necesario crear una ubicación antes de poder crear una orden",
+    "viewDetails": "Ver Detalles",
+    "editDetails": "Editar detalles",
+    "delete": "Eliminar Negocio",
+    "deliveryLocation": "Ubicación para entrega",
+    "listEmpty": "Listado Vacío",
+    "successfulCreation": "Negocio creado correctamente",
+    "searchProducts": "Buscar Productos",
+    "submitCreate": "Crear Nueva Orden",
     "cancel": "Cancelar"
   },
   "search": {

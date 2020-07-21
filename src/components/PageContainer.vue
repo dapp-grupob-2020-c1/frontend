@@ -1,17 +1,46 @@
 <template>
-  <b-container id="page-container" class="my-5">
-    <b-breadcrumb :items="breadcrumbItems" v-if="breadcrumbItems" />
+  <div class="wrapper">
+    <b-card
+      class="mb-3 sticky-top py-2"
+      bg-variant="secondary"
+      text-variant="light"
+      no-body
+      v-if="showCart && $store.state.cart.active"
+    >
+      <div class="container">
+        <div class="d-flex align-items-center justify-content-between">
+          <p class="m-0" v-if="$store.state.cart.active.entries.length">
+            Hay {{ $store.state.cart.active.entries.length }} producto(s) en el
+            carrito, sumando ${{ $store.state.cart.active.total }}.
+          </p>
+          <p class="m-0" v-else>
+            El carrito está vacío.
+          </p>
+          <b-button
+            variant="primary"
+            to="/orders/finish"
+            :disabled="!$store.state.cart.active.entries.length > 0"
+          >
+            <b-icon-cart />
+            Finalizar Compra
+          </b-button>
+        </div>
+      </div>
+    </b-card>
+    <b-container id="page-container" class="my-5">
+      <b-breadcrumb :items="breadcrumbItems" v-if="breadcrumbItems" />
 
-    <h1 class="h2" :class="{ 'text-center': centered }" v-if="title">
-      {{ title }}
-    </h1>
+      <h1 class="h2" :class="{ 'text-center': centered }" v-if="title">
+        {{ title }}
+      </h1>
 
-    <p class="lead">{{ subtitle }}</p>
+      <p class="lead">{{ subtitle }}</p>
 
-    <ErrorAlert />
+      <ErrorAlert />
 
-    <slot></slot>
-  </b-container>
+      <slot></slot>
+    </b-container>
+  </div>
 </template>
 
 <script>
@@ -21,21 +50,25 @@ export default {
   components: { ErrorAlert },
   props: {
     title: {
-      type: String
+      type: String,
     },
     subtitle: {
-      type: String
+      type: String,
     },
     breadcrumbItems: {
-      type: Array
+      type: Array,
     },
     requestInfo: {
-      type: Object
+      type: Object,
     },
     centered: {
-      type: Boolean
-    }
-  }
+      type: Boolean,
+    },
+    showCart: {
+      type: Boolean,
+      default: false,
+    },
+  },
 };
 </script>
 

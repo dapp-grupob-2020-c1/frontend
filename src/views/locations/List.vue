@@ -19,9 +19,9 @@
               :zoom="14"
               :options="{
                 disableDefaultUI: true,
-                fullscreenControl: false
+                fullscreenControl: false,
               }"
-              style="width: 100%; height: 200px"
+              style="width: 100%; height: 200px;"
             >
               <GmapMarker
                 :position="{ lat: location.latitude, lng: location.longitude }"
@@ -50,26 +50,25 @@
 <script>
 import PageContainer from "../../components/PageContainer";
 export default {
-  name: "LocationsList",
   components: { PageContainer },
   data() {
     return {
       breadcrumbItems: [
         {
           text: this.$t("dashboard.dashboard"),
-          to: "/dashboard"
+          to: "/dashboard",
         },
         {
           text: this.$t("location.locationsList"),
-          to: "/locations"
-        }
-      ]
+          to: "/locations",
+        },
+      ],
     };
   },
   computed: {
     locationsList() {
       return this.$store.state.user.locations;
-    }
+    },
   },
   mounted() {
     this.$store.dispatch("user/getLocations");
@@ -78,7 +77,7 @@ export default {
     async handleLocationDelete(location) {
       this.$store.dispatch("user/deleteLocation", location.id);
       this.$store.dispatch("user/getLocations");
-    }
-  }
+    },
+  },
 };
 </script>

@@ -1,7 +1,7 @@
 async function searchProductsRequest(httpClient, searchParams) {
   // required search params
   const finalSearchParams = {
-    locationId: searchParams.locationId
+    locationId: searchParams.locationId,
   };
 
   // optional params
@@ -26,7 +26,7 @@ async function searchProductsRequest(httpClient, searchParams) {
   return httpClient({
     method: "GET",
     url: "/product/search",
-    params: finalSearchParams
+    params: finalSearchParams,
   });
 }
 
@@ -35,8 +35,8 @@ async function getProductRequest(httpClient, productId) {
     method: "GET",
     url: "/product",
     params: {
-      productId
-    }
+      productId,
+    },
   });
 }
 
@@ -44,7 +44,7 @@ async function createProductRequest(httpClient, productInfo) {
   return httpClient({
     method: "POST",
     url: "/product",
-    data: productInfo
+    data: productInfo,
   });
 }
 
@@ -52,7 +52,7 @@ async function createManyProductsRequest(httpClient, productsInfo) {
   return httpClient({
     method: "POST",
     url: "/products",
-    data: productsInfo
+    data: productsInfo,
   });
 }
 
@@ -62,8 +62,8 @@ async function deleteProductRequest(httpClient, { shopId, productId }) {
     url: "/product",
     params: {
       shopId: shopId,
-      productId: productId
-    }
+      productId: productId,
+    },
   });
 }
 
@@ -72,5 +72,5 @@ export {
   getProductRequest,
   createProductRequest,
   createManyProductsRequest,
-  deleteProductRequest
+  deleteProductRequest,
 };

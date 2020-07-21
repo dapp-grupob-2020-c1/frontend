@@ -92,30 +92,29 @@
 import PageContainer from "../../../components/PageContainer";
 
 export default {
-  name: "ProductsCreate",
   components: { PageContainer },
   data() {
     return {
       breadcrumbItems: [
         {
           text: this.$t("dashboard.dashboard"),
-          to: "/dashboard"
+          to: "/dashboard",
         },
         {
           text: this.$t("shop.shopList"),
-          to: "/shops"
+          to: "/shops",
         },
         {
           text: this.$t("shop.viewDetails"),
-          to: `/shops/${this.$route.params.shopId}/`
+          to: `/shops/${this.$route.params.shopId}/`,
         },
         {
           text: this.$t("shop.viewProducts"),
-          to: `/shops/${this.$route.params.shopId}/products`
+          to: `/shops/${this.$route.params.shopId}/products`,
         },
         {
-          text: this.$t("shop.editProduct")
-        }
+          text: this.$t("shop.editProduct"),
+        },
       ],
       product: {
         id: null,
@@ -123,14 +122,14 @@ export default {
         brand: null,
         image: null,
         price: null,
-        types: []
-      }
+        types: [],
+      },
     };
   },
   mounted() {
     console.log("route params", this.$route.params);
     const foundProduct = this.$store.state.products.products.find(
-      prod => prod.id == this.$route.params.productId
+      (prod) => prod.id == this.$route.params.productId
     );
     this.product = Object.assign({}, foundProduct);
   },
@@ -143,14 +142,14 @@ export default {
         brand: this.product.brand,
         image: this.product.image,
         price: this.product.price,
-        types: [...this.product.types]
+        types: [...this.product.types],
       };
       await this.$store.dispatch("products/createProduct", productInfo);
       this.$router.push(`/shops/${this.$route.params.shopId}/products`);
     },
     handleCancel() {
       this.$router.push(`/shops/${this.$route.params.shopId}/products`);
-    }
-  }
+    },
+  },
 };
 </script>

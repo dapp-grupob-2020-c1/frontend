@@ -70,21 +70,20 @@
 import GoogleAuthButton from "../components/GoogleAuthButton";
 import PageContainer from "../components/PageContainer";
 export default {
-  name: "Register",
   components: { PageContainer, GoogleAuthButton },
   data() {
     return {
       userInformation: {
         name: "Carlos Manager",
         email: "manager@example.com",
-        password: "123456"
-      }
+        password: "123456",
+      },
     };
   },
   methods: {
     async handleRegister() {
       this.$store.dispatch("auth/register", this.userInformation);
-    }
-  }
+    },
+  },
 };
 </script>

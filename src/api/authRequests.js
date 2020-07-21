@@ -5,8 +5,8 @@ const httpClient = axios.create({
   baseURL: process.env.VUE_APP_API_URL,
   headers: {
     Accept: "application/json",
-    "Content-Type": "application/json"
-  }
+    "Content-Type": "application/json",
+  },
 });
 
 async function loginRequest({ email, password }) {
@@ -15,8 +15,8 @@ async function loginRequest({ email, password }) {
     url: "/auth/login",
     data: {
       email,
-      password
-    }
+      password,
+    },
   });
 }
 
@@ -27,8 +27,8 @@ async function registerRequest({ name, email, password }) {
     data: {
       name,
       email,
-      password
-    }
+      password,
+    },
   });
 }
 
