@@ -7,32 +7,32 @@
       {{ $t("dashboard.buySection") }}
     </h1>
     <div class="row">
-      <div class="mb-3 col-12 col-sm-6 col-lg-4 col-xl-3">
+      <div class="mb-3 col-12 col-md-6 col-xl-4">
         <DashboardBox
           to="/orders/search"
           :title="$t('dashboard.searchProducts')"
           :subtitle="$t('dashboard.searchProductsDescription')"
         />
       </div>
-      <div class="mb-3 col-12 col-sm-6 col-lg-4 col-xl-3">
+      <div class="mb-3 col-12 col-md-6 col-xl-4">
         <DashboardBox
           to="/orders/create"
           :title="$t('dashboard.createOrder')"
           :subtitle="$t('dashboard.createOrderDescription')"
         />
       </div>
-      <div class="mb-3 col-12 col-sm-6 col-lg-4 col-xl-3">
+      <div class="mb-3 col-12 col-md-6 col-xl-4">
         <DashboardBox
           to="/orders"
           :title="$t('dashboard.viewOrders')"
           :subtitle="$t('dashboard.viewOrdersDescription')"
         />
       </div>
-      <div class="mb-3 col-12 col-sm-6 col-lg-4 col-xl-3">
+      <div class="mb-3 col-12 col-md-6 col-xl-4">
         <DashboardBox
           to="/locations"
           :title="$t('dashboard.locations')"
-          subtitle="Lorem ipsum dolor sit amet."
+          :subtitle="$t('dashboard.locationsDescription')"
         />
       </div>
     </div>
@@ -41,11 +41,27 @@
       {{ $t("dashboard.sellSection") }}
     </h1>
     <div class="row">
-      <div class="mb-3 col-12 col-sm-6 col-lg-4 col-xl-3">
+      <div class="mb-3 col-12 col-md-6 col-xl-4">
         <DashboardBox
           to="/shops"
           :title="$t('dashboard.shops')"
-          subtitle="Lorem ipsum dolor sit amet."
+          :subtitle="$t('dashboard.shopsDescription')"
+        />
+      </div>
+      <div class="mb-3 col-12 col-md-6 col-xl-4">
+        <DashboardBox
+          to="/discounts"
+          :title="$t('dashboard.discounts')"
+          :subtitle="$t('dashboard.discountsDescription')"
+          disabled
+        />
+      </div>
+      <div class="mb-3 col-12 col-md-6 col-xl-4">
+        <DashboardBox
+          to="/deliveries"
+          :title="$t('dashboard.deliveries')"
+          :subtitle="$t('dashboard.deliveriesDescription')"
+          disabled
         />
       </div>
     </div>

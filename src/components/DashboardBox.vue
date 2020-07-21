@@ -6,6 +6,7 @@
       variant="outline-primary"
       block
       class="stretched-link"
+      :disabled="disabled"
     >
       {{ title }}
     </b-button>
@@ -22,6 +23,7 @@ export default {
     title: String,
     subtitle: String,
     to: String,
+    disabled: Boolean,
   },
 };
 </script>

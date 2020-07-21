@@ -3,12 +3,6 @@
     :title="$t('order.orderList')"
     :breadcrumb-items="breadcrumbItems"
   >
-    <p>Orden Activa</p>
-    <pre>{{ activeOrder }}</pre>
-
-    <p>Listado de Ordenes Anteriores</p>
-    <pre>{{ ordersList }}</pre>
-
     <div class="actions my-2">
       <b-button variant="primary" size="lg" to="/orders/create">
         <b-icon-plus-square />
