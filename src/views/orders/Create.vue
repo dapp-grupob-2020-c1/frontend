@@ -56,7 +56,6 @@ export default {
         },
         {
           text: this.$t("order.createOrder"),
-          to: "/orders/create",
         },
       ],
       orderLocationId: null,

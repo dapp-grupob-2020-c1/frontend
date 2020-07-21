@@ -2,8 +2,9 @@
   <PageContainer
     :title="$t('order.searchProducts')"
     :breadcrumb-items="breadcrumbItems"
+    show-cart
   >
-    <b-card>
+    <b-card class="my-3">
       <form @submit.prevent="handleSearch">
         <b-input-group>
           <b-form-input
@@ -21,9 +22,9 @@
     </b-card>
 
     <b-overlay :show="$store.state.requests.loading">
-      <div class="row my-2" v-if="searchResults.length">
+      <div class="row" v-if="searchResults.length">
         <div
-          class="col-12 col-lg-6 my-3"
+          class="col-12 col-lg-6 mb-3"
           v-for="product in searchResults"
           :key="product.id"
         >

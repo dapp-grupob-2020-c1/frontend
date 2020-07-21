@@ -131,6 +131,14 @@ const routes = [
       ),
   },
   {
+    path: "/orders/finish",
+    beforeEnter: requiresAuth,
+    component: () =>
+      import(
+        /* webpackChunkName: "ordersFinish" */ "../views/orders/Finish.vue"
+      ),
+  },
+  {
     path: "/orders",
     beforeEnter: requiresAuth,
     component: () =>

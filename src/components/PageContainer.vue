@@ -1,17 +1,39 @@
 <template>
-  <b-container id="page-container" class="my-5">
-    <b-breadcrumb :items="breadcrumbItems" v-if="breadcrumbItems" />
+  <div class="wrapper">
+    <b-card
+      class="mb-3 sticky-top py-2"
+      bg-variant="secondary"
+      text-variant="light"
+      no-body
+      v-if="showCart && $store.state.cart.active"
+    >
+      <div class="container">
+        <div class="d-flex align-items-center justify-content-between">
+          <p class="m-0">
+            Hay {{ $store.state.cart.active.entries.length }} productos en
+            carrito, sumando ${{ $store.state.cart.active.total }}.
+          </p>
+          <b-button variant="primary" to="/orders/finish">
+            <b-icon-cart />
+            Finalizar Compra
+          </b-button>
+        </div>
+      </div>
+    </b-card>
+    <b-container id="page-container" class="my-5">
+      <b-breadcrumb :items="breadcrumbItems" v-if="breadcrumbItems" />
 
-    <h1 class="h2" :class="{ 'text-center': centered }" v-if="title">
-      {{ title }}
-    </h1>
+      <h1 class="h2" :class="{ 'text-center': centered }" v-if="title">
+        {{ title }}
+      </h1>
 
-    <p class="lead">{{ subtitle }}</p>
+      <p class="lead">{{ subtitle }}</p>
 
-    <ErrorAlert />
+      <ErrorAlert />
 
-    <slot></slot>
-  </b-container>
+      <slot></slot>
+    </b-container>
+  </div>
 </template>
 
 <script>
@@ -34,6 +56,10 @@ export default {
     },
     centered: {
       type: Boolean,
+    },
+    showCart: {
+      type: Boolean,
+      default: false,
     },
   },
 };
