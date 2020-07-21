@@ -1,3 +1,14 @@
+async function addProductRequest(httpClient, { productId, amount }) {
+  return httpClient({
+    method: "POST",
+    url: "/cart/product",
+    data: {
+      productId,
+      amount,
+    },
+  });
+}
+
 async function getOldCartsRequest(httpClient) {
   return httpClient({
     method: "GET",
@@ -18,17 +29,6 @@ async function createCartRequest(httpClient, locationId) {
     url: "/cart",
     params: {
       locationId,
-    },
-  });
-}
-
-async function addProductToCartRequest(httpClient, { productId, amount }) {
-  return httpClient({
-    method: "POST",
-    url: "/cart/product",
-    data: {
-      productId,
-      amount,
     },
   });
 }
@@ -54,10 +54,10 @@ async function checkoutCartRequest(httpClient, cartPurchase) {
 }
 
 export {
+  addProductRequest,
   getOldCartsRequest,
   getActiveCartRequest,
   createCartRequest,
-  addProductToCartRequest,
   deleteProductFromCartRequest,
   checkoutCartRequest,
 };

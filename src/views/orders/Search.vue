@@ -3,8 +3,6 @@
     :title="$t('order.searchProducts')"
     :breadcrumb-items="breadcrumbItems"
   >
-    {{ $store.state.cart.active }}
-
     <b-card>
       <form @submit.prevent="handleSearch">
         <b-input-group>
@@ -22,17 +20,19 @@
       </form>
     </b-card>
 
-    <div class="row my-2" v-if="searchResults.length">
-      <div
-        class="col-12 col-lg-6 my-3"
-        v-for="product in searchResults"
-        :key="product.id"
-      >
-        <b-card class="h-100">
-          <ProductSearchResult class="h-100" :product="product" />
-        </b-card>
+    <b-overlay :show="$store.state.requests.loading">
+      <div class="row my-2" v-if="searchResults.length">
+        <div
+          class="col-12 col-lg-6 my-3"
+          v-for="product in searchResults"
+          :key="product.id"
+        >
+          <b-card class="h-100">
+            <ProductSearchResult class="h-100" :product="product" />
+          </b-card>
+        </div>
       </div>
-    </div>
+    </b-overlay>
   </PageContainer>
 </template>
 
@@ -50,8 +50,7 @@ export default {
           to: "/dashboard",
         },
         {
-          text: this.$t("search.search"),
-          to: "/search",
+          text: this.$t("order.search"),
         },
       ],
       searchQuery: null,
@@ -86,6 +85,9 @@ export default {
     },
     handleSearch() {
       console.log("do search");
+      this.$store.dispatch("cart/getSearchProducts", {
+        keyword: this.searchQuery,
+      });
     },
     handleCancel() {
       this.$router.push("/dashboard");

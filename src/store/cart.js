@@ -1,4 +1,5 @@
 import {
+  addProductRequest,
   createCartRequest,
   getActiveCartRequest,
   getOldCartsRequest,
@@ -98,6 +99,33 @@ export default {
       } catch (error) {
         commit("requests/setError", null, { root: true });
         dispatch("messages/showErrorMessage", "cart.getSearchProductsError", {
+          root: true,
+        });
+        // handle different error types
+        if (error.response) {
+          commit("requests/setError", "app.responseError", { root: true });
+        } else if (error.request) {
+          commit("requests/setError", "app.connectionError", { root: true });
+        }
+      } finally {
+        commit("requests/endLoading", null, { root: true });
+      }
+    },
+    async addProductToCart(
+      { commit, dispatch, rootState },
+      { productId, amount }
+    ) {
+      commit("requests/beginLoading", null, { root: true });
+      try {
+        const httpClient = rootState.auth.httpClient;
+        const addProductResponse = await addProductRequest(httpClient, {
+          productId,
+          amount,
+        });
+        commit("setActiveCart", addProductResponse.data);
+      } catch (error) {
+        commit("requests/setError", null, { root: true });
+        dispatch("messages/showErrorMessage", "cart.addProductToCartError", {
           root: true,
         });
         // handle different error types

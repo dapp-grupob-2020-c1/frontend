@@ -4,9 +4,12 @@
     <ShopDetails :shop="product.shop" />
     <div class="d-flex flex-column-reverse h-100 w-100">
       <b-input-group>
-        <b-form-input type="number" min="1" max="12" v-model="quantity" />
+        <b-form-input type="number" min="1" max="12" v-model="amount" />
         <b-input-group-append>
-          <b-button variant="outline-primary" @click="handleAddProductToCart">
+          <b-button
+            variant="outline-primary"
+            @click.prevent="handleAddProductToCart"
+          >
             <b-icon-cart-fill />
             {{ $t("product.addToCart") }}
           </b-button>
@@ -30,13 +33,18 @@ export default {
   },
   data() {
     return {
-      quantity: 1,
+      amount: 1,
     };
   },
   computed: {},
   methods: {
     handleAddProductToCart() {
-      console.log("addProduct to Cart", this.product, this.quantity);
+      console.log("handleAddProductToCart method");
+
+      this.$store.dispatch("cart/addProductToCart", {
+        productId: this.product.id,
+        amount: this.amount,
+      });
     },
   },
 };
