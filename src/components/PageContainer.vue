@@ -10,8 +10,12 @@
       <div class="container">
         <div class="d-flex align-items-center justify-content-between">
           <p class="m-0" v-if="$store.state.cart.active.entries.length">
-            Hay {{ $store.state.cart.active.entries.length }} producto(s) en el
-            carrito, sumando ${{ $store.state.cart.active.total }}.
+            {{
+              $tc(
+                "order.productsInCart",
+                $store.state.cart.active.entries.length
+              )
+            }}, sumando ${{ $store.state.cart.active.total }}.
           </p>
           <p class="m-0" v-else>
             El carrito está vacío.

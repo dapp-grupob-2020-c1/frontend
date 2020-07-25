@@ -149,6 +149,7 @@
     "submitCreate": "Crear Nueva Orden",
     "activeOrderNeeded": "Es necesario tener una orden activa. Vamos a crearla.",
     "productsList": "Productos",
+    "productsInCart": "No hay productos en el carrito | Un producto en el carrito | {n} productos en el carrito",
     "typesAndThresholds": "Consumos y Límites por tipo",
     "cancel": "Cancelar"
   },
