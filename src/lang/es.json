@@ -148,11 +148,19 @@
     "searchProducts": "Buscar Productos",
     "submitCreate": "Crear Nueva Orden",
     "activeOrderNeeded": "Es necesario tener una orden activa. Vamos a crearla.",
+    "productsList": "Productos",
+    "typesAndThresholds": "Consumos y Límites por tipo",
     "cancel": "Cancelar"
   },
   "search": {
     "searchProducts": "Buscar Productos",
     "searchResults": "Resultados",
     "beginSearch": "Buscar"
+  },
+  "productTypes": {
+    "FoodsAndDrinks": "Comida y Bebida",
+    "BooksMoviesAndGames": "Libros, Películas y Juegos",
+    "Clothing": "Ropa",
+    "OfficeSupplies": "Insumos de Oficina"
   }
 }

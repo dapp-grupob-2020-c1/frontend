@@ -1,9 +1,9 @@
 <template>
-  <div class="shop-details row">
-    <div class="col-sm-6 col-lg-4 col-xl-3">
-      <b-img fluid-grow rounded :src="shopImage" />
-    </div>
-    <div class="col order-sm-0">
+  <div class="shop-details">
+    <b-media vertical-align="center">
+      <template v-slot:aside>
+        <b-img fluid rounded :src="shopImage" width="128" height="128" />
+      </template>
       <h2 class="h3">{{ shop.name }}</h2>
       <p v-if="shop.location && shop.location.address">
         {{ shop.location.address }}
@@ -39,7 +39,7 @@
           }}</b-badge>
         </p>
       </div>
-    </div>
+    </b-media>
   </div>
 </template>
 <script>

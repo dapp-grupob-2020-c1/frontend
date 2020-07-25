@@ -1,10 +1,15 @@
 <template>
   <div class="product-details">
-    <p class="h3 font-weight-light text-muted float-right">
-      $ {{ product.price }}
-    </p>
-    <h2 class="h3">{{ product.name }}</h2>
-    <p>{{ product.brand }}</p>
+    <b-media vertical-align="center">
+      <template v-slot:aside>
+        <b-img fluid rounded :src="productImage" width="128" height="128" />
+      </template>
+      <p class="h3 font-weight-light text-muted float-right">
+        $ {{ product.price }}
+      </p>
+      <h2 class="h3">{{ product.name }}</h2>
+      <p>{{ product.brand }}</p>
+    </b-media>
   </div>
 </template>
 
@@ -28,7 +33,14 @@ export default {
       quantity: 1,
     };
   },
-  computed: {},
+  computed: {
+    productImage() {
+      if (!this.product.imageUrl) {
+        return require("../assets/shop-placeholder.png");
+      }
+      return this.product.imageUrl;
+    },
+  },
   methods: {
     handleAddToCart() {
       const cartItem = {
