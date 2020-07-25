@@ -174,5 +174,16 @@ export default {
       console.log("user/getters/findShop");
       return state.active && state.active.total;
     },
+    getActiveCartShopsList: (state) => {
+      if (!state.active) {
+        return [];
+      }
+      // use set to avoid repeated
+      const set = new Set();
+      state.active.entries.forEach((entry) => {
+        set.add(entry.product.shopId);
+      });
+      return Array.from(set.values());
+    },
   },
 };
