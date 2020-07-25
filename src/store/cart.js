@@ -139,4 +139,10 @@ export default {
       }
     },
   },
+  getters: {
+    hasActiveAndFilledCart: (state) => {
+      console.log("user/getters/findShop");
+      return state.active && state.active.total;
+    },
+  },
 };

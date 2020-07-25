@@ -2,7 +2,7 @@
   <PageContainer
     :title="$t('order.searchProducts')"
     :breadcrumb-items="breadcrumbItems"
-    show-cart
+    :show-cart="Boolean($store.getters['cart/hasActiveAndFilledCart'])"
   >
     <b-card class="my-3">
       <form @submit.prevent="handleSearch">
