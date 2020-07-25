@@ -70,25 +70,19 @@
     <h2 class="h4">{{ $t("order.shippingOptions") }}</h2>
     <div class="shipping-options">
       <p>{{ $t("order.shippingOptionsDescription") }}</p>
-      <b-list-group>
-        <b-list-group-item
+      <div class="row">
+        <div
+          class="col-12 col-lg-6 col-xl-4 mb-3"
           v-for="store in $store.state.cart.activeStores"
           :key="store.id"
         >
-          <b-card-title>{{ store.name }}</b-card-title>
-          <h4 class="h5">{{ $t("order.paymentMethod") }}</h4>
-          <p>{{ store.paymentMethods }}</p>
-          <h4 class="h5">{{ $t("order.shippingOption") }}</h4>
-          <b-list-group>
-            <b-list-group-item>Cras justo odio</b-list-group-item>
-            <b-list-group-item>Dapibus ac facilisis in</b-list-group-item>
-            <b-list-group-item>Morbi leo risus</b-list-group-item>
-            <b-list-group-item>Porta ac consectetur ac</b-list-group-item>
-            <b-list-group-item>Vestibulum at eros</b-list-group-item>
-          </b-list-group>
-        </b-list-group-item>
-      </b-list-group>
+          <b-card>
+            <OrderShopShipping :shop="store" />
+          </b-card>
+        </div>
+      </div>
     </div>
+
     <div class="actions my-2">
       <b-button variant="primary" size="lg">
         <b-icon-check2-square />
@@ -100,9 +94,10 @@
 
 <script>
 import PageContainer from "../../components/PageContainer";
+import OrderShopShipping from "../../components/OrderShopShipping";
 
 export default {
-  components: { PageContainer },
+  components: { PageContainer, OrderShopShipping },
   data() {
     return {
       breadcrumbItems: [

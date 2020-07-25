@@ -44,7 +44,7 @@ export default {
         commit("requests/endLoading", null, { root: true });
       }
     },
-    async getActiveShops({ commit, dispatch, getters, rootState }) {
+    async getActiveShops({ commit, getters, rootState }) {
       commit("requests/beginLoading", null, { root: true });
       try {
         const shopsList = getters["getActiveCartShopsList"];
@@ -54,12 +54,9 @@ export default {
           return getShopRequest(httpClient, shopId);
         });
         const results = await Promise.all(getShopsRequestList);
-        console.log("Promise all results: ", results);
-
         const formattedResults = results.map((current) => {
           return current.data;
         });
-        console.log("Formatted results: ", formattedResults);
         commit("setActiveStores", formattedResults);
       } catch (error) {
         // ignore error!

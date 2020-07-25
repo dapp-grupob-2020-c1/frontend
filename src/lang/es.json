@@ -163,5 +163,11 @@
     "BooksMoviesAndGames": "Libros, Películas y Juegos",
     "Clothing": "Ropa",
     "OfficeSupplies": "Insumos de Oficina"
+  },
+  "paymentMethods": {
+    "CASH": "Efectivo",
+    "DEBIT": "Tarjeta de Débito",
+    "CREDIT": "Tarjeta de Crédito",
+    "MERCADOPAGO": "Mercado Pago"
   }
 }
