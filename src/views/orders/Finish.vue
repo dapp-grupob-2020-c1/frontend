@@ -66,6 +66,35 @@
         </div>
       </template>
     </div>
+
+    <h2 class="h4">{{ $t("order.shippingOptions") }}</h2>
+    <div class="shipping-options">
+      <p>{{ $t("order.shippingOptionsDescription") }}</p>
+      <b-list-group>
+        <b-list-group-item
+          v-for="store in $store.state.cart.activeStores"
+          :key="store.id"
+        >
+          <b-card-title>{{ store.name }}</b-card-title>
+          <h4 class="h5">{{ $t("order.paymentMethod") }}</h4>
+          <p>{{ store.paymentMethods }}</p>
+          <h4 class="h5">{{ $t("order.shippingOption") }}</h4>
+          <b-list-group>
+            <b-list-group-item>Cras justo odio</b-list-group-item>
+            <b-list-group-item>Dapibus ac facilisis in</b-list-group-item>
+            <b-list-group-item>Morbi leo risus</b-list-group-item>
+            <b-list-group-item>Porta ac consectetur ac</b-list-group-item>
+            <b-list-group-item>Vestibulum at eros</b-list-group-item>
+          </b-list-group>
+        </b-list-group-item>
+      </b-list-group>
+    </div>
+    <div class="actions my-2">
+      <b-button variant="primary" size="lg">
+        <b-icon-check2-square />
+        {{ $t("order.finalizeOrder") }}
+      </b-button>
+    </div>
   </PageContainer>
 </template>
 

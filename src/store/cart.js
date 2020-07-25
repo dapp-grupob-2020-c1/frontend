@@ -6,10 +6,12 @@ import {
   getOldCartsRequest,
 } from "../api/cartRequests";
 import { searchProductsRequest } from "../api/productsRequests";
+import { getShopRequest } from "../api/shopRequests";
 
 export default {
   state: {
     active: null,
+    activeStores: null,
     history: [],
     searchResults: [],
   },
@@ -17,6 +19,9 @@ export default {
   mutations: {
     setActiveCart(state, activeCart) {
       state.active = activeCart;
+    },
+    setActiveStores(state, activeStores) {
+      state.activeStores = activeStores;
     },
     setHistory(state, history) {
       state.history = history;
@@ -26,17 +31,44 @@ export default {
     },
   },
   actions: {
-    async getActiveShoppingCart({ commit, rootState }) {
+    async getActiveShoppingCart({ commit, dispatch, rootState }) {
       commit("requests/beginLoading", null, { root: true });
       try {
         const httpClient = rootState.auth.httpClient;
         const getActiveCartResponse = await getActiveCartRequest(httpClient);
         commit("setActiveCart", getActiveCartResponse.data);
+        dispatch("getActiveShops");
       } catch (error) {
         // ignore error!
       } finally {
         commit("requests/endLoading", null, { root: true });
       }
+    },
+    async getActiveShops({ commit, dispatch, getters, rootState }) {
+      commit("requests/beginLoading", null, { root: true });
+      try {
+        const shopsList = getters["getActiveCartShopsList"];
+        console.log("getActiveShops List: ", shopsList);
+        const httpClient = rootState.auth.httpClient;
+        const getShopsRequestList = shopsList.map((shopId) => {
+          return getShopRequest(httpClient, shopId);
+        });
+        const results = await Promise.all(getShopsRequestList);
+        console.log("Promise all results: ", results);
+
+        const formattedResults = results.map((current) => {
+          return current.data;
+        });
+        console.log("Formatted results: ", formattedResults);
+        commit("setActiveStores", formattedResults);
+      } catch (error) {
+        // ignore error!
+      } finally {
+        commit("requests/endLoading", null, { root: true });
+      }
+
+      // hago un request para obtener los detalles de cada shop
+      // guardo todos los shops en el store
     },
     async getOldCarts({ commit, dispatch, rootState }) {
       commit("requests/beginLoading", null, { root: true });
@@ -124,6 +156,7 @@ export default {
           amount,
         });
         commit("setActiveCart", addProductResponse.data);
+        dispatch("getActiveShops");
       } catch (error) {
         commit("requests/setError", null, { root: true });
         dispatch("messages/showErrorMessage", "cart.addProductToCartError", {
@@ -147,8 +180,8 @@ export default {
           httpClient,
           productId
         );
-        console.log(deleteProductResponse);
         commit("setActiveCart", deleteProductResponse.data);
+        dispatch("getActiveShops");
       } catch (error) {
         commit("requests/setError", null, { root: true });
         dispatch(
