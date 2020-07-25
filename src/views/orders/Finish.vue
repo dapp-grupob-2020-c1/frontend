@@ -11,7 +11,11 @@
         :key="index"
       >
         <div class="col-auto">
-          <b-button size="sm" variant="outline-danger">
+          <b-button
+            size="sm"
+            variant="outline-danger"
+            @click="handleDeleteEntry(entry)"
+          >
             <b-icon-x />
           </b-button>
         </div>
@@ -96,6 +100,12 @@ export default {
     },
   },
   methods: {
+    async handleDeleteEntry(entry) {
+      await this.$store.dispatch(
+        "cart/deleteProductFromCart",
+        entry.product.id
+      );
+    },
     handleCancel() {
       this.$router.push("/dashboard");
     },
