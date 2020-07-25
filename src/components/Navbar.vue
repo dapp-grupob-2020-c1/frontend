@@ -13,7 +13,7 @@
     <b-collapse id="nav-collapse" is-nav>
       <b-navbar-nav>
         <LocaleChanger />
-        <b-nav-item to="/search">{{ $t("navbar.search") }}</b-nav-item>
+        <b-nav-item to="/orders/search">{{ $t("navbar.search") }}</b-nav-item>
       </b-navbar-nav>
 
       <!-- Right aligned nav items -->

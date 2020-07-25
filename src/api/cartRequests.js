@@ -37,7 +37,7 @@ async function deleteProductFromCartRequest(httpClient, productId) {
   return httpClient({
     method: "DELETE",
     url: "/cart/product",
-    data: {
+    params: {
       productId,
     },
   });

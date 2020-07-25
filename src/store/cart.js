@@ -1,6 +1,7 @@
 import {
   addProductRequest,
   createCartRequest,
+  deleteProductFromCartRequest,
   getActiveCartRequest,
   getOldCartsRequest,
 } from "../api/cartRequests";
@@ -137,6 +138,41 @@ export default {
       } finally {
         commit("requests/endLoading", null, { root: true });
       }
+    },
+    async deleteProductFromCart({ commit, dispatch, rootState }, productId) {
+      commit("requests/beginLoading", null, { root: true });
+      try {
+        const httpClient = rootState.auth.httpClient;
+        const deleteProductResponse = await deleteProductFromCartRequest(
+          httpClient,
+          productId
+        );
+        console.log(deleteProductResponse);
+        commit("setActiveCart", deleteProductResponse.data);
+      } catch (error) {
+        commit("requests/setError", null, { root: true });
+        dispatch(
+          "messages/showErrorMessage",
+          "cart.deleteProductFromCartError",
+          {
+            root: true,
+          }
+        );
+        // handle different error types
+        if (error.response) {
+          commit("requests/setError", "app.responseError", { root: true });
+        } else if (error.request) {
+          commit("requests/setError", "app.connectionError", { root: true });
+        }
+      } finally {
+        commit("requests/endLoading", null, { root: true });
+      }
+    },
+  },
+  getters: {
+    hasActiveAndFilledCart: (state) => {
+      console.log("user/getters/findShop");
+      return state.active && state.active.total;
     },
   },
 };

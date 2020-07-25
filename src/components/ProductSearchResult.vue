@@ -1,7 +1,7 @@
 <template>
   <div class="product-search-results-item d-flex flex-column">
     <ProductDetails :product="product" />
-    <ShopDetails :shop="product.shop" />
+    <ShopDetails :shop="product.shop" class="mt-2" />
     <div class="d-flex flex-column-reverse h-100 w-100">
       <b-input-group>
         <b-form-input type="number" min="1" max="12" v-model="amount" />

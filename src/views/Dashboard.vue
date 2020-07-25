@@ -2,6 +2,7 @@
   <PageContainer
     :title="$t('dashboard.dashboard')"
     :breadcrumb-items="breadcrumbItems"
+    :show-cart="Boolean($store.getters['cart/hasActiveAndFilledCart'])"
   >
     <h1 class="h3 pt-3 border-top border-light">
       {{ $t("dashboard.buySection") }}

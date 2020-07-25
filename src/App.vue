@@ -11,7 +11,7 @@
           dismissible
           show
         >
-          {{ message.text }}
+          {{ $t(message.text) }}
         </b-alert>
       </transition-group>
     </div>

@@ -58,7 +58,7 @@
     "loginSeller": "Iniciar Sesión (Vendedor)",
     "dontHaveAccount": "No tenés una cuenta?",
     "register": "Registrar Nuevo Usuario",
-    "loginSuccess": "Sesión Iniciada Correctamente",
+    "loginSucceeded": "Sesión Iniciada Correctamente",
     "logoutSuccess": "Sesión Cerrada Correctamente"
   },
   "dashboard": {
@@ -110,11 +110,13 @@
     "locationsList": "Listado de Ubicaciones",
     "viewDetails": "Ver Detalles",
     "listEmpty": "Listado Vacío",
+    "deleteLocation": "Eliminar",
     "successfulCreation": "Ubicación agregada correctamente",
     "submitCreate": "Agregar Ubicación",
     "address": "Dirección",
     "coordinates": "Coordenadas",
     "coordinatesDescription": "Hacé click en el mapa para marcar un punto.",
+    "locationNeeded": "Es necesario tener al menos una ubicación asociada. Vamos a crearla.",
     "cancel": "Cancelar"
   },
   "shop": {
@@ -145,11 +147,20 @@
     "successfulCreation": "Negocio creado correctamente",
     "searchProducts": "Buscar Productos",
     "submitCreate": "Crear Nueva Orden",
+    "activeOrderNeeded": "Es necesario tener una orden activa. Vamos a crearla.",
+    "productsList": "Productos",
+    "typesAndThresholds": "Consumos y Límites por tipo",
     "cancel": "Cancelar"
   },
   "search": {
     "searchProducts": "Buscar Productos",
     "searchResults": "Resultados",
     "beginSearch": "Buscar"
+  },
+  "productTypes": {
+    "FoodsAndDrinks": "Comida y Bebida",
+    "BooksMoviesAndGames": "Libros, Películas y Juegos",
+    "Clothing": "Ropa",
+    "OfficeSupplies": "Insumos de Oficina"
   }
 }
