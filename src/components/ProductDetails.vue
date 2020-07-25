@@ -2,7 +2,22 @@
   <div class="product-details">
     <b-media vertical-align="center">
       <template v-slot:aside>
-        <b-img fluid rounded :src="productImage" width="128" height="128" />
+        <b-img
+          fluid
+          rounded
+          :src="productImage"
+          width="128"
+          height="128"
+          @click="$bvModal.show(`modal-product-${product.id}`)"
+        />
+        <b-modal
+          :id="`modal-product-${product.id}`"
+          centered
+          hide-footer
+          hide-header
+        >
+          <b-img fluid-grow :src="productImage" />
+        </b-modal>
       </template>
       <p class="h3 font-weight-light text-muted float-right">
         $ {{ product.price }}
@@ -35,10 +50,10 @@ export default {
   },
   computed: {
     productImage() {
-      if (!this.product.imageUrl) {
+      if (!this.product.image) {
         return require("../assets/shop-placeholder.png");
       }
-      return this.product.imageUrl;
+      return this.product.image;
     },
   },
   methods: {
