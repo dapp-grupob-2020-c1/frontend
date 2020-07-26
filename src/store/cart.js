@@ -141,17 +141,14 @@ export default {
         commit("requests/endLoading", null, { root: true });
       }
     },
-    async addProductToCart(
-      { commit, dispatch, rootState },
-      { productId, amount }
-    ) {
+    async addProductToCart({ commit, dispatch, rootState }, productEntry) {
       commit("requests/beginLoading", null, { root: true });
       try {
         const httpClient = rootState.auth.httpClient;
-        const addProductResponse = await addProductRequest(httpClient, {
-          productId,
-          amount,
-        });
+        const addProductResponse = await addProductRequest(
+          httpClient,
+          productEntry
+        );
         commit("setActiveCart", addProductResponse.data);
         dispatch("getActiveShops");
       } catch (error) {
