@@ -4,67 +4,13 @@
     :breadcrumb-items="breadcrumbItems"
   >
     <h2 class="h4">{{ $t("order.productsList") }}</h2>
-    <div class="order-entries-list container">
-      <div
-        class="order-entry row align-items-center mb-2 border-bottom"
-        v-for="(entry, index) in activeOrder.entries"
-        :key="index"
-      >
-        <div class="col-auto">
-          <b-button
-            size="sm"
-            variant="outline-danger"
-            @click="handleDeleteEntry(entry)"
-          >
-            <b-icon-x />
-          </b-button>
-        </div>
-        <div class="col">
-          <p class="mb-1">
-            {{ entry.product.name }}
-            <span class="text-muted">&dash; {{ entry.product.brand }}</span>
-          </p>
-          <p class="mb-1">{{ entry.quantity }} x $ {{ entry.product.price }}</p>
-        </div>
-        <div class="col-4 col-md-3 text-right">
-          <p class="lead m-0">$ {{ entry.quantity * entry.product.price }}</p>
-        </div>
-      </div>
-
-      <div
-        class="row font-weight-bold border-top border-dark align-items-baseline py-2"
-      >
-        <div class="col">
-          <p class="lead">Total:</p>
-        </div>
-        <div class="col-3 text-right">
-          <p class="lead font-weight-bold">$ {{ activeOrder.total }}</p>
-        </div>
-      </div>
-      <p></p>
+    <div class="container">
+      <OrderEntriesList />
     </div>
 
     <h2 class="h4">{{ $t("order.typesAndThresholds") }}</h2>
-    <div class="thresholds-list">
-      <template v-for="threshold in activeOrder.thresholdsByType">
-        <div
-          v-if="threshold.totalForType > 0"
-          :key="threshold.type"
-          class="d-flex"
-        >
-          <p>
-            {{ $t(`productTypes.${threshold.type}`) }}:
-            <span
-              :class="{
-                'bg-danger': threshold.totalForType <= threshold.threshold,
-              }"
-            >
-              $ {{ threshold.totalForType }}
-              <span class="text-muted">/ {{ threshold.threshold }}</span>
-            </span>
-          </p>
-        </div>
-      </template>
+    <div class="container">
+      <OrderThresholdsList />
     </div>
 
     <h2 class="h4">{{ $t("order.shippingOptions") }}</h2>
@@ -95,9 +41,16 @@
 <script>
 import PageContainer from "../../components/PageContainer";
 import OrderShopShipping from "../../components/OrderShopShipping";
+import OrderEntriesList from "../../components/OrderEntriesList";
+import OrderThresholdsList from "../../components/OrderThresholdsList";
 
 export default {
-  components: { PageContainer, OrderShopShipping },
+  components: {
+    OrderThresholdsList,
+    OrderEntriesList,
+    PageContainer,
+    OrderShopShipping,
+  },
   data() {
     return {
       breadcrumbItems: [
@@ -124,12 +77,6 @@ export default {
     },
   },
   methods: {
-    async handleDeleteEntry(entry) {
-      await this.$store.dispatch(
-        "cart/deleteProductFromCart",
-        entry.product.id
-      );
-    },
     handleCancel() {
       this.$router.push("/dashboard");
     },
