@@ -1,3 +1,4 @@
+import Vue from "vue";
 import {
   addProductRequest,
   createCartRequest,
@@ -12,6 +13,7 @@ export default {
   state: {
     active: null,
     activeShops: [],
+    activeShopOptions: {},
     history: [],
     searchResults: [],
   },
@@ -22,6 +24,9 @@ export default {
     },
     setActiveShops(state, activeShops) {
       state.activeShops = activeShops;
+    },
+    setActiveShopOptions(state, { shopId, shopOptions }) {
+      Vue.set(state.activeShopOptions, shopId, shopOptions);
     },
     setHistory(state, history) {
       state.history = history;
@@ -48,7 +53,6 @@ export default {
       commit("requests/beginLoading", null, { root: true });
       try {
         const shopsList = getters["getActiveCartShopsList"];
-        console.log("getActiveShops List: ", shopsList);
         const httpClient = rootState.auth.httpClient;
         const getShopsRequestList = shopsList.map((shopId) => {
           return getShopRequest(httpClient, shopId);
@@ -201,6 +205,7 @@ export default {
       console.log("user/getters/findShop");
       return state.active && state.active.total;
     },
+    /* Return list of shop IDs */
     getActiveCartShopsList: (state) => {
       if (!state.active) {
         return [];
