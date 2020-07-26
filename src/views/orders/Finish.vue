@@ -73,7 +73,7 @@
       <div class="row">
         <div
           class="col-12 col-lg-6 col-xl-4 mb-3"
-          v-for="store in $store.state.cart.activeStores"
+          v-for="store in $store.state.cart.activeShops"
           :key="store.id"
         >
           <b-card>

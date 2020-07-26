@@ -11,7 +11,7 @@ import { getShopRequest } from "../api/shopRequests";
 export default {
   state: {
     active: null,
-    activeStores: null,
+    activeShops: [],
     history: [],
     searchResults: [],
   },
@@ -20,8 +20,8 @@ export default {
     setActiveCart(state, activeCart) {
       state.active = activeCart;
     },
-    setActiveStores(state, activeStores) {
-      state.activeStores = activeStores;
+    setActiveShops(state, activeShops) {
+      state.activeShops = activeShops;
     },
     setHistory(state, history) {
       state.history = history;
@@ -57,7 +57,7 @@ export default {
         const formattedResults = results.map((current) => {
           return current.data;
         });
-        commit("setActiveStores", formattedResults);
+        commit("setActiveShops", formattedResults);
       } catch (error) {
         // ignore error!
       } finally {
