@@ -19,11 +19,11 @@
       <div class="row">
         <div
           class="col-12 col-lg-6 col-xl-4 mb-3"
-          v-for="store in $store.state.cart.activeShops"
-          :key="store.id"
+          v-for="shop in $store.state.cart.activeShops"
+          :key="shop.id"
         >
           <b-card>
-            <OrderShopShipping :shop="store" />
+            <OrderShopShipping :shop="shop" />
           </b-card>
         </div>
       </div>
