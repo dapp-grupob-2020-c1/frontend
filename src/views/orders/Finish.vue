@@ -86,7 +86,7 @@
     <div class="actions my-2">
       <b-button variant="primary" size="lg">
         <b-icon-check2-square />
-        {{ $t("order.finalizeOrder") }}
+        {{ $t("order.finishOrder") }}
       </b-button>
     </div>
   </PageContainer>
