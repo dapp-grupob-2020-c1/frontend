@@ -13,6 +13,7 @@ Vue.use(VueI18n);
 var i18n = new VueI18n({
   locale: defaultLocale,
   messages: messages,
+  silentTranslationWarn: true,
 });
 
 // Vue Google Maps
