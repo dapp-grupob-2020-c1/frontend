@@ -73,7 +73,8 @@ export default {
     };
   },
   mounted() {
-    this.$store.dispatch("user/getOrders");
+    this.$store.dispatch("cart/getActiveShoppingCart");
+    this.$store.dispatch("cart/getOldCarts");
   },
   methods: {
     async handleOrderDelete(order) {
