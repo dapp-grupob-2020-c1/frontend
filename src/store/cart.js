@@ -223,7 +223,10 @@ export default {
   },
   getters: {
     hasActiveAndFilledCart: (state) => {
-      return state.active && state.active.total;
+      if (!state.active) {
+        return false;
+      }
+      return state.active.total > 0;
     },
     /* Return list of shop IDs */
     getActiveCartShopsList: (state) => {
