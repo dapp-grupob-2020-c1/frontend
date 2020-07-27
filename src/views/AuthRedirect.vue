@@ -13,7 +13,7 @@ export default {
   mounted() {
     console.log("auth mounted");
     if (this.$route.query.token) {
-      this.$store.dispatch("auth/login", this.$route.query.token);
+      this.$store.commit("auth/setLogin", this.$route.query.token);
       this.$root.$bvToast.toast(
         this.$t("login.loginSuccess"),
         defaultToasterOptions
