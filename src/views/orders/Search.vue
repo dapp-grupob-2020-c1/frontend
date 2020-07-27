@@ -51,7 +51,7 @@ export default {
           to: "/dashboard",
         },
         {
-          text: this.$t("order.search"),
+          text: this.$t("search.searchProducts"),
         },
       ],
       searchQuery: null,
