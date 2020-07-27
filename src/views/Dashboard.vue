@@ -13,28 +13,36 @@
           to="/orders/search"
           :title="$t('dashboard.searchProducts')"
           :subtitle="$t('dashboard.searchProductsDescription')"
-        />
+        >
+          <b-icon-search font-scale="2" />
+        </DashboardBox>
       </div>
       <div class="mb-3 col-12 col-md-6 col-xl-4">
         <DashboardBox
           to="/orders/create"
           :title="$t('dashboard.createOrder')"
           :subtitle="$t('dashboard.createOrderDescription')"
-        />
+        >
+          <b-icon-cart-plus font-scale="2" />
+        </DashboardBox>
       </div>
       <div class="mb-3 col-12 col-md-6 col-xl-4">
         <DashboardBox
           to="/orders"
           :title="$t('dashboard.viewOrders')"
           :subtitle="$t('dashboard.viewOrdersDescription')"
-        />
+        >
+          <b-icon-cart font-scale="2" />
+        </DashboardBox>
       </div>
       <div class="mb-3 col-12 col-md-6 col-xl-4">
         <DashboardBox
           to="/locations"
           :title="$t('dashboard.locations')"
           :subtitle="$t('dashboard.locationsDescription')"
-        />
+        >
+          <b-icon-map font-scale="2" />
+        </DashboardBox>
       </div>
     </div>
 
@@ -47,7 +55,9 @@
           to="/shops"
           :title="$t('dashboard.shops')"
           :subtitle="$t('dashboard.shopsDescription')"
-        />
+        >
+          <b-icon-shop font-scale="2" />
+        </DashboardBox>
       </div>
       <div class="mb-3 col-12 col-md-6 col-xl-4">
         <DashboardBox
@@ -55,7 +65,9 @@
           :title="$t('dashboard.discounts')"
           :subtitle="$t('dashboard.discountsDescription')"
           disabled
-        />
+        >
+          <b-icon-tag font-scale="2" />
+        </DashboardBox>
       </div>
       <div class="mb-3 col-12 col-md-6 col-xl-4">
         <DashboardBox
@@ -63,7 +75,9 @@
           :title="$t('dashboard.deliveries')"
           :subtitle="$t('dashboard.deliveriesDescription')"
           disabled
-        />
+        >
+          <b-icon-list-task font-scale="2" />
+        </DashboardBox>
       </div>
     </div>
   </PageContainer>

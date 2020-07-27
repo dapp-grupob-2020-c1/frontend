@@ -1,5 +1,9 @@
 <template>
   <b-card class="dashboard-box">
+    <p class="lead text-center mt-3">
+      <slot></slot>
+    </p>
+
     <b-button
       :to="to"
       size="lg"
@@ -10,6 +14,7 @@
     >
       {{ title }}
     </b-button>
+
     <p class="mt-3">
       {{ subtitle }}
     </p>
