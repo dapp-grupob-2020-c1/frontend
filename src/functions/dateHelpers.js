@@ -1,5 +1,10 @@
 import { DateTime, Interval } from "luxon";
 
+const formatLocalDateTime = (localDateTime) => {
+  const d = DateTime.fromISO(localDateTime);
+  return d.toISO({ includeOffset: false, suppressMilliseconds: true });
+};
+
 const mapDayToWeekday = (day) => {
   const days = {
     MONDAY: 1,
@@ -60,4 +65,4 @@ const generateOptions = (openingDays, openingTime, closingTime) => {
   return filteredTurns.slice(0, 30);
 };
 
-export { mapDayToWeekday, generateOptions };
+export { formatLocalDateTime, mapDayToWeekday, generateOptions };

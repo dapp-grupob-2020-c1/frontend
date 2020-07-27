@@ -43,6 +43,7 @@ import PageContainer from "../../components/PageContainer";
 import OrderShopShipping from "../../components/OrderShopShipping";
 import OrderEntriesList from "../../components/OrderEntriesList";
 import OrderThresholdsList from "../../components/OrderThresholdsList";
+import { formatLocalDateTime } from "@/functions/dateHelpers";
 
 export default {
   components: {
@@ -91,19 +92,20 @@ export default {
         const shoppingEntryIds = this.$store.getters[
           "cart/getEntriesIdsForShop"
         ](shopId);
+        const formattedDate = formatLocalDateTime(shopSettings.turn);
 
         // add order information to corresponding list
         if (shopSettings.delivery == "takeaway") {
           takeaways.push({
             shopId,
             shoppingEntryIds,
-            turn: shopSettings.turn,
+            turn: formattedDate,
           });
         } else {
           deliveries.push({
             shopId,
             shoppingEntryIds,
-            dateOfDelivery: shopSettings.turn,
+            dateOfDelivery: formattedDate,
             locationId: this.$store.state.cart.active.location.id,
           });
         }
