@@ -68,9 +68,6 @@ export default {
       } finally {
         commit("requests/endLoading", null, { root: true });
       }
-
-      // hago un request para obtener los detalles de cada shop
-      // guardo todos los shops en el store
     },
     async getOldCarts({ commit, dispatch, rootState }) {
       commit("requests/beginLoading", null, { root: true });
@@ -129,7 +126,6 @@ export default {
           httpClient,
           searchParams
         );
-        console.log("getSearchProducts response", searchProductsResponse.data);
         commit("setSearchResults", searchProductsResponse.data);
       } catch (error) {
         commit("requests/setError", null, { root: true });

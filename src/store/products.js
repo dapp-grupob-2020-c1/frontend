@@ -38,15 +38,10 @@ export default {
       }
     },
     async createProduct({ commit, dispatch, rootState }, productInfo) {
-      console.log("createProduct action", productInfo);
       commit("requests/beginLoading", null, { root: true });
       try {
         const httpClient = rootState.auth.httpClient;
-        const createProductResponse = await createProductRequest(
-          httpClient,
-          productInfo
-        );
-        console.log(createProductResponse);
+        await createProductRequest(httpClient, productInfo);
         dispatch("messages/showMessage", "user.createProductSuccess", {
           root: true,
         });
@@ -66,15 +61,10 @@ export default {
       }
     },
     async createManyProducts({ commit, dispatch, rootState }, productsInfo) {
-      console.log("createManyProducts action", productsInfo);
       commit("requests/beginLoading", null, { root: true });
       try {
         const httpClient = rootState.auth.httpClient;
-        const createProductResponse = await createManyProductsRequest(
-          httpClient,
-          productsInfo
-        );
-        console.log(createProductResponse);
+        await createManyProductsRequest(httpClient, productsInfo);
         dispatch("messages/showMessage", "user.createManyProductsSuccess", {
           root: true,
         });
@@ -97,15 +87,13 @@ export default {
       { commit, dispatch, rootState },
       { shopId, productId }
     ) {
-      console.log("deleteProduct action", productId);
       commit("requests/beginLoading", null, { root: true });
       try {
         const httpClient = rootState.auth.httpClient;
-        const createProductResponse = await deleteProductRequest(httpClient, {
+        await deleteProductRequest(httpClient, {
           shopId,
           productId,
         });
-        console.log(createProductResponse);
         dispatch("messages/showMessage", "user.deleteProductSuccess", {
           root: true,
         });

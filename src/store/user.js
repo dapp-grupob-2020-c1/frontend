@@ -98,11 +98,7 @@ export default {
       commit("requests/beginLoading", null, { root: true });
       try {
         const httpClient = rootState.auth.httpClient;
-        const createShopResponse = await createShopRequest(
-          httpClient,
-          shopInformation
-        );
-        console.log(createShopResponse);
+        await createShopRequest(httpClient, shopInformation);
         dispatch("messages/showMessage", "user.createShopSuccess", {
           root: true,
         });
@@ -125,11 +121,7 @@ export default {
       commit("requests/beginLoading", null, { root: true });
       try {
         const httpClient = rootState.auth.httpClient;
-        const editShopResponse = await editShopRequest(
-          httpClient,
-          shopInformation
-        );
-        console.log(editShopResponse);
+        await editShopRequest(httpClient, shopInformation);
         dispatch("messages/showMessage", "user.editShopSuccess", {
           root: true,
         });
@@ -152,8 +144,7 @@ export default {
       commit("requests/beginLoading", null, { root: true });
       try {
         const httpClient = rootState.auth.httpClient;
-        const deleteShopResponse = await deleteShopRequest(httpClient, shopId);
-        console.log(deleteShopResponse);
+        await deleteShopRequest(httpClient, shopId);
         dispatch("messages/showMessage", "user.deleteShopSuccess", {
           root: true,
         });
@@ -194,11 +185,7 @@ export default {
       commit("requests/beginLoading", null, { root: true });
       try {
         const httpClient = rootState.auth.httpClient;
-        const createLocationResponse = await createLocationRequest(
-          httpClient,
-          locationInformation
-        );
-        console.log(createLocationResponse);
+        await createLocationRequest(httpClient, locationInformation);
         dispatch("messages/showMessage", "user.createLocationSuccess", {
           root: true,
         });
@@ -221,11 +208,7 @@ export default {
       commit("requests/beginLoading", null, { root: true });
       try {
         const httpClient = rootState.auth.httpClient;
-        const deleteShopResponse = await deleteLocationRequest(
-          httpClient,
-          locationId
-        );
-        console.log(deleteShopResponse);
+        await deleteLocationRequest(httpClient, locationId);
         dispatch("messages/showMessage", "user.deleteLocationSuccess", {
           root: true,
         });
@@ -247,7 +230,6 @@ export default {
   },
   getters: {
     findShop: (state) => (shopId) => {
-      console.log("user/getters/findShop");
       return state.shops.find((shop) => shop.id == shopId);
     },
   },
