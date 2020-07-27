@@ -7,7 +7,7 @@
       <b-button
         variant="outline-primary"
         size="lg"
-        class="mr-2"
+        class="mr-2 mb-2"
         :to="`/shops/${shopInfo.id}/products`"
       >
         <b-icon-info-square />
@@ -16,7 +16,7 @@
       <b-button
         variant="outline-primary"
         size="lg"
-        class="mr-2"
+        class="mr-2 mb-2"
         :to="`/shops/${shopInfo.id}/edit`"
       >
         <b-icon-pencil-square />

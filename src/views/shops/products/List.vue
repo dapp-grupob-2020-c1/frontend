@@ -4,7 +4,7 @@
       <b-button
         variant="primary"
         size="lg"
-        class="mr-2"
+        class="mr-2 mb-2"
         :to="`/shops/${this.$route.params.shopId}/products/create`"
       >
         <b-icon-plus-square />
@@ -14,7 +14,7 @@
       <b-button
         variant="outline-primary"
         size="lg"
-        class="mr-2"
+        class="mr-2 mb-2"
         :to="`/shops/${this.$route.params.shopId}/products/createMany`"
       >
         <b-icon-check2-square />
@@ -32,14 +32,14 @@
         <div class="actions mt-3 pt-3 border-top border-light">
           <b-button
             variant="outline-primary"
-            class="mr-2"
+            class="mr-2 mb-2"
             :to="`/shops/${$route.params.shopId}/products/${product.id}/edit`"
           >
             <b-icon-pencil-square />
             {{ $t("product.editDetails") }}
           </b-button>
           <b-button
-            class="mr-2"
+            class="mr-2 mb-2"
             variant="outline-danger"
             @click="handleProductDelete(product)"
           >

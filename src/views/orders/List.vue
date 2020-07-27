@@ -22,7 +22,7 @@
         <div class="actions mt-3 pt-3 border-top border-light">
           <b-button
             variant="outline-primary"
-            class="mr-2"
+            class="mr-2 mb-2"
             :to="`/orders/${order.id}`"
           >
             <b-icon-info-square />
@@ -30,14 +30,14 @@
           </b-button>
           <b-button
             variant="outline-primary"
-            class="mr-2"
+            class="mr-2 mb-2"
             :to="`/orders/${order.id}/edit`"
           >
             <b-icon-pencil-square />
             {{ $t("order.editDetails") }}
           </b-button>
           <b-button
-            class="mr-2"
+            class="mr-2 mb-2"
             variant="outline-danger"
             @click="handleOrderDelete(order)"
           >
