@@ -83,7 +83,7 @@ export default {
     },
     async handleCreateOrder() {
       const deliveries = [];
-      const takeaways = [];
+      const takeaway = [];
 
       // recorro cada shop, y armo las opciones para la compra
       const shopIds = this.$store.getters["cart/getActiveCartShopsList"];
@@ -96,7 +96,7 @@ export default {
 
         // add order information to corresponding list
         if (shopSettings.delivery == "takeaway") {
-          takeaways.push({
+          takeaway.push({
             shopId,
             shoppingEntryIds,
             turn: formattedDate,
@@ -113,7 +113,7 @@ export default {
 
       await this.$store.dispatch("cart/checkoutCart", {
         deliveries,
-        takeaways,
+        takeaway,
       });
     },
   },

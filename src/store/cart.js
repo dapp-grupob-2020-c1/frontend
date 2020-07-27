@@ -1,4 +1,5 @@
 import Vue from "vue";
+import router from "@/router";
 import {
   addProductRequest,
   checkoutCartRequest,
@@ -45,7 +46,8 @@ export default {
         commit("setActiveCart", getActiveCartResponse.data);
         dispatch("getActiveShops");
       } catch (error) {
-        // ignore error!
+        // empty active if error
+        commit("setActiveCart", null);
       } finally {
         commit("requests/endLoading", null, { root: true });
       }
@@ -200,11 +202,12 @@ export default {
       commit("requests/beginLoading", null, { root: true });
       try {
         const httpClient = rootState.auth.httpClient;
-        const checkoutCartResponse = await checkoutCartRequest(
-          httpClient,
-          cartInformation
-        );
-        console.log("checkoutCartResponse", checkoutCartResponse);
+        await checkoutCartRequest(httpClient, cartInformation);
+        dispatch("messages/showMessage", "cart.checkoutCartSuccess", {
+          root: true,
+        });
+        commit("setActiveCart", null);
+        router.push("/dashboard");
       } catch (error) {
         commit("requests/setError", null, { root: true });
         dispatch("messages/showErrorMessage", "cart.checkoutCartError", {
