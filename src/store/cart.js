@@ -242,10 +242,10 @@ export default {
       });
       return Array.from(set.values());
     },
-    getEntriesForShop: (state) => (shopId) => {
-      return state.active.entries.filter(
-        (entry) => entry.product.shopId == shopId
-      );
+    getEntriesIdsForShop: (state) => (shopId) => {
+      return state.active.entries
+        .filter((entry) => entry.product.shopId == shopId)
+        .map((entry) => entry.id);
     },
   },
 };
