@@ -132,8 +132,16 @@
     "createNewProduct": "Crear Nuevo",
     "createManyProducts": "Cargar Varios Productos",
     "listEmpty": "Listado Vacío",
+    "name": "Nombre",
+    "image": "Imagen",
+    "categories": "Categorías",
+    "paymentMethods": "Medios de Pago",
+    "openingDays": "Dias de Atención",
+    "openingHours": "Horario de apertura",
+    "closingHours": "Horario de cierre",
     "successfulCreation": "Negocio creado correctamente",
     "submitCreate": "Crear Negocio",
+    "submitEdit": "Editar Negocio",
     "cancel": "Cancelar"
   },
   "order": {
@@ -169,9 +177,27 @@
   },
   "productTypes": {
     "FoodsAndDrinks": "Comida y Bebida",
+    "OfficeSupplies": "Insumos de Oficina",
+    "ElectronicsAndHomeAppliances": "Electrónica y Electrodomésticos",
     "BooksMoviesAndGames": "Libros, Películas y Juegos",
+    "Services": "Servicios",
+    "Bazaar": "Bazar",
+    "PetsAndAnimals": "Mascotas y Animales",
+    "VehiclesAndAccesories": "Vehículos y Accesorios para Vehículos",
     "Clothing": "Ropa",
-    "OfficeSupplies": "Insumos de Oficina"
+    "Pharmacy": "Farmacia"
+  },
+  "shopCategories": {
+    "FoodsAndDrinks": "Comida y Bebida",
+    "OfficeSupplies": "Insumos de Oficina",
+    "ElectronicsAndHomeAppliances": "Electrónica y Electrodomésticos",
+    "BooksMoviesAndGames": "Libros, Películas y Juegos",
+    "Services": "Servicios",
+    "Bazaar": "Bazar",
+    "PetsAndAnimals": "Mascotas y Animales",
+    "VehiclesAndAccesories": "Vehículos y Accesorios para Vehículos",
+    "Clothing": "Ropa",
+    "Pharmacy": "Farmacia"
   },
   "shippingMethod": {
     "delivery": "Delivery",
@@ -182,5 +208,14 @@
     "DEBIT": "Tarjeta de Débito",
     "CREDIT": "Tarjeta de Crédito",
     "MERCADOPAGO": "Mercado Pago"
+  },
+  "days": {
+    "MONDAY": "Lunes",
+    "TUESDAY": "Martes",
+    "WEDNESDAY":  "Miércoles",
+    "THURSDAY": "Jueves",
+    "FRIDAY":  "Viernes",
+    "SATURDAY": "Sábado",
+    "SUNDAY":  "Domingo"
   }
 }

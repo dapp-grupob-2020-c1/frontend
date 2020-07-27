@@ -1,5 +1,8 @@
 <template>
-  <PageContainer :title="$t('shop.edit')" :breadcrumb-items="breadcrumbItems">
+  <PageContainer
+    :title="$t('shop.editDetails')"
+    :breadcrumb-items="breadcrumbItems"
+  >
     <form @submit.prevent="handleEditShop">
       <!-- Nombre -->
       <b-form-group
@@ -41,7 +44,7 @@
           >
             <b-form-checkbox-group
               v-model="shopInfo.categories"
-              :options="$store.state.availableShopCategories"
+              :options="categoriesOptions"
               name="categories"
               stacked
             ></b-form-checkbox-group>
@@ -56,7 +59,7 @@
           >
             <b-form-checkbox-group
               v-model="shopInfo.paymentMethods"
-              :options="$store.state.availablePaymentMethods"
+              :options="paymentMethodsOptions"
               name="payment"
               stacked
             ></b-form-checkbox-group>
@@ -91,7 +94,7 @@
           >
             <b-form-checkbox-group
               v-model="shopInfo.days"
-              :options="$store.state.availableDaysOfWeek"
+              :options="openingDaysOptions"
               name="days"
               stacked
             ></b-form-checkbox-group>
@@ -148,7 +151,7 @@ export default {
           to: "/shops",
         },
         {
-          text: this.$t("shop.edit"),
+          text: this.$t("shop.editDetails"),
           to: `/shops/${this.$route.params.shopId}/edit`,
         },
       ],
@@ -181,6 +184,32 @@ export default {
       return shop.id == this.$route.params.shopId;
     });
     this.shopInfo = { ...foundShop };
+  },
+  computed: {
+    categoriesOptions() {
+      return this.$store.state.availableShopCategories.map((category) => {
+        return {
+          text: this.$t(`shopCategories.${category}`),
+          value: category,
+        };
+      });
+    },
+    paymentMethodsOptions() {
+      return this.$store.state.availablePaymentMethods.map((paymentMethod) => {
+        return {
+          text: this.$t(`paymentMethods.${paymentMethod}`),
+          value: paymentMethod,
+        };
+      });
+    },
+    openingDaysOptions() {
+      return this.$store.state.availableDaysOfWeek.map((day) => {
+        return {
+          text: this.$t(`days.${day}`),
+          value: day,
+        };
+      });
+    },
   },
   methods: {
     handleMapClick(e) {

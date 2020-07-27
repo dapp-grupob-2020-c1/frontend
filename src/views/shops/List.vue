@@ -10,38 +10,45 @@
       </b-button>
     </div>
 
-    <b-list-group v-if="shopsList.length">
-      <b-list-group-item v-for="shop in shopsList" :key="shop.id">
-        <ShopDetails :shop="shop" />
-
-        <div class="actions mt-3 pt-3 border-top border-light">
-          <b-button
-            variant="outline-primary"
-            class="mr-2"
-            :to="`/shops/${shop.id}`"
-          >
-            <b-icon-info-square />
-            {{ $t("shop.viewDetails") }}
-          </b-button>
-          <b-button
-            variant="outline-primary"
-            class="mr-2"
-            :to="`/shops/${shop.id}/edit`"
-          >
-            <b-icon-pencil-square />
-            {{ $t("shop.editDetails") }}
-          </b-button>
-          <b-button
-            class="mr-2"
-            variant="outline-danger"
-            @click="handleShopDelete(shop)"
-          >
-            <b-icon-x-square />
-            {{ $t("shop.delete") }}
-          </b-button>
+    <div class="shopping-list" v-if="shopsList.length">
+      <div class="row">
+        <div
+          class="col-12 col-lg-6 col-xl-4 mb-3"
+          v-for="shop in shopsList"
+          :key="shop.id"
+        >
+          <b-card>
+            <ShopDetails :shop="shop" />
+            <div class="actions mt-3 pt-3 border-top border-light">
+              <b-button
+                variant="outline-primary"
+                class="mr-2 mb-2"
+                :to="`/shops/${shop.id}`"
+              >
+                <b-icon-info-square />
+                {{ $t("shop.viewDetails") }}
+              </b-button>
+              <b-button
+                variant="outline-primary"
+                class="mr-2 mb-2"
+                :to="`/shops/${shop.id}/edit`"
+              >
+                <b-icon-pencil-square />
+                {{ $t("shop.editDetails") }}
+              </b-button>
+              <b-button
+                class="mr-2 mb-2"
+                variant="outline-danger"
+                @click="handleShopDelete(shop)"
+              >
+                <b-icon-x-square />
+                {{ $t("shop.delete") }}
+              </b-button>
+            </div>
+          </b-card>
         </div>
-      </b-list-group-item>
-    </b-list-group>
+      </div>
+    </div>
     <b-alert show v-else class="m-0">
       {{ $t("shop.listEmpty") }}
     </b-alert>
