@@ -51,6 +51,11 @@ export default {
         "cart/deleteProductFromCart",
         entry.product.id
       );
+      // go back to dashboard if it was the last product
+      if (!this.$store.state.cart.active.entries.length) {
+        this.$store.dispatch("messages/showMessage", "cart.emptyCart");
+        this.$router.push("/dashboard");
+      }
     },
   },
 };

@@ -29,6 +29,7 @@
     "shippingOptionsDescription": "WIP: muestro distintas opciones de envío.",
     "paymentMethods": "Medios de Pago",
     "paymentMethodsDescription": "WIP: muestro los distintos medios de pago.",
+    "emptyCart": "El carrito está vacío, volviendo al Dashboard",
     "checkout": "Finalizar Compra"
   },
   "navbar": {
