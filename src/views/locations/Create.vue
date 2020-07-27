@@ -27,8 +27,11 @@
         <GmapMap
           ref="map"
           @click="handleMapClick"
-          :center="{ lat: -34.90385708261236, lng: -58.20926714017421 }"
-          :zoom="11"
+          :center="{
+            lat: -34.7506661,
+            lng: -58.2497686,
+          }"
+          :zoom="13"
           style="width: 100%; height: 300px;"
         >
           <GmapMarker

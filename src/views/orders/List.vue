@@ -10,10 +10,12 @@
       </b-button>
     </div>
 
+    <!-- Active Order -->
     <h2 class="h4">{{ $t("orders.activeOrder") }}</h2>
+    <pre v-if="activeOrder">{{ activeOrder }}</pre>
 
-    <pre>{{ activeOrder }}</pre>
-
+    <!-- Past Orders -->
+    <h2 class="h4">{{ $t("orders.pastOrders") }}</h2>
     <b-list-group v-if="ordersList.length">
       <b-list-group-item v-for="order in ordersList" :key="order.id">
         {{ order }}

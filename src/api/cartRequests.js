@@ -43,13 +43,11 @@ async function deleteProductFromCartRequest(httpClient, productId) {
   });
 }
 
-async function checkoutCartRequest(httpClient, cartPurchase) {
+async function checkoutCartRequest(httpClient, cartInformation) {
   return httpClient({
     method: "POST",
     url: "/cart/purchase",
-    data: {
-      cartPurchase,
-    },
+    data: cartInformation,
   });
 }
 

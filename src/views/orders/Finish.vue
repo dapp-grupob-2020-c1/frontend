@@ -4,76 +4,53 @@
     :breadcrumb-items="breadcrumbItems"
   >
     <h2 class="h4">{{ $t("order.productsList") }}</h2>
-    <div class="order-entries-list container">
-      <div
-        class="order-entry row align-items-center mb-2 border-bottom"
-        v-for="(entry, index) in activeOrder.entries"
-        :key="index"
-      >
-        <div class="col-auto">
-          <b-button
-            size="sm"
-            variant="outline-danger"
-            @click="handleDeleteEntry(entry)"
-          >
-            <b-icon-x />
-          </b-button>
-        </div>
-        <div class="col">
-          <p class="mb-1">
-            {{ entry.product.name }}
-            <span class="text-muted">&dash; {{ entry.product.brand }}</span>
-          </p>
-          <p class="mb-1">{{ entry.quantity }} x $ {{ entry.product.price }}</p>
-        </div>
-        <div class="col-4 col-md-3 text-right">
-          <p class="lead m-0">$ {{ entry.quantity * entry.product.price }}</p>
-        </div>
-      </div>
-
-      <div
-        class="row font-weight-bold border-top border-dark align-items-baseline py-2"
-      >
-        <div class="col">
-          <p class="lead">Total:</p>
-        </div>
-        <div class="col-3 text-right">
-          <p class="lead font-weight-bold">$ {{ activeOrder.total }}</p>
-        </div>
-      </div>
-      <p></p>
+    <div class="container">
+      <OrderEntriesList />
     </div>
 
     <h2 class="h4">{{ $t("order.typesAndThresholds") }}</h2>
-    <div class="thresholds-list">
-      <template v-for="threshold in activeOrder.thresholdsByType">
+    <div class="container">
+      <OrderThresholdsList />
+    </div>
+
+    <h2 class="h4">{{ $t("order.shippingOptions") }}</h2>
+    <div class="shipping-options">
+      <p>{{ $t("order.shippingOptionsDescription") }}</p>
+      <div class="row">
         <div
-          v-if="threshold.totalForType > 0"
-          :key="threshold.type"
-          class="d-flex"
+          class="col-12 col-lg-6 col-xl-4 mb-3"
+          v-for="shop in $store.state.cart.activeShops"
+          :key="shop.id"
         >
-          <p>
-            {{ $t(`productTypes.${threshold.type}`) }}:
-            <span
-              :class="{
-                'bg-danger': threshold.totalForType <= threshold.threshold,
-              }"
-            >
-              $ {{ threshold.totalForType }}
-              <span class="text-muted">/ {{ threshold.threshold }}</span>
-            </span>
-          </p>
+          <b-card>
+            <OrderShopShipping :shop="shop" />
+          </b-card>
         </div>
-      </template>
+      </div>
+    </div>
+
+    <div class="actions my-2">
+      <b-button variant="primary" size="lg" @click="handleCreateOrder">
+        <b-icon-check2-square />
+        {{ $t("order.finishOrder") }}
+      </b-button>
     </div>
   </PageContainer>
 </template>
 
 <script>
 import PageContainer from "../../components/PageContainer";
+import OrderShopShipping from "../../components/OrderShopShipping";
+import OrderEntriesList from "../../components/OrderEntriesList";
+import OrderThresholdsList from "../../components/OrderThresholdsList";
 
 export default {
-  components: { PageContainer },
+  components: {
+    OrderThresholdsList,
+    OrderEntriesList,
+    PageContainer,
+    OrderShopShipping,
+  },
   data() {
     return {
       breadcrumbItems: [
@@ -100,19 +77,51 @@ export default {
     },
   },
   methods: {
-    async handleDeleteEntry(entry) {
-      await this.$store.dispatch(
-        "cart/deleteProductFromCart",
-        entry.product.id
-      );
-    },
     handleCancel() {
       this.$router.push("/dashboard");
     },
     async handleCreateOrder() {
-      await this.$store.dispatch("cart/createCart", this.orderLocationId);
-      // await this.$store.dispatch("user/getUserInformation");
-      this.$router.push("/orders/search");
+      const shopIds = this.$store.getters["cart/getActiveCartShopsList"];
+
+      // recorro cada shop, y armo las opciones para la compra
+      const deliveries = shopIds.map((shopId) => {
+        // listado de IDs del shop
+        const shoppingEntryIds = this.$store.getters["cart/getEntriesForShop"](
+          shopId
+        ).map((entry) => entry.id);
+
+        const deliveryCreation = {
+          shopId,
+          shoppingEntryIds,
+        };
+
+        const shopSettings = this.$store.state.cart.activeShopOptions[shopId];
+        if (shopSettings.delivery == "takeaway") {
+          console.log("Para este shop elijo takeaway", shopSettings);
+          deliveryCreation.turn = shopSettings.turn;
+        } else {
+          console.log("Para este shop elijo delivery", shopSettings);
+          deliveryCreation.locationId = this.$store.state.cart.active.location.id;
+          deliveryCreation.dateOfDelivery = shopSettings.turn;
+        }
+
+        console.log("Info completa", deliveryCreation);
+        return deliveryCreation;
+      });
+
+      console.log("deliveries", {
+        deliveries,
+      });
+
+      await this.$store.dispatch("cart/checkoutCart", {
+        deliveries,
+      });
+
+      // const order = {
+      //   deliveries: [],
+      // };
+      // // await this.$store.dispatch("user/getUserInformation");
+      // this.$router.push("/orders/search");
     },
   },
 };

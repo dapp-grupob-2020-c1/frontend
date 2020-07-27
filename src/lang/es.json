@@ -29,6 +29,7 @@
     "shippingOptionsDescription": "WIP: muestro distintas opciones de envío.",
     "paymentMethods": "Medios de Pago",
     "paymentMethodsDescription": "WIP: muestro los distintos medios de pago.",
+    "emptyCart": "El carrito está vacío, volviendo al Dashboard",
     "checkout": "Finalizar Compra"
   },
   "navbar": {
@@ -139,6 +140,7 @@
     "createOrder": "Crear Orden",
     "createNew": "Crear Nueva Orden",
     "mustCreateLocationError": "Es necesario crear una ubicación antes de poder crear una orden",
+    "finishOrder": "Finalizar Compra",
     "viewDetails": "Ver Detalles",
     "editDetails": "Editar detalles",
     "delete": "Eliminar Negocio",
@@ -147,8 +149,16 @@
     "successfulCreation": "Negocio creado correctamente",
     "searchProducts": "Buscar Productos",
     "submitCreate": "Crear Nueva Orden",
+    "paymentMethod": "Medio de Pago",
+    "paymentMethods": "Medios de Pago disponibles",
+    "shippingOption": "Envío y Entrega",
+    "shippingOptions": "Opciones de Envío",
+    "shippingOptionsDescription": "Podés elegir el medio de entrega o envío para cada negocio.",
+    "shippingTurn": "Horario de Envío",
+    "shippingTurns": "Podes elegir un turno para la entrega del pedido, dentro de los horarios disponibles en el negocio.",
     "activeOrderNeeded": "Es necesario tener una orden activa. Vamos a crearla.",
     "productsList": "Productos",
+    "productsInCart": "No hay productos en el carrito | Un producto en el carrito | {n} productos en el carrito",
     "typesAndThresholds": "Consumos y Límites por tipo",
     "cancel": "Cancelar"
   },
@@ -162,5 +172,15 @@
     "BooksMoviesAndGames": "Libros, Películas y Juegos",
     "Clothing": "Ropa",
     "OfficeSupplies": "Insumos de Oficina"
+  },
+  "shippingMethod": {
+    "delivery": "Delivery",
+    "takeaway": "Retiro en Local"
+  },
+  "paymentMethods": {
+    "CASH": "Efectivo",
+    "DEBIT": "Tarjeta de Débito",
+    "CREDIT": "Tarjeta de Crédito",
+    "MERCADOPAGO": "Mercado Pago"
   }
 }
