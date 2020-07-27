@@ -18,6 +18,7 @@ export default {
         this.$t("login.loginSuccess"),
         defaultToasterOptions
       );
+      this.$router.push("/dashboard");
     } else {
       const errorToasterOptions = {
         variant: "danger",
