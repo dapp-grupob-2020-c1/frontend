@@ -127,7 +127,6 @@ export default {
     };
   },
   mounted() {
-    console.log("route params", this.$route.params);
     const foundProduct = this.$store.state.products.products.find(
       (prod) => prod.id == this.$route.params.productId
     );

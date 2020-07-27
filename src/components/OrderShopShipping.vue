@@ -147,7 +147,6 @@ export default {
         shopId: this.shop.id,
         shopOptions: updatedShopOptions,
       });
-      console.log("Update Vuex Store", this.shop.id);
     },
   },
 };

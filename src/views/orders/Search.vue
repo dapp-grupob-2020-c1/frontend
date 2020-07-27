@@ -81,11 +81,7 @@ export default {
     },
   },
   methods: {
-    handleAddProductToCart(product) {
-      console.log(product);
-    },
     handleSearch() {
-      console.log("do search");
       this.$store.dispatch("cart/getSearchProducts", {
         keyword: this.searchQuery,
       });

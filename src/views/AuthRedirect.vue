@@ -11,7 +11,6 @@ import PageContainer from "../components/PageContainer";
 export default {
   components: { PageContainer },
   mounted() {
-    console.log("auth mounted");
     if (this.$route.query.token) {
       this.$store.commit("auth/setLogin", this.$route.query.token);
       this.$root.$bvToast.toast(

@@ -125,10 +125,4 @@ export default {
       }
     },
   },
-  // getters: {
-  //   findShop: state => shopId => {
-  //     console.log("user/getters/findShop");
-  //     return state.shops.find(shop => shop.id == shopId);
-  //   }
-  // }
 };

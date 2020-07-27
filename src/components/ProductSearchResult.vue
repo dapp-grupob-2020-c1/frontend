@@ -39,8 +39,6 @@ export default {
   computed: {},
   methods: {
     handleAddProductToCart() {
-      console.log("handleAddProductToCart method");
-
       this.$store.dispatch("cart/addProductToCart", {
         productId: this.product.id,
         amount: this.amount,

@@ -92,8 +92,6 @@ export default {
           "cart/getEntriesIdsForShop"
         ](shopId);
 
-        console.log("ShoppingEntries obtenidas", shoppingEntryIds);
-
         // add order information to corresponding list
         if (shopSettings.delivery == "takeaway") {
           takeaways.push({

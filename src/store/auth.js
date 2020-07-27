@@ -34,7 +34,6 @@ export default {
       try {
         const response = await loginRequest(userInformation);
         commit("setLogin", response.data.accessToken);
-        console.log("login action, despues de setLogin");
         dispatch("messages/showMessage", "login.loginSucceeded", {
           root: true,
         });
