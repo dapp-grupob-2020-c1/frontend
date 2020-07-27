@@ -1,6 +1,7 @@
 import Vue from "vue";
 import {
   addProductRequest,
+  checkoutCartRequest,
   createCartRequest,
   deleteProductFromCartRequest,
   getActiveCartRequest,
@@ -199,6 +200,30 @@ export default {
         commit("requests/endLoading", null, { root: true });
       }
     },
+    async checkoutCart({ commit, dispatch, rootState }, cartInformation) {
+      commit("requests/beginLoading", null, { root: true });
+      try {
+        const httpClient = rootState.auth.httpClient;
+        const checkoutCartResponse = await checkoutCartRequest(
+          httpClient,
+          cartInformation
+        );
+        console.log("checkoutCartResponse", checkoutCartResponse);
+      } catch (error) {
+        commit("requests/setError", null, { root: true });
+        dispatch("messages/showErrorMessage", "cart.checkoutCartError", {
+          root: true,
+        });
+        // handle different error types
+        if (error.response) {
+          commit("requests/setError", "app.responseError", { root: true });
+        } else if (error.request) {
+          commit("requests/setError", "app.connectionError", { root: true });
+        }
+      } finally {
+        commit("requests/endLoading", null, { root: true });
+      }
+    },
   },
   getters: {
     hasActiveAndFilledCart: (state) => {
@@ -216,6 +241,11 @@ export default {
         set.add(entry.product.shopId);
       });
       return Array.from(set.values());
+    },
+    getEntriesForShop: (state) => (shopId) => {
+      return state.active.entries.filter(
+        (entry) => entry.product.shopId == shopId
+      );
     },
   },
 };
