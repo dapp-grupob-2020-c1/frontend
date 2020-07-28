@@ -122,7 +122,8 @@
     }
   },
   "user": {
-    "createLocationSuccess": "Ubicacion creada exitosamente!"
+    "createLocationSuccess": "Ubicacion creada exitosamente!",
+    "deleteLocationSuccess": "Ubicacion eliminada exitosamente!"
   },
   "location": {
     "createNewLocation": "Agregar Ubicación",

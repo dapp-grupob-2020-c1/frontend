@@ -122,7 +122,8 @@
       }
     },
     "user": {
-      "createLocationSuccess": "Location created successfully!"
+      "createLocationSuccess": "Location created successfully!",
+      "deleteLocationSuccess": "Location deleted successfully!"
     },
     "location": {
       "createNewLocation": "Add Location",
