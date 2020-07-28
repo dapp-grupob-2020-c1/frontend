@@ -4,47 +4,32 @@
     :breadcrumb-items="breadcrumbItems"
   >
     <div class="actions my-2">
-      <b-button variant="primary" size="lg" to="/orders/create">
+      <b-button
+        to="/orders/search"
+        variant="primary"
+        size="lg"
+        class="mr-2 mb-2"
+        v-if="activeOrder"
+      >
+        <b-icon-search />
+        {{ $t("order.searchProducts") }}
+      </b-button>
+      <b-button
+        to="/orders/create"
+        variant="outline-primary"
+        size="lg"
+        class="mr-2 mb-2"
+      >
         <b-icon-plus-square />
         {{ $t("order.createNew") }}
       </b-button>
     </div>
 
-    <!-- Active Order -->
-    <h2 class="h4">{{ $t("orders.activeOrder") }}</h2>
-    <pre v-if="activeOrder">{{ activeOrder }}</pre>
-
     <!-- Past Orders -->
-    <h2 class="h4">{{ $t("orders.pastOrders") }}</h2>
+    <h2 class="h4">{{ $t("order.pastOrders") }}</h2>
     <b-list-group v-if="ordersList.length">
       <b-list-group-item v-for="order in ordersList" :key="order.id">
-        {{ order }}
-        <div class="actions mt-3 pt-3 border-top border-light">
-          <b-button
-            variant="outline-primary"
-            class="mr-2 mb-2"
-            :to="`/orders/${order.id}`"
-          >
-            <b-icon-info-square />
-            {{ $t("order.viewDetails") }}
-          </b-button>
-          <b-button
-            variant="outline-primary"
-            class="mr-2 mb-2"
-            :to="`/orders/${order.id}/edit`"
-          >
-            <b-icon-pencil-square />
-            {{ $t("order.editDetails") }}
-          </b-button>
-          <b-button
-            class="mr-2 mb-2"
-            variant="outline-danger"
-            @click="handleOrderDelete(order)"
-          >
-            <b-icon-x-square />
-            {{ $t("order.delete") }}
-          </b-button>
-        </div>
+        <OrderListItem :order="order" />
       </b-list-group-item>
     </b-list-group>
     <b-alert show v-else class="m-0">
@@ -55,8 +40,10 @@
 
 <script>
 import PageContainer from "../../components/PageContainer";
+import OrderListItem from "@/components/OrderListItem";
 export default {
   components: {
+    OrderListItem,
     PageContainer,
   },
   data() {
@@ -78,8 +65,8 @@ export default {
   },
   methods: {
     async handleOrderDelete(order) {
-      await this.$store.dispatch("user/deleteOrder", order.id);
-      await this.$store.dispatch("user/getOrders");
+      // await this.$store.dispatch("car/deleteOrder", order.id);
+      // await this.$store.dispatch("user/getOrders");
     },
   },
   computed: {

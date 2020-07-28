@@ -30,7 +30,8 @@
     "paymentMethods": "Medios de Pago",
     "paymentMethodsDescription": "WIP: muestro los distintos medios de pago.",
     "emptyCart": "El carrito está vacío, volviendo al Dashboard",
-    "checkout": "Finalizar Compra"
+    "checkout": "Finalizar Compra",
+    "checkoutCartSuccess": "Compra finalizada correctamente!"
   },
   "navbar": {
     "search": "Buscar",
@@ -70,7 +71,7 @@
     "locationsDescription": "Administrar los domicilios de entrega del ususario.",
     "createOrder": "Crear Nueva Orden",
     "createOrderDescription": "Crear una nueva orden de compras, es el primer paso de una compra.",
-    "viewOrders": "Ver Ordenes",
+    "viewOrders": "Ver Órdenes",
     "viewOrdersDescription": "El listado de todas las ordenes de compra anteriores.",
     "discounts": "Descuentos",
     "discountsDescription": "Se pueden administrar los descuentos para los negocios.",
@@ -152,9 +153,11 @@
     "viewDetails": "Ver Detalles",
     "editDetails": "Editar detalles",
     "delete": "Eliminar Negocio",
+    "location": "Dirección",
     "deliveryLocation": "Ubicación para entrega",
+    "orderList": "Listado de Órdenes",
     "listEmpty": "Listado Vacío",
-    "successfulCreation": "Negocio creado correctamente",
+    "successfulCreation": "Orden finalizada correctamente!",
     "searchProducts": "Buscar Productos",
     "submitCreate": "Crear Nueva Orden",
     "paymentMethod": "Medio de Pago",
@@ -166,6 +169,8 @@
     "shippingTurns": "Podes elegir un turno para la entrega del pedido, dentro de los horarios disponibles en el negocio.",
     "activeOrderNeeded": "Es necesario tener una orden activa. Vamos a crearla.",
     "productsList": "Productos",
+    "activeOrder": "Orden Activa",
+    "pastOrders": "Historial de Órdenes",
     "productsInCart": "No hay productos en el carrito | Un producto en el carrito | {n} productos en el carrito",
     "typesAndThresholds": "Consumos y Límites por tipo",
     "cancel": "Cancelar"
