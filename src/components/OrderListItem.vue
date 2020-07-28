@@ -32,7 +32,7 @@
           class="d-flex align-items-center"
         >
           <div class="flex-shrink-1">{{ entry.quantity }} x</div>
-          <ProductDetails :product="entry.product" />
+          <ProductDetails :product="entry.product" class="flex-grow-1" />
         </div>
         <p class="lead py-2 my-2 border-top">
           Total:
