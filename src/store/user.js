@@ -209,6 +209,7 @@ export default {
       try {
         const httpClient = rootState.auth.httpClient;
         await deleteLocationRequest(httpClient, locationId);
+        await dispatch("getUserInformation");
         dispatch("messages/showMessage", "user.deleteLocationSuccess", {
           root: true,
         });
