@@ -123,7 +123,10 @@
   },
   "user": {
     "createLocationSuccess": "Ubicacion creada exitosamente!",
-    "deleteLocationSuccess": "Ubicacion eliminada exitosamente!"
+    "deleteLocationSuccess": "Ubicacion eliminada exitosamente!",
+    "deleteLocationError": "Hubo un error al intentar eliminar la ubicación. Por favor, intente nuevamente.",
+    "createLocationError": "Hubo un error al intentar crear la Ubicación. Por favor, intente nuevamente."
+
   },
   "location": {
     "createNewLocation": "Agregar Ubicación",
