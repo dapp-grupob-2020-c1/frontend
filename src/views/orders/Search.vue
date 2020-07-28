@@ -21,19 +21,17 @@
       </form>
     </b-card>
 
-    <b-overlay :show="$store.state.requests.loading">
-      <div class="row" v-if="searchResults.length">
-        <div
-          class="col-12 col-lg-6 mb-3"
-          v-for="product in searchResults"
-          :key="product.id"
-        >
-          <b-card class="h-100">
-            <ProductSearchResult class="h-100" :product="product" />
-          </b-card>
-        </div>
+    <div class="row" v-if="searchResults.length">
+      <div
+        class="col-12 col-lg-6 mb-3"
+        v-for="product in searchResults"
+        :key="product.id"
+      >
+        <b-card class="h-100">
+          <ProductSearchResult class="h-100" :product="product" />
+        </b-card>
       </div>
-    </b-overlay>
+    </div>
   </PageContainer>
 </template>
 

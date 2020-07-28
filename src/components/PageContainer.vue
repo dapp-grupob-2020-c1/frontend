@@ -42,7 +42,9 @@
 
       <ErrorAlert />
 
-      <slot></slot>
+      <b-overlay :show="$store.state.requests.loading">
+        <slot></slot>
+      </b-overlay>
     </b-container>
   </div>
 </template>
