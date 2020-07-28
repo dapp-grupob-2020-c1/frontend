@@ -13,6 +13,46 @@ Vue.use(VueI18n);
 var i18n = new VueI18n({
   locale: defaultLocale,
   messages: messages,
+  numberFormats: {
+    en: {
+      currency: {
+        style: "currency",
+        currency: "ARS",
+        minimumFractionDigits: 0,
+        maximumFractionDigits: 0,
+      },
+    },
+    es: {
+      currency: {
+        style: "currency",
+        currency: "ARS",
+        minimumFractionDigits: 0,
+        maximumFractionDigits: 0,
+      },
+    },
+  },
+  dateTimeFormats: {
+    en: {
+      long: {
+        year: "numeric",
+        month: "short",
+        day: "numeric",
+        weekday: "short",
+        hour: "numeric",
+        minute: "numeric",
+      },
+    },
+    es: {
+      long: {
+        year: "numeric",
+        month: "short",
+        day: "numeric",
+        weekday: "short",
+        hour: "numeric",
+        minute: "numeric",
+      },
+    },
+  },
   silentTranslationWarn: true,
 });
 

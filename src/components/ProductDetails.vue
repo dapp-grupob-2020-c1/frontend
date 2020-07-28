@@ -20,7 +20,7 @@
         </b-modal>
       </template>
       <p class="h3 font-weight-light text-muted float-right">
-        $ {{ product.price }}
+        {{ $n(product.price, "currency") }}
       </p>
       <h2 class="h3">{{ product.name }}</h2>
       <p>{{ product.brand }}</p>

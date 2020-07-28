@@ -35,7 +35,10 @@
           <ProductDetails :product="entry.product" />
         </div>
         <p class="lead py-2 my-2 border-top">
-          Total: <span class="font-weight-bold">$ {{ order.total }}</span>
+          Total:
+          <span class="font-weight-bold">
+            {{ $n(order.total, "currency") }}
+          </span>
         </p>
       </div>
     </div>

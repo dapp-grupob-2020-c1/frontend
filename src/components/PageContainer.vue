@@ -15,7 +15,8 @@
                 "order.productsInCart",
                 $store.state.cart.active.entries.length
               )
-            }}, sumando ${{ $store.state.cart.active.total }}.
+            }}
+            {{ $n($store.state.cart.active.total, "currency") }}
           </p>
           <p class="m-0" v-else>
             El carrito está vacío.

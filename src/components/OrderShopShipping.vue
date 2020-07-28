@@ -59,28 +59,9 @@ export default {
           value: "takeaway",
         },
       ],
-      turnOptions: [],
     };
   },
   mounted() {
-    // generate turn options
-    this.turnOptions = generateOptions(
-      this.shop.days,
-      this.shop.openingHour,
-      this.shop.closingHour
-    ).map((intervalOption) => {
-      return {
-        text: intervalOption.start.toLocaleString({
-          weekday: "short",
-          month: "short",
-          day: "2-digit",
-          hour: "2-digit",
-          minute: "2-digit",
-        }),
-        value: intervalOption.start.toISO(),
-      };
-    });
-
     // preselect first option
     this.selectedTurnOption = this.turnOptions[0].value;
     this.selectedDeliveryMethod = this.deliveryMethods[0].value;
@@ -92,6 +73,18 @@ export default {
     },
   },
   computed: {
+    turnOptions() {
+      return generateOptions(
+        this.shop.days,
+        this.shop.openingHour,
+        this.shop.closingHour
+      ).map((intervalOption) => {
+        return {
+          text: this.$d(intervalOption.start, "long"),
+          value: intervalOption.start.toISO(),
+        };
+      });
+    },
     paymentMethodOptions() {
       return this.shop.paymentMethods.map((method) => {
         const paymentMethodTranslationKey = `paymentMethods.${this.$t(method)}`;
