@@ -63,12 +63,6 @@ export default {
     this.$store.dispatch("cart/getActiveShoppingCart");
     this.$store.dispatch("cart/getOldCarts");
   },
-  methods: {
-    async handleOrderDelete(order) {
-      // await this.$store.dispatch("car/deleteOrder", order.id);
-      // await this.$store.dispatch("user/getOrders");
-    },
-  },
   computed: {
     activeOrder() {
       return this.$store.state.cart.active;
