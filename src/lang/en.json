@@ -31,7 +31,9 @@
       "paymentMethodsDescription": "WIP: muestro los distintos medios de pago.",
       "emptyCart": "The Cart is empty, returning to the Dashboard",
       "checkout": "Finish Purchase",
-      "checkoutCartSuccess": "Purchase finished succesfully!"
+      "checkoutCartSuccess": "Purchase finished succesfully!",
+      "getSearchProductsError": "You don't have an active order! Please, create a new one",
+      "addProductToCartError": "You don't have an active order! Please, create a new one",
     },
     "navbar": {
       "search": "Search",

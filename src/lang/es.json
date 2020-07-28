@@ -31,7 +31,9 @@
     "paymentMethodsDescription": "WIP: muestro los distintos medios de pago.",
     "emptyCart": "El carrito está vacío, volviendo al Dashboard",
     "checkout": "Finalizar Compra",
-    "checkoutCartSuccess": "Compra finalizada correctamente!"
+    "checkoutCartSuccess": "Compra finalizada correctamente!",
+    "getSearchProductsError": "No tienes una orden activa! Por favor, crea una nueva",
+    "addProductToCartError": "No tienes una orden activa! Por favor, crea una nueva",
   },
   "navbar": {
     "search": "Buscar",
