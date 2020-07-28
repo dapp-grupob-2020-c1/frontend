@@ -20,7 +20,6 @@
       <b-navbar-nav class="ml-auto">
         <!-- Authenticated -->
         <template v-if="isAuthenticated">
-          <NavbarShoppingCart />
           <b-nav-item to="/dashboard">
             {{ $t("navbar.dashboard") }}
           </b-nav-item>
@@ -47,11 +46,10 @@
 </template>
 
 <script>
-import NavbarShoppingCart from "./NavbarShoppingCart";
 import LocaleChanger from "./LocaleChanger";
 export default {
   name: "Navbar",
-  components: { LocaleChanger, NavbarShoppingCart },
+  components: { LocaleChanger },
   computed: {
     isAuthenticated() {
       return this.$store.state.auth.authenticated;

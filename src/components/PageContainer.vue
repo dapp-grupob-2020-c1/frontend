@@ -9,7 +9,7 @@
     >
       <div class="container">
         <div class="d-flex align-items-center justify-content-between">
-          <p class="m-0" v-if="$store.state.cart.active.entries.length">
+          <p class="m-0">
             {{
               $tc(
                 "order.productsInCart",
@@ -18,16 +18,13 @@
             }}
             {{ $n($store.state.cart.active.total, "currency") }}
           </p>
-          <p class="m-0" v-else>
-            El carrito está vacío.
-          </p>
           <b-button
             variant="primary"
             to="/orders/finish"
             :disabled="!$store.state.cart.active.entries.length > 0"
           >
             <b-icon-cart />
-            Finalizar Compra
+            {{ $t("order.finishOrder") }}
           </b-button>
         </div>
       </div>
