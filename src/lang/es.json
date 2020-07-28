@@ -61,7 +61,9 @@
     "dontHaveAccount": "No tenés una cuenta?",
     "register": "Registrar Nuevo Usuario",
     "loginSucceeded": "Sesión Iniciada Correctamente",
-    "logoutSucceeded": "Sesión Cerrada Correctamente"
+    "loginSuccess": "Sesión Iniciada Correctamente",
+    "logoutSucceeded": "Sesión Cerrada Correctamente",
+    "logoutSuccess": "Sesión Cerrada Correctamente"
   },
   "dashboard": {
     "dashboard": "Dashboard",

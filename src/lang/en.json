@@ -61,7 +61,9 @@
       "dontHaveAccount": "Don't have an account?",
       "register": "Register new User",
       "loginSucceeded": "Login Success!",
-      "logoutSucceeded": "Logout Success!"
+      "loginSuccess": "Login Success!",
+      "logoutSucceeded": "Logout Success!",
+      "logoutSuccess": "Logout Success!"
     },
     "dashboard": {
       "dashboard": "Dashboard",
