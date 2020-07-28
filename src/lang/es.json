@@ -61,14 +61,14 @@
     "dontHaveAccount": "No tenés una cuenta?",
     "register": "Registrar Nuevo Usuario",
     "loginSucceeded": "Sesión Iniciada Correctamente",
-    "logoutSuccess": "Sesión Cerrada Correctamente"
+    "logoutSucceeded": "Sesión Cerrada Correctamente"
   },
   "dashboard": {
     "dashboard": "Dashboard",
     "searchProducts": "Buscar Productos",
     "searchProductsDescription": "Buscar y agregar productos a una orden de compras.",
     "locations": "Ubicaciones",
-    "locationsDescription": "Administrar los domicilios de entrega del ususario.",
+    "locationsDescription": "Administrar los domicilios de entrega del usuario.",
     "createOrder": "Crear Nueva Orden",
     "createOrderDescription": "Crear una nueva orden de compras, es el primer paso de una compra.",
     "viewOrders": "Ver Órdenes",
