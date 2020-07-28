@@ -74,7 +74,7 @@
       >
         <b-form-checkbox-group
           v-model="product.types"
-          :options="$store.state.availableProductCategories"
+          :options="productTypesOptions"
           name="types"
           stacked
         ></b-form-checkbox-group>
@@ -126,6 +126,16 @@ export default {
         types: [],
       },
     };
+  },
+  computed: {
+    productTypesOptions() {
+      return this.$store.state.availableProductCategories.map((category) => {
+        return {
+          text: this.$t(`productTypes.${category}`),
+          value: category,
+        };
+      });
+    },
   },
   methods: {
     async handleCreateProduct() {

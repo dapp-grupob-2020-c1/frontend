@@ -9,35 +9,37 @@
         {{ shop.location.address }}
       </p>
       <p>{{ $t("shop.deliveryRadius") }}: {{ shop.deliveryRadius }} Km</p>
-      <div class="shop-categories" v-if="expanded">
-        <h3 class="h6">{{ $t("shop.categories") }}</h3>
-        <p>
-          <b-badge
-            variant="secondary"
-            v-for="category in shop.categories"
-            :key="category"
-          >
-            {{ category }}
-          </b-badge>
-        </p>
-
-        <h3 class="h6">{{ $t("shop.paymentMethods") }}</h3>
-        <p>
-          <b-badge
-            variant="secondary"
-            v-for="paymentMethod in shop.paymentMethods"
-            :key="paymentMethod"
-            >{{ paymentMethod }}</b-badge
-          >
-        </p>
-
-        <h3 class="h6">{{ $t("shop.openingDays") }}</h3>
-        <p>
-          {{ shop.openingHour }}-{{ shop.closingHour }},
-          <b-badge variant="secondary" v-for="day in shop.days" :key="day">{{
-            day
-          }}</b-badge>
-        </p>
+      <div class="shop-expanded-details border-top my-2 py-2" v-if="expanded">
+        <div class="row">
+          <div class="col">
+            <h3 class="h5">{{ $t("shop.categories") }}</h3>
+            <ul>
+              <li v-for="category in shop.categories" :key="category">
+                {{ $t(`shopCategories.${category}`) }}
+              </li>
+            </ul>
+          </div>
+          <div class="col">
+            <h3 class="h5">{{ $t("shop.paymentMethods") }}</h3>
+            <ul>
+              <li
+                v-for="paymentMethod in shop.paymentMethods"
+                :key="paymentMethod"
+              >
+                {{ $t(`paymentMethods.${paymentMethod}`) }}
+              </li>
+            </ul>
+          </div>
+          <div class="col">
+            <h3 class="h5">{{ $t("shop.openingDays") }}</h3>
+            <ul>
+              <li v-for="day in shop.days" :key="day">
+                {{ $t(`days.${day}`) }}
+              </li>
+            </ul>
+            <p>{{ shop.openingHour }}-{{ shop.closingHour }}</p>
+          </div>
+        </div>
       </div>
     </b-media>
   </div>

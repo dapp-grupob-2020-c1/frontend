@@ -72,14 +72,14 @@
       >
         <b-form-checkbox-group
           v-model="product.types"
-          :options="$store.state.availableProductCategories"
+          :options="productTypesOptions"
           name="types"
           stacked
         ></b-form-checkbox-group>
       </b-form-group>
 
       <b-button variant="primary" size="lg" type="submit">
-        {{ $t("product.submitCreate") }}
+        {{ $t("product.submitEdit") }}
       </b-button>
       <b-button variant="text" size="lg" @click="handleCancel">
         {{ $t("product.cancel") }}
@@ -131,6 +131,16 @@ export default {
       (prod) => prod.id == this.$route.params.productId
     );
     this.product = Object.assign({}, foundProduct);
+  },
+  computed: {
+    productTypesOptions() {
+      return this.$store.state.availableProductCategories.map((category) => {
+        return {
+          text: this.$t(`productTypes.${category}`),
+          value: category,
+        };
+      });
+    },
   },
   methods: {
     async handleEditProduct() {

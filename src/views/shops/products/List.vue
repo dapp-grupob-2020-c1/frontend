@@ -21,7 +21,10 @@
         {{ $t("shop.createManyProducts") }}
       </b-button>
 
-      <download-csv :data="productsList" class="btn btn-lg btn-outline-primary">
+      <download-csv
+        :data="productsList"
+        class="btn btn-lg btn-outline-primary mr-2 mb-2"
+      >
         <b-icon-arrow-down-square />
         {{ $t("shop.downloadCsv") }}
       </download-csv>

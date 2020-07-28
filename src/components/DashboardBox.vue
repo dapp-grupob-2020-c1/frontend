@@ -1,6 +1,6 @@
 <template>
-  <b-card class="dashboard-box">
-    <p class="lead text-center mt-3">
+  <b-card class="dashboard-box" border-variant="primary">
+    <p class="lead text-center mt-3" :class="{ 'text-muted': disabled }">
       <slot></slot>
     </p>
 
@@ -15,7 +15,7 @@
       {{ title }}
     </b-button>
 
-    <p class="mt-3">
+    <p class="mt-3" :class="{ 'text-muted': disabled }">
       {{ subtitle }}
     </p>
   </b-card>

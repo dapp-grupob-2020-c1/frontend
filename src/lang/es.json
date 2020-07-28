@@ -83,8 +83,18 @@
     "shopsDescription": "Ver y administrar los negocios del usuario."
   },
   "product": {
+    "editDetails": "Editar Detalles",
+    "delete": "Eliminar Producto",
     "addToCart": "Agregar al Carrito",
     "addedToCart": "agregado al carrito.",
+    "name": "Nombre",
+    "brand": "Marca",
+    "image": "Imagen",
+    "price": "Precio",
+    "types": "Categorías",
+    "submitCreate": "Crear Nuevo",
+    "submitEdit": "Editar Producto",
+    "cancel": "Cancelar",
     "create": {
       "createNewProduct": "Crear Nuevo Producto",
       "productName": "Nombre",
@@ -124,6 +134,7 @@
   "shop": {
     "createNew": "Crear Nuevo Negocio",
     "deliveryRadius": "Radio de Entrega",
+    "editProduct": "Editar Producto",
     "shopList": "Listado de Negocios",
     "viewDetails": "Ver Detalles",
     "editDetails": "Editar detalles",
@@ -141,6 +152,7 @@
     "openingHours": "Horario de apertura",
     "closingHours": "Horario de cierre",
     "successfulCreation": "Negocio creado correctamente",
+    "downloadCsv": "Descargar CSV",
     "submitCreate": "Crear Negocio",
     "submitEdit": "Editar Negocio",
     "cancel": "Cancelar"
