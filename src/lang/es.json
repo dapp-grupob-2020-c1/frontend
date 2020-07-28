@@ -33,7 +33,7 @@
     "checkout": "Finalizar Compra",
     "checkoutCartSuccess": "Compra finalizada correctamente!",
     "getSearchProductsError": "No tienes una orden activa! Por favor, crea una nueva",
-    "addProductToCartError": "No tienes una orden activa! Por favor, crea una nueva",
+    "addProductToCartError": "No tienes una orden activa! Por favor, crea una nueva"
   },
   "navbar": {
     "search": "Buscar",
