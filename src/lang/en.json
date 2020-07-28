@@ -119,6 +119,9 @@
         "cancel": "Cancel"
       }
     },
+    "user": {
+      "createLocationSuccess": "Location created successfully!"
+    },
     "location": {
       "createNewLocation": "Add Location",
       "locationsList": "List of Locations",
