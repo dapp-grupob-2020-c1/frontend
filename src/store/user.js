@@ -186,6 +186,7 @@ export default {
       try {
         const httpClient = rootState.auth.httpClient;
         await createLocationRequest(httpClient, locationInformation);
+        await dispatch("getLocations");
         dispatch("messages/showMessage", "user.createLocationSuccess", {
           root: true,
         });
@@ -209,7 +210,7 @@ export default {
       try {
         const httpClient = rootState.auth.httpClient;
         await deleteLocationRequest(httpClient, locationId);
-        await dispatch("getUserInformation");
+        await dispatch("getLocations");
         dispatch("messages/showMessage", "user.deleteLocationSuccess", {
           root: true,
         });
