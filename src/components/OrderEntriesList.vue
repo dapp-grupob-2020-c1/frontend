@@ -20,10 +20,14 @@
           {{ entry.product.name }}
           <span class="text-muted">&dash; {{ entry.product.brand }}</span>
         </p>
-        <p class="mb-1">{{ entry.quantity }} x $ {{ entry.product.price }}</p>
+        <p class="mb-1">
+          {{ entry.quantity }} x {{ $n(entry.product.price, "currency") }}
+        </p>
       </div>
       <div class="col-4 col-md-3 text-right">
-        <p class="lead m-0">$ {{ entry.quantity * entry.product.price }}</p>
+        <p class="lead m-0">
+          {{ $n(entry.quantity * entry.product.price, "currency") }}
+        </p>
       </div>
     </div>
     <!-- Total -->
@@ -35,7 +39,7 @@
       </div>
       <div class="col-3 text-right">
         <p class="lead font-weight-bold">
-          $ {{ $store.state.cart.active.total }}
+          {{ $n($store.state.cart.active.total, "currency") }}
         </p>
       </div>
     </div>

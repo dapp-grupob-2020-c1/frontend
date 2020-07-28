@@ -13,8 +13,10 @@
               'bg-danger': threshold.totalForType <= threshold.threshold,
             }"
           >
-            $ {{ threshold.totalForType }}
-            <span class="text-muted">/ {{ threshold.threshold }}</span>
+            <span>{{ $n(threshold.totalForType, "currency") }}</span>
+            <span class="text-muted"
+              >/ {{ $n(threshold.threshold, "currency") }}</span
+            >
           </span>
         </p>
       </div>
